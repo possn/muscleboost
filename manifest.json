@@ -1,8 +1,8 @@
 {
   "name": "MuscleBoost",
-  "short_name": "MB",
-  "start_url": ".",
+  "short_name": "MuscleBoost",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#020617",
-  "theme_color": "#020617"
+  "background_color": "#F7F3EE",
+  "theme_color": "#F7F3EE"
 }
