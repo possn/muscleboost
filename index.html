@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MuscleBoost Pro</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+body {
+  font-family: -apple-system;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
+.card {
+  background: #1e293b;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 16px;
+}
+.timer { font-size: 50px; margin: 10px; }
+button {
+  padding: 12px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+}
+.start { background: #22c55e; }
+.pause { background: #f59e0b; }
+.reset { background: #ef4444; }
+.mode { background: #3b82f6; }
+</style>
+</head>
+
+<body>
+
+<h2>MuscleBoost Pro</h2>
+
+<div class="card">
+  <div id="day"></div>
+  <div id="exercise"></div>
+  <div class="timer" id="timer"></div>
+  <div id="instruction"></div>
+</div>
+
+<div>
+  <button class="start" onclick="start()">Start</button>
+  <button class="pause" onclick="pause()">Pause</button>
+  <button class="reset" onclick="reset()">Reset</button>
+  <button class="mode" onclick="toggleMode()">Modo Hardcore</button>
+</div>
+
+<div class="card">
+  <h3>Histórico</h3>
+  <div id="history"></div>
+</div>
+
+<audio id="beep" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+
+<script>
+let hardcore = false;
+let dayIndex = new Date().getDate() % 3;
+
+const programs = [
+  {name:"Dia A",ex:[
+    ["Flexões","Peito"],
+    ["Decline","Peito sup"],
+    ["Pike","Ombros"],
+    ["Diamante","Tríceps"],
+    ["Plank","Core"]
+  ]},
+  {name:"Dia B",ex:[
+    ["Plank",""],
+    ["Hollow",""],
+    ["Bicycle",""],
+    ["Leg raise",""],
+    ["Climbers",""]
+  ]},
+  {name:"Dia C",ex:[
+    ["Dips",""],
+    ["Isométrico",""],
+    ["Handstand",""],
+    ["Circles",""],
+    ["Slow push",""]
+  ]}
+];
+
+let i=0,time=40,rest=false,int=null;
+
+function workTime(){
+  let w=Math.floor((new Date()-new Date("2026-01-01"))/(1000*60*60*24*7));
+  return Math.min(40+w*2,60);
+}
+
+function update(){
+  document.getElementById("day").innerText=programs[dayIndex].name;
+  document.getElementById("exercise").innerText=rest?"Descanso":programs[dayIndex].ex[i][0];
+  document.getElementById("instruction").innerText=rest?"":programs[dayIndex].ex[i][1];
+  document.getElementById("timer").innerText="00:"+String(time).padStart(2,"0");
+}
+
+function beep(){document.getElementById("beep").play();}
+
+function start(){
+ if(int)return;
+ time=workTime();
+ int=setInterval(()=>{
+  time--;
+  if(time<=0){
+    beep();
+    if(!rest){
+      rest=true;
+      time=hardcore?5:20;
+    }else{
+      rest=false;
+      i++;
+      if(i>=programs[dayIndex].ex.length){
+        saveHistory();
+        alert("Done");
+        clearInterval(int);int=null;return;
+      }
+      time=workTime();
+    }
+  }
+  update();
+ },1000);
+}
+
+function pause(){clearInterval(int);int=null;}
+function reset(){pause();i=0;rest=false;time=workTime();update();}
+
+function toggleMode(){
+ hardcore=!hardcore;
+ alert(hardcore?"Hardcore ON":"Normal");
+}
+
+function saveHistory(){
+ let h=JSON.parse(localStorage.getItem("hist")||"[]");
+ h.push(new Date().toLocaleDateString());
+ localStorage.setItem("hist",JSON.stringify(h));
+ loadHistory();
+}
+
+function loadHistory(){
+ let h=JSON.parse(localStorage.getItem("hist")||"[]");
+ document.getElementById("history").innerText=h.join(", ");
+}
+
+loadHistory();
+update();
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+ navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
