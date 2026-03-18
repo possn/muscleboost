@@ -3,190 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuscleBoost</title>
-
-<link rel="manifest" href="manifest.json">
+<title>MuscleBoost Trainer</title>
 
 <style>
 body {
-  font-family: -apple-system;
-  background: #0f172a;
-  color: white;
   margin:0;
-}
-
-.header {
-  padding:15px;
-  text-align:center;
-  font-size:18px;
+  font-family:-apple-system;
   background:#020617;
+  color:white;
 }
 
-.container { padding:15px; }
+.container {
+  max-width:400px;
+  margin:auto;
+  padding:20px;
+}
 
 .card {
-  background:#1e293b;
+  background:#0f172a;
   padding:15px;
   border-radius:16px;
   margin-bottom:15px;
 }
 
-.timer {
-  font-size:48px;
-  text-align:center;
-}
+.exercise { font-size:24px; text-align:center; }
+.timer { font-size:70px; text-align:center; margin:10px 0; }
+
+.mode { text-align:center; font-size:14px; opacity:0.6; }
 
 button {
   width:100%;
   padding:12px;
-  margin-top:10px;
+  margin-top:8px;
   border:none;
-  border-radius:10px;
-  font-size:16px;
+  border-radius:12px;
 }
 
 .start { background:#22c55e; }
 .pause { background:#f59e0b; }
 .reset { background:#ef4444; }
 
-.calendar {
+.grid {
   display:grid;
-  grid-template-columns: repeat(7,1fr);
-  gap:5px;
-}
-
-.day {
-  background:#020617;
-  padding:8px;
-  border-radius:8px;
-  font-size:12px;
-}
-
-.done { background:#22c55e; color:black; }
-
-.score {
-  font-size:20px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
   text-align:center;
 }
+
+.metric {
+  font-size:18px;
+}
+
+.small { font-size:12px; opacity:0.6; }
 </style>
 </head>
 
 <body>
 
-<div class="header">MuscleBoost</div>
-
 <div class="container">
 
 <div class="card">
-<div id="dayType"></div>
-<div id="exercise"></div>
-<div class="timer" id="timer">00:40</div>
-<div id="instruction"></div>
+<div class="exercise" id="exercise">Ready</div>
+<div class="timer" id="timer">40</div>
+<div class="mode" id="mode">NORMAL</div>
 
 <button class="start" onclick="start()">Start</button>
 <button class="pause" onclick="pause()">Pause</button>
 <button class="reset" onclick="reset()">Reset</button>
+
+<div style="text-align:center;margin-top:10px;">
+RPE <input type="number" id="rpe" value="7" min="1" max="10">
+</div>
 </div>
 
 <div class="card">
-<div class="score" id="score">Adesão: 0%</div>
-<div class="calendar" id="calendar"></div>
+<div class="grid">
+  <div>
+    <div class="metric" id="load">0</div>
+    <div class="small">Carga 7d</div>
+  </div>
+  <div>
+    <div class="metric" id="trend">0</div>
+    <div class="small">Trend</div>
+  </div>
+</div>
 </div>
 
 </div>
 
 <script>
-let dayIndex = new Date().getDate()%3;
-let currentExercise=0;
-let time=40;
-let interval=null;
-let isRest=false;
+let base_ex = ["Push-ups","Decline","Pike","Diamond","Plank"];
+let hard_ex = ["Decline","Archer","Pike","Diamond","Slow Push"];
+let easy_ex = ["Knee Push","Incline","Wall Push","Core Light","Plank"];
 
-const programs=[
-["Dia A","Flexões","Peito"],
-["Dia B","Core","Abdómen"],
-["Dia C","Braços","Tríceps"]
-];
+let index=0, time=40, work=true, interval=null, mode="NORMAL";
 
-function getWorkTime(){
-  const start=new Date("2026-01-01");
-  const now=new Date();
-  const weeks=Math.floor((now-start)/(1000*60*60*24*7));
-  return Math.min(40+weeks*2,60);
+const ctx = new (window.AudioContext||window.webkitAudioContext)();
+
+function beep(f=800,d=0.1){
+  const o=ctx.createOscillator(), g=ctx.createGain();
+  o.connect(g); g.connect(ctx.destination);
+  o.frequency.value=f; o.start();
+  setTimeout(()=>o.stop(), d*1000);
+}
+
+// histórico
+function hist(){ return JSON.parse(localStorage.getItem("h")||"[]"); }
+
+function save(rpe){
+  let h=hist();
+  h.push({t:Date.now(), r:rpe});
+  localStorage.setItem("h", JSON.stringify(h));
+}
+
+// métricas
+function metrics(){
+  let h=hist().slice(-7);
+  if(h.length===0) return {load:0, trend:0};
+
+  let load = h.reduce((a,b)=>a+b.r,0);
+  let last3 = h.slice(-3).reduce((a,b)=>a+b.r,0)/Math.max(1,h.slice(-3).length);
+  let avg = load/h.length;
+
+  return {load:load, trend:(last3-avg).toFixed(1)};
+}
+
+// decisão
+function decide(){
+  let m=metrics();
+
+  if(m.load < 30) return "OVERLOAD";
+  if(m.load > 60) return "DELOAD";
+  return "NORMAL";
+}
+
+function params(){
+  mode=decide();
+
+  let w=40, r=15;
+
+  if(mode==="OVERLOAD"){ w+=10; r-=5; }
+  if(mode==="DELOAD"){ w-=10; r+=5; }
+
+  return {w:Math.max(30,Math.min(w,60)), r:Math.max(10,r)};
+}
+
+function ex(){
+  if(mode==="OVERLOAD") return hard_ex;
+  if(mode==="DELOAD") return easy_ex;
+  return base_ex;
 }
 
 function update(){
-  document.getElementById("dayType").innerText=programs[dayIndex][0];
-  document.getElementById("exercise").innerText=isRest?"Descanso":programs[dayIndex][1];
-  document.getElementById("instruction").innerText=isRest?"":programs[dayIndex][2];
-  document.getElementById("timer").innerText="00:"+String(time).padStart(2,'0');
+  document.getElementById("exercise").innerText = work ? ex()[index] : "Rest";
+  document.getElementById("timer").innerText = time;
+  document.getElementById("mode").innerText = mode;
+
+  let m=metrics();
+  document.getElementById("load").innerText = m.load;
+  document.getElementById("trend").innerText = m.trend;
 }
 
 function start(){
-  if(interval)return;
-  time=getWorkTime();
+  if(interval) return;
+
+  time=params().w;
+
   interval=setInterval(()=>{
     time--;
+
+    if(time<=3) beep(1200,0.05);
+
     if(time<=0){
-      if(!isRest){isRest=true;time=20;}
-      else{
-        isRest=false;
-        currentExercise++;
-        if(currentExercise>=5){
-          saveDay();
-          alert("Done");
+      beep(600,0.2);
+
+      if(work){
+        work=false;
+        time=params().r;
+      } else {
+        work=true;
+        index++;
+
+        if(index>=ex().length){
+          save(Number(document.getElementById("rpe").value));
           clearInterval(interval);
           interval=null;
+          alert("Done");
           return;
         }
-        time=getWorkTime();
+
+        time=params().w;
       }
     }
+
     update();
   },1000);
 }
 
-function pause(){clearInterval(interval);interval=null;}
+function pause(){ clearInterval(interval); interval=null; }
+
 function reset(){
   clearInterval(interval);
   interval=null;
-  currentExercise=0;
-  isRest=false;
-  time=getWorkTime();
+  index=0; work=true; time=40;
   update();
 }
 
-function saveDay(){
-  let days=JSON.parse(localStorage.getItem("days")||"[]");
-  const today=new Date().toISOString().slice(0,10);
-  if(!days.includes(today)){days.push(today);}
-  localStorage.setItem("days",JSON.stringify(days));
-  renderCalendar();
-}
-
-function renderCalendar(){
-  let cal=document.getElementById("calendar");
-  cal.innerHTML="";
-  let days=JSON.parse(localStorage.getItem("days")||"[]");
-  let count=0;
-
-  for(let i=1;i<=30;i++){
-    let d=document.createElement("div");
-    d.className="day";
-    let date=new Date();
-    date.setDate(i);
-    let key=date.toISOString().slice(0,10);
-
-    if(days.includes(key)){d.classList.add("done");count++;}
-    d.innerText=i;
-    cal.appendChild(d);
-  }
-
-  document.getElementById("score").innerText=
-    "Adesão: "+Math.round((count/30)*100)+"%";
-}
-
-renderCalendar();
 update();
 </script>
 
