@@ -1,11 +1,10 @@
 {
   "name": "MuscleBoost",
   "short_name": "MuscleBoost",
-  "description": "Treino adaptativo curto para casa.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b1220",
-  "theme_color": "#0f172a",
+  "theme_color": "#0b1220",
   "icons": [
     {
       "src": "icon-192.png",

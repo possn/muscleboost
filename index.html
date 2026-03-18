@@ -1,131 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0b1220" />
   <title>MuscleBoost</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon-192.png" />
   <style>
     :root{
       --bg:#0b1220;
-      --panel:#111827;
-      --panel-2:#1f2937;
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --accent:#22c55e;
-      --accent-2:#38bdf8;
+      --panel:#121a2b;
+      --panel-2:#182235;
+      --text:#eef2ff;
+      --muted:#9fb0d0;
+      --line:#26324b;
+      --accent:#5eead4;
+      --accent-2:#7dd3fc;
+      --good:#22c55e;
       --warn:#f59e0b;
-      --danger:#ef4444;
-      --rest:#334155;
-      --shadow:0 12px 28px rgba(0,0,0,.28);
-      --radius:22px;
+      --bad:#ef4444;
+      --shadow:0 10px 28px rgba(0,0,0,.28);
+      --radius:20px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    .app{
-      width:min(100%, 520px);
-      margin:0 auto;
-      padding: max(14px, env(safe-area-inset-top)) 14px max(18px, env(safe-area-inset-bottom)) 14px;
-      min-height:100%;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:8px 4px 2px;
-    }
-    .brand{display:flex; gap:12px; align-items:center}
-    .logo{
-      width:44px;height:44px;border-radius:14px;
-      background:linear-gradient(135deg,#0f172a,#1d4ed8);
-      box-shadow:var(--shadow);
-      display:grid;place-items:center; overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .brand h1{font-size:1.1rem; margin:0; letter-spacing:.2px}
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:.82rem}
-    .chip{
-      padding:8px 12px; border-radius:999px; font-size:.76rem; font-weight:700;
-      background:#0f172a; color:#cbd5e1; border:1px solid rgba(255,255,255,.08);
-    }
-    .card{
-      background:rgba(17,24,39,.92);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
-    }
-    .hero{
-      padding:18px;
-      background:linear-gradient(180deg, rgba(56,189,248,.08), rgba(34,197,94,.06)), rgba(17,24,39,.94);
-    }
-    .label{font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
-    .exercise{font-size:1.5rem; font-weight:800; margin-top:6px; line-height:1.15}
-    .instruction{font-size:.95rem; color:#cbd5e1; line-height:1.45; margin-top:8px; min-height:42px}
-    .phaseRow{display:flex; justify-content:space-between; align-items:center; margin-top:12px}
-    .phaseBadge{
-      padding:7px 12px; border-radius:999px; font-size:.78rem; font-weight:800;
-      background:rgba(34,197,94,.15); color:#bbf7d0; border:1px solid rgba(34,197,94,.22);
-    }
-    .phaseBadge.rest{background:rgba(148,163,184,.13); color:#dbeafe; border-color:rgba(148,163,184,.18)}
-    .timer{
-      font-size:4.2rem; font-weight:900; text-align:center; letter-spacing:.03em;
-      margin:12px 0 6px;
-    }
-    .progressWrap{
-      height:12px; background:#0f172a; border-radius:999px; overflow:hidden;
-      border:1px solid rgba(255,255,255,.05);
-    }
-    .progress{height:100%; width:0%; background:linear-gradient(90deg,var(--accent-2), var(--accent)); transition:width .25s linear}
-    .controls{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:14px}
-    button{
-      appearance:none; border:none; cursor:pointer; border-radius:16px;
-      padding:14px 12px; font-size:1rem; font-weight:800; color:white;
-      transition:transform .06s ease, opacity .2s ease, background .2s ease;
-    }
-    button:active{transform:scale(.985)}
-    .start{background:linear-gradient(180deg,#22c55e,#16a34a)}
-    .pause{background:linear-gradient(180deg,#475569,#334155)}
-    .reset{background:linear-gradient(180deg,#f59e0b,#d97706)}
-    .sectionTitle{font-size:.88rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin-bottom:10px}
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    .metricBox{background:#0f172a; border-radius:18px; padding:14px; border:1px solid rgba(255,255,255,.05)}
-    .metricValue{font-size:1.5rem; font-weight:900}
-    .metricLabel{font-size:.8rem; color:var(--muted); margin-top:3px}
-    .small{font-size:.9rem; color:#cbd5e1}
-    .settings{display:grid; gap:10px}
-    .row{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center}
-    .row .left{display:flex; flex-direction:column; gap:2px}
-    input[type="number"], select{
-      width:96px; background:#0f172a; color:var(--text); border:1px solid rgba(255,255,255,.08);
-      border-radius:14px; padding:10px 12px; font-size:1rem;
-    }
-    .toggle{
-      position:relative; width:54px; height:32px; background:#0f172a; border-radius:999px; cursor:pointer;
-      border:1px solid rgba(255,255,255,.08)
-    }
-    .toggle input{display:none}
-    .knob{position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:50%; background:#cbd5e1; transition:all .2s ease}
-    .toggle input:checked + .knob{left:25px; background:#22c55e}
-    .footerNote{color:var(--muted); font-size:.82rem; text-align:center; padding:2px 6px 12px}
-    @media (max-width:390px){
-      .timer{font-size:3.4rem}
-      .exercise{font-size:1.3rem}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#09101d,#0b1220 30%,#0f172a);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    body{min-height:100vh}
+    .app{max-width:460px;margin:0 auto;padding:18px 16px 36px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;margin:6px 0 16px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{width:44px;height:44px;border-radius:12px;box-shadow:var(--shadow)}
+    .brand h1{font-size:20px;line-height:1.05;margin:0;font-weight:700;letter-spacing:.2px}
+    .brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+    .ghost-btn{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:14px;font-weight:600}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);backdrop-filter: blur(6px);margin-bottom:14px}
+    .header-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px}
+    .chip{padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px}
+    .chip.normal{background:rgba(125,211,252,.08);color:#bae6fd}
+    .chip.overload{background:rgba(34,197,94,.10);color:#bbf7d0}
+    .chip.deload{background:rgba(245,158,11,.10);color:#fde68a}
+    .plan{color:var(--muted);font-size:12px}
+    .exercise{font-size:28px;font-weight:800;letter-spacing:.2px;margin:8px 0 2px}
+    .instruction{color:var(--muted);line-height:1.45;font-size:14px;min-height:44px}
+    .phase{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:6px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
+    .timer-wrap{display:flex;justify-content:center;align-items:center;min-height:132px}
+    .timer{font-size:84px;font-weight:800;line-height:1;letter-spacing:1px;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(125,211,252,.08)}
+    .progress{height:10px;background:#0a1120;border-radius:999px;overflow:hidden;border:1px solid var(--line);margin:10px 0 6px}
+    .progress > div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .25s linear}
+    .controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+    button{appearance:none;border:none;border-radius:16px;padding:14px 12px;font-size:15px;font-weight:700;cursor:pointer}
+    .start{background:linear-gradient(180deg,#1fd6b3,#14b8a6);color:#062019}
+    .pause{background:linear-gradient(180deg,#314158,#233049);color:var(--text);border:1px solid var(--line)}
+    .reset{background:linear-gradient(180deg,#4a1f2a,#391720);color:#fecdd3;border:1px solid #61303c}
+    .subcontrols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
+    .subcontrols button{padding:10px 8px;font-size:13px;background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .metric{background:rgba(255,255,255,.03);border:1px solid var(--line);padding:12px;border-radius:16px;text-align:center}
+    .metric .label{color:var(--muted);font-size:12px;margin-bottom:4px}
+    .metric .value{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+    .metric .tiny{margin-top:2px;font-size:11px;color:var(--muted)}
+    .rpe-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+    .rpe-row label{font-size:13px;color:var(--muted);min-width:72px}
+    input[type="range"]{width:100%}
+    .rpe-value{min-width:36px;text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+    .calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .calendar-title{font-weight:800}
+    .calendar-sub{font-size:12px;color:var(--muted)}
+    .weekdays,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+    .weekdays div{color:var(--muted);font-size:11px;text-align:center;padding-bottom:4px}
+    .day{aspect-ratio:1/1;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;font-size:13px;color:#dbe7ff}
+    .day.empty{background:transparent;border-color:transparent}
+    .day.future{opacity:.4}
+    .day.done{background:linear-gradient(180deg,rgba(34,197,94,.22),rgba(16,185,129,.14));border-color:rgba(34,197,94,.5);color:#dcfce7;font-weight:800}
+    .day.missed{background:linear-gradient(180deg,rgba(239,68,68,.12),rgba(127,29,29,.10));border-color:rgba(239,68,68,.34);color:#fecaca}
+    .day.today::after{content:'';position:absolute;bottom:6px;width:6px;height:6px;border-radius:999px;background:var(--accent)}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:12px}
+    .legend span{display:inline-flex;align-items:center;gap:6px}
+    .legend i{display:inline-block;width:10px;height:10px;border-radius:999px}
+    .section-title{font-size:15px;font-weight:800;margin-bottom:10px}
+    .history-list{display:flex;flex-direction:column;gap:8px;max-height:210px;overflow:auto}
+    .history-item{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+    .history-item .left{font-size:13px}
+    .history-item .right{text-align:right;font-size:12px;color:var(--muted)}
+    .empty-note{font-size:13px;color:var(--muted)}
+    @media (max-width:380px){
+      .timer{font-size:72px}
+      .exercise{font-size:24px}
       .controls{grid-template-columns:1fr}
-      input[type="number"], select{width:84px}
+      .subcontrols{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -133,349 +96,557 @@
   <div class="app">
     <div class="topbar">
       <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 64 64" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="6" width="52" height="52" rx="16" fill="#0f172a"/>
-            <path d="M18 40c4-10 10-16 14-16s10 6 14 16" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round"/>
-            <path d="M26 22c2 2 4 3 6 3s4-1 6-3" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
-            <path d="M24 42h16" stroke="#e5e7eb" stroke-width="4.5" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <img src="icon-192.png" alt="MuscleBoost" />
         <div>
           <h1>MuscleBoost</h1>
-          <p>Treino adaptativo em casa</p>
+          <p>Treino diário adaptativo</p>
         </div>
       </div>
-      <div class="chip" id="modeChip">NORMAL</div>
+      <button id="muteBtn" class="ghost-btn" type="button">Som: On</button>
     </div>
 
-    <section class="card hero">
-      <div class="label" id="dayLabel">Dia A · PUSH</div>
-      <div class="exercise" id="exercise">Pronto para começar</div>
-      <div class="instruction" id="instruction">Carrega em Start para iniciar o bloco automático.</div>
-      <div class="timer" id="timer">00:40</div>
-      <div class="phaseRow">
-        <div class="phaseBadge" id="phaseBadge">TRABALHO</div>
-        <div class="small"><span id="exerciseIndex">1</span>/<span id="exerciseTotal">5</span></div>
+    <div class="card">
+      <div class="header-row">
+        <div>
+          <div id="modeChip" class="chip normal">NORMAL</div>
+          <div id="planText" class="plan">Dia A · Push</div>
+        </div>
+        <button id="doneBtn" class="ghost-btn" type="button">Marcar hoje</button>
       </div>
-      <div class="progressWrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
+
+      <div id="exercise" class="exercise">Pronto</div>
+      <div id="instruction" class="instruction">Carrega em Start para iniciar. O treino alterna automaticamente entre trabalho e descanso.</div>
+      <div class="phase"><span class="dot"></span><span id="phaseText">TRABALHO</span></div>
+      <div class="timer-wrap"><div id="timer" class="timer">00:40</div></div>
+      <div class="progress"><div id="progressBar"></div></div>
+
       <div class="controls">
-        <button class="start" id="startBtn">Start</button>
-        <button class="pause" id="pauseBtn">Pausa</button>
-        <button class="reset" id="resetBtn">Reset</button>
+        <button id="startBtn" class="start" type="button">Start</button>
+        <button id="pauseBtn" class="pause" type="button">Pause</button>
+        <button id="resetBtn" class="reset" type="button">Reset</button>
       </div>
-    </section>
+      <div class="subcontrols">
+        <button id="skipBtn" type="button">Saltar exercício</button>
+        <button id="hardBtn" type="button">Modo hardcore</button>
+        <button id="exportBtn" type="button">Exportar dados</button>
+      </div>
 
-    <section class="card">
-      <div class="sectionTitle">Estado</div>
-      <div class="grid2">
-        <div class="metricBox">
-          <div class="metricValue" id="weeklyLoad">0</div>
-          <div class="metricLabel">Carga 7 dias</div>
-        </div>
-        <div class="metricBox">
-          <div class="metricValue" id="streak">0</div>
-          <div class="metricLabel">Dias seguidos</div>
-        </div>
-        <div class="metricBox">
-          <div class="metricValue" id="workMetric">40s</div>
-          <div class="metricLabel">Trabalho</div>
-        </div>
-        <div class="metricBox">
-          <div class="metricValue" id="restMetric">20s</div>
-          <div class="metricLabel">Descanso</div>
-        </div>
+      <div class="rpe-row">
+        <label for="rpeInput">RPE final</label>
+        <input id="rpeInput" type="range" min="4" max="10" step="1" value="7" />
+        <div id="rpeValue" class="rpe-value">7</div>
       </div>
-    </section>
+    </div>
 
-    <section class="card settings">
-      <div class="sectionTitle">Ajustes</div>
-      <div class="row">
-        <div class="left">
-          <strong>RPE final</strong>
-          <span class="small">Esforço percebido de 1 a 10</span>
+    <div class="card">
+      <div class="section-title">Resumo</div>
+      <div class="grid">
+        <div class="metric">
+          <div class="label">Streak</div>
+          <div id="streakValue" class="value">0</div>
+          <div class="tiny">dias seguidos</div>
         </div>
-        <input id="rpeInput" type="number" min="1" max="10" step="1" value="7" />
-      </div>
-      <div class="row">
-        <div class="left">
-          <strong>Modo</strong>
-          <span class="small">Automático, mas podes ver o estado atual</span>
+        <div class="metric">
+          <div class="label">Carga 7d</div>
+          <div id="loadValue" class="value">0</div>
+          <div class="tiny">RPE acumulado</div>
         </div>
-        <select id="modeView" disabled>
-          <option>NORMAL</option>
-          <option>OVERLOAD</option>
-          <option>DELOAD</option>
-        </select>
-      </div>
-      <div class="row">
-        <div class="left">
-          <strong>Sons</strong>
-          <span class="small">Aviso nos 3 segundos finais e na troca</span>
+        <div class="metric">
+          <div class="label">Mês</div>
+          <div id="adherenceValue" class="value">0%</div>
+          <div class="tiny">adesão</div>
         </div>
-        <label class="toggle"><input id="soundToggle" type="checkbox" checked><span class="knob"></span></label>
       </div>
-    </section>
+    </div>
 
-    <div class="footerNote">Abre pelo GitHub Pages ou Safari. Em modo ficheiro local, o treino funciona na mesma; apenas o modo offline completo depende do service worker.</div>
+    <div class="card">
+      <div class="calendar-head">
+        <div>
+          <div id="calendarTitle" class="calendar-title">Calendário</div>
+          <div class="calendar-sub">Verde = feito · vermelho = falhado</div>
+        </div>
+      </div>
+      <div class="weekdays">
+        <div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div><div>D</div>
+      </div>
+      <div id="calendar" class="calendar"></div>
+      <div class="legend">
+        <span><i style="background:#22c55e"></i> feito</span>
+        <span><i style="background:#ef4444"></i> falhado</span>
+        <span><i style="background:#5eead4"></i> hoje</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Histórico recente</div>
+      <div id="historyList" class="history-list"></div>
+    </div>
   </div>
 
-  <script>
-    const programs = [
-      {
-        name: 'Dia A · PUSH',
-        exercises: [
-          { name: 'Flexões clássicas', instruction: 'Mãos à largura dos ombros. Desce 3 segundos, sobe com controlo.' },
-          { name: 'Flexões declinadas', instruction: 'Pés elevados numa cadeira ou sofá. Foco no peito superior.' },
-          { name: 'Pike push-ups', instruction: 'Ancas elevadas. Leva a cabeça em direção ao chão para recrutar ombros.' },
-          { name: 'Flexões diamante', instruction: 'Mãos próximas no centro. Mantém cotovelos controlados.' },
-          { name: 'Prancha com toque no ombro', instruction: 'Core firme. Evita rotação da bacia.' }
-        ]
-      },
-      {
-        name: 'Dia B · CORE',
-        exercises: [
-          { name: 'Prancha frontal', instruction: 'Corpo em linha reta. Glúteos e abdómen contraídos.' },
-          { name: 'Hollow hold', instruction: 'Lombar colada ao chão. Braços atrás da cabeça se tolerares.' },
-          { name: 'Bicycle crunch', instruction: 'Movimento lento e completo, sem puxar o pescoço.' },
-          { name: 'Elevação de pernas', instruction: 'Desce devagar. Não deixes a lombar perder contacto.' },
-          { name: 'Mountain climbers', instruction: 'Ritmo vivo, mas com tronco estável.' }
-        ]
-      },
-      {
-        name: 'Dia C · BRAÇOS / OMBROS',
-        exercises: [
-          { name: 'Dips em cadeira', instruction: 'Desce até cerca de 90 graus no cotovelo e sobe sem impulso.' },
-          { name: 'Flexão isométrica', instruction: 'Segura a meio do movimento o máximo possível com técnica.' },
-          { name: 'Handstand na parede', instruction: 'Versão parcial contra a parede ou pike hold se necessário.' },
-          { name: 'Círculos de braços', instruction: 'Braços estendidos, pequenos círculos contínuos.' },
-          { name: 'Flexão lenta', instruction: '5 segundos a descer, sobe de forma estável.' }
-        ]
-      }
-    ];
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const storage = {
+    get(key, fallback){
+      try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+    },
+    set(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+  };
 
-    const els = {
-      dayLabel: document.getElementById('dayLabel'),
-      exercise: document.getElementById('exercise'),
-      instruction: document.getElementById('instruction'),
-      timer: document.getElementById('timer'),
-      phaseBadge: document.getElementById('phaseBadge'),
-      progress: document.getElementById('progress'),
-      exerciseIndex: document.getElementById('exerciseIndex'),
-      exerciseTotal: document.getElementById('exerciseTotal'),
-      modeChip: document.getElementById('modeChip'),
-      modeView: document.getElementById('modeView'),
-      weeklyLoad: document.getElementById('weeklyLoad'),
-      streak: document.getElementById('streak'),
-      workMetric: document.getElementById('workMetric'),
-      restMetric: document.getElementById('restMetric'),
-      rpeInput: document.getElementById('rpeInput'),
-      soundToggle: document.getElementById('soundToggle'),
-      startBtn: document.getElementById('startBtn'),
-      pauseBtn: document.getElementById('pauseBtn'),
-      resetBtn: document.getElementById('resetBtn')
+  const plans = [
+    {
+      name: 'Dia A · Push',
+      focus: 'peito · ombros · tríceps',
+      exercises: [
+        {name:'Flexões', tip:'Mãos ligeiramente fora da linha dos ombros. Desce 3 segundos, sobe forte.'},
+        {name:'Decline push-ups', tip:'Pés elevados numa cadeira/sofá. Mais carga no peito superior e ombros.'},
+        {name:'Pike push-ups', tip:'Ancas elevadas. Cabeça avança entre as mãos. Foco no deltoide anterior.'},
+        {name:'Flexões diamante', tip:'Mãos mais juntas. Cotovelos próximos do tronco. Foco no tríceps.'},
+        {name:'Plank shoulder taps', tip:'Bacia estável. Alterna toques no ombro sem rodar o tronco.'}
+      ],
+      hard:[
+        {name:'Archer push-ups', tip:'Distribui mais carga num braço. Movimento lento e controlado.'},
+        {name:'Decline push-ups', tip:'Mantém a descida lenta e profunda.'},
+        {name:'Pike push-ups', tip:'Leva a cabeça à frente das mãos.'},
+        {name:'Flexões diamante lentas', tip:'5 segundos a descer, subida normal.'},
+        {name:'Bottom hold push-up', tip:'Segura 2–3 cm acima do fundo do movimento.'}
+      ],
+      easy:[
+        {name:'Flexões com joelhos', tip:'Mantém alinhamento do tronco. Não deixes a lombar cair.'},
+        {name:'Incline push-ups', tip:'Mãos num sofá/mesa. Repete com técnica perfeita.'},
+        {name:'Pike assistido', tip:'Amplitude parcial, foco no controlo.'},
+        {name:'Plank', tip:'Ativa glúteos e abdómen.'},
+        {name:'Shoulder taps suaves', tip:'Movimento lento, sem balançar.'}
+      ]
+    },
+    {
+      name: 'Dia B · Core',
+      focus: 'abdómen · estabilidade',
+      exercises: [
+        {name:'Plank', tip:'Linha reta do ombro ao tornozelo. Respiração curta e controlada.'},
+        {name:'Hollow hold', tip:'Lombar colada ao chão. Diminui amplitude se perderes posição.'},
+        {name:'Bicycle crunch', tip:'Roda o tronco, não só o cotovelo. Movimento limpo.'},
+        {name:'Leg raises', tip:'Sobe e desce sem embalar. Mãos debaixo do glúteo se necessário.'},
+        {name:'Mountain climbers', tip:'Ritmo alto com tronco estável.'}
+      ],
+      hard:[
+        {name:'Long plank', tip:'Avança os cotovelos alguns cm para aumentar a alavanca.'},
+        {name:'Hollow rocks', tip:'Pequena oscilação mantendo a lombar no chão.'},
+        {name:'V-ups', tip:'Toca mãos e pés no topo, sem perder controlo.'},
+        {name:'Leg raises lentas', tip:'4 segundos a descer.'},
+        {name:'Cross-body climbers', tip:'Joelho ao cotovelo oposto, ritmo alto.'}
+      ],
+      easy:[
+        {name:'Short plank', tip:'Joelhos no chão se necessário.'},
+        {name:'Dead bug', tip:'Expira ao estender perna e braço contralateral.'},
+        {name:'Crunch controlado', tip:'Pouca amplitude, boa contração.'},
+        {name:'Bent-knee raises', tip:'Joelhos fletidos para reduzir carga.'},
+        {name:'Marcha em prancha', tip:'Alterna pés de forma lenta.'}
+      ]
+    },
+    {
+      name: 'Dia C · Braços',
+      focus: 'ombros · braços · core',
+      exercises: [
+        {name:'Dips em cadeira', tip:'Ombros para trás. Desce até cotovelo ~90°.'},
+        {name:'Flexão isométrica', tip:'Segura a meio do movimento o máximo que conseguires.'},
+        {name:'Handstand hold à parede', tip:'Versão inclinada se necessário. Ombros ativos.'},
+        {name:'Arm circles', tip:'Círculos pequenos e contínuos, sem pausa.'},
+        {name:'Flexão lenta', tip:'5 segundos a descer, 1 segundo a subir.'}
+      ],
+      hard:[
+        {name:'Dips lentos', tip:'Descida muito controlada, 4 segundos.'},
+        {name:'Bottom hold push-up', tip:'Mantém a posição baixa 10–20 segundos.'},
+        {name:'Pike hold à parede', tip:'Carga mais vertical nos ombros.'},
+        {name:'Arm circles + pulse', tip:'30 s círculos + 10 s pulsos finais.'},
+        {name:'Pseudo-planche lean', tip:'Projeta os ombros à frente das mãos.'}
+      ],
+      easy:[
+        {name:'Bench dips curtos', tip:'Amplitude parcial e ombros estáveis.'},
+        {name:'Incline hold', tip:'Segura posição intermédia com mãos elevadas.'},
+        {name:'Wall hold', tip:'Empurra a parede para ativar ombros.'},
+        {name:'Arm circles leves', tip:'Menor amplitude, ritmo contínuo.'},
+        {name:'Incline push-up lenta', tip:'Controlo total da fase excêntrica.'}
+      ]
+    }
+  ];
+
+  const state = {
+    timer:null,
+    secondsLeft:40,
+    phase:'work',
+    currentIndex:0,
+    running:false,
+    hardcore:false,
+    muted:storage.get('muted', false),
+    mode:'NORMAL',
+    currentPlanIndex:(new Date().getDate() - 1) % 3,
+    currentDuration:40,
+    currentRest:20,
+    totalPhaseSeconds:40
+  };
+
+  function isoDate(d=new Date()) {
+    const x = new Date(d);
+    x.setHours(0,0,0,0);
+    return x.toISOString().slice(0,10);
+  }
+  function prettyDate(iso){
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
+  }
+  function monthName(date){
+    return date.toLocaleDateString('pt-PT', {month:'long', year:'numeric'});
+  }
+
+  function getCompleted(){ return storage.get('completedDays', []); }
+  function setCompleted(arr){ storage.set('completedDays', Array.from(new Set(arr)).sort()); }
+  function getSessions(){ return storage.get('sessions', []); }
+  function setSessions(arr){ storage.set('sessions', arr); }
+
+  function getRecentSessions(days=7){
+    const min = new Date();
+    min.setDate(min.getDate() - (days - 1));
+    min.setHours(0,0,0,0);
+    return getSessions().filter(s => new Date(s.date + 'T00:00:00') >= min);
+  }
+
+  function computeMetrics(){
+    const recent = getRecentSessions(7);
+    const load = recent.reduce((sum, s) => sum + Number(s.rpe || 0), 0);
+    const completedSet = new Set(getCompleted());
+    const monthNow = new Date();
+    const year = monthNow.getFullYear();
+    const month = monthNow.getMonth();
+    const today = isoDate();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    let eligible = 0;
+    let doneThisMonth = 0;
+    for(let day = 1; day <= daysInMonth; day++){
+      const d = new Date(year, month, day);
+      const iso = isoDate(d);
+      if (iso <= today) {
+        eligible++;
+        if (completedSet.has(iso)) doneThisMonth++;
+      }
+    }
+    const adherence = eligible ? Math.round((doneThisMonth / eligible) * 100) : 0;
+
+    let streak = 0;
+    const cursor = new Date();
+    cursor.setHours(0,0,0,0);
+    while (completedSet.has(isoDate(cursor))) {
+      streak++;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+
+    return {load, adherence, streak};
+  }
+
+  function decideMode(){
+    const recent = getRecentSessions(7);
+    if (recent.length < 3) return 'NORMAL';
+    const avg = recent.reduce((s, x) => s + Number(x.rpe || 0), 0) / recent.length;
+    const adherence = computeMetrics().adherence;
+    if (adherence >= 80 && avg <= 7) return 'OVERLOAD';
+    if (avg >= 8.8 || adherence < 45) return 'DELOAD';
+    return 'NORMAL';
+  }
+
+  function getPlanExercises(){
+    const plan = plans[state.currentPlanIndex];
+    if (state.mode === 'OVERLOAD') return plan.hard;
+    if (state.mode === 'DELOAD') return plan.easy;
+    return plan.exercises;
+  }
+
+  function configureFromMode(){
+    state.mode = decideMode();
+    const hardcoreBonus = state.hardcore ? 8 : 0;
+    if (state.mode === 'OVERLOAD') {
+      state.currentDuration = 50 + hardcoreBonus;
+      state.currentRest = state.hardcore ? 10 : 15;
+    } else if (state.mode === 'DELOAD') {
+      state.currentDuration = 32 + Math.max(0, hardcoreBonus - 2);
+      state.currentRest = state.hardcore ? 14 : 22;
+    } else {
+      state.currentDuration = 40 + hardcoreBonus;
+      state.currentRest = state.hardcore ? 12 : 18;
+    }
+  }
+
+  function formatTimer(seconds){
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+  function setChip(){
+    const chip = $('modeChip');
+    chip.className = 'chip ' + (state.mode === 'OVERLOAD' ? 'overload' : state.mode === 'DELOAD' ? 'deload' : 'normal');
+    chip.textContent = state.mode;
+  }
+
+  function markTodayDone(){
+    const days = getCompleted();
+    const today = isoDate();
+    if (!days.includes(today)) {
+      days.push(today);
+      setCompleted(days);
+    }
+    renderAll();
+  }
+
+  function saveSessionFinished(){
+    const sessions = getSessions();
+    const rpe = Number($('rpeInput').value);
+    const today = isoDate();
+    const existingIndex = sessions.findIndex(s => s.date === today);
+    const payload = {
+      date: today,
+      rpe,
+      mode: state.mode,
+      plan: plans[state.currentPlanIndex].name,
+      hardcore: state.hardcore,
+      duration: state.currentDuration,
+      rest: state.currentRest
     };
+    if (existingIndex >= 0) sessions[existingIndex] = payload;
+    else sessions.push(payload);
+    setSessions(sessions.sort((a,b) => a.date.localeCompare(b.date)));
+    markTodayDone();
+  }
 
-    let dayIndex = Math.abs(new Date().getDate()) % 3;
-    let exerciseIndex = 0;
-    let isRest = false;
-    let currentTotal = 40;
-    let timeLeft = 40;
-    let timerId = null;
-    let mode = 'NORMAL';
+  function beep(freq=880, duration=0.08, type='sine'){
+    if (state.muted) return;
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    if (!window._audioCtx) window._audioCtx = new Ctx();
+    const ctx = window._audioCtx;
+    if (ctx.state === 'suspended') ctx.resume();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.05, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration + 0.02);
+  }
 
-    function getHistory(){
-      try { return JSON.parse(localStorage.getItem('muscleboost_history') || '[]'); }
-      catch { return []; }
+  function currentExercise(){
+    const list = getPlanExercises();
+    return list[state.currentIndex] || list[list.length - 1];
+  }
+
+  function updateMainCard(){
+    configureFromMode();
+    setChip();
+    $('planText').textContent = `${plans[state.currentPlanIndex].name} · ${plans[state.currentPlanIndex].focus}`;
+    const ex = currentExercise();
+    $('exercise').textContent = state.phase === 'rest' ? 'Descanso' : ex.name;
+    $('instruction').textContent = state.phase === 'rest' ? 'Respira fundo. Prepara o próximo exercício sem parar totalmente.' : ex.tip;
+    $('phaseText').textContent = state.phase === 'rest' ? 'DESCANSO' : 'TRABALHO';
+    $('timer').textContent = formatTimer(state.secondsLeft);
+    $('hardBtn').textContent = state.hardcore ? 'Hardcore: on' : 'Modo hardcore';
+    $('muteBtn').textContent = state.muted ? 'Som: Off' : 'Som: On';
+    const progress = state.totalPhaseSeconds ? ((state.totalPhaseSeconds - state.secondsLeft) / state.totalPhaseSeconds) * 100 : 0;
+    $('progressBar').style.width = Math.max(0, Math.min(100, progress)) + '%';
+    $('doneBtn').textContent = getCompleted().includes(isoDate()) ? 'Hoje feito' : 'Marcar hoje';
+  }
+
+  function renderMetrics(){
+    const {load, adherence, streak} = computeMetrics();
+    $('streakValue').textContent = streak;
+    $('loadValue').textContent = load;
+    $('adherenceValue').textContent = adherence + '%';
+  }
+
+  function renderCalendar(){
+    const wrap = $('calendar');
+    wrap.innerHTML = '';
+    const today = isoDate();
+    const now = new Date();
+    $('calendarTitle').textContent = monthName(now);
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const first = new Date(year, month, 1);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayIndex = first.getDay(); // 0 Sunday
+    const completed = new Set(getCompleted());
+
+    for(let i=0; i<firstDayIndex; i++){
+      const empty = document.createElement('div');
+      empty.className = 'day empty';
+      wrap.appendChild(empty);
     }
 
-    function saveSession(rpe){
-      const history = getHistory();
-      const today = new Date().toISOString().slice(0,10);
-      const filtered = history.filter(x => x.date !== today);
-      filtered.push({ date: today, rpe: Math.max(1, Math.min(10, Number(rpe) || 7)) });
-      localStorage.setItem('muscleboost_history', JSON.stringify(filtered));
+    for(let day=1; day<=daysInMonth; day++){
+      const d = new Date(year, month, day);
+      const iso = isoDate(d);
+      const el = document.createElement('div');
+      const isToday = iso === today;
+      const isFuture = iso > today;
+      el.className = 'day';
+      if (isToday) el.classList.add('today');
+      if (isFuture) el.classList.add('future');
+      if (completed.has(iso)) el.classList.add('done');
+      else if (!isFuture) el.classList.add('missed');
+      el.textContent = day;
+      wrap.appendChild(el);
     }
+  }
 
-    function computeStreak(history){
-      if (!history.length) return 0;
-      const dates = history.map(x => x.date).sort().reverse();
-      let streak = 0;
-      let cursor = new Date();
-      cursor.setHours(0,0,0,0);
-      for (let i = 0; i < 365; i++) {
-        const iso = cursor.toISOString().slice(0,10);
-        if (dates.includes(iso)) { streak++; cursor.setDate(cursor.getDate() - 1); }
-        else break;
-      }
-      return streak;
+  function renderHistory(){
+    const sessions = getSessions().slice().sort((a,b) => b.date.localeCompare(a.date)).slice(0,10);
+    const wrap = $('historyList');
+    wrap.innerHTML = '';
+    if (!sessions.length) {
+      wrap.innerHTML = '<div class="empty-note">Ainda sem sessões gravadas. Depois do primeiro treino concluído, o histórico aparece aqui.</div>';
+      return;
     }
-
-    function last7(history){
-      const cutoff = new Date();
-      cutoff.setDate(cutoff.getDate() - 6);
-      cutoff.setHours(0,0,0,0);
-      return history.filter(x => new Date(x.date + 'T00:00:00') >= cutoff);
-    }
-
-    function decideMode(){
-      const history = getHistory();
-      const recent = last7(history);
-      const load = recent.reduce((sum, x) => sum + (Number(x.rpe) || 0), 0);
-      const streak = computeStreak(history);
-      if (recent.length >= 5 && load <= 34 && streak >= 3) return 'OVERLOAD';
-      if (load >= 48) return 'DELOAD';
-      return 'NORMAL';
-    }
-
-    function getParams(){
-      mode = decideMode();
-      let work = 40;
-      let rest = 20;
-      if (mode === 'OVERLOAD') { work = 50; rest = 15; }
-      if (mode === 'DELOAD') { work = 32; rest = 25; }
-      return { work, rest };
-    }
-
-    function getCurrentProgram(){ return programs[dayIndex]; }
-    function getCurrentExercise(){ return getCurrentProgram().exercises[exerciseIndex]; }
-
-    function formatTime(value){
-      const m = Math.floor(value / 60).toString().padStart(2, '0');
-      const s = Math.floor(value % 60).toString().padStart(2, '0');
-      return `${m}:${s}`;
-    }
-
-    let audioCtx = null;
-    function ensureAudio(){
-      if (!els.soundToggle.checked) return null;
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      return audioCtx;
-    }
-    function beep(freq = 880, duration = 0.08, gainValue = 0.03){
-      const ctx = ensureAudio();
-      if (!ctx) return;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine'; osc.frequency.value = freq;
-      gain.gain.value = gainValue;
-      osc.connect(gain); gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + duration);
-    }
-
-    function renderMetrics(){
-      const history = getHistory();
-      const recent = last7(history);
-      const load = recent.reduce((sum, x) => sum + (Number(x.rpe) || 0), 0);
-      const streak = computeStreak(history);
-      const params = getParams();
-      els.weeklyLoad.textContent = load;
-      els.streak.textContent = streak;
-      els.workMetric.textContent = `${params.work}s`;
-      els.restMetric.textContent = `${params.rest}s`;
-      els.modeChip.textContent = mode;
-      els.modeView.value = mode;
-    }
-
-    function render(){
-      const program = getCurrentProgram();
-      const ex = getCurrentExercise();
-      const labelText = program.name;
-      els.dayLabel.textContent = labelText;
-      els.exercise.textContent = isRest ? 'Descanso' : ex.name;
-      els.instruction.textContent = isRest ? 'Respira fundo e prepara a transição. O próximo exercício arranca automaticamente.' : ex.instruction;
-      els.timer.textContent = formatTime(timeLeft);
-      els.exerciseIndex.textContent = Math.min(exerciseIndex + 1, program.exercises.length);
-      els.exerciseTotal.textContent = program.exercises.length;
-      els.phaseBadge.textContent = isRest ? 'DESCANSO' : 'TRABALHO';
-      els.phaseBadge.classList.toggle('rest', isRest);
-      const progress = currentTotal > 0 ? ((currentTotal - timeLeft) / currentTotal) * 100 : 0;
-      els.progress.style.width = `${Math.max(0, Math.min(100, progress))}%`;
-      renderMetrics();
-    }
-
-    function setSegment(isRestSegment){
-      const params = getParams();
-      isRest = isRestSegment;
-      currentTotal = isRest ? params.rest : params.work;
-      timeLeft = currentTotal;
-      render();
-    }
-
-    function nextStep(){
-      if (!isRest) {
-        setSegment(true);
-        return;
-      }
-      exerciseIndex += 1;
-      const total = getCurrentProgram().exercises.length;
-      if (exerciseIndex >= total) {
-        finishSession();
-        return;
-      }
-      setSegment(false);
-    }
-
-    function tick(){
-      timeLeft -= 1;
-      if (timeLeft <= 3 && timeLeft > 0) beep(1200, 0.05, 0.025);
-      if (timeLeft <= 0) {
-        beep(isRest ? 700 : 520, 0.14, 0.04);
-        nextStep();
-        return;
-      }
-      render();
-    }
-
-    function startTimer(){
-      ensureAudio();
-      if (timerId) return;
-      if (timeLeft <= 0) setSegment(false);
-      timerId = setInterval(tick, 1000);
-      render();
-    }
-
-    function pauseTimer(){
-      if (!timerId) return;
-      clearInterval(timerId);
-      timerId = null;
-      render();
-    }
-
-    function resetTimer(){
-      clearInterval(timerId);
-      timerId = null;
-      exerciseIndex = 0;
-      dayIndex = Math.abs(new Date().getDate()) % 3;
-      setSegment(false);
-    }
-
-    function finishSession(){
-      clearInterval(timerId);
-      timerId = null;
-      saveSession(els.rpeInput.value);
-      dayIndex = (dayIndex + 1) % 3;
-      exerciseIndex = 0;
-      setSegment(false);
-      alert('Treino concluído. Sessão guardada.');
-    }
-
-    els.startBtn.addEventListener('click', startTimer);
-    els.pauseBtn.addEventListener('click', pauseTimer);
-    els.resetBtn.addEventListener('click', resetTimer);
-    els.rpeInput.addEventListener('change', () => {
-      let value = Math.max(1, Math.min(10, Number(els.rpeInput.value) || 7));
-      els.rpeInput.value = value;
-      renderMetrics();
+    sessions.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'history-item';
+      row.innerHTML = `
+        <div class="left"><strong>${prettyDate(s.date)}</strong><br>${s.plan}</div>
+        <div class="right">RPE ${s.rpe}<br>${s.mode}${s.hardcore ? ' · hardcore' : ''}</div>
+      `;
+      wrap.appendChild(row);
     });
+  }
 
-    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  function renderAll(){
+    updateMainCard();
+    renderMetrics();
+    renderCalendar();
+    renderHistory();
+  }
+
+  function nextPhase(){
+    const totalExercises = getPlanExercises().length;
+    if (state.phase === 'work') {
+      state.phase = 'rest';
+      state.totalPhaseSeconds = state.currentRest;
+      state.secondsLeft = state.currentRest;
+      beep(620, 0.14, 'triangle');
+      return;
     }
+    state.currentIndex++;
+    if (state.currentIndex >= totalExercises) {
+      stopWorkout(false);
+      saveSessionFinished();
+      alert('Treino concluído. Sessão guardada no calendário e no histórico.');
+      return;
+    }
+    state.phase = 'work';
+    state.totalPhaseSeconds = state.currentDuration;
+    state.secondsLeft = state.currentDuration;
+    beep(840, 0.12, 'sine');
+  }
 
-    setSegment(false);
-  </script>
+  function tick(){
+    if (state.secondsLeft > 0) {
+      state.secondsLeft--;
+      if (state.secondsLeft > 0 && state.secondsLeft <= 3 && state.phase === 'work') beep(1180, 0.05, 'square');
+      updateMainCard();
+      return;
+    }
+    nextPhase();
+    updateMainCard();
+  }
+
+  function startWorkout(){
+    if (state.running) return;
+    configureFromMode();
+    if (state.secondsLeft <= 0) {
+      state.phase = 'work';
+      state.currentIndex = 0;
+      state.totalPhaseSeconds = state.currentDuration;
+      state.secondsLeft = state.currentDuration;
+    }
+    state.running = true;
+    beep(920, 0.08, 'sine');
+    state.timer = setInterval(tick, 1000);
+    updateMainCard();
+  }
+
+  function stopWorkout(resetState=true){
+    clearInterval(state.timer);
+    state.timer = null;
+    state.running = false;
+    if (resetState) {
+      configureFromMode();
+      state.phase = 'work';
+      state.currentIndex = 0;
+      state.totalPhaseSeconds = state.currentDuration;
+      state.secondsLeft = state.currentDuration;
+    }
+    updateMainCard();
+  }
+
+  function resetWorkout(){ stopWorkout(true); }
+  function pauseWorkout(){ stopWorkout(false); }
+
+  function skipExercise(){
+    if (state.phase === 'rest') {
+      state.phase = 'work';
+      state.currentIndex = Math.min(state.currentIndex + 1, getPlanExercises().length - 1);
+      state.totalPhaseSeconds = state.currentDuration;
+      state.secondsLeft = state.currentDuration;
+    } else {
+      nextPhase();
+    }
+    updateMainCard();
+  }
+
+  function exportData(){
+    const data = {
+      completedDays: getCompleted(),
+      sessions: getSessions(),
+      exportedAt: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'muscleboost-data.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  $('startBtn').addEventListener('click', startWorkout);
+  $('pauseBtn').addEventListener('click', pauseWorkout);
+  $('resetBtn').addEventListener('click', resetWorkout);
+  $('skipBtn').addEventListener('click', skipExercise);
+  $('exportBtn').addEventListener('click', exportData);
+  $('doneBtn').addEventListener('click', markTodayDone);
+  $('hardBtn').addEventListener('click', () => {
+    state.hardcore = !state.hardcore;
+    stopWorkout(true);
+    renderAll();
+  });
+  $('muteBtn').addEventListener('click', () => {
+    state.muted = !state.muted;
+    storage.set('muted', state.muted);
+    renderAll();
+  });
+  $('rpeInput').addEventListener('input', () => { $('rpeValue').textContent = $('rpeInput').value; });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
+
+  configureFromMode();
+  state.totalPhaseSeconds = state.currentDuration;
+  state.secondsLeft = state.currentDuration;
+  $('rpeValue').textContent = $('rpeInput').value;
+  renderAll();
+})();
+</script>
 </body>
 </html>
