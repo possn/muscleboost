@@ -27,6 +27,10 @@ body{min-height:100vh}
 .timer{text-align:center;font-size:4.2rem;font-weight:800;letter-spacing:-2px;margin:6px 0 2px;font-variant-numeric:tabular-nums}
 .phase{text-align:center;color:var(--muted);font-size:.75rem;letter-spacing:.18em;margin-bottom:8px}
 .countdown-hint{text-align:center;color:#8F735D;font-size:.82rem;min-height:20px;margin-bottom:10px}
+.progress-wrap{margin:4px 0 12px}
+.progress-bar{height:10px;background:#EFE6DD;border-radius:999px;border:1px solid var(--line);overflow:hidden}
+.progress-fill{height:100%;width:0%;background:#D7C0AE;transition:width .25s ease}
+.progress-text{text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px}
 .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
 .metric{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px 8px;text-align:center}
 .metric .v{font-size:1rem;font-weight:700}.metric .l{margin-top:4px;color:var(--muted);font-size:.68rem}
@@ -44,8 +48,8 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 .calendar-head .m{font-weight:700;font-size:.92rem}
 .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .weekday{text-align:center;color:var(--muted);font-size:.7rem;padding-bottom:2px}
-.day{aspect-ratio:1/1;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:.77rem;color:var(--text)}
-.day.done{background:var(--success);border-color:#BACCB2}.day.missed{background:var(--danger);border-color:#DDB6B0}.day.future{opacity:.42}.day.today{outline:2px solid #C5AB95;outline-offset:-2px}
+.day{aspect-ratio:1/1;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:.77rem;color:var(--text);cursor:pointer;user-select:none}
+.day.done{background:var(--success);border-color:#BACCB2}.day.missed{background:var(--danger);border-color:#DDB6B0}.day.future{opacity:.42;cursor:default}.day.today{outline:2px solid #C5AB95;outline-offset:-2px}
 .recent{display:grid;gap:8px}.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft);padding:10px 12px;font-size:.84rem}
 .muted{color:var(--muted)}.footer-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:8px}
 </style>
@@ -65,11 +69,21 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
       <div class="plan-title" id="planTitle">Dia A · Peito / Ombros / Tríceps</div>
       <div class="mode" id="modeBadge">NORMAL</div>
     </div>
+    <div class="header-line" style="margin-top:-4px">
+      <div class="plan-title" id="nextPlanText">Próximo plano: B</div>
+      <div class="plan-title" id="quickModeText">Modo: padrão</div>
+    </div>
+
     <div class="exercise" id="exerciseName">Flexões</div>
     <div class="instruction" id="exerciseInstruction">Mãos alinhadas com os ombros, descida controlada e subida forte.</div>
     <div class="timer" id="timer">00:40</div>
     <div class="phase" id="phase">WORK</div>
     <div class="countdown-hint" id="countdownHint"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0% da sessão</div>
+    </div>
 
     <div class="mini-grid">
       <div class="metric"><div class="v" id="currentIndex">1/5</div><div class="l">Exercício</div></div>
@@ -90,7 +104,7 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
       <div class="toggle" id="soundToggleWrap"><div class="label">Som<small>beeps fiáveis nos 5s finais</small></div><div class="switch" id="soundSwitch"></div></div>
       <div class="toggle" id="hardcoreToggleWrap"><div class="label">Hardcore<small>menos descanso</small></div><div class="switch" id="hardcoreSwitch"></div></div>
     </div>
-    <div class="footer-note">Plano roda por histórico real A→B→C · mostra o próximo exercício no descanso</div>
+    <div class="footer-note">Calendário clicável: toca num dia passado para marcar/desmarcar como feito</div>
   </div>
 
   <div class="card">
@@ -106,8 +120,8 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 
 <script>
 (() => {
-const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore'};
-const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),mode:'NORMAL'};
+const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick'};
+const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),mode:'NORMAL'};
 
 const plans=[
 {key:'A',title:'Dia A · Peito / Ombros / Tríceps',exercises:[
@@ -130,112 +144,87 @@ const plans=[
 {name:'Push-up burnout',instruction:'Último bloco perto da falha técnica.'}]}
 ];
 
-const el={};['dayPlanLabel','planTitle','modeBadge','exerciseName','exerciseInstruction','timer','phase','countdownHint','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList'].forEach(id=>el[id]=document.getElementById(id));
+const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList'].forEach(id=>el[id]=document.getElementById(id));
 
 let audioCtx=null,wakeLock=null;
-async function unlockAudio(){
-  try{
-    if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended') await audioCtx.resume();
-    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
-    gain.gain.value=0.0001;
-    osc.connect(gain); gain.connect(audioCtx.destination);
-    osc.start(); osc.stop(audioCtx.currentTime+0.01);
-  }catch(e){}
-}
-function beep(freq=900,duration=0.10,volume=0.05){
-  if(!state.soundOn) return;
-  try{
-    if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
-    osc.type='sine'; osc.frequency.value=freq; gain.gain.value=volume;
-    osc.connect(gain); gain.connect(audioCtx.destination);
-    osc.start();
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime+duration);
-    osc.stop(audioCtx.currentTime+duration);
-  }catch(e){}
-}
+async function unlockAudio(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();gain.gain.value=0.0001;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+0.01)}catch(e){}}
+function beep(freq=900,duration=0.10,volume=0.05){if(!state.soundOn)return;try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.value=volume;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);osc.stop(audioCtx.currentTime+duration)}catch(e){}}
 function countdownSound(n){const tones={5:740,4:820,3:900,2:980,1:1100};beep(tones[n]||900,0.14,0.06)}
-
-function getSessions(){try{return JSON.parse(localStorage.getItem(STORAGE.sessions)||'[]')}catch{return []}}
-function saveSessions(arr){localStorage.setItem(STORAGE.sessions,JSON.stringify(arr))}
-function getNextPlanIndex(){
-  const sessions=getSessions();
-  if(!sessions.length) return 0;
-  const last=sessions[sessions.length-1].plan;
-  if(last==='A') return 1;
-  if(last==='B') return 2;
-  return 0;
-}
+function getSessions(){try{return JSON.parse(localStorage.getItem(STORAGE.sessions)||'[]').sort((a,b)=>a.date.localeCompare(b.date))}catch{return []}}
+function saveSessions(arr){localStorage.setItem(STORAGE.sessions,JSON.stringify(arr.sort((a,b)=>a.date.localeCompare(b.date))))}
+function getNextPlanIndex(){const sessions=getSessions();if(!sessions.length)return 0;const last=sessions[sessions.length-1].plan;if(last==='A')return 1;if(last==='B')return 2;return 0}
 function getCurrentPlan(){return plans[getNextPlanIndex()]}
-function getRecentCompletedCount(daysBack=7){
-  const completed=new Set(getSessions().map(s=>s.date)); let n=0;
-  for(let i=0;i<daysBack;i++){const d=new Date(); d.setDate(d.getDate()-i); if(completed.has(d.toISOString().slice(0,10))) n++}
-  return n;
-}
-function getWorkSeconds(){
-  const recentCount=getRecentCompletedCount(7); state.mode='NORMAL'; let work=40;
-  if(recentCount>=6){state.mode='DELOAD'; work=35}
-  else if(recentCount<=2){state.mode='OVERLOAD'; work=45}
-  return work;
-}
-function getRestSeconds(){
-  let rest=state.hardcore?10:15;
-  if(state.mode==='DELOAD') rest+=5;
-  if(state.mode==='OVERLOAD'&&!state.hardcore) rest-=2;
-  return Math.max(8,rest);
-}
+function getUpcomingPlan(){const idx=getNextPlanIndex();return plans[(idx+1)%plans.length]}
+function getRecentCompletedCount(daysBack=7){const completed=new Set(getSessions().map(s=>s.date));let n=0;for(let i=0;i<daysBack;i++){const d=new Date();d.setDate(d.getDate()-i);if(completed.has(d.toISOString().slice(0,10)))n++}return n}
+function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode) work=Math.max(25,work-10);return work}
+function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);return Math.max(6,rest)}
 function formatSeconds(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
 function updateSwitches(){el.soundSwitch.classList.toggle('on',state.soundOn);el.hardcoreSwitch.classList.toggle('on',state.hardcore)}
-
-async function requestWakeLock(){try{if('wakeLock' in navigator && !wakeLock){wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}}catch(e){}}
+async function requestWakeLock(){try{if('wakeLock' in navigator&&!wakeLock){wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}}catch(e){}}
 async function releaseWakeLock(){try{if(wakeLock){await wakeLock.release();wakeLock=null}}catch(e){}}
-document.addEventListener('visibilitychange',async()=>{if(document.visibilityState==='visible'&&state.intervalId) await requestWakeLock()});
+document.addEventListener('visibilitychange',async()=>{if(document.visibilityState==='visible'&&state.intervalId)await requestWakeLock()});
 
-function saveTodaySession(marked=false){
-  const sessions=getSessions(), todayKey=new Date().toISOString().slice(0,10);
-  if(sessions.find(s=>s.date===todayKey)) return;
-  sessions.push({date:todayKey,plan:getCurrentPlan().key,work:getWorkSeconds(),hardcore:state.hardcore,marked});
+function progressPercent(){
+  const total=getCurrentPlan().exercises.length;
+  const completed=state.currentExerciseIndex + (state.isRest ? 0.5 : 0);
+  return Math.max(0,Math.min(100,Math.round((completed/total)*100)));
+}
+function saveSessionForDate(dateKey, marked=false){
+  const sessions=getSessions();
+  if(sessions.find(s=>s.date===dateKey)) return;
+  const planKey=getCurrentPlan().key;
+  sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked});
   saveSessions(sessions);
 }
+function removeSessionForDate(dateKey){
+  saveSessions(getSessions().filter(s=>s.date!==dateKey));
+}
+function toggleSessionForDate(dateKey){
+  const todayKey=new Date().toISOString().slice(0,10);
+  if(dateKey>todayKey) return;
+  const sessions=getSessions();
+  const existing=sessions.find(s=>s.date===dateKey);
+  if(existing) removeSessionForDate(dateKey);
+  else saveSessionForDate(dateKey,true);
+  renderCalendar();renderRecent();updateMain();
+}
+function saveTodaySession(marked=false){saveSessionForDate(new Date().toISOString().slice(0,10),marked)}
 function getCompletedDatesSet(){return new Set(getSessions().map(s=>s.date))}
-function calcStreak(){
-  const completed=getCompletedDatesSet(); let streak=0, cursor=new Date();
-  while(true){const key=cursor.toISOString().slice(0,10); if(completed.has(key)){streak++; cursor.setDate(cursor.getDate()-1)} else break}
-  return streak;
-}
-function calcAdherence(){
-  const now=new Date(), year=now.getFullYear(), month=now.getMonth(), today=now.getDate();
-  const completed=getCompletedDatesSet(); let done=0;
-  for(let d=1; d<=today; d++){const dt=new Date(year, month, d); if(completed.has(dt.toISOString().slice(0,10))) done++}
-  return today?Math.round((done/today)*100):0;
-}
+function calcStreak(){const completed=getCompletedDatesSet();let streak=0,cursor=new Date();while(true){const key=cursor.toISOString().slice(0,10);if(completed.has(key)){streak++;cursor.setDate(cursor.getDate()-1)}else break}return streak}
+function calcAdherence(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet();let done=0;for(let d=1;d<=today;d++){const dt=new Date(year,month,d);if(completed.has(dt.toISOString().slice(0,10)))done++}return today?Math.round((done/today)*100):0}
+
 function renderCalendar(){
-  const now=new Date(), year=now.getFullYear(), month=now.getMonth(), today=now.getDate();
-  const completed=getCompletedDatesSet(), first=new Date(year,month,1), startWeekday=(first.getDay()+6)%7, daysInMonth=new Date(year,month+1,0).getDate();
+  const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();
+  const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();
   const monthName=now.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});
   el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);
   el.calendar.innerHTML='';
   ['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});
   for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}
   for(let d=1;d<=daysInMonth;d++){
-    const dt=new Date(year,month,d), key=dt.toISOString().slice(0,10); const cell=document.createElement('div'); cell.className='day'; cell.textContent=d;
-    if(d===today) cell.classList.add('today');
-    if(d>today) cell.classList.add('future'); else if(completed.has(key)) cell.classList.add('done'); else cell.classList.add('missed');
+    const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');
+    cell.className='day';cell.textContent=d;
+    if(d===today)cell.classList.add('today');
+    if(d>today)cell.classList.add('future'); else if(completed.has(key))cell.classList.add('done'); else cell.classList.add('missed');
+    if(d<=today){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}
     el.calendar.appendChild(cell);
   }
 }
+
 function renderRecent(){
   const sessions=getSessions().slice(-5).reverse();
-  if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>'; return}
+  if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}
   el.recentList.innerHTML='';
-  sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)});
+  sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})
 }
+
 function updateMain(){
-  const plan=getCurrentPlan(), exercises=plan.exercises, ex=exercises[state.currentExerciseIndex]||exercises[0], nextEx=exercises[Math.min(state.currentExerciseIndex+1, exercises.length-1)];
+  const plan=getCurrentPlan(),exercises=plan.exercises,ex=exercises[state.currentExerciseIndex]||exercises[0],nextEx=exercises[Math.min(state.currentExerciseIndex+1,exercises.length-1)];
   el.dayPlanLabel.textContent=`Plano ${plan.key}`;
   el.planTitle.textContent=plan.title;
   el.modeBadge.textContent=state.mode;
+  el.nextPlanText.textContent=`Próximo plano: ${getUpcomingPlan().key}`;
+  el.quickModeText.textContent=state.quickMode?'Modo: ultra rápido':'Modo: padrão';
   el.exerciseName.textContent=state.isRest?'Descanso':ex.name;
   el.exerciseInstruction.textContent=state.isRest?`Próximo: ${nextEx.name}`:ex.instruction;
   el.timer.textContent=formatSeconds(state.remainingTime);
@@ -245,26 +234,29 @@ function updateMain(){
   el.streakValue.textContent=calcStreak();
   el.adherenceValue.textContent=`${calcAdherence()}%`;
   el.loadValue.textContent=`${getWorkSeconds()}s`;
+  el.progressFill.style.width=`${progressPercent()}%`;
+  el.progressText.textContent=`${progressPercent()}% da sessão`;
   updateSwitches();
 }
+
 async function start(){
-  if(state.intervalId) return;
+  if(state.intervalId)return;
   await unlockAudio();
-  if(state.remainingTime<=0) state.remainingTime=getWorkSeconds();
+  if(state.remainingTime<=0)state.remainingTime=getWorkSeconds();
   requestWakeLock();
   state.intervalId=setInterval(()=>{
     state.remainingTime-=1;
-    if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0) countdownSound(state.remainingTime);
-    if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0) beep(760,0.08,0.045);
+    if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)countdownSound(state.remainingTime);
+    if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0)beep(760,0.08,0.045);
     if(state.remainingTime<=0){
       beep(620,0.20,0.07);
       if(!state.isRest){
-        state.isRest=true; state.remainingTime=getRestSeconds();
-      } else {
-        state.isRest=false; state.currentExerciseIndex+=1;
+        state.isRest=true;state.remainingTime=getRestSeconds();
+      }else{
+        state.isRest=false;state.currentExerciseIndex+=1;
         if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){
-          clearInterval(state.intervalId); state.intervalId=null;
-          saveTodaySession(false); renderCalendar(); renderRecent(); resetCycle(false); releaseWakeLock(); alert('Treino concluído'); return;
+          clearInterval(state.intervalId);state.intervalId=null;
+          saveTodaySession(false);renderCalendar();renderRecent();resetCycle(false);releaseWakeLock();alert('Treino concluído');return;
         }
         state.remainingTime=getWorkSeconds();
       }
@@ -273,12 +265,12 @@ async function start(){
   },1000);
   updateMain();
 }
-function pause(){clearInterval(state.intervalId); state.intervalId=null; releaseWakeLock()}
-function resetCycle(update=true){clearInterval(state.intervalId); state.intervalId=null; releaseWakeLock(); state.currentExerciseIndex=0; state.isRest=false; state.remainingTime=getWorkSeconds(); if(update) updateMain()}
-function skipExercise(){pause(); state.currentExerciseIndex+=1; if(state.currentExerciseIndex>=getCurrentPlan().exercises.length) state.currentExerciseIndex=0; state.isRest=false; state.remainingTime=getWorkSeconds(); updateMain()}
-function markTodayDone(){saveTodaySession(true); renderCalendar(); renderRecent(); updateMain()}
-function toggleSound(){state.soundOn=!state.soundOn; localStorage.setItem(STORAGE.sound,JSON.stringify(state.soundOn)); updateSwitches()}
-function toggleHardcore(){state.hardcore=!state.hardcore; localStorage.setItem(STORAGE.hardcore,JSON.stringify(state.hardcore)); resetCycle()}
+function pause(){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock()}
+function resetCycle(update=true){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock();state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();if(update)updateMain()}
+function skipExercise(){pause();state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length)state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();updateMain()}
+function markTodayDone(){saveTodaySession(true);renderCalendar();renderRecent();updateMain()}
+function toggleSound(){state.soundOn=!state.soundOn;localStorage.setItem(STORAGE.sound,JSON.stringify(state.soundOn));updateSwitches()}
+function toggleHardcore(){state.hardcore=!state.hardcore;localStorage.setItem(STORAGE.hardcore,JSON.stringify(state.hardcore));resetCycle()}
 
 el.startBtn.addEventListener('click',start);
 el.pauseBtn.addEventListener('click',pause);
@@ -287,8 +279,9 @@ el.skipBtn.addEventListener('click',skipExercise);
 el.markTodayBtn.addEventListener('click',markTodayDone);
 el.soundToggleWrap.addEventListener('click',toggleSound);
 el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);
+el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});
 
-resetCycle(); renderCalendar(); renderRecent(); updateMain();
+resetCycle();renderCalendar();renderRecent();updateMain();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
 </script>
