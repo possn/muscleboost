@@ -52,6 +52,14 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 .day.done{background:var(--success);border-color:#BACCB2}.day.missed{background:var(--danger);border-color:#DDB6B0}.day.future{opacity:.42;cursor:default}.day.today{outline:2px solid #C5AB95;outline-offset:-2px}
 .recent{display:grid;gap:8px}.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft);padding:10px 12px;font-size:.84rem}
 .muted{color:var(--muted)}.footer-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:8px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.78rem;color:var(--muted)}
+.field input{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);font:inherit;color:var(--text)}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.proj-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px}
+.proj-box .big{font-size:1.1rem;font-weight:700}
+.note{font-size:.77rem;color:var(--muted);line-height:1.4}
 </style>
 </head>
 <body>
@@ -108,6 +116,34 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
   </div>
 
   <div class="card">
+    <div class="section-title">Composição e projeção corporal</div>
+    <div class="form-grid">
+      <div class="field"><label for="ageInput">Idade</label><input id="ageInput" type="number" min="10" max="100" placeholder="49"></div>
+      <div class="field"><label for="heightInput">Altura (cm)</label><input id="heightInput" type="number" min="120" max="230" placeholder="173"></div>
+      <div class="field"><label for="weightInput">Peso (kg)</label><input id="weightInput" type="number" min="30" max="200" step="0.1" placeholder="62"></div>
+      <div class="field"><label for="waistInput">Cintura (cm)</label><input id="waistInput" type="number" min="40" max="180" step="0.1" placeholder="opcional"></div>
+      <div class="field"><label for="chestInput">Peito (cm)</label><input id="chestInput" type="number" min="50" max="180" step="0.1" placeholder="opcional"></div>
+      <div class="field"><label for="armInput">Braço (cm)</label><input id="armInput" type="number" min="15" max="70" step="0.1" placeholder="opcional"></div>
+    </div>
+    <div class="btn-grid" style="margin-top:12px">
+      <button class="btn-secondary btn-wide" id="saveBodyBtn">Guardar e recalcular</button>
+    </div>
+    <div class="proj-grid" style="margin-top:12px">
+      <div class="proj-box"><div class="muted">IMC</div><div class="big" id="bmiValue">—</div></div>
+      <div class="proj-box"><div class="muted">Consistência</div><div class="big" id="consistencyValue">—</div></div>
+      <div class="proj-box"><div class="muted">Ganho muscular plausível 3m</div><div class="big" id="gain3mValue">—</div></div>
+      <div class="proj-box"><div class="muted">Ganho muscular plausível 6m</div><div class="big" id="gain6mValue">—</div></div>
+      <div class="proj-box"><div class="muted">Peso projetado 3m</div><div class="big" id="weight3mValue">—</div></div>
+      <div class="proj-box"><div class="muted">Peso projetado 6m</div><div class="big" id="weight6mValue">—</div></div>
+    </div>
+    <div class="proj-box" style="margin-top:10px">
+      <div class="muted">Leitura fisiológica</div>
+      <div class="big" id="statusValue">—</div>
+      <div class="note" id="bodyNote">Estimativa honesta. Não mede massa muscular real; projeta evolução plausível a partir de aderência e dados corporais.</div>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="calendar-head"><div class="section-title">Calendário de adesão</div><div class="m" id="monthLabel">—</div></div>
     <div class="calendar" id="calendar"></div>
   </div>
@@ -120,9 +156,8 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 
 <script>
 (() => {
-const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick'};
+const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick',body:'mb_body'};
 const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),mode:'NORMAL'};
-
 const plans=[
 {key:'A',title:'Dia A · Peito / Ombros / Tríceps',exercises:[
 {name:'Flexões',instruction:'Mãos alinhadas com os ombros, tronco rígido, descida controlada e subida forte.'},
@@ -143,20 +178,20 @@ const plans=[
 {name:'Plank shoulder taps',instruction:'Alterna toques no ombro sem rodar demasiado o tronco.'},
 {name:'Push-up burnout',instruction:'Último bloco perto da falha técnica.'}]}
 ];
-
-const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList'].forEach(id=>el[id]=document.getElementById(id));
-
+const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList','ageInput','heightInput','weightInput','waistInput','chestInput','armInput','saveBodyBtn','bmiValue','consistencyValue','gain3mValue','gain6mValue','weight3mValue','weight6mValue','statusValue','bodyNote'].forEach(id=>el[id]=document.getElementById(id));
 let audioCtx=null,wakeLock=null;
 async function unlockAudio(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();gain.gain.value=0.0001;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+0.01)}catch(e){}}
 function beep(freq=900,duration=0.10,volume=0.05){if(!state.soundOn)return;try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.value=volume;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);osc.stop(audioCtx.currentTime+duration)}catch(e){}}
 function countdownSound(n){const tones={5:740,4:820,3:900,2:980,1:1100};beep(tones[n]||900,0.14,0.06)}
 function getSessions(){try{return JSON.parse(localStorage.getItem(STORAGE.sessions)||'[]').sort((a,b)=>a.date.localeCompare(b.date))}catch{return []}}
 function saveSessions(arr){localStorage.setItem(STORAGE.sessions,JSON.stringify(arr.sort((a,b)=>a.date.localeCompare(b.date))))}
+function getBody(){try{return JSON.parse(localStorage.getItem(STORAGE.body)||'{}')}catch{return {}}}
+function saveBody(obj){localStorage.setItem(STORAGE.body,JSON.stringify(obj))}
 function getNextPlanIndex(){const sessions=getSessions();if(!sessions.length)return 0;const last=sessions[sessions.length-1].plan;if(last==='A')return 1;if(last==='B')return 2;return 0}
 function getCurrentPlan(){return plans[getNextPlanIndex()]}
 function getUpcomingPlan(){const idx=getNextPlanIndex();return plans[(idx+1)%plans.length]}
 function getRecentCompletedCount(daysBack=7){const completed=new Set(getSessions().map(s=>s.date));let n=0;for(let i=0;i<daysBack;i++){const d=new Date();d.setDate(d.getDate()-i);if(completed.has(d.toISOString().slice(0,10)))n++}return n}
-function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode) work=Math.max(25,work-10);return work}
+function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode)work=Math.max(25,work-10);return work}
 function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);return Math.max(6,rest)}
 function formatSeconds(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
 function updateSwitches(){el.soundSwitch.classList.toggle('on',state.soundOn);el.hardcoreSwitch.classList.toggle('on',state.hardcore)}
@@ -164,58 +199,82 @@ async function requestWakeLock(){try{if('wakeLock' in navigator&&!wakeLock){wake
 async function releaseWakeLock(){try{if(wakeLock){await wakeLock.release();wakeLock=null}}catch(e){}}
 document.addEventListener('visibilitychange',async()=>{if(document.visibilityState==='visible'&&state.intervalId)await requestWakeLock()});
 
-function progressPercent(){
-  const total=getCurrentPlan().exercises.length;
-  const completed=state.currentExerciseIndex + (state.isRest ? 0.5 : 0);
-  return Math.max(0,Math.min(100,Math.round((completed/total)*100)));
-}
-function saveSessionForDate(dateKey, marked=false){
-  const sessions=getSessions();
-  if(sessions.find(s=>s.date===dateKey)) return;
-  const planKey=getCurrentPlan().key;
-  sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked});
-  saveSessions(sessions);
-}
-function removeSessionForDate(dateKey){
-  saveSessions(getSessions().filter(s=>s.date!==dateKey));
-}
-function toggleSessionForDate(dateKey){
-  const todayKey=new Date().toISOString().slice(0,10);
-  if(dateKey>todayKey) return;
-  const sessions=getSessions();
-  const existing=sessions.find(s=>s.date===dateKey);
-  if(existing) removeSessionForDate(dateKey);
-  else saveSessionForDate(dateKey,true);
-  renderCalendar();renderRecent();updateMain();
-}
+function progressPercent(){const total=getCurrentPlan().exercises.length;const completed=state.currentExerciseIndex+(state.isRest?0.5:0);return Math.max(0,Math.min(100,Math.round((completed/total)*100)))}
+function saveSessionForDate(dateKey, marked=false){const sessions=getSessions();if(sessions.find(s=>s.date===dateKey))return;const planKey=getCurrentPlan().key;sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked});saveSessions(sessions)}
+function removeSessionForDate(dateKey){saveSessions(getSessions().filter(s=>s.date!==dateKey))}
+function toggleSessionForDate(dateKey){const todayKey=new Date().toISOString().slice(0,10);if(dateKey>todayKey)return;const sessions=getSessions();const existing=sessions.find(s=>s.date===dateKey);if(existing)removeSessionForDate(dateKey);else saveSessionForDate(dateKey,true);renderCalendar();renderRecent();updateMain();updateBodyProjection()}
 function saveTodaySession(marked=false){saveSessionForDate(new Date().toISOString().slice(0,10),marked)}
 function getCompletedDatesSet(){return new Set(getSessions().map(s=>s.date))}
 function calcStreak(){const completed=getCompletedDatesSet();let streak=0,cursor=new Date();while(true){const key=cursor.toISOString().slice(0,10);if(completed.has(key)){streak++;cursor.setDate(cursor.getDate()-1)}else break}return streak}
 function calcAdherence(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet();let done=0;for(let d=1;d<=today;d++){const dt=new Date(year,month,d);if(completed.has(dt.toISOString().slice(0,10)))done++}return today?Math.round((done/today)*100):0}
 
-function renderCalendar(){
-  const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();
-  const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();
-  const monthName=now.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});
-  el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);
-  el.calendar.innerHTML='';
-  ['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});
-  for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}
-  for(let d=1;d<=daysInMonth;d++){
-    const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');
-    cell.className='day';cell.textContent=d;
-    if(d===today)cell.classList.add('today');
-    if(d>today)cell.classList.add('future'); else if(completed.has(key))cell.classList.add('done'); else cell.classList.add('missed');
-    if(d<=today){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}
-    el.calendar.appendChild(cell);
+function renderCalendar(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();const monthName=now.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);el.calendar.innerHTML='';['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}for(let d=1;d<=daysInMonth;d++){const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');cell.className='day';cell.textContent=d;if(d===today)cell.classList.add('today');if(d>today)cell.classList.add('future');else if(completed.has(key))cell.classList.add('done');else cell.classList.add('missed');if(d<=today){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}el.calendar.appendChild(cell)}}
+function renderRecent(){const sessions=getSessions().slice(-5).reverse();if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}el.recentList.innerHTML='';sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})}
+function fillBodyInputs(){const b=getBody();el.ageInput.value=b.age||'';el.heightInput.value=b.height||'';el.weightInput.value=b.weight||'';el.waistInput.value=b.waist||'';el.chestInput.value=b.chest||'';el.armInput.value=b.arm||''}
+
+function updateBodyProjection(){
+  const b=getBody();
+  const age=Number(b.age||0), height=Number(b.height||0), weight=Number(b.weight||0), waist=Number(b.waist||0), chest=Number(b.chest||0), arm=Number(b.arm||0);
+  const adherence=calcAdherence();
+  const streak=calcStreak();
+  if(!height || !weight){
+    el.bmiValue.textContent='—';
+    el.consistencyValue.textContent=`${adherence}%`;
+    el.gain3mValue.textContent='—';
+    el.gain6mValue.textContent='—';
+    el.weight3mValue.textContent='—';
+    el.weight6mValue.textContent='—';
+    el.statusValue.textContent='Introduz peso e altura';
+    el.bodyNote.textContent='Sem peso e altura não há projeção. Com cintura, peito e braço, a leitura fica mais útil.';
+    return;
   }
+  const bmi=weight/((height/100)**2);
+  const consistencyScore=Math.max(0,Math.min(100,Math.round(adherence*0.7 + Math.min(streak*4,30))));
+  let gain3=0.6, gain6=1.4;
+  if(consistencyScore>=80){gain3=1.2; gain6=2.6;}
+  else if(consistencyScore>=60){gain3=0.9; gain6=2.0;}
+  else if(consistencyScore>=40){gain3=0.6; gain6=1.4;}
+  else {gain3=0.3; gain6=0.9;}
+  if(bmi<20){gain3+=0.2; gain6+=0.4;}
+  if(state.quickMode){gain3-=0.1; gain6-=0.2;}
+  gain3=Math.max(0.2, Math.round(gain3*10)/10);
+  gain6=Math.max(0.5, Math.round(gain6*10)/10);
+  const weight3=(weight+gain3).toFixed(1);
+  const weight6=(weight+gain6).toFixed(1);
+
+  let status='Recomposição favorável';
+  if(consistencyScore<40) status='Subestímulo provável';
+  else if(consistencyScore<70) status='Estímulo moderado';
+  else if(consistencyScore>=70) status='Janela favorável a hipertrofia';
+  if(bmi<20 && consistencyScore>=70) status='Janela forte para ganhar massa';
+  if(waist && waist/height*100 > 55) status='Prioridade: recomposição corporal';
+
+  let note=`Estimativa plausível, não medição real. Com a tua consistência atual, o ganho muscular total esperado é ~${gain3} kg em 3 meses e ~${gain6} kg em 6 meses, se nutrição e sono forem adequados.`;
+  if(chest || arm || waist){
+    note += ' Os perímetros ajudam a seguir tendência corporal, mas não substituem métodos de composição corporal.';
+  }
+  if(age) note += ` Idade registada: ${age}.`;
+  el.bmiValue.textContent=bmi.toFixed(1);
+  el.consistencyValue.textContent=`${consistencyScore}%`;
+  el.gain3mValue.textContent=`+${gain3} kg`;
+  el.gain6mValue.textContent=`+${gain6} kg`;
+  el.weight3mValue.textContent=`${weight3} kg`;
+  el.weight6mValue.textContent=`${weight6} kg`;
+  el.statusValue.textContent=status;
+  el.bodyNote.textContent=note;
 }
 
-function renderRecent(){
-  const sessions=getSessions().slice(-5).reverse();
-  if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}
-  el.recentList.innerHTML='';
-  sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})
+function saveBodyFromInputs(){
+  const body={
+    age: el.ageInput.value,
+    height: el.heightInput.value,
+    weight: el.weightInput.value,
+    waist: el.waistInput.value,
+    chest: el.chestInput.value,
+    arm: el.armInput.value
+  };
+  saveBody(body);
+  updateBodyProjection();
 }
 
 function updateMain(){
@@ -237,6 +296,7 @@ function updateMain(){
   el.progressFill.style.width=`${progressPercent()}%`;
   el.progressText.textContent=`${progressPercent()}% da sessão`;
   updateSwitches();
+  updateBodyProjection();
 }
 
 async function start(){
@@ -250,9 +310,8 @@ async function start(){
     if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0)beep(760,0.08,0.045);
     if(state.remainingTime<=0){
       beep(620,0.20,0.07);
-      if(!state.isRest){
-        state.isRest=true;state.remainingTime=getRestSeconds();
-      }else{
+      if(!state.isRest){state.isRest=true;state.remainingTime=getRestSeconds()}
+      else{
         state.isRest=false;state.currentExerciseIndex+=1;
         if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){
           clearInterval(state.intervalId);state.intervalId=null;
@@ -280,7 +339,9 @@ el.markTodayBtn.addEventListener('click',markTodayDone);
 el.soundToggleWrap.addEventListener('click',toggleSound);
 el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);
 el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});
+el.saveBodyBtn.addEventListener('click',saveBodyFromInputs);
 
+fillBodyInputs();
 resetCycle();renderCalendar();renderRecent();updateMain();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
