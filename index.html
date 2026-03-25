@@ -7,7 +7,11 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#F7F3EE">
 <style>
-:root{--bg:#F7F3EE;--bg-soft:#FBF8F4;--panel:#FFFDF9;--line:#E7DED3;--line-strong:#D8CCBE;--text:#2B2621;--muted:#6E655C;--accent-soft:#E9D8C8;--success:#C8D7C1;--danger:#E7CBC7;--shadow:0 8px 24px rgba(43,38,33,.06);--radius:18px}
+:root{
+  --bg:#F7F3EE;--bg-soft:#FBF8F4;--panel:#FFFDF9;--line:#E7DED3;--line-strong:#D8CCBE;
+  --text:#2B2621;--muted:#6E655C;--accent-soft:#E9D8C8;--success:#C8D7C1;--danger:#E7CBC7;
+  --shadow:0 8px 24px rgba(43,38,33,.06);--radius:18px
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Arial,sans-serif}
 body{min-height:100vh}
@@ -60,6 +64,10 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 .proj-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px}
 .proj-box .big{font-size:1.1rem;font-weight:700}
 .note{font-size:.77rem;color:var(--muted);line-height:1.4}
+.tech-title{font-size:.92rem;font-weight:700;margin-bottom:8px}
+.tech-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px}
+.tech-box p{margin:0 0 8px 0;color:var(--muted);line-height:1.45}
+.hidden{display:none}
 </style>
 </head>
 <body>
@@ -94,7 +102,7 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
     </div>
 
     <div class="mini-grid">
-      <div class="metric"><div class="v" id="currentIndex">1/5</div><div class="l">Exercício</div></div>
+      <div class="metric"><div class="v" id="currentIndex">1/4</div><div class="l">Exercício</div></div>
       <div class="metric"><div class="v" id="streakValue">0</div><div class="l">Streak</div></div>
       <div class="metric"><div class="v" id="adherenceValue">0%</div><div class="l">Mês</div></div>
       <div class="metric"><div class="v" id="loadValue">40s</div><div class="l">Carga</div></div>
@@ -105,14 +113,25 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
       <button class="btn-secondary" id="pauseBtn">Pause</button>
       <button class="btn-secondary" id="resetBtn">Reset ciclo</button>
       <button class="btn-accent" id="skipBtn">Saltar exercício</button>
+      <button class="btn-secondary" id="techBtn">ⓘ Técnica</button>
+      <button class="btn-secondary" id="aggressiveBtn">Modo agressivo</button>
       <button class="btn-secondary btn-wide" id="markTodayBtn">Marcar hoje como feito</button>
     </div>
 
     <div class="toggles">
-      <div class="toggle" id="soundToggleWrap"><div class="label">Som<small>beeps fiáveis nos 5s finais</small></div><div class="switch" id="soundSwitch"></div></div>
+      <div class="toggle" id="soundToggleWrap"><div class="label">Som<small>beeps + vibração nos 5s finais</small></div><div class="switch" id="soundSwitch"></div></div>
       <div class="toggle" id="hardcoreToggleWrap"><div class="label">Hardcore<small>menos descanso</small></div><div class="switch" id="hardcoreSwitch"></div></div>
     </div>
-    <div class="footer-note">Calendário clicável: toca num dia passado para marcar/desmarcar como feito</div>
+    <div class="footer-note">Calendário clicável: toca num dia passado para marcar/desmarcar como feito · ciclo A→B→C→D</div>
+  </div>
+
+  <div class="card hidden" id="techCard">
+    <div class="tech-title" id="techTitle">Técnica</div>
+    <div class="tech-box">
+      <p id="techDesc">—</p>
+      <p id="techFocus"><strong>Foco:</strong> —</p>
+      <p id="techCues"><strong>Cues:</strong> —</p>
+    </div>
   </div>
 
   <div class="card">
@@ -156,43 +175,61 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 
 <script>
 (() => {
-const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick',body:'mb_body'};
-const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),mode:'NORMAL'};
+const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick',body:'mb_body',aggressive:'mb_aggressive'};
+const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),aggressive:JSON.parse(localStorage.getItem(STORAGE.aggressive)??'false'),mode:'NORMAL'};
 const plans=[
 {key:'A',title:'Dia A · Peito / Ombros / Tríceps',exercises:[
-{name:'Flexões',instruction:'Mãos alinhadas com os ombros, tronco rígido, descida controlada e subida forte.'},
-{name:'Decline push-ups',instruction:'Pés elevados numa cadeira ou sofá. Mais foco no peito superior e deltoide anterior.'},
-{name:'Pike push-ups',instruction:'Ancas elevadas, cabeça desce entre as mãos. Foco principal no ombro.'},
-{name:'Flexão isométrica',instruction:'Segura a meio da descida ou alterna 10 segundos de hold com reps curtas.'},
-{name:'Diamante',instruction:'Mãos próximas, cotovelos controlados. Maior foco em tríceps.'}]},
-{key:'B',title:'Dia B · Core / Abdómen',exercises:[
-{name:'Prancha',instruction:'Corpo alinhado, glúteos contraídos, sem deixar a lombar afundar.'},
-{name:'Hollow hold',instruction:'Lombar colada ao chão, braços e pernas estendidos conforme tolerância.'},
-{name:'Bicycle crunch',instruction:'Ritmo controlado, rotação do tronco, não puxar o pescoço.'},
-{name:'Leg raises',instruction:'Subida e descida controladas, sem embalo.'},
-{name:'Mountain climbers',instruction:'Fase mais intensa. Mantém o core firme.'}]},
+{name:'Flexões',instruction:'Mãos alinhadas com os ombros, tronco rígido, descida controlada e subida forte.',desc:'Flexão clássica com linha corporal neutra.',focus:'Peitoral, tríceps, ombro anterior.',cues:'Abdómen firme, peito desce em bloco, cotovelos controlados.'},
+{name:'Decline push-ups',instruction:'Pés elevados numa cadeira ou sofá. Mais foco no peito superior e deltoide anterior.',desc:'Flexão com pés elevados para aumentar carga no tronco superior.',focus:'Peito superior e ombros.',cues:'Não arqueies a lombar; mantém pescoço neutro.'},
+{name:'Pike push-ups',instruction:'Ancas elevadas, cabeça desce entre as mãos. Foco principal no ombro.',desc:'Movimento de pressão vertical parcial.',focus:'Deltoide e tríceps.',cues:'Empurra o chão, ancas altas, desce a cabeça para a frente das mãos.'},
+{name:'Flexão isométrica',instruction:'Segura a meio da descida ou alterna 10 segundos de hold com reps curtas.',desc:'Isometria para aumentar tensão sem equipamento.',focus:'Peito e tríceps.',cues:'Mantém escápulas estáveis e não colapses no fundo.'}]},
+{key:'B',title:'Dia B · Core + costas / postura',exercises:[
+{name:'Prancha',instruction:'Corpo alinhado, glúteos contraídos, sem deixar a lombar afundar.',desc:'Isometria básica de core.',focus:'Core anti-extensão.',cues:'Umbigo para dentro, glúteos contraídos, respiração controlada.'},
+{name:'Superman hold',instruction:'De barriga para baixo, eleva peito e pernas, mantendo tensão na cadeia posterior.',desc:'Extensão global da cadeia posterior.',focus:'Extensores lombares e glúteos.',cues:'Elevação moderada, sem forçar o pescoço.'},
+{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo, focando postura.',desc:'Exercício postural para retração escapular.',focus:'Trapézio médio/inferior e postura.',cues:'Polegares para fora, peito aberto, ombros longe das orelhas.'},
+{name:'Leg raises',instruction:'Subida e descida controladas, sem embalo.',desc:'Elevação de pernas com controlo.',focus:'Abdómen inferior/controle pélvico.',cues:'Lombar estável e movimento lento.'}]},
 {key:'C',title:'Dia C · Braços / Ombros',exercises:[
-{name:'Dips em cadeira',instruction:'Desce até cerca de 90 graus e sobe sem perder controlo.'},
-{name:'Pike hold',instruction:'Segura a posição de pike com carga nos ombros.'},
-{name:'Flexão lenta',instruction:'Desce em 4–5 segundos e sobe normalmente.'},
-{name:'Plank shoulder taps',instruction:'Alterna toques no ombro sem rodar demasiado o tronco.'},
-{name:'Push-up burnout',instruction:'Último bloco perto da falha técnica.'}]}
+{name:'Dips em cadeira',instruction:'Desce até cerca de 90 graus e sobe sem perder controlo.',desc:'Dips com apoio estável.',focus:'Tríceps e peito inferior.',cues:'Ombros para baixo, evita afundar demais.'},
+{name:'Pike hold',instruction:'Segura a posição de pike com carga nos ombros.',desc:'Isometria de pressão vertical.',focus:'Ombros.',cues:'Empurra o chão e mantém ancas elevadas.'},
+{name:'Flexão lenta',instruction:'Desce em 4–5 segundos e sobe normalmente.',desc:'Tempo lento para aumentar tensão mecânica.',focus:'Peito e tríceps.',cues:'Conta a descida, sem perder alinhamento.'},
+{name:'Plank shoulder taps',instruction:'Alterna toques no ombro sem rodar demasiado o tronco.',desc:'Core + estabilidade de ombro.',focus:'Core anti-rotação e cintura escapular.',cues:'Bacia estável, passos largos se necessário.'}]},
+{key:'D',title:'Dia D · Costas / postura',exercises:[
+{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo, focando retração escapular.',desc:'Postura e retração escapular sem equipamento.',focus:'Trapézio médio/inferior, deltoide posterior.',cues:'Peito aberto, ombros atrás e para baixo.'},
+{name:'Reverse snow angels',instruction:'De bruços, braços fazem arco lento de frente para trás, focando deltoide posterior e trapézio.',desc:'Arco lento dos braços no chão.',focus:'Deltoide posterior e trapézio.',cues:'Movimento lento, sem perder tensão no peito elevado.'},
+{name:'Superman pull',instruction:'Eleva tronco e puxa cotovelos para trás como se fizesses uma remada no ar.',desc:'Simulação de remada com peso corporal.',focus:'Costas altas e postura.',cues:'Puxa cotovelos para trás e aperta escápulas.'},
+{name:'Prone Y hold',instruction:'Braços em Y, polegares para cima, mantendo tensão no trapézio inferior e estabilidade escapular.',desc:'Isometria em Y para estabilidade escapular.',focus:'Trapézio inferior e controlo escapular.',cues:'Braços longos, pescoço neutro, sem compensar na lombar.'}]}
 ];
-const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList','ageInput','heightInput','weightInput','waistInput','chestInput','armInput','saveBodyBtn','bmiValue','consistencyValue','gain3mValue','gain6mValue','weight3mValue','weight6mValue','statusValue','bodyNote'].forEach(id=>el[id]=document.getElementById(id));
+const aggressiveOverride={
+  A:[
+    {name:'Decline push-ups',instruction:'Pés elevados. Executa perto da falha.',desc:'Versão agressiva para mais carga.',focus:'Peito superior e ombros.',cues:'Mantém tensão contínua.'},
+    {name:'Pike push-ups',instruction:'O mais vertical possível.',desc:'Pressão vertical mais difícil.',focus:'Ombros.',cues:'Cabeça entre as mãos.'},
+    {name:'Pseudo-planche push-ups',instruction:'Inclina o corpo para a frente.',desc:'Aumenta muito a carga relativa.',focus:'Peito, deltoide anterior, tríceps.',cues:'Ombros à frente das mãos, tronco firme.'},
+    {name:'Flexão lenta',instruction:'Desce em 4–5 segundos.',desc:'Tempo lento para máxima tensão.',focus:'Peito e tríceps.',cues:'Sem perder alinhamento.'}
+  ],
+  C:[
+    {name:'Dips em cadeira',instruction:'Quase falha controlada.',desc:'Bloco pesado para tríceps/peito.',focus:'Tríceps.',cues:'Amplitude segura.'},
+    {name:'Pike hold',instruction:'Mantém carga alta nos ombros.',desc:'Isometria agressiva.',focus:'Ombros.',cues:'Empurra forte o chão.'},
+    {name:'Flexão lenta',instruction:'Descida longa e subida forte.',desc:'Tempo mecânico.',focus:'Peito.',cues:'Respira e controla.'},
+    {name:'Plank shoulder taps',instruction:'Termina forte sem rodar tronco.',desc:'Estabilidade sob fadiga.',focus:'Core e ombro.',cues:'Bacia estável.'}
+  ]
+};
+const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList','ageInput','heightInput','weightInput','waistInput','chestInput','armInput','saveBodyBtn','bmiValue','consistencyValue','gain3mValue','gain6mValue','weight3mValue','weight6mValue','statusValue','bodyNote','techBtn','aggressiveBtn','techCard','techTitle','techDesc','techFocus','techCues'].forEach(id=>el[id]=document.getElementById(id));
 let audioCtx=null,wakeLock=null;
 async function unlockAudio(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();gain.gain.value=0.0001;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+0.01)}catch(e){}}
-function beep(freq=900,duration=0.10,volume=0.05){if(!state.soundOn)return;try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.value=volume;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);osc.stop(audioCtx.currentTime+duration)}catch(e){}}
-function countdownSound(n){const tones={5:740,4:820,3:900,2:980,1:1100};beep(tones[n]||900,0.14,0.06)}
+function beep(freq=900,duration=0.10,volume=0.05){if(!state.soundOn)return;try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.value=volume;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);osc.stop(audioCtx.currentTime+duration)}catch(e){}}
+function pulse(ms=80){try{if('vibrate' in navigator && state.soundOn) navigator.vibrate(ms)}catch(e){}}
+function countdownCue(n){const tones={5:740,4:820,3:900,2:980,1:1100};beep(tones[n]||900,0.14,0.06);pulse(35)}
 function getSessions(){try{return JSON.parse(localStorage.getItem(STORAGE.sessions)||'[]').sort((a,b)=>a.date.localeCompare(b.date))}catch{return []}}
 function saveSessions(arr){localStorage.setItem(STORAGE.sessions,JSON.stringify(arr.sort((a,b)=>a.date.localeCompare(b.date))))}
 function getBody(){try{return JSON.parse(localStorage.getItem(STORAGE.body)||'{}')}catch{return {}}}
 function saveBody(obj){localStorage.setItem(STORAGE.body,JSON.stringify(obj))}
-function getNextPlanIndex(){const sessions=getSessions();if(!sessions.length)return 0;const last=sessions[sessions.length-1].plan;if(last==='A')return 1;if(last==='B')return 2;return 0}
-function getCurrentPlan(){return plans[getNextPlanIndex()]}
+function planIndexFromKey(key){return plans.findIndex(p=>p.key===key)}
+function getNextPlanIndex(){const sessions=getSessions();if(!sessions.length)return 0;const last=sessions[sessions.length-1].plan;const idx=planIndexFromKey(last);return idx<0?0:(idx+1)%plans.length}
+function getCurrentPlan(){const basePlan=plans[getNextPlanIndex()]; if(state.aggressive && aggressiveOverride[basePlan.key]) return {...basePlan, exercises: aggressiveOverride[basePlan.key]}; return basePlan}
 function getUpcomingPlan(){const idx=getNextPlanIndex();return plans[(idx+1)%plans.length]}
 function getRecentCompletedCount(daysBack=7){const completed=new Set(getSessions().map(s=>s.date));let n=0;for(let i=0;i<daysBack;i++){const d=new Date();d.setDate(d.getDate()-i);if(completed.has(d.toISOString().slice(0,10)))n++}return n}
-function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode)work=Math.max(25,work-10);return work}
-function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);return Math.max(6,rest)}
+function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode)work=Math.max(25,work-10);if(state.aggressive)work=Math.min(50, work+5);return work}
+function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);if(state.aggressive)rest=Math.max(6, rest-2);return Math.max(6,rest)}
 function formatSeconds(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
 function updateSwitches(){el.soundSwitch.classList.toggle('on',state.soundOn);el.hardcoreSwitch.classList.toggle('on',state.hardcore)}
 async function requestWakeLock(){try{if('wakeLock' in navigator&&!wakeLock){wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}}catch(e){}}
@@ -200,149 +237,31 @@ async function releaseWakeLock(){try{if(wakeLock){await wakeLock.release();wakeL
 document.addEventListener('visibilitychange',async()=>{if(document.visibilityState==='visible'&&state.intervalId)await requestWakeLock()});
 
 function progressPercent(){const total=getCurrentPlan().exercises.length;const completed=state.currentExerciseIndex+(state.isRest?0.5:0);return Math.max(0,Math.min(100,Math.round((completed/total)*100)))}
-function saveSessionForDate(dateKey, marked=false){const sessions=getSessions();if(sessions.find(s=>s.date===dateKey))return;const planKey=getCurrentPlan().key;sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked});saveSessions(sessions)}
+function saveSessionForDate(dateKey, marked=false){const sessions=getSessions();if(sessions.find(s=>s.date===dateKey))return;const planKey=plans[getNextPlanIndex()].key;sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked,aggressive:state.aggressive});saveSessions(sessions)}
 function removeSessionForDate(dateKey){saveSessions(getSessions().filter(s=>s.date!==dateKey))}
 function toggleSessionForDate(dateKey){const todayKey=new Date().toISOString().slice(0,10);if(dateKey>todayKey)return;const sessions=getSessions();const existing=sessions.find(s=>s.date===dateKey);if(existing)removeSessionForDate(dateKey);else saveSessionForDate(dateKey,true);renderCalendar();renderRecent();updateMain();updateBodyProjection()}
 function saveTodaySession(marked=false){saveSessionForDate(new Date().toISOString().slice(0,10),marked)}
 function getCompletedDatesSet(){return new Set(getSessions().map(s=>s.date))}
 function calcStreak(){const completed=getCompletedDatesSet();let streak=0,cursor=new Date();while(true){const key=cursor.toISOString().slice(0,10);if(completed.has(key)){streak++;cursor.setDate(cursor.getDate()-1)}else break}return streak}
 function calcAdherence(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet();let done=0;for(let d=1;d<=today;d++){const dt=new Date(year,month,d);if(completed.has(dt.toISOString().slice(0,10)))done++}return today?Math.round((done/today)*100):0}
-
 function renderCalendar(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();const monthName=now.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);el.calendar.innerHTML='';['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}for(let d=1;d<=daysInMonth;d++){const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');cell.className='day';cell.textContent=d;if(d===today)cell.classList.add('today');if(d>today)cell.classList.add('future');else if(completed.has(key))cell.classList.add('done');else cell.classList.add('missed');if(d<=today){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}el.calendar.appendChild(cell)}}
-function renderRecent(){const sessions=getSessions().slice(-5).reverse();if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}el.recentList.innerHTML='';sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})}
+function renderRecent(){const sessions=getSessions().slice(-5).reverse();if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}el.recentList.innerHTML='';sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}${s.aggressive?' · AG':''}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})}
 function fillBodyInputs(){const b=getBody();el.ageInput.value=b.age||'';el.heightInput.value=b.height||'';el.weightInput.value=b.weight||'';el.waistInput.value=b.waist||'';el.chestInput.value=b.chest||'';el.armInput.value=b.arm||''}
-
-function updateBodyProjection(){
-  const b=getBody();
-  const age=Number(b.age||0), height=Number(b.height||0), weight=Number(b.weight||0), waist=Number(b.waist||0), chest=Number(b.chest||0), arm=Number(b.arm||0);
-  const adherence=calcAdherence();
-  const streak=calcStreak();
-  if(!height || !weight){
-    el.bmiValue.textContent='—';
-    el.consistencyValue.textContent=`${adherence}%`;
-    el.gain3mValue.textContent='—';
-    el.gain6mValue.textContent='—';
-    el.weight3mValue.textContent='—';
-    el.weight6mValue.textContent='—';
-    el.statusValue.textContent='Introduz peso e altura';
-    el.bodyNote.textContent='Sem peso e altura não há projeção. Com cintura, peito e braço, a leitura fica mais útil.';
-    return;
-  }
-  const bmi=weight/((height/100)**2);
-  const consistencyScore=Math.max(0,Math.min(100,Math.round(adherence*0.7 + Math.min(streak*4,30))));
-  let gain3=0.6, gain6=1.4;
-  if(consistencyScore>=80){gain3=1.2; gain6=2.6;}
-  else if(consistencyScore>=60){gain3=0.9; gain6=2.0;}
-  else if(consistencyScore>=40){gain3=0.6; gain6=1.4;}
-  else {gain3=0.3; gain6=0.9;}
-  if(bmi<20){gain3+=0.2; gain6+=0.4;}
-  if(state.quickMode){gain3-=0.1; gain6-=0.2;}
-  gain3=Math.max(0.2, Math.round(gain3*10)/10);
-  gain6=Math.max(0.5, Math.round(gain6*10)/10);
-  const weight3=(weight+gain3).toFixed(1);
-  const weight6=(weight+gain6).toFixed(1);
-
-  let status='Recomposição favorável';
-  if(consistencyScore<40) status='Subestímulo provável';
-  else if(consistencyScore<70) status='Estímulo moderado';
-  else if(consistencyScore>=70) status='Janela favorável a hipertrofia';
-  if(bmi<20 && consistencyScore>=70) status='Janela forte para ganhar massa';
-  if(waist && waist/height*100 > 55) status='Prioridade: recomposição corporal';
-
-  let note=`Estimativa plausível, não medição real. Com a tua consistência atual, o ganho muscular total esperado é ~${gain3} kg em 3 meses e ~${gain6} kg em 6 meses, se nutrição e sono forem adequados.`;
-  if(chest || arm || waist){
-    note += ' Os perímetros ajudam a seguir tendência corporal, mas não substituem métodos de composição corporal.';
-  }
-  if(age) note += ` Idade registada: ${age}.`;
-  el.bmiValue.textContent=bmi.toFixed(1);
-  el.consistencyValue.textContent=`${consistencyScore}%`;
-  el.gain3mValue.textContent=`+${gain3} kg`;
-  el.gain6mValue.textContent=`+${gain6} kg`;
-  el.weight3mValue.textContent=`${weight3} kg`;
-  el.weight6mValue.textContent=`${weight6} kg`;
-  el.statusValue.textContent=status;
-  el.bodyNote.textContent=note;
-}
-
-function saveBodyFromInputs(){
-  const body={
-    age: el.ageInput.value,
-    height: el.heightInput.value,
-    weight: el.weightInput.value,
-    waist: el.waistInput.value,
-    chest: el.chestInput.value,
-    arm: el.armInput.value
-  };
-  saveBody(body);
-  updateBodyProjection();
-}
-
-function updateMain(){
-  const plan=getCurrentPlan(),exercises=plan.exercises,ex=exercises[state.currentExerciseIndex]||exercises[0],nextEx=exercises[Math.min(state.currentExerciseIndex+1,exercises.length-1)];
-  el.dayPlanLabel.textContent=`Plano ${plan.key}`;
-  el.planTitle.textContent=plan.title;
-  el.modeBadge.textContent=state.mode;
-  el.nextPlanText.textContent=`Próximo plano: ${getUpcomingPlan().key}`;
-  el.quickModeText.textContent=state.quickMode?'Modo: ultra rápido':'Modo: padrão';
-  el.exerciseName.textContent=state.isRest?'Descanso':ex.name;
-  el.exerciseInstruction.textContent=state.isRest?`Próximo: ${nextEx.name}`:ex.instruction;
-  el.timer.textContent=formatSeconds(state.remainingTime);
-  el.phase.textContent=state.isRest?'REST':'WORK';
-  el.countdownHint.textContent=(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)?`Faltam ${state.remainingTime}`:'';
-  el.currentIndex.textContent=`${state.currentExerciseIndex+1}/${exercises.length}`;
-  el.streakValue.textContent=calcStreak();
-  el.adherenceValue.textContent=`${calcAdherence()}%`;
-  el.loadValue.textContent=`${getWorkSeconds()}s`;
-  el.progressFill.style.width=`${progressPercent()}%`;
-  el.progressText.textContent=`${progressPercent()}% da sessão`;
-  updateSwitches();
-  updateBodyProjection();
-}
-
-async function start(){
-  if(state.intervalId)return;
-  await unlockAudio();
-  if(state.remainingTime<=0)state.remainingTime=getWorkSeconds();
-  requestWakeLock();
-  state.intervalId=setInterval(()=>{
-    state.remainingTime-=1;
-    if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)countdownSound(state.remainingTime);
-    if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0)beep(760,0.08,0.045);
-    if(state.remainingTime<=0){
-      beep(620,0.20,0.07);
-      if(!state.isRest){state.isRest=true;state.remainingTime=getRestSeconds()}
-      else{
-        state.isRest=false;state.currentExerciseIndex+=1;
-        if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){
-          clearInterval(state.intervalId);state.intervalId=null;
-          saveTodaySession(false);renderCalendar();renderRecent();resetCycle(false);releaseWakeLock();alert('Treino concluído');return;
-        }
-        state.remainingTime=getWorkSeconds();
-      }
-    }
-    updateMain();
-  },1000);
-  updateMain();
-}
+function updateBodyProjection(){const b=getBody();const age=Number(b.age||0),height=Number(b.height||0),weight=Number(b.weight||0),waist=Number(b.waist||0),chest=Number(b.chest||0),arm=Number(b.arm||0);const adherence=calcAdherence();const streak=calcStreak();if(!height||!weight){el.bmiValue.textContent='—';el.consistencyValue.textContent=`${adherence}%`;el.gain3mValue.textContent='—';el.gain6mValue.textContent='—';el.weight3mValue.textContent='—';el.weight6mValue.textContent='—';el.statusValue.textContent='Introduz peso e altura';el.bodyNote.textContent='Sem peso e altura não há projeção. Com cintura, peito e braço, a leitura fica mais útil.';return;}const bmi=weight/((height/100)**2);const consistencyScore=Math.max(0,Math.min(100,Math.round(adherence*0.7+Math.min(streak*4,30))));let gain3=0.6,gain6=1.4;if(consistencyScore>=80){gain3=1.2;gain6=2.6}else if(consistencyScore>=60){gain3=0.9;gain6=2.0}else if(consistencyScore>=40){gain3=0.6;gain6=1.4}else{gain3=0.3;gain6=0.9}if(bmi<20){gain3+=0.2;gain6+=0.4}if(state.quickMode){gain3-=0.1;gain6-=0.2}if(state.aggressive){gain3+=0.2;gain6+=0.4}gain3=Math.max(0.2,Math.round(gain3*10)/10);gain6=Math.max(0.5,Math.round(gain6*10)/10);const weight3=(weight+gain3).toFixed(1),weight6=(weight+gain6).toFixed(1);let status='Recomposição favorável';if(consistencyScore<40)status='Subestímulo provável';else if(consistencyScore<70)status='Estímulo moderado';else status='Janela favorável a hipertrofia';if(bmi<20&&consistencyScore>=70)status='Janela forte para ganhar massa';if(waist&&waist/height*100>55)status='Prioridade: recomposição corporal';let note=`Estimativa plausível, não medição real. Com a tua consistência atual, o ganho muscular total esperado é ~${gain3} kg em 3 meses e ~${gain6} kg em 6 meses, se nutrição e sono forem adequados.`;if(chest||arm||waist)note+=' Os perímetros ajudam a seguir tendência corporal, mas não substituem métodos de composição corporal.';if(age)note+=` Idade registada: ${age}.`;el.bmiValue.textContent=bmi.toFixed(1);el.consistencyValue.textContent=`${consistencyScore}%`;el.gain3mValue.textContent=`+${gain3} kg`;el.gain6mValue.textContent=`+${gain6} kg`;el.weight3mValue.textContent=`${weight3} kg`;el.weight6mValue.textContent=`${weight6} kg`;el.statusValue.textContent=status;el.bodyNote.textContent=note}
+function saveBodyFromInputs(){saveBody({age:el.ageInput.value,height:el.heightInput.value,weight:el.weightInput.value,waist:el.waistInput.value,chest:el.chestInput.value,arm:el.armInput.value});updateBodyProjection()}
+function updateTechCard(){const plan=getCurrentPlan(),ex=plan.exercises[state.currentExerciseIndex]||plan.exercises[0];el.techTitle.textContent=`Técnica · ${ex.name}`;el.techDesc.textContent=ex.desc||ex.instruction;el.techFocus.innerHTML=`<strong>Foco:</strong> ${ex.focus||'—'}`;el.techCues.innerHTML=`<strong>Cues:</strong> ${ex.cues||'—'}`;}
+function updateMain(){const plan=getCurrentPlan(),exercises=plan.exercises,ex=exercises[state.currentExerciseIndex]||exercises[0],nextEx=exercises[Math.min(state.currentExerciseIndex+1,exercises.length-1)];el.dayPlanLabel.textContent=`Plano ${plan.key}`;el.planTitle.textContent=plan.title;el.modeBadge.textContent=state.mode;el.nextPlanText.textContent=`Próximo plano: ${getUpcomingPlan().key}`;el.quickModeText.textContent=state.quickMode?'Modo: ultra rápido':'Modo: padrão';el.aggressiveBtn.textContent=state.aggressive?'Modo agressivo: ON':'Modo agressivo';el.exerciseName.textContent=state.isRest?'Descanso':ex.name;el.exerciseInstruction.textContent=state.isRest?`Próximo: ${nextEx.name}`:ex.instruction;el.timer.textContent=formatSeconds(state.remainingTime);el.phase.textContent=state.isRest?'REST':'WORK';el.countdownHint.textContent=(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)?`Faltam ${state.remainingTime}`:'';el.currentIndex.textContent=`${state.currentExerciseIndex+1}/${exercises.length}`;el.streakValue.textContent=calcStreak();el.adherenceValue.textContent=`${calcAdherence()}%`;el.loadValue.textContent=`${getWorkSeconds()}s`;const p=progressPercent();el.progressFill.style.width=`${p}%`;el.progressText.textContent=`${p}% da sessão`;updateSwitches();updateBodyProjection();updateTechCard()}
+async function start(){if(state.intervalId)return;await unlockAudio();if(state.remainingTime<=0)state.remainingTime=getWorkSeconds();requestWakeLock();state.intervalId=setInterval(()=>{state.remainingTime-=1;if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)countdownCue(state.remainingTime);if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0){beep(760,0.08,0.045);pulse(25)}if(state.remainingTime<=0){beep(620,0.20,0.07);pulse(70);if(!state.isRest){state.isRest=true;state.remainingTime=getRestSeconds()}else{state.isRest=false;state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){clearInterval(state.intervalId);state.intervalId=null;saveTodaySession(false);renderCalendar();renderRecent();resetCycle(false);releaseWakeLock();alert('Treino concluído');return}state.remainingTime=getWorkSeconds()}}updateMain()},1000);updateMain()}
 function pause(){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock()}
 function resetCycle(update=true){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock();state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();if(update)updateMain()}
 function skipExercise(){pause();state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length)state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();updateMain()}
 function markTodayDone(){saveTodaySession(true);renderCalendar();renderRecent();updateMain()}
 function toggleSound(){state.soundOn=!state.soundOn;localStorage.setItem(STORAGE.sound,JSON.stringify(state.soundOn));updateSwitches()}
 function toggleHardcore(){state.hardcore=!state.hardcore;localStorage.setItem(STORAGE.hardcore,JSON.stringify(state.hardcore));resetCycle()}
-
-el.startBtn.addEventListener('click',start);
-el.pauseBtn.addEventListener('click',pause);
-el.resetBtn.addEventListener('click',()=>resetCycle());
-el.skipBtn.addEventListener('click',skipExercise);
-el.markTodayBtn.addEventListener('click',markTodayDone);
-el.soundToggleWrap.addEventListener('click',toggleSound);
-el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);
-el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});
-el.saveBodyBtn.addEventListener('click',saveBodyFromInputs);
-
-fillBodyInputs();
-resetCycle();renderCalendar();renderRecent();updateMain();
+function toggleAggressive(){state.aggressive=!state.aggressive;localStorage.setItem(STORAGE.aggressive,JSON.stringify(state.aggressive));resetCycle()}
+function toggleTech(){el.techCard.classList.toggle('hidden')}
+el.startBtn.addEventListener('click',start);el.pauseBtn.addEventListener('click',pause);el.resetBtn.addEventListener('click',()=>resetCycle());el.skipBtn.addEventListener('click',skipExercise);el.markTodayBtn.addEventListener('click',markTodayDone);el.soundToggleWrap.addEventListener('click',toggleSound);el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});el.saveBodyBtn.addEventListener('click',saveBodyFromInputs);el.techBtn.addEventListener('click',toggleTech);el.aggressiveBtn.addEventListener('click',toggleAggressive);
+fillBodyInputs();resetCycle();renderCalendar();renderRecent();updateMain();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
 </script>
