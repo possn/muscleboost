@@ -3,32 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>MuscleBoost</title>
+<title>MuscleBoost V7</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#F7F3EE">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 :root{
   --bg:#F7F3EE;--bg-soft:#FBF8F4;--panel:#FFFDF9;--line:#E7DED3;--line-strong:#D8CCBE;
-  --text:#2B2621;--muted:#6E655C;--accent-soft:#E9D8C8;--success:#C8D7C1;--danger:#E7CBC7;
-  --shadow:0 8px 24px rgba(43,38,33,.06);--radius:18px
+  --text:#2B2621;--muted:#6E655C;--accent:#B97A56;--accent-soft:#E9D8C8;
+  --success:#C8D7C1;--danger:#E7CBC7;--shadow:0 8px 24px rgba(43,38,33,.06);--radius:18px
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Arial,sans-serif}
 body{min-height:100vh}
-.wrap{max-width:430px;margin:0 auto;padding:18px 16px 28px}
+.wrap{max-width:440px;margin:0 auto;padding:18px 16px 28px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
 .brand{display:flex;gap:12px;align-items:center}
 .logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(180deg,#F3ECE4,#ECE1D5);border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow)}
 .logo svg{width:24px;height:24px}
 .title{font-weight:700;font-size:1.08rem}.sub{font-size:.78rem;color:var(--muted);margin-top:2px}
-.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg-soft);color:var(--muted);font-size:.78rem}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg-soft);color:var(--muted);font-size:.78rem;white-space:nowrap}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}
 .header-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
 .plan-title{font-size:.9rem;color:var(--muted)}
 .mode{border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:.75rem;background:var(--bg-soft);color:var(--muted);font-weight:600}
-.exercise{text-align:center;font-size:1.7rem;font-weight:750;line-height:1.1;margin:6px 0 8px}
-.instruction{text-align:center;color:var(--muted);font-size:.92rem;line-height:1.38;min-height:42px;max-width:320px;margin:0 auto 12px}
-.timer{text-align:center;font-size:4.2rem;font-weight:800;letter-spacing:-2px;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.exercise{text-align:center;font-size:1.72rem;font-weight:760;line-height:1.1;margin:6px 0 8px}
+.instruction{text-align:center;color:var(--muted);font-size:.92rem;line-height:1.4;min-height:44px;max-width:330px;margin:0 auto 12px}
+.timer{text-align:center;font-size:4.1rem;font-weight:800;letter-spacing:-2px;margin:6px 0 2px;font-variant-numeric:tabular-nums}
 .phase{text-align:center;color:var(--muted);font-size:.75rem;letter-spacing:.18em;margin-bottom:8px}
 .countdown-hint{text-align:center;color:#8F735D;font-size:.82rem;min-height:20px;margin-bottom:10px}
 .progress-wrap{margin:4px 0 12px}
@@ -40,7 +41,10 @@ body{min-height:100vh}
 .metric .v{font-size:1rem;font-weight:700}.metric .l{margin-top:4px;color:var(--muted);font-size:.68rem}
 .btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-weight:700;cursor:pointer}
-.btn-primary{background:var(--text);color:#fff}.btn-secondary{background:#EFE6DD;color:var(--text);border:1px solid var(--line)}.btn-accent{background:var(--accent-soft);color:#6C4A35;border:1px solid #DFC5AF}.btn-wide{grid-column:1 / -1}
+.btn-primary{background:var(--text);color:#fff}
+.btn-secondary{background:#EFE6DD;color:var(--text);border:1px solid var(--line)}
+.btn-accent{background:var(--accent-soft);color:#6C4A35;border:1px solid #DFC5AF}
+.btn-wide{grid-column:1/-1}
 .toggles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .toggle{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px;cursor:pointer}
 .toggle .label{font-size:.9rem}.toggle small{display:block;color:var(--muted);margin-top:2px}
@@ -50,16 +54,22 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 .section-title{font-size:.88rem;color:var(--muted);margin-bottom:10px;font-weight:600}
 .calendar-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
 .calendar-head .m{font-weight:700;font-size:.92rem}
+.nav-btn{padding:8px 10px;border-radius:10px;background:#EFE6DD;color:var(--text);border:1px solid var(--line);font-size:.85rem}
 .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .weekday{text-align:center;color:var(--muted);font-size:.7rem;padding-bottom:2px}
 .day{aspect-ratio:1/1;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:.77rem;color:var(--text);cursor:pointer;user-select:none}
-.day.done{background:var(--success);border-color:#BACCB2}.day.missed{background:var(--danger);border-color:#DDB6B0}.day.future{opacity:.42;cursor:default}.day.today{outline:2px solid #C5AB95;outline-offset:-2px}
-.recent{display:grid;gap:8px}.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft);padding:10px 12px;font-size:.84rem}
-.muted{color:var(--muted)}.footer-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:8px}
+.day.done{background:var(--success);border-color:#BACCB2}
+.day.missed{background:var(--danger);border-color:#DDB6B0}
+.day.future{opacity:.42;cursor:default}
+.day.today{outline:2px solid #C5AB95;outline-offset:-2px}
+.recent{display:grid;gap:8px}
+.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft);padding:10px 12px;font-size:.84rem}
+.muted{color:var(--muted)}
+.footer-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:8px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:.78rem;color:var(--muted)}
-.field input{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);font:inherit;color:var(--text)}
+.field input,.field select{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg-soft);font:inherit;color:var(--text)}
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .proj-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px}
 .proj-box .big{font-size:1.1rem;font-weight:700}
@@ -68,6 +78,10 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 .tech-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);padding:12px}
 .tech-box p{margin:0 0 8px 0;color:var(--muted);line-height:1.45}
 .hidden{display:none}
+.chart-wrap{height:230px}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap}
+.badge{padding:6px 10px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);font-size:.76rem;color:var(--muted)}
+.small{font-size:.76rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -75,7 +89,7 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
   <div class="top">
     <div class="brand">
       <div class="logo"><svg viewBox="0 0 64 64" fill="none"><path d="M14 40c6-14 12-20 18-20s12 6 18 20" stroke="#B97A56" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="18" r="6" fill="#8F735D"/><rect x="24" y="38" width="16" height="10" rx="4" fill="#B97A56"/></svg></div>
-      <div><div class="title">MuscleBoost</div><div class="sub">Corpo livre · 7–10 min · progressivo</div></div>
+      <div><div class="title">MuscleBoost V7</div><div class="sub">Corpo livre · progressivo · análise</div></div>
     </div>
     <div class="pill" id="dayPlanLabel">Plano A</div>
   </div>
@@ -122,7 +136,7 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
       <div class="toggle" id="soundToggleWrap"><div class="label">Som<small>beeps + vibração nos 5s finais</small></div><div class="switch" id="soundSwitch"></div></div>
       <div class="toggle" id="hardcoreToggleWrap"><div class="label">Hardcore<small>menos descanso</small></div><div class="switch" id="hardcoreSwitch"></div></div>
     </div>
-    <div class="footer-note">Calendário clicável: toca num dia passado para marcar/desmarcar como feito · ciclo A→B→C→D</div>
+    <div class="footer-note">Calendário clicável · navegação entre meses · ciclo A→B→C→D→E</div>
   </div>
 
   <div class="card hidden" id="techCard">
@@ -137,21 +151,32 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
   <div class="card">
     <div class="section-title">Composição e projeção corporal</div>
     <div class="form-grid">
+      <div class="field"><label for="entryDateInput">Data</label><input id="entryDateInput" type="date"></div>
       <div class="field"><label for="ageInput">Idade</label><input id="ageInput" type="number" min="10" max="100" placeholder="49"></div>
       <div class="field"><label for="heightInput">Altura (cm)</label><input id="heightInput" type="number" min="120" max="230" placeholder="173"></div>
       <div class="field"><label for="weightInput">Peso (kg)</label><input id="weightInput" type="number" min="30" max="200" step="0.1" placeholder="62"></div>
       <div class="field"><label for="waistInput">Cintura (cm)</label><input id="waistInput" type="number" min="40" max="180" step="0.1" placeholder="opcional"></div>
       <div class="field"><label for="chestInput">Peito (cm)</label><input id="chestInput" type="number" min="50" max="180" step="0.1" placeholder="opcional"></div>
       <div class="field"><label for="armInput">Braço (cm)</label><input id="armInput" type="number" min="15" max="70" step="0.1" placeholder="opcional"></div>
+      <div class="field"><label for="proteinInput">Proteína/dia (g)</label><input id="proteinInput" type="number" min="0" max="400" step="1" placeholder="opcional"></div>
+      <div class="field"><label for="sleepInput">Sono médio (h)</label><input id="sleepInput" type="number" min="0" max="24" step="0.5" placeholder="opcional"></div>
+      <div class="field"><label for="recoveryInput">Recuperação</label>
+        <select id="recoveryInput">
+          <option value="">opcional</option>
+          <option value="fraca">fraca</option>
+          <option value="média">média</option>
+          <option value="boa">boa</option>
+        </select>
+      </div>
     </div>
     <div class="btn-grid" style="margin-top:12px">
-      <button class="btn-secondary btn-wide" id="saveBodyBtn">Guardar e recalcular</button>
+      <button class="btn-secondary btn-wide" id="saveBodyBtn">Guardar registo corporal</button>
     </div>
     <div class="proj-grid" style="margin-top:12px">
       <div class="proj-box"><div class="muted">IMC</div><div class="big" id="bmiValue">—</div></div>
       <div class="proj-box"><div class="muted">Consistência</div><div class="big" id="consistencyValue">—</div></div>
-      <div class="proj-box"><div class="muted">Ganho muscular plausível 3m</div><div class="big" id="gain3mValue">—</div></div>
-      <div class="proj-box"><div class="muted">Ganho muscular plausível 6m</div><div class="big" id="gain6mValue">—</div></div>
+      <div class="proj-box"><div class="muted">Ganho plausível 3m</div><div class="big" id="gain3mValue">—</div></div>
+      <div class="proj-box"><div class="muted">Ganho plausível 6m</div><div class="big" id="gain6mValue">—</div></div>
       <div class="proj-box"><div class="muted">Peso projetado 3m</div><div class="big" id="weight3mValue">—</div></div>
       <div class="proj-box"><div class="muted">Peso projetado 6m</div><div class="big" id="weight6mValue">—</div></div>
     </div>
@@ -163,7 +188,18 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
   </div>
 
   <div class="card">
-    <div class="calendar-head"><div class="section-title">Calendário de adesão</div><div class="m" id="monthLabel">—</div></div>
+    <div class="section-title">Análise e gráficos</div>
+    <div class="badge-row" id="analysisBadges"></div>
+    <div class="chart-wrap"><canvas id="progressChart"></canvas></div>
+    <div class="small" id="analysisText">—</div>
+  </div>
+
+  <div class="card">
+    <div class="calendar-head">
+      <button class="nav-btn" id="prevMonthBtn">‹</button>
+      <div class="m" id="monthLabel">—</div>
+      <button class="nav-btn" id="nextMonthBtn">›</button>
+    </div>
     <div class="calendar" id="calendar"></div>
   </div>
 
@@ -175,35 +211,40 @@ button{border:none;border-radius:14px;padding:14px 14px;font-size:.96rem;font-we
 
 <script>
 (() => {
-const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick',body:'mb_body',aggressive:'mb_aggressive'};
-const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),aggressive:JSON.parse(localStorage.getItem(STORAGE.aggressive)??'false'),mode:'NORMAL'};
+const STORAGE={sessions:'mb_sessions',sound:'mb_sound',hardcore:'mb_hardcore',quick:'mb_quick',body:'mb_body',bodyHistory:'mb_body_history',aggressive:'mb_aggressive'};
+const state={intervalId:null,currentExerciseIndex:0,isRest:false,remainingTime:40,soundOn:JSON.parse(localStorage.getItem(STORAGE.sound)??'true'),hardcore:JSON.parse(localStorage.getItem(STORAGE.hardcore)??'false'),quickMode:JSON.parse(localStorage.getItem(STORAGE.quick)??'false'),aggressive:JSON.parse(localStorage.getItem(STORAGE.aggressive)??'false'),mode:'NORMAL',viewDate:new Date(),chart:null};
 const plans=[
 {key:'A',title:'Dia A · Peito / Ombros / Tríceps',exercises:[
 {name:'Flexões',instruction:'Mãos alinhadas com os ombros, tronco rígido, descida controlada e subida forte.',desc:'Flexão clássica com linha corporal neutra.',focus:'Peitoral, tríceps, ombro anterior.',cues:'Abdómen firme, peito desce em bloco, cotovelos controlados.'},
-{name:'Decline push-ups',instruction:'Pés elevados numa cadeira ou sofá. Mais foco no peito superior e deltoide anterior.',desc:'Flexão com pés elevados para aumentar carga no tronco superior.',focus:'Peito superior e ombros.',cues:'Não arqueies a lombar; mantém pescoço neutro.'},
-{name:'Pike push-ups',instruction:'Ancas elevadas, cabeça desce entre as mãos. Foco principal no ombro.',desc:'Movimento de pressão vertical parcial.',focus:'Deltoide e tríceps.',cues:'Empurra o chão, ancas altas, desce a cabeça para a frente das mãos.'},
-{name:'Flexão isométrica',instruction:'Segura a meio da descida ou alterna 10 segundos de hold com reps curtas.',desc:'Isometria para aumentar tensão sem equipamento.',focus:'Peito e tríceps.',cues:'Mantém escápulas estáveis e não colapses no fundo.'}]},
+{name:'Decline push-ups',instruction:'Pés elevados numa cadeira ou sofá. Mais foco no peito superior e deltoide anterior.',desc:'Flexão com pés elevados.',focus:'Peito superior e ombros.',cues:'Não arqueies a lombar; mantém pescoço neutro.'},
+{name:'Pike push-ups',instruction:'Ancas elevadas, cabeça desce entre as mãos. Foco principal no ombro.',desc:'Movimento de pressão vertical parcial.',focus:'Deltoide e tríceps.',cues:'Empurra o chão, ancas altas.'},
+{name:'Flexão isométrica',instruction:'Segura a meio da descida ou alterna 10 segundos de hold com reps curtas.',desc:'Isometria para aumentar tensão.',focus:'Peito e tríceps.',cues:'Escápulas estáveis e tronco firme.'}]},
 {key:'B',title:'Dia B · Core + costas / postura',exercises:[
-{name:'Prancha',instruction:'Corpo alinhado, glúteos contraídos, sem deixar a lombar afundar.',desc:'Isometria básica de core.',focus:'Core anti-extensão.',cues:'Umbigo para dentro, glúteos contraídos, respiração controlada.'},
-{name:'Superman hold',instruction:'De barriga para baixo, eleva peito e pernas, mantendo tensão na cadeia posterior.',desc:'Extensão global da cadeia posterior.',focus:'Extensores lombares e glúteos.',cues:'Elevação moderada, sem forçar o pescoço.'},
-{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo, focando postura.',desc:'Exercício postural para retração escapular.',focus:'Trapézio médio/inferior e postura.',cues:'Polegares para fora, peito aberto, ombros longe das orelhas.'},
-{name:'Leg raises',instruction:'Subida e descida controladas, sem embalo.',desc:'Elevação de pernas com controlo.',focus:'Abdómen inferior/controle pélvico.',cues:'Lombar estável e movimento lento.'}]},
+{name:'Prancha',instruction:'Corpo alinhado, glúteos contraídos, sem deixar a lombar afundar.',desc:'Isometria básica de core.',focus:'Core anti-extensão.',cues:'Umbigo para dentro, glúteos contraídos.'},
+{name:'Superman hold',instruction:'Eleva peito e pernas, mantendo tensão na cadeia posterior.',desc:'Extensão global da cadeia posterior.',focus:'Extensores lombares e glúteos.',cues:'Elevação moderada, pescoço neutro.'},
+{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo.',desc:'Exercício postural para retração escapular.',focus:'Trapézio médio/inferior e postura.',cues:'Polegares para fora, peito aberto.'},
+{name:'Leg raises',instruction:'Subida e descida controladas, sem embalo.',desc:'Elevação de pernas com controlo.',focus:'Abdómen inferior.',cues:'Lombar estável e movimento lento.'}]},
 {key:'C',title:'Dia C · Braços / Ombros',exercises:[
-{name:'Dips em cadeira',instruction:'Desce até cerca de 90 graus e sobe sem perder controlo.',desc:'Dips com apoio estável.',focus:'Tríceps e peito inferior.',cues:'Ombros para baixo, evita afundar demais.'},
-{name:'Pike hold',instruction:'Segura a posição de pike com carga nos ombros.',desc:'Isometria de pressão vertical.',focus:'Ombros.',cues:'Empurra o chão e mantém ancas elevadas.'},
-{name:'Flexão lenta',instruction:'Desce em 4–5 segundos e sobe normalmente.',desc:'Tempo lento para aumentar tensão mecânica.',focus:'Peito e tríceps.',cues:'Conta a descida, sem perder alinhamento.'},
-{name:'Plank shoulder taps',instruction:'Alterna toques no ombro sem rodar demasiado o tronco.',desc:'Core + estabilidade de ombro.',focus:'Core anti-rotação e cintura escapular.',cues:'Bacia estável, passos largos se necessário.'}]},
+{name:'Dips em cadeira',instruction:'Desce até cerca de 90 graus e sobe sem perder controlo.',desc:'Dips com apoio estável.',focus:'Tríceps e peito inferior.',cues:'Ombros para baixo, amplitude segura.'},
+{name:'Pike hold',instruction:'Segura a posição de pike com carga nos ombros.',desc:'Isometria de pressão vertical.',focus:'Ombros.',cues:'Empurra forte o chão.'},
+{name:'Flexão lenta',instruction:'Desce em 4–5 segundos e sobe normalmente.',desc:'Tempo lento para mais tensão.',focus:'Peito e tríceps.',cues:'Conta a descida e mantém alinhamento.'},
+{name:'Plank shoulder taps',instruction:'Alterna toques no ombro sem rodar demasiado o tronco.',desc:'Core + estabilidade de ombro.',focus:'Core anti-rotação.',cues:'Bacia estável.'}]},
 {key:'D',title:'Dia D · Costas / postura',exercises:[
-{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo, focando retração escapular.',desc:'Postura e retração escapular sem equipamento.',focus:'Trapézio médio/inferior, deltoide posterior.',cues:'Peito aberto, ombros atrás e para baixo.'},
-{name:'Reverse snow angels',instruction:'De bruços, braços fazem arco lento de frente para trás, focando deltoide posterior e trapézio.',desc:'Arco lento dos braços no chão.',focus:'Deltoide posterior e trapézio.',cues:'Movimento lento, sem perder tensão no peito elevado.'},
-{name:'Superman pull',instruction:'Eleva tronco e puxa cotovelos para trás como se fizesses uma remada no ar.',desc:'Simulação de remada com peso corporal.',focus:'Costas altas e postura.',cues:'Puxa cotovelos para trás e aperta escápulas.'},
-{name:'Prone Y hold',instruction:'Braços em Y, polegares para cima, mantendo tensão no trapézio inferior e estabilidade escapular.',desc:'Isometria em Y para estabilidade escapular.',focus:'Trapézio inferior e controlo escapular.',cues:'Braços longos, pescoço neutro, sem compensar na lombar.'}]}
+{name:'Prone cobra',instruction:'Peito ligeiramente elevado, ombros para trás e para baixo.',desc:'Postura e retração escapular sem equipamento.',focus:'Trapézio médio/inferior, deltoide posterior.',cues:'Peito aberto, ombros atrás e para baixo.'},
+{name:'Reverse snow angels',instruction:'Braços fazem arco lento de frente para trás.',desc:'Arco lento dos braços no chão.',focus:'Deltoide posterior e trapézio.',cues:'Movimento lento, peito elevado.'},
+{name:'Superman pull',instruction:'Eleva tronco e puxa cotovelos para trás como remada no ar.',desc:'Simulação de remada com peso corporal.',focus:'Costas altas e postura.',cues:'Aperta escápulas no topo.'},
+{name:'Prone Y hold',instruction:'Braços em Y, polegares para cima.',desc:'Isometria em Y para estabilidade escapular.',focus:'Trapézio inferior.',cues:'Braços longos, pescoço neutro.'}]},
+{key:'E',title:'Dia E · Bíceps / carga',exercises:[
+{name:'Curl unilateral com garrafão',instruction:'Cotovelo fixo, sobe controlado, desce lento.',desc:'Curl principal com garrafão de 5L.',focus:'Bíceps braquial.',cues:'Sem balanço, 3s a descer.'},
+{name:'Hammer curl com garrafão',instruction:'Pegada neutra, sobe controlado, desce lento.',desc:'Variação martelo para braço mais cheio.',focus:'Braquiorradial e bíceps.',cues:'Punho neutro, cotovelo junto ao corpo.'},
+{name:'Curl isométrico a 90°',instruction:'Segura a meio do movimento.',desc:'Isometria para tensão contínua.',focus:'Bíceps.',cues:'Contração máxima sem perder ângulo.'},
+{name:'Curl com pausa no topo',instruction:'Sobe, segura 1–2s, desce devagar.',desc:'Peak contraction com carga real.',focus:'Bíceps.',cues:'Aperta no topo, sem acelerar a descida.'}]}
 ];
 const aggressiveOverride={
   A:[
     {name:'Decline push-ups',instruction:'Pés elevados. Executa perto da falha.',desc:'Versão agressiva para mais carga.',focus:'Peito superior e ombros.',cues:'Mantém tensão contínua.'},
     {name:'Pike push-ups',instruction:'O mais vertical possível.',desc:'Pressão vertical mais difícil.',focus:'Ombros.',cues:'Cabeça entre as mãos.'},
-    {name:'Pseudo-planche push-ups',instruction:'Inclina o corpo para a frente.',desc:'Aumenta muito a carga relativa.',focus:'Peito, deltoide anterior, tríceps.',cues:'Ombros à frente das mãos, tronco firme.'},
+    {name:'Pseudo-planche push-ups',instruction:'Inclina o corpo para a frente.',desc:'Aumenta muito a carga relativa.',focus:'Peito, deltoide anterior, tríceps.',cues:'Ombros à frente das mãos.'},
     {name:'Flexão lenta',instruction:'Desce em 4–5 segundos.',desc:'Tempo lento para máxima tensão.',focus:'Peito e tríceps.',cues:'Sem perder alinhamento.'}
   ],
   C:[
@@ -211,9 +252,15 @@ const aggressiveOverride={
     {name:'Pike hold',instruction:'Mantém carga alta nos ombros.',desc:'Isometria agressiva.',focus:'Ombros.',cues:'Empurra forte o chão.'},
     {name:'Flexão lenta',instruction:'Descida longa e subida forte.',desc:'Tempo mecânico.',focus:'Peito.',cues:'Respira e controla.'},
     {name:'Plank shoulder taps',instruction:'Termina forte sem rodar tronco.',desc:'Estabilidade sob fadiga.',focus:'Core e ombro.',cues:'Bacia estável.'}
+  ],
+  E:[
+    {name:'Curl unilateral pesado',instruction:'Mais lento, quase falha.',desc:'Curl pesado com garrafão.',focus:'Bíceps.',cues:'3–4 s a descer.'},
+    {name:'Hammer curl pesado',instruction:'Mantém cotovelo estável.',desc:'Martelo com tensão alta.',focus:'Braço total.',cues:'Sem balanço.'},
+    {name:'Curl isométrico 90°',instruction:'Segura forte sem tremer demasiado.',desc:'Tensão contínua no bíceps.',focus:'Bíceps.',cues:'Respira mas não relaxes.'},
+    {name:'Curl com pausa longa',instruction:'Segura 2 s no topo.',desc:'Peak contraction agressivo.',focus:'Bíceps.',cues:'Aperta no topo.'}
   ]
 };
-const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList','ageInput','heightInput','weightInput','waistInput','chestInput','armInput','saveBodyBtn','bmiValue','consistencyValue','gain3mValue','gain6mValue','weight3mValue','weight6mValue','statusValue','bodyNote','techBtn','aggressiveBtn','techCard','techTitle','techDesc','techFocus','techCues'].forEach(id=>el[id]=document.getElementById(id));
+const el={};['dayPlanLabel','planTitle','modeBadge','nextPlanText','quickModeText','exerciseName','exerciseInstruction','timer','phase','countdownHint','progressFill','progressText','currentIndex','streakValue','adherenceValue','loadValue','startBtn','pauseBtn','resetBtn','skipBtn','markTodayBtn','soundToggleWrap','hardcoreToggleWrap','soundSwitch','hardcoreSwitch','calendar','monthLabel','recentList','ageInput','heightInput','weightInput','waistInput','chestInput','armInput','proteinInput','sleepInput','recoveryInput','entryDateInput','saveBodyBtn','bmiValue','consistencyValue','gain3mValue','gain6mValue','weight3mValue','weight6mValue','statusValue','bodyNote','techBtn','aggressiveBtn','techCard','techTitle','techDesc','techFocus','techCues','prevMonthBtn','nextMonthBtn','analysisBadges','analysisText'].forEach(id=>el[id]=document.getElementById(id));
 let audioCtx=null,wakeLock=null;
 async function unlockAudio(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();gain.gain.value=0.0001;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+0.01)}catch(e){}}
 function beep(freq=900,duration=0.10,volume=0.05){if(!state.soundOn)return;try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.value=volume;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);osc.stop(audioCtx.currentTime+duration)}catch(e){}}
@@ -223,13 +270,15 @@ function getSessions(){try{return JSON.parse(localStorage.getItem(STORAGE.sessio
 function saveSessions(arr){localStorage.setItem(STORAGE.sessions,JSON.stringify(arr.sort((a,b)=>a.date.localeCompare(b.date))))}
 function getBody(){try{return JSON.parse(localStorage.getItem(STORAGE.body)||'{}')}catch{return {}}}
 function saveBody(obj){localStorage.setItem(STORAGE.body,JSON.stringify(obj))}
+function getBodyHistory(){try{return JSON.parse(localStorage.getItem(STORAGE.bodyHistory)||'[]').sort((a,b)=>a.date.localeCompare(b.date))}catch{return []}}
+function saveBodyHistory(arr){localStorage.setItem(STORAGE.bodyHistory,JSON.stringify(arr.sort((a,b)=>a.date.localeCompare(b.date))))}
 function planIndexFromKey(key){return plans.findIndex(p=>p.key===key)}
 function getNextPlanIndex(){const sessions=getSessions();if(!sessions.length)return 0;const last=sessions[sessions.length-1].plan;const idx=planIndexFromKey(last);return idx<0?0:(idx+1)%plans.length}
 function getCurrentPlan(){const basePlan=plans[getNextPlanIndex()]; if(state.aggressive && aggressiveOverride[basePlan.key]) return {...basePlan, exercises: aggressiveOverride[basePlan.key]}; return basePlan}
 function getUpcomingPlan(){const idx=getNextPlanIndex();return plans[(idx+1)%plans.length]}
 function getRecentCompletedCount(daysBack=7){const completed=new Set(getSessions().map(s=>s.date));let n=0;for(let i=0;i<daysBack;i++){const d=new Date();d.setDate(d.getDate()-i);if(completed.has(d.toISOString().slice(0,10)))n++}return n}
-function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode)work=Math.max(25,work-10);if(state.aggressive)work=Math.min(50, work+5);return work}
-function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);if(state.aggressive)rest=Math.max(6, rest-2);return Math.max(6,rest)}
+function getWorkSeconds(){const recentCount=getRecentCompletedCount(7);state.mode='NORMAL';let work=40;if(recentCount>=6){state.mode='DELOAD';work=35}else if(recentCount<=2){state.mode='OVERLOAD';work=45}if(state.quickMode)work=Math.max(25,work-10);if(state.aggressive)work=Math.min(55, work+5);return work}
+function getRestSeconds(){let rest=state.hardcore?10:15;if(state.mode==='DELOAD')rest+=5;if(state.mode==='OVERLOAD'&&!state.hardcore)rest-=2;if(state.quickMode)rest=Math.max(6,rest-4);if(state.aggressive)rest=Math.max(6,rest-2);return Math.max(6,rest)}
 function formatSeconds(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
 function updateSwitches(){el.soundSwitch.classList.toggle('on',state.soundOn);el.hardcoreSwitch.classList.toggle('on',state.hardcore)}
 async function requestWakeLock(){try{if('wakeLock' in navigator&&!wakeLock){wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}}catch(e){}}
@@ -239,29 +288,72 @@ document.addEventListener('visibilitychange',async()=>{if(document.visibilitySta
 function progressPercent(){const total=getCurrentPlan().exercises.length;const completed=state.currentExerciseIndex+(state.isRest?0.5:0);return Math.max(0,Math.min(100,Math.round((completed/total)*100)))}
 function saveSessionForDate(dateKey, marked=false){const sessions=getSessions();if(sessions.find(s=>s.date===dateKey))return;const planKey=plans[getNextPlanIndex()].key;sessions.push({date:dateKey,plan:planKey,work:getWorkSeconds(),hardcore:state.hardcore,marked,aggressive:state.aggressive});saveSessions(sessions)}
 function removeSessionForDate(dateKey){saveSessions(getSessions().filter(s=>s.date!==dateKey))}
-function toggleSessionForDate(dateKey){const todayKey=new Date().toISOString().slice(0,10);if(dateKey>todayKey)return;const sessions=getSessions();const existing=sessions.find(s=>s.date===dateKey);if(existing)removeSessionForDate(dateKey);else saveSessionForDate(dateKey,true);renderCalendar();renderRecent();updateMain();updateBodyProjection()}
+function toggleSessionForDate(dateKey){const todayKey=new Date().toISOString().slice(0,10);if(dateKey>todayKey)return;const sessions=getSessions();const existing=sessions.find(s=>s.date===dateKey);if(existing)removeSessionForDate(dateKey);else saveSessionForDate(dateKey,true);renderCalendar();renderRecent();updateMain();updateBodyProjection();renderAnalysis()}
 function saveTodaySession(marked=false){saveSessionForDate(new Date().toISOString().slice(0,10),marked)}
 function getCompletedDatesSet(){return new Set(getSessions().map(s=>s.date))}
 function calcStreak(){const completed=getCompletedDatesSet();let streak=0,cursor=new Date();while(true){const key=cursor.toISOString().slice(0,10);if(completed.has(key)){streak++;cursor.setDate(cursor.getDate()-1)}else break}return streak}
 function calcAdherence(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet();let done=0;for(let d=1;d<=today;d++){const dt=new Date(year,month,d);if(completed.has(dt.toISOString().slice(0,10)))done++}return today?Math.round((done/today)*100):0}
-function renderCalendar(){const now=new Date(),year=now.getFullYear(),month=now.getMonth(),today=now.getDate();const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();const monthName=now.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);el.calendar.innerHTML='';['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}for(let d=1;d<=daysInMonth;d++){const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');cell.className='day';cell.textContent=d;if(d===today)cell.classList.add('today');if(d>today)cell.classList.add('future');else if(completed.has(key))cell.classList.add('done');else cell.classList.add('missed');if(d<=today){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}el.calendar.appendChild(cell)}}
+function renderCalendar(){const view=new Date(state.viewDate.getFullYear(),state.viewDate.getMonth(),1);const now=new Date(),year=view.getFullYear(),month=view.getMonth(),todayKey=now.toISOString().slice(0,10);const completed=getCompletedDatesSet(),first=new Date(year,month,1),startWeekday=(first.getDay()+6)%7,daysInMonth=new Date(year,month+1,0).getDate();const monthName=view.toLocaleDateString('pt-PT',{month:'long',year:'numeric'});el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1);el.calendar.innerHTML='';['S','T','Q','Q','S','S','D'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;el.calendar.appendChild(x)});for(let i=0;i<startWeekday;i++){const empty=document.createElement('div');empty.className='day future';empty.style.visibility='hidden';el.calendar.appendChild(empty)}for(let d=1;d<=daysInMonth;d++){const dt=new Date(year,month,d),key=dt.toISOString().slice(0,10),cell=document.createElement('div');cell.className='day';cell.textContent=d;if(key===todayKey)cell.classList.add('today');if(key>todayKey)cell.classList.add('future');else if(completed.has(key))cell.classList.add('done');else cell.classList.add('missed');if(key<=todayKey){cell.title='Toca para marcar/desmarcar';cell.addEventListener('click',()=>toggleSessionForDate(key))}el.calendar.appendChild(cell)}}
 function renderRecent(){const sessions=getSessions().slice(-5).reverse();if(!sessions.length){el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span class="muted">—</span></div>';return}el.recentList.innerHTML='';sessions.forEach(s=>{const row=document.createElement('div');row.className='recent-item';row.innerHTML=`<span>${s.date} · Plano ${s.plan}${s.aggressive?' · AG':''}</span><span class="muted">${s.work}s</span>`;el.recentList.appendChild(row)})}
-function fillBodyInputs(){const b=getBody();el.ageInput.value=b.age||'';el.heightInput.value=b.height||'';el.weightInput.value=b.weight||'';el.waistInput.value=b.waist||'';el.chestInput.value=b.chest||'';el.armInput.value=b.arm||''}
-function updateBodyProjection(){const b=getBody();const age=Number(b.age||0),height=Number(b.height||0),weight=Number(b.weight||0),waist=Number(b.waist||0),chest=Number(b.chest||0),arm=Number(b.arm||0);const adherence=calcAdherence();const streak=calcStreak();if(!height||!weight){el.bmiValue.textContent='—';el.consistencyValue.textContent=`${adherence}%`;el.gain3mValue.textContent='—';el.gain6mValue.textContent='—';el.weight3mValue.textContent='—';el.weight6mValue.textContent='—';el.statusValue.textContent='Introduz peso e altura';el.bodyNote.textContent='Sem peso e altura não há projeção. Com cintura, peito e braço, a leitura fica mais útil.';return;}const bmi=weight/((height/100)**2);const consistencyScore=Math.max(0,Math.min(100,Math.round(adherence*0.7+Math.min(streak*4,30))));let gain3=0.6,gain6=1.4;if(consistencyScore>=80){gain3=1.2;gain6=2.6}else if(consistencyScore>=60){gain3=0.9;gain6=2.0}else if(consistencyScore>=40){gain3=0.6;gain6=1.4}else{gain3=0.3;gain6=0.9}if(bmi<20){gain3+=0.2;gain6+=0.4}if(state.quickMode){gain3-=0.1;gain6-=0.2}if(state.aggressive){gain3+=0.2;gain6+=0.4}gain3=Math.max(0.2,Math.round(gain3*10)/10);gain6=Math.max(0.5,Math.round(gain6*10)/10);const weight3=(weight+gain3).toFixed(1),weight6=(weight+gain6).toFixed(1);let status='Recomposição favorável';if(consistencyScore<40)status='Subestímulo provável';else if(consistencyScore<70)status='Estímulo moderado';else status='Janela favorável a hipertrofia';if(bmi<20&&consistencyScore>=70)status='Janela forte para ganhar massa';if(waist&&waist/height*100>55)status='Prioridade: recomposição corporal';let note=`Estimativa plausível, não medição real. Com a tua consistência atual, o ganho muscular total esperado é ~${gain3} kg em 3 meses e ~${gain6} kg em 6 meses, se nutrição e sono forem adequados.`;if(chest||arm||waist)note+=' Os perímetros ajudam a seguir tendência corporal, mas não substituem métodos de composição corporal.';if(age)note+=` Idade registada: ${age}.`;el.bmiValue.textContent=bmi.toFixed(1);el.consistencyValue.textContent=`${consistencyScore}%`;el.gain3mValue.textContent=`+${gain3} kg`;el.gain6mValue.textContent=`+${gain6} kg`;el.weight3mValue.textContent=`${weight3} kg`;el.weight6mValue.textContent=`${weight6} kg`;el.statusValue.textContent=status;el.bodyNote.textContent=note}
-function saveBodyFromInputs(){saveBody({age:el.ageInput.value,height:el.heightInput.value,weight:el.weightInput.value,waist:el.waistInput.value,chest:el.chestInput.value,arm:el.armInput.value});updateBodyProjection()}
+function fillBodyInputs(){const b=getBody();el.ageInput.value=b.age||'';el.heightInput.value=b.height||'';el.weightInput.value=b.weight||'';el.waistInput.value=b.waist||'';el.chestInput.value=b.chest||'';el.armInput.value=b.arm||'';el.proteinInput.value=b.protein||'';el.sleepInput.value=b.sleep||'';el.recoveryInput.value=b.recovery||'';el.entryDateInput.value=new Date().toISOString().slice(0,10)}
+function latestBodyEntry(){const hist=getBodyHistory(); return hist.length?hist[hist.length-1]:getBody()}
+function updateBodyProjection(){const b=latestBodyEntry()||{};const age=Number(b.age||0),height=Number(b.height||0),weight=Number(b.weight||0),waist=Number(b.waist||0),protein=Number(b.protein||0),sleep=Number(b.sleep||0);const adherence=calcAdherence();const streak=calcStreak();if(!height||!weight){el.bmiValue.textContent='—';el.consistencyValue.textContent=`${adherence}%`;el.gain3mValue.textContent='—';el.gain6mValue.textContent='—';el.weight3mValue.textContent='—';el.weight6mValue.textContent='—';el.statusValue.textContent='Introduz peso e altura';el.bodyNote.textContent='Sem peso e altura não há projeção. Com cintura, peito, braço e peso semanal, a leitura fica muito melhor.';return;}const bmi=weight/((height/100)**2);const recoveryBonus=b.recovery==='boa'?8:b.recovery==='média'?4:0;const proteinTarget=weight*1.6;const proteinScore=protein?Math.min(15,Math.round((protein/proteinTarget)*15)):0;const sleepScore=sleep?Math.min(10,Math.round((sleep/8)*10)):0;const consistencyScore=Math.max(0,Math.min(100,Math.round(adherence*0.6+Math.min(streak*4,25)+recoveryBonus+proteinScore+sleepScore)));let gain3=0.6,gain6=1.4;if(consistencyScore>=85){gain3=1.3;gain6=2.8}else if(consistencyScore>=70){gain3=1.0;gain6=2.2}else if(consistencyScore>=50){gain3=0.7;gain6=1.6}else{gain3=0.3;gain6=0.9}if(bmi<20){gain3+=0.2;gain6+=0.4}if(state.quickMode){gain3-=0.1;gain6-=0.2}if(state.aggressive){gain3+=0.2;gain6+=0.4}gain3=Math.max(0.2,Math.round(gain3*10)/10);gain6=Math.max(0.5,Math.round(gain6*10)/10);const weight3=(weight+gain3).toFixed(1),weight6=(weight+gain6).toFixed(1);let status='Recomposição favorável';if(consistencyScore<40)status='Subestímulo provável';else if(consistencyScore<70)status='Estímulo moderado';else status='Janela favorável a hipertrofia';if(bmi<20&&consistencyScore>=70)status='Janela forte para ganhar massa';if(waist&&waist/height*100>55)status='Prioridade: recomposição corporal';let note=`Estimativa plausível, não medição real. Com a tua consistência atual, o ganho muscular total esperado é ~${gain3} kg em 3 meses e ~${gain6} kg em 6 meses.`; if(protein) note += ` Proteína registada: ${protein} g/dia.`; if(sleep) note += ` Sono médio: ${sleep} h.`; if(age) note += ` Idade registada: ${age}.`; el.bmiValue.textContent=bmi.toFixed(1);el.consistencyValue.textContent=`${consistencyScore}%`;el.gain3mValue.textContent=`+${gain3} kg`;el.gain6mValue.textContent=`+${gain6} kg`;el.weight3mValue.textContent=`${weight3} kg`;el.weight6mValue.textContent=`${weight6} kg`;el.statusValue.textContent=status;el.bodyNote.textContent=note}
+function saveBodyFromInputs(){
+  const entry={date:el.entryDateInput.value||new Date().toISOString().slice(0,10),age:el.ageInput.value,height:el.heightInput.value,weight:el.weightInput.value,waist:el.waistInput.value,chest:el.chestInput.value,arm:el.armInput.value,protein:el.proteinInput.value,sleep:el.sleepInput.value,recovery:el.recoveryInput.value};
+  saveBody(entry);
+  const hist=getBodyHistory().filter(x=>x.date!==entry.date);
+  hist.push(entry);
+  saveBodyHistory(hist);
+  updateBodyProjection();
+  renderAnalysis();
+}
 function updateTechCard(){const plan=getCurrentPlan(),ex=plan.exercises[state.currentExerciseIndex]||plan.exercises[0];el.techTitle.textContent=`Técnica · ${ex.name}`;el.techDesc.textContent=ex.desc||ex.instruction;el.techFocus.innerHTML=`<strong>Foco:</strong> ${ex.focus||'—'}`;el.techCues.innerHTML=`<strong>Cues:</strong> ${ex.cues||'—'}`;}
+function renderAnalysis(){
+  const hist=getBodyHistory();
+  const badges=[];
+  const adherence=calcAdherence();
+  badges.push(`Aderência ${adherence}%`);
+  badges.push(`Streak ${calcStreak()}d`);
+  badges.push(state.aggressive?'AG on':'AG off');
+  el.analysisBadges.innerHTML=badges.map(x=>`<span class="badge">${x}</span>`).join('');
+  let labels=[], weightData=[], waistData=[], armData=[];
+  hist.slice(-8).forEach(r=>{labels.push(r.date); weightData.push(r.weight?Number(r.weight):null); waistData.push(r.waist?Number(r.waist):null); armData.push(r.arm?Number(r.arm):null);});
+  const ctx=document.getElementById('progressChart').getContext('2d');
+  if(state.chart) state.chart.destroy();
+  state.chart=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[
+      {label:'Peso',data:weightData,borderColor:'#8F735D',backgroundColor:'transparent',spanGaps:true},
+      {label:'Cintura',data:waistData,borderColor:'#B97A56',backgroundColor:'transparent',spanGaps:true},
+      {label:'Braço',data:armData,borderColor:'#6E655C',backgroundColor:'transparent',spanGaps:true}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true}},scales:{x:{ticks:{maxRotation:0,minRotation:0}},y:{beginAtZero:false}}}
+  });
+  if(hist.length>=2){
+    const first=hist[0], last=hist[hist.length-1];
+    const dW=(Number(last.weight||0)-Number(first.weight||0)).toFixed(1);
+    const dWa=((Number(last.waist||0)||0)-(Number(first.waist||0)||0)).toFixed(1);
+    const dA=((Number(last.arm||0)||0)-(Number(first.arm||0)||0)).toFixed(1);
+    el.analysisText.textContent=`Desde o primeiro registo: peso ${dW>=0?'+':''}${dW} kg · cintura ${dWa>=0?'+':''}${dWa} cm · braço ${dA>=0?'+':''}${dA} cm.`;
+  } else {
+    el.analysisText.textContent='Adiciona pelo menos dois registos corporais para análise longitudinal mais útil.';
+  }
+}
 function updateMain(){const plan=getCurrentPlan(),exercises=plan.exercises,ex=exercises[state.currentExerciseIndex]||exercises[0],nextEx=exercises[Math.min(state.currentExerciseIndex+1,exercises.length-1)];el.dayPlanLabel.textContent=`Plano ${plan.key}`;el.planTitle.textContent=plan.title;el.modeBadge.textContent=state.mode;el.nextPlanText.textContent=`Próximo plano: ${getUpcomingPlan().key}`;el.quickModeText.textContent=state.quickMode?'Modo: ultra rápido':'Modo: padrão';el.aggressiveBtn.textContent=state.aggressive?'Modo agressivo: ON':'Modo agressivo';el.exerciseName.textContent=state.isRest?'Descanso':ex.name;el.exerciseInstruction.textContent=state.isRest?`Próximo: ${nextEx.name}`:ex.instruction;el.timer.textContent=formatSeconds(state.remainingTime);el.phase.textContent=state.isRest?'REST':'WORK';el.countdownHint.textContent=(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)?`Faltam ${state.remainingTime}`:'';el.currentIndex.textContent=`${state.currentExerciseIndex+1}/${exercises.length}`;el.streakValue.textContent=calcStreak();el.adherenceValue.textContent=`${calcAdherence()}%`;el.loadValue.textContent=`${getWorkSeconds()}s`;const p=progressPercent();el.progressFill.style.width=`${p}%`;el.progressText.textContent=`${p}% da sessão`;updateSwitches();updateBodyProjection();updateTechCard()}
-async function start(){if(state.intervalId)return;await unlockAudio();if(state.remainingTime<=0)state.remainingTime=getWorkSeconds();requestWakeLock();state.intervalId=setInterval(()=>{state.remainingTime-=1;if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)countdownCue(state.remainingTime);if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0){beep(760,0.08,0.045);pulse(25)}if(state.remainingTime<=0){beep(620,0.20,0.07);pulse(70);if(!state.isRest){state.isRest=true;state.remainingTime=getRestSeconds()}else{state.isRest=false;state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){clearInterval(state.intervalId);state.intervalId=null;saveTodaySession(false);renderCalendar();renderRecent();resetCycle(false);releaseWakeLock();alert('Treino concluído');return}state.remainingTime=getWorkSeconds()}}updateMain()},1000);updateMain()}
+async function start(){if(state.intervalId)return;await unlockAudio();if(state.remainingTime<=0)state.remainingTime=getWorkSeconds();requestWakeLock();state.intervalId=setInterval(()=>{state.remainingTime-=1;if(!state.isRest&&state.remainingTime<=5&&state.remainingTime>0)countdownCue(state.remainingTime);if(state.isRest&&state.remainingTime<=3&&state.remainingTime>0){beep(760,0.08,0.045);pulse(25)}if(state.remainingTime<=0){beep(620,0.20,0.07);pulse(70);if(!state.isRest){state.isRest=true;state.remainingTime=getRestSeconds()}else{state.isRest=false;state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length){clearInterval(state.intervalId);state.intervalId=null;saveTodaySession(false);renderCalendar();renderRecent();resetCycle(false);releaseWakeLock();renderAnalysis();alert('Treino concluído');return}state.remainingTime=getWorkSeconds()}}updateMain()},1000);updateMain()}
 function pause(){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock()}
 function resetCycle(update=true){clearInterval(state.intervalId);state.intervalId=null;releaseWakeLock();state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();if(update)updateMain()}
 function skipExercise(){pause();state.currentExerciseIndex+=1;if(state.currentExerciseIndex>=getCurrentPlan().exercises.length)state.currentExerciseIndex=0;state.isRest=false;state.remainingTime=getWorkSeconds();updateMain()}
-function markTodayDone(){saveTodaySession(true);renderCalendar();renderRecent();updateMain()}
+function markTodayDone(){saveTodaySession(true);renderCalendar();renderRecent();updateMain();renderAnalysis()}
 function toggleSound(){state.soundOn=!state.soundOn;localStorage.setItem(STORAGE.sound,JSON.stringify(state.soundOn));updateSwitches()}
 function toggleHardcore(){state.hardcore=!state.hardcore;localStorage.setItem(STORAGE.hardcore,JSON.stringify(state.hardcore));resetCycle()}
 function toggleAggressive(){state.aggressive=!state.aggressive;localStorage.setItem(STORAGE.aggressive,JSON.stringify(state.aggressive));resetCycle()}
 function toggleTech(){el.techCard.classList.toggle('hidden')}
-el.startBtn.addEventListener('click',start);el.pauseBtn.addEventListener('click',pause);el.resetBtn.addEventListener('click',()=>resetCycle());el.skipBtn.addEventListener('click',skipExercise);el.markTodayBtn.addEventListener('click',markTodayDone);el.soundToggleWrap.addEventListener('click',toggleSound);el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});el.saveBodyBtn.addEventListener('click',saveBodyFromInputs);el.techBtn.addEventListener('click',toggleTech);el.aggressiveBtn.addEventListener('click',toggleAggressive);
-fillBodyInputs();resetCycle();renderCalendar();renderRecent();updateMain();
+function prevMonth(){state.viewDate.setMonth(state.viewDate.getMonth()-1);renderCalendar()}
+function nextMonth(){const tmp=new Date(state.viewDate);tmp.setMonth(tmp.getMonth()+1);state.viewDate=tmp;renderCalendar()}
+el.startBtn.addEventListener('click',start);el.pauseBtn.addEventListener('click',pause);el.resetBtn.addEventListener('click',()=>resetCycle());el.skipBtn.addEventListener('click',skipExercise);el.markTodayBtn.addEventListener('click',markTodayDone);el.soundToggleWrap.addEventListener('click',toggleSound);el.hardcoreToggleWrap.addEventListener('click',toggleHardcore);el.quickModeText.addEventListener('click',()=>{state.quickMode=!state.quickMode;localStorage.setItem(STORAGE.quick,JSON.stringify(state.quickMode));resetCycle()});el.saveBodyBtn.addEventListener('click',saveBodyFromInputs);el.techBtn.addEventListener('click',toggleTech);el.aggressiveBtn.addEventListener('click',toggleAggressive);el.prevMonthBtn.addEventListener('click',prevMonth);el.nextMonthBtn.addEventListener('click',nextMonth);
+
+fillBodyInputs();resetCycle();renderCalendar();renderRecent();updateMain();renderAnalysis();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 })();
 </script>
