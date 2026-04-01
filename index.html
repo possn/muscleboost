@@ -1,24 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuscleBoost V9</title>
+<title>MuscleBoost V11</title>
 
 <style>
-body{font-family:-apple-system;background:#F5F5F7;color:#1D1D1F;margin:0}
+body{font-family:-apple-system;background:#F5F5F7;margin:0;color:#1D1D1F}
 .container{padding:16px}
-.card{background:white;border-radius:16px;padding:16px;margin-bottom:12px}
-.hidden{display:none}
-button{padding:12px;border:none;border-radius:10px;margin:4px}
+.card{background:white;border-radius:18px;padding:18px;margin-bottom:14px}
+button{width:100%;padding:18px;border:none;border-radius:14px;font-size:18px;margin-top:10px}
 .primary{background:#1D1D1F;color:white}
-.secondary{background:#E5E5EA}
+.secondary{background:#E5E5EA;color:#1D1D1F;font-size:14px;padding:12px}
 .tabs{position:fixed;bottom:0;width:100%;display:flex;background:white;border-top:1px solid #ddd}
-.tab{flex:1;text-align:center;padding:10px}
+.tab{flex:1;text-align:center;padding:12px}
 .active{font-weight:bold}
-#bar{height:8px;background:#ddd;border-radius:5px;margin-top:10px}
-#fill{height:8px;background:#1D1D1F;width:0;border-radius:5px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day{padding:10px;border-radius:8px;text-align:center;background:#EEE}
+.done{background:#1D1D1F;color:white}
+#timer{font-size:52px;text-align:center;margin:10px 0}
+.small{font-size:13px;color:#666}
+canvas{width:100%;height:150px}
 </style>
 </head>
 
@@ -26,95 +28,76 @@ button{padding:12px;border:none;border-radius:10px;margin:4px}
 
 <div class="container">
 
-<div id="treino">
+<div id="main">
+
+<div class="card">
+<h3 id="monthLabel"></h3>
+<div id="calendar" class="calendar"></div>
+</div>
+
 <div class="card">
 <h2 id="plan"></h2>
-<div id="exercise"></div>
-<div id="timer" style="font-size:40px">40</div>
+<div id="exercise" style="font-size:22px"></div>
+<div id="timer">40</div>
 
-<div id="bar"><div id="fill"></div></div>
-
-<button class="primary" onclick="start()">Start</button>
+<button class="primary" onclick="start()">START</button>
 <button class="secondary" onclick="next()">Skip</button>
 
-<div id="tech" style="margin-top:10px;color:#666"></div>
-<div id="nextEx"></div>
+<div id="tech" class="small"></div>
+<div id="focus" class="small"></div>
 
-</div>
-</div>
-
-<div id="progresso" class="hidden">
-<div class="card">
-<h3>Calendário</h3>
-<div id="calendar"></div>
-<button onclick="prevMonth()">◀</button>
-<button onclick="nextMonth()">▶</button>
 </div>
 
 <div class="card">
-<h3>Resumo</h3>
-<div id="summary"></div>
-</div>
+<button onclick="feedback('easy')">Fácil</button>
+<button onclick="feedback('normal')">Normal</button>
+<button onclick="feedback('hard')">Difícil</button>
 </div>
 
-<div id="corpo" class="hidden">
+</div>
+
+<div id="corpo" style="display:none">
+
 <div class="card">
 Peso <input id="peso"><br>
 Braço <input id="braco"><br>
 Cintura <input id="cintura"><br>
 <button onclick="saveBody()">Guardar</button>
 </div>
+
+<div class="card">
+<canvas id="chart"></canvas>
+<div id="analysis"></div>
+</div>
+
 </div>
 
 </div>
 
 <div class="tabs">
-<div class="tab active" onclick="tab('treino',this)">Treino</div>
-<div class="tab" onclick="tab('progresso',this)">Progresso</div>
+<div class="tab active" onclick="tab('main',this)">Treino</div>
 <div class="tab" onclick="tab('corpo',this)">Corpo</div>
 </div>
 
 <script>
 
-let plans={
-A:["Push-ups","Decline push-ups"],
-B:["Plank","Leg raises","Cobra","Snow angels"],
-C:["Dips","Shoulder taps"],
-E:["Curl","Hammer curl"]
-};
-
-let tech={
-"Push-ups":"Corpo alinhado, cotovelos 45°",
-"Decline push-ups":"Pés elevados",
-"Plank":"Core contraído",
-"Leg raises":"Controlado",
-"Cobra":"Abrir peito",
-"Snow angels":"Movimento lento",
-"Dips":"Descer controlado",
-"Shoulder taps":"Estável",
-"Curl":"Subida lenta",
-"Hammer curl":"Neutro"
-};
+let plans={A:["Push-ups","Decline push-ups"],B:["Plank","Leg raises","Cobra","Snow angels"],C:["Dips","Shoulder taps"],E:["Curl","Hammer curl"]};
+let tech={"Push-ups":"Alinhado, 45°","Decline push-ups":"Pés elevados","Plank":"Core","Leg raises":"Controlado","Cobra":"Postura","Snow angels":"Escápulas","Dips":"Tríceps","Shoulder taps":"Estável","Curl":"Lento","Hammer curl":"Neutro"};
+let focus={"Push-ups":"Peito","Decline push-ups":"Peito sup","Plank":"Core","Leg raises":"Abd","Cobra":"Postura","Snow angels":"Escápulas","Dips":"Tríceps","Shoulder taps":"Core","Curl":"Bíceps","Hammer curl":"Antebraço"};
 
 let keys=Object.keys(plans);
-
-let state={
-i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)
-};
+let state={i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)};
 
 function prog(){return 40+(state.week-1)*5;}
 
 function render(){
 let p=keys[state.i%keys.length];
 let ex=plans[p][state.ex];
-document.getElementById("plan").innerText="Plano "+p+" Semana "+state.week;
-document.getElementById("exercise").innerText=ex;
-document.getElementById("timer").innerText=state.time;
-document.getElementById("tech").innerText=tech[ex]||"";
-document.getElementById("nextEx").innerText="Seguinte: "+(plans[p][state.ex+1]||"Novo plano");
-
-let progress=(state.ex+1)/plans[p].length*100;
-document.getElementById("fill").style.width=progress+"%";
+plan.innerText="Plano "+p+" | Semana "+state.week;
+exercise.innerText=ex;
+timer.innerText=state.time;
+techEl.innerText=tech[ex];
+focusEl.innerText="Foco: "+focus[ex];
 }
 
 function start(){
@@ -130,72 +113,81 @@ function next(){
 clearInterval(state.int);
 state.int=null;
 state.ex++;
-if(state.ex>=plans[keys[state.i%keys.length]].length){
-state.ex=0;state.i++;
-}
+if(state.ex>=plans[keys[state.i%keys.length]].length){state.ex=0;state.i++;}
 state.time=prog();
 render();
 }
 
+function feedback(f){
+if(f==="easy") state.week++;
+if(f==="hard") state.week=Math.max(1,state.week-1);
+localStorage.setItem("week",state.week);
+render();
+}
+
 function tab(t,e){
-["treino","progresso","corpo"].forEach(id=>document.getElementById(id).classList.add("hidden"));
-document.getElementById(t).classList.remove("hidden");
+main.style.display="none";corpo.style.display="none";
+document.getElementById(t).style.display="block";
 document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
 e.classList.add("active");
 }
 
 let view=new Date();
 
-function renderCal(){
+function renderCalendar(){
+monthLabel.innerText=view.toLocaleString("pt-PT",{month:"long",year:"numeric"});
 let c="";
 let d=new Date(view.getFullYear(),view.getMonth(),1);
 while(d.getMonth()==view.getMonth()){
-let k=d.toISOString().slice(0,10);
-let done=localStorage.getItem(k)?"✓":"";
-c+=`<div onclick="toggle('${k}')">${d.getDate()} ${done}</div>`;
+let key=d.toISOString().slice(0,10);
+let done=localStorage.getItem(key)?"done":"";
+c+=`<div class="day ${done}" onclick="toggle('${key}')">${d.getDate()}</div>`;
 d.setDate(d.getDate()+1);
 }
-document.getElementById("calendar").innerHTML=c;
+calendar.innerHTML=c;
 }
 
 function toggle(k){
 if(localStorage.getItem(k))localStorage.removeItem(k);
 else localStorage.setItem(k,1);
-renderCal();
+renderCalendar();
 }
 
-function prevMonth(){view.setMonth(view.getMonth()-1);renderCal();}
-function nextMonth(){view.setMonth(view.getMonth()+1);renderCal();}
-
 function saveBody(){
-let d={
-peso:document.getElementById("peso").value,
-braco:document.getElementById("braco").value,
-cintura:document.getElementById("cintura").value,
-date:new Date().toISOString()
-};
+let d={peso:parseFloat(peso.value),braco:parseFloat(braco.value),cintura:parseFloat(cintura.value)};
 let h=JSON.parse(localStorage.getItem("body")||"[]");
 h.push(d);
 localStorage.setItem("body",JSON.stringify(h));
-alert("guardado");
-updateSummary();
+analyse();
+draw();
 }
 
-function updateSummary(){
+function analyse(){
 let h=JSON.parse(localStorage.getItem("body")||"[]");
-if(h.length<2){document.getElementById("summary").innerText="Sem dados suficientes";return;}
-let last=h[h.length-1],prev=h[h.length-2];
-let dp=last.peso-prev.peso;
-let db=last.braco-prev.braco;
-let dc=last.cintura-prev.cintura;
-
-document.getElementById("summary").innerText=
-"Peso:"+dp+" Braço:"+db+" Cintura:"+dc;
+if(h.length<2){analysis.innerText="Sem dados";return;}
+let a=h[h.length-1],b=h[h.length-2];
+let dp=a.peso-b.peso,db=a.braco-b.braco,dc=a.cintura-b.cintura;
+let score=(db*2 - dc + dp).toFixed(2);
+analysis.innerText="Score: "+score;
 }
+
+function draw(){
+let h=JSON.parse(localStorage.getItem("body")||"[]");
+let ctx=document.getElementById("chart").getContext("2d");
+ctx.clearRect(0,0,300,150);
+h.forEach((e,i)=>{ctx.fillRect(i*20,150-e.peso*2,10,e.peso*2)});
+}
+
+let plan=document.getElementById("plan");
+let exercise=document.getElementById("exercise");
+let timer=document.getElementById("timer");
+let techEl=document.getElementById("tech");
+let focusEl=document.getElementById("focus");
 
 render();
-renderCal();
-updateSummary();
+renderCalendar();
+analyse();
+draw();
 
 </script>
 
