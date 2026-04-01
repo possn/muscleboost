@@ -1,206 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuscleBoost Final</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MuscleBoost V15</title>
 <style>
-body{font-family:-apple-system;background:#F5F5F7;margin:0;color:#1D1D1F}
-.container{padding:16px}
-.card{background:white;border-radius:18px;padding:18px;margin-bottom:14px}
-button{width:100%;padding:18px;border:none;border-radius:14px;font-size:18px;margin-top:10px}
-.primary{background:#1D1D1F;color:white}
-.secondary{background:#E5E5EA;color:#1D1D1F;font-size:14px;padding:12px}
-.row{display:flex;gap:8px}
-.row button{flex:1}
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.day{padding:10px;border-radius:8px;text-align:center;background:#EEE}
-.done{background:#1D1D1F;color:white}
-#timer{font-size:52px;text-align:center;margin:10px 0}
-.small{font-size:13px;color:#666}
+body{font-family:-apple-system;background:#F5F5F7;margin:0;padding:10px}
+.card{background:#fff;border-radius:16px;padding:14px;margin-bottom:10px}
+.big{font-size:32px;text-align:center;font-weight:700}
+button{padding:14px;border:none;border-radius:12px;margin:4px;font-weight:600}
+input{padding:10px;border-radius:10px;border:1px solid #ccc;margin:4px;width:30%}
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
 <div class="card">
-<h3 id="monthLabel"></h3>
-<div id="calendar" class="calendar"></div>
-</div>
-
-<div class="card">
-<h2 id="plan"></h2>
-<div id="exercise" style="font-size:22px"></div>
-<div id="nextEx" class="small"></div>
-<div id="timer">40</div>
-
-<button class="primary" onclick="start()">START</button>
-
-<div class="row">
-<button onclick="pause()">Pause</button>
-<button onclick="next()">Skip</button>
-</div>
-
-<div id="tech" class="small"></div>
-</div>
-
-<div class="card">
-<div class="row">
+<div id="exercise" class="big"></div>
+<div id="timer" class="big"></div>
+<button onclick="start()">START</button>
+<button onclick="pause()">PAUSE</button>
+<div>
 <button onclick="feedback('easy')">Fácil</button>
 <button onclick="feedback('normal')">Normal</button>
 <button onclick="feedback('hard')">Difícil</button>
 </div>
+<div id="next"></div>
 </div>
 
 <div class="card">
-<h3>Corpo</h3>
-Altura <input id="altura"><br>
-Peso <input id="peso"><br>
-Braço <input id="braco"><br>
-Peito <input id="peito"><br>
-Cintura <input id="cintura"><br>
-<button onclick="saveBody()">Guardar</button>
+<input id="w" placeholder="Peso">
+<input id="arm" placeholder="Braço">
+<input id="waist" placeholder="Cintura">
+<button onclick="save()">Guardar</button>
 <div id="analysis"></div>
-</div>
-
 </div>
 
 <script>
 
-let plans={
-A:["Push-ups","Decline push-ups"],
-B:["Plank","Leg raises","Cobra","Snow angels"],
-C:["Dips","Shoulder taps"],
-E:["Curl","Hammer curl"]
-};
-
-let tech={
-"Push-ups":"Corpo alinhado, descer controlado, cotovelos 45°",
-"Decline push-ups":"Pés elevados, mais carga no peito superior",
-"Plank":"Core contraído",
-"Leg raises":"Controlado",
-"Cobra":"Abrir peito",
-"Snow angels":"Escápulas",
-"Dips":"Tríceps",
-"Shoulder taps":"Estável",
-"Curl":"Subida lenta",
-"Hammer curl":"Neutro"
-};
-
-let keys=Object.keys(plans);
-
-let state={
-i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)
-};
-
-let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-function beep(){
-let o=audioCtx.createOscillator();
-o.connect(audioCtx.destination);
-o.start();
-setTimeout(()=>o.stop(),100);
+let S={
+ level:2,
+ t:30,
+ running:false,
+ data:JSON.parse(localStorage.getItem("mb_body")||"[]"),
+ sessions:JSON.parse(localStorage.getItem("mb_sessions")||"{}"),
+ feedback:[]
 }
 
-function render(){
-let p=keys[state.i%keys.length];
-let ex=plans[p][state.ex];
+const ex=[
+"Push-ups","Decline push-ups","Explosive push-ups",
+"Curl garrafão","Hammer curl","Slow curl",
+"Plank","Side plank","Leg raises"
+];
 
-plan.innerText="Plano "+p+" | Semana "+state.week;
-exercise.innerText=ex;
-nextEx.innerText="Seguinte: "+(plans[p][state.ex+1]||"Novo plano");
-timer.innerText=state.time;
-techEl.innerText=tech[ex];
+function baseTime(){return 30+S.level*5;}
+function getEx(){return ex[S.level-1];}
+
+function update(){
+ exercise.innerText=getEx();
+ next.innerText="Próximo: "+ex[Math.min(S.level,ex.length-1)];
+ timer.innerText=S.t;
 }
 
+let interval;
 function start(){
-if(state.int) return;
-state.int=setInterval(()=>{
-state.time--;
-
-if(state.time<=5 && state.time>0) beep();
-
-if(state.time<=0) next();
-
-render();
-},1000);
+ if(!S.running){
+  S.running=true;
+  interval=setInterval(tick,1000);
+ }
 }
 
 function pause(){
-clearInterval(state.int);
-state.int=null;
+ S.running=false;
+ clearInterval(interval);
 }
 
-function next(){
-clearInterval(state.int);
-state.int=null;
-
-state.ex++;
-if(state.ex>=plans[keys[state.i%keys.length]].length){
-state.ex=0;state.i++;
+function tick(){
+ S.t--;
+ if(S.t<=5 && S.t>0){beep(); if(navigator.vibrate) navigator.vibrate(100);}
+ if(S.t<=0){
+  markSession();
+  pause();
+  S.t=baseTime();
+ }
+ update();
 }
 
-state.time=40+(state.week-1)*5;
-render();
+let audioCtx;
+function beep(){
+ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+ let o=audioCtx.createOscillator();
+ let g=audioCtx.createGain();
+ o.connect(g); g.connect(audioCtx.destination);
+ g.gain.value=0.1;
+ o.start(); setTimeout(()=>o.stop(),120);
 }
 
 function feedback(f){
-if(f==="easy") state.week++;
-if(f==="hard") state.week=Math.max(1,state.week-1);
-localStorage.setItem("week",state.week);
-alert("Ajuste aplicado");
-render();
+ S.feedback.push(f);
+ if(S.feedback.length>2) S.feedback.shift();
+
+ if(S.feedback.length==2){
+  if(S.feedback[0]=='easy'&&S.feedback[1]=='easy') S.level++;
+  if(S.feedback[0]=='hard'&&S.feedback[1]=='hard') S.level--;
+ }
+
+ S.level=Math.max(1,Math.min(9,S.level));
+ S.t=baseTime();
+ update();
 }
 
-let view=new Date();
-
-function renderCalendar(){
-monthLabel.innerText=view.toLocaleString("pt-PT",{month:"long",year:"numeric"});
-let c="";
-let d=new Date(view.getFullYear(),view.getMonth(),1);
-while(d.getMonth()==view.getMonth()){
-let k=d.toISOString().slice(0,10);
-let done=localStorage.getItem(k)?"done":"";
-c+=`<div class="day ${done}" onclick="toggle('${k}')">${d.getDate()}</div>`;
-d.setDate(d.getDate()+1);
-}
-calendar.innerHTML=c;
+function markSession(){
+ let d=new Date().toISOString().slice(0,10);
+ S.sessions[d]=(S.sessions[d]||0)+1;
+ localStorage.setItem("mb_sessions",JSON.stringify(S.sessions));
 }
 
-function toggle(k){
-if(localStorage.getItem(k)) localStorage.removeItem(k);
-else localStorage.setItem(k,1);
-renderCalendar();
+function consistency(){
+ let last7=0;
+ let today=new Date();
+ for(let i=0;i<7;i++){
+  let d=new Date(); d.setDate(today.getDate()-i);
+  let k=d.toISOString().slice(0,10);
+  if(S.sessions[k]) last7++;
+ }
+ return last7/7;
 }
 
-function saveBody(){
-let altura=parseFloat(document.getElementById("altura").value);
-let peso=parseFloat(document.getElementById("peso").value);
-let braco=parseFloat(document.getElementById("braco").value);
-let peito=parseFloat(document.getElementById("peito").value);
-let cintura=parseFloat(document.getElementById("cintura").value);
-
-let consistency=Object.keys(localStorage).filter(k=>k.includes("-")).length;
-
-let score = (braco*2 + peito - cintura + consistency*0.2 + state.week*0.5).toFixed(1);
-
-let result="Neutro";
-if(score>50) result="Ganho muscular provável";
-if(score<30) result="Baixo estímulo";
-
-analysis.innerText="Score: "+score+" | "+result;
+function save(){
+ let rec={
+  w:parseFloat(w.value),
+  arm:parseFloat(arm.value),
+  waist:parseFloat(waist.value),
+  d:Date.now()
+ };
+ S.data.push(rec);
+ localStorage.setItem("mb_body",JSON.stringify(S.data));
+ analyze();
 }
 
-let plan=document.getElementById("plan");
-let exercise=document.getElementById("exercise");
-let timer=document.getElementById("timer");
-let techEl=document.getElementById("tech");
+function analyze(){
+ if(S.data.length<2){
+  analysis.innerText="Sem dados suficientes";
+  return;
+ }
 
-render();
-renderCalendar();
+ let a=S.data[S.data.length-2];
+ let b=S.data[S.data.length-1];
+
+ let dw=b.w-a.w;
+ let da=b.arm-a.arm;
+ let cons=consistency();
+
+ // weighted projection
+ let rateW=dw*(1+cons);
+ let rateA=da*(1+cons);
+
+ let projW=(rateW*6).toFixed(2);
+ let projA=(rateA*6).toFixed(2);
+
+ let interp="";
+ if(dw>0 && da>0 && cons>0.6) interp="Hipertrofia consistente";
+ else if(dw>0 && da>0) interp="Ganho provável";
+ else if(dw>0) interp="Ganho gordura provável";
+ else interp="Sem progresso";
+
+ analysis.innerText=
+ interp+
+ "\nConsistência: "+Math.round(cons*100)+"%"+
+ "\nΔPeso "+dw.toFixed(2)+"kg | ΔBraço "+da.toFixed(2)+"cm"+
+ "\nProjeção 6 semanas: +"+projW+"kg | +"+projA+"cm braço";
+}
+
+S.t=baseTime();
+update();
+analyze();
 
 </script>
 
