@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuscleBoost V11</title>
+<title>MuscleBoost Final</title>
 
 <style>
 body{font-family:-apple-system;background:#F5F5F7;margin:0;color:#1D1D1F}
@@ -12,23 +12,19 @@ body{font-family:-apple-system;background:#F5F5F7;margin:0;color:#1D1D1F}
 button{width:100%;padding:18px;border:none;border-radius:14px;font-size:18px;margin-top:10px}
 .primary{background:#1D1D1F;color:white}
 .secondary{background:#E5E5EA;color:#1D1D1F;font-size:14px;padding:12px}
-.tabs{position:fixed;bottom:0;width:100%;display:flex;background:white;border-top:1px solid #ddd}
-.tab{flex:1;text-align:center;padding:12px}
-.active{font-weight:bold}
+.row{display:flex;gap:8px}
+.row button{flex:1}
 .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .day{padding:10px;border-radius:8px;text-align:center;background:#EEE}
 .done{background:#1D1D1F;color:white}
 #timer{font-size:52px;text-align:center;margin:10px 0}
 .small{font-size:13px;color:#666}
-canvas{width:100%;height:150px}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
-<div id="main">
 
 <div class="card">
 <h3 id="monthLabel"></h3>
@@ -38,83 +34,116 @@ canvas{width:100%;height:150px}
 <div class="card">
 <h2 id="plan"></h2>
 <div id="exercise" style="font-size:22px"></div>
+<div id="nextEx" class="small"></div>
 <div id="timer">40</div>
 
 <button class="primary" onclick="start()">START</button>
-<button class="secondary" onclick="next()">Skip</button>
+
+<div class="row">
+<button onclick="pause()">Pause</button>
+<button onclick="next()">Skip</button>
+</div>
 
 <div id="tech" class="small"></div>
-<div id="focus" class="small"></div>
-
 </div>
 
 <div class="card">
+<div class="row">
 <button onclick="feedback('easy')">Fácil</button>
 <button onclick="feedback('normal')">Normal</button>
 <button onclick="feedback('hard')">Difícil</button>
 </div>
-
 </div>
 
-<div id="corpo" style="display:none">
-
 <div class="card">
+<h3>Corpo</h3>
+Altura <input id="altura"><br>
 Peso <input id="peso"><br>
 Braço <input id="braco"><br>
+Peito <input id="peito"><br>
 Cintura <input id="cintura"><br>
 <button onclick="saveBody()">Guardar</button>
-</div>
-
-<div class="card">
-<canvas id="chart"></canvas>
 <div id="analysis"></div>
 </div>
 
 </div>
 
-</div>
-
-<div class="tabs">
-<div class="tab active" onclick="tab('main',this)">Treino</div>
-<div class="tab" onclick="tab('corpo',this)">Corpo</div>
-</div>
-
 <script>
 
-let plans={A:["Push-ups","Decline push-ups"],B:["Plank","Leg raises","Cobra","Snow angels"],C:["Dips","Shoulder taps"],E:["Curl","Hammer curl"]};
-let tech={"Push-ups":"Alinhado, 45°","Decline push-ups":"Pés elevados","Plank":"Core","Leg raises":"Controlado","Cobra":"Postura","Snow angels":"Escápulas","Dips":"Tríceps","Shoulder taps":"Estável","Curl":"Lento","Hammer curl":"Neutro"};
-let focus={"Push-ups":"Peito","Decline push-ups":"Peito sup","Plank":"Core","Leg raises":"Abd","Cobra":"Postura","Snow angels":"Escápulas","Dips":"Tríceps","Shoulder taps":"Core","Curl":"Bíceps","Hammer curl":"Antebraço"};
+let plans={
+A:["Push-ups","Decline push-ups"],
+B:["Plank","Leg raises","Cobra","Snow angels"],
+C:["Dips","Shoulder taps"],
+E:["Curl","Hammer curl"]
+};
+
+let tech={
+"Push-ups":"Corpo alinhado, descer controlado, cotovelos 45°",
+"Decline push-ups":"Pés elevados, mais carga no peito superior",
+"Plank":"Core contraído",
+"Leg raises":"Controlado",
+"Cobra":"Abrir peito",
+"Snow angels":"Escápulas",
+"Dips":"Tríceps",
+"Shoulder taps":"Estável",
+"Curl":"Subida lenta",
+"Hammer curl":"Neutro"
+};
 
 let keys=Object.keys(plans);
-let state={i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)};
 
-function prog(){return 40+(state.week-1)*5;}
+let state={
+i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)
+};
+
+let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function beep(){
+let o=audioCtx.createOscillator();
+o.connect(audioCtx.destination);
+o.start();
+setTimeout(()=>o.stop(),100);
+}
 
 function render(){
 let p=keys[state.i%keys.length];
 let ex=plans[p][state.ex];
+
 plan.innerText="Plano "+p+" | Semana "+state.week;
 exercise.innerText=ex;
+nextEx.innerText="Seguinte: "+(plans[p][state.ex+1]||"Novo plano");
 timer.innerText=state.time;
 techEl.innerText=tech[ex];
-focusEl.innerText="Foco: "+focus[ex];
 }
 
 function start(){
 if(state.int) return;
 state.int=setInterval(()=>{
 state.time--;
+
+if(state.time<=5 && state.time>0) beep();
+
 if(state.time<=0) next();
+
 render();
 },1000);
+}
+
+function pause(){
+clearInterval(state.int);
+state.int=null;
 }
 
 function next(){
 clearInterval(state.int);
 state.int=null;
+
 state.ex++;
-if(state.ex>=plans[keys[state.i%keys.length]].length){state.ex=0;state.i++;}
-state.time=prog();
+if(state.ex>=plans[keys[state.i%keys.length]].length){
+state.ex=0;state.i++;
+}
+
+state.time=40+(state.week-1)*5;
 render();
 }
 
@@ -122,14 +151,8 @@ function feedback(f){
 if(f==="easy") state.week++;
 if(f==="hard") state.week=Math.max(1,state.week-1);
 localStorage.setItem("week",state.week);
+alert("Ajuste aplicado");
 render();
-}
-
-function tab(t,e){
-main.style.display="none";corpo.style.display="none";
-document.getElementById(t).style.display="block";
-document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-e.classList.add("active");
 }
 
 let view=new Date();
@@ -139,55 +162,45 @@ monthLabel.innerText=view.toLocaleString("pt-PT",{month:"long",year:"numeric"});
 let c="";
 let d=new Date(view.getFullYear(),view.getMonth(),1);
 while(d.getMonth()==view.getMonth()){
-let key=d.toISOString().slice(0,10);
-let done=localStorage.getItem(key)?"done":"";
-c+=`<div class="day ${done}" onclick="toggle('${key}')">${d.getDate()}</div>`;
+let k=d.toISOString().slice(0,10);
+let done=localStorage.getItem(k)?"done":"";
+c+=`<div class="day ${done}" onclick="toggle('${k}')">${d.getDate()}</div>`;
 d.setDate(d.getDate()+1);
 }
 calendar.innerHTML=c;
 }
 
 function toggle(k){
-if(localStorage.getItem(k))localStorage.removeItem(k);
+if(localStorage.getItem(k)) localStorage.removeItem(k);
 else localStorage.setItem(k,1);
 renderCalendar();
 }
 
 function saveBody(){
-let d={peso:parseFloat(peso.value),braco:parseFloat(braco.value),cintura:parseFloat(cintura.value)};
-let h=JSON.parse(localStorage.getItem("body")||"[]");
-h.push(d);
-localStorage.setItem("body",JSON.stringify(h));
-analyse();
-draw();
-}
+let altura=parseFloat(document.getElementById("altura").value);
+let peso=parseFloat(document.getElementById("peso").value);
+let braco=parseFloat(document.getElementById("braco").value);
+let peito=parseFloat(document.getElementById("peito").value);
+let cintura=parseFloat(document.getElementById("cintura").value);
 
-function analyse(){
-let h=JSON.parse(localStorage.getItem("body")||"[]");
-if(h.length<2){analysis.innerText="Sem dados";return;}
-let a=h[h.length-1],b=h[h.length-2];
-let dp=a.peso-b.peso,db=a.braco-b.braco,dc=a.cintura-b.cintura;
-let score=(db*2 - dc + dp).toFixed(2);
-analysis.innerText="Score: "+score;
-}
+let consistency=Object.keys(localStorage).filter(k=>k.includes("-")).length;
 
-function draw(){
-let h=JSON.parse(localStorage.getItem("body")||"[]");
-let ctx=document.getElementById("chart").getContext("2d");
-ctx.clearRect(0,0,300,150);
-h.forEach((e,i)=>{ctx.fillRect(i*20,150-e.peso*2,10,e.peso*2)});
+let score = (braco*2 + peito - cintura + consistency*0.2 + state.week*0.5).toFixed(1);
+
+let result="Neutro";
+if(score>50) result="Ganho muscular provável";
+if(score<30) result="Baixo estímulo";
+
+analysis.innerText="Score: "+score+" | "+result;
 }
 
 let plan=document.getElementById("plan");
 let exercise=document.getElementById("exercise");
 let timer=document.getElementById("timer");
 let techEl=document.getElementById("tech");
-let focusEl=document.getElementById("focus");
 
 render();
 renderCalendar();
-analyse();
-draw();
 
 </script>
 
