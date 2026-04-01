@@ -1,53 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MuscleBoost v8</title>
+<title>MuscleBoost V9</title>
 
 <style>
 body{font-family:-apple-system;background:#F5F5F7;color:#1D1D1F;margin:0}
 .container{padding:16px}
+.card{background:white;border-radius:16px;padding:16px;margin-bottom:12px}
 .hidden{display:none}
-h1{text-align:center;font-weight:500}
-
-.card{
-background:white;
-border-radius:16px;
-padding:20px;
-margin-bottom:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.05)
-}
-
-button{
-padding:14px;
-border:none;
-border-radius:12px;
-font-size:16px;
-margin:6px;
-}
-
+button{padding:12px;border:none;border-radius:10px;margin:4px}
 .primary{background:#1D1D1F;color:white}
 .secondary{background:#E5E5EA}
-
-.tabs{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-display:flex;
-background:white;
-border-top:1px solid #ddd;
-}
-
-.tab{
-flex:1;
-text-align:center;
-padding:10px;
-font-size:14px;
-}
-
+.tabs{position:fixed;bottom:0;width:100%;display:flex;background:white;border-top:1px solid #ddd}
+.tab{flex:1;text-align:center;padding:10px}
 .active{font-weight:bold}
+#bar{height:8px;background:#ddd;border-radius:5px;margin-top:10px}
+#fill{height:8px;background:#1D1D1F;width:0;border-radius:5px}
 </style>
 </head>
 
@@ -57,16 +28,18 @@ font-size:14px;
 
 <div id="treino">
 <div class="card">
-<h1 id="plan"></h1>
-<div id="exercise" style="text-align:center;font-size:22px;margin:10px"></div>
-<div id="timer" style="text-align:center;font-size:48px">40</div>
+<h2 id="plan"></h2>
+<div id="exercise"></div>
+<div id="timer" style="font-size:40px">40</div>
 
-<div style="text-align:center">
+<div id="bar"><div id="fill"></div></div>
+
 <button class="primary" onclick="start()">Start</button>
 <button class="secondary" onclick="next()">Skip</button>
-</div>
 
-<div style="text-align:center;margin-top:10px;color:#666" id="nextEx"></div>
+<div id="tech" style="margin-top:10px;color:#666"></div>
+<div id="nextEx"></div>
+
 </div>
 </div>
 
@@ -77,11 +50,15 @@ font-size:14px;
 <button onclick="prevMonth()">◀</button>
 <button onclick="nextMonth()">▶</button>
 </div>
+
+<div class="card">
+<h3>Resumo</h3>
+<div id="summary"></div>
+</div>
 </div>
 
 <div id="corpo" class="hidden">
 <div class="card">
-<h3>Registo</h3>
 Peso <input id="peso"><br>
 Braço <input id="braco"><br>
 Cintura <input id="cintura"><br>
@@ -92,42 +69,52 @@ Cintura <input id="cintura"><br>
 </div>
 
 <div class="tabs">
-<div class="tab active" onclick="switchTab('treino',this)">Treino</div>
-<div class="tab" onclick="switchTab('progresso',this)">Progresso</div>
-<div class="tab" onclick="switchTab('corpo',this)">Corpo</div>
+<div class="tab active" onclick="tab('treino',this)">Treino</div>
+<div class="tab" onclick="tab('progresso',this)">Progresso</div>
+<div class="tab" onclick="tab('corpo',this)">Corpo</div>
 </div>
 
 <script>
 
-let plans = {
+let plans={
 A:["Push-ups","Decline push-ups"],
 B:["Plank","Leg raises","Cobra","Snow angels"],
 C:["Dips","Shoulder taps"],
-E:["Curl garrafão","Hammer curl"]
+E:["Curl","Hammer curl"]
 };
 
-let keys = Object.keys(plans);
-
-let state = {
-i:0, ex:0, time:40,
-week: parseInt(localStorage.getItem("week")||1)
+let tech={
+"Push-ups":"Corpo alinhado, cotovelos 45°",
+"Decline push-ups":"Pés elevados",
+"Plank":"Core contraído",
+"Leg raises":"Controlado",
+"Cobra":"Abrir peito",
+"Snow angels":"Movimento lento",
+"Dips":"Descer controlado",
+"Shoulder taps":"Estável",
+"Curl":"Subida lenta",
+"Hammer curl":"Neutro"
 };
 
-function progression(){
-return 40 + (state.week-1)*5;
-}
+let keys=Object.keys(plans);
 
-function currentPlan(){
-return keys[state.i % keys.length];
-}
+let state={
+i:0,ex:0,time:40,week:parseInt(localStorage.getItem("week")||1)
+};
+
+function prog(){return 40+(state.week-1)*5;}
 
 function render(){
-document.getElementById("plan").innerText="Plano "+currentPlan();
-document.getElementById("exercise").innerText=plans[currentPlan()][state.ex];
+let p=keys[state.i%keys.length];
+let ex=plans[p][state.ex];
+document.getElementById("plan").innerText="Plano "+p+" Semana "+state.week;
+document.getElementById("exercise").innerText=ex;
 document.getElementById("timer").innerText=state.time;
+document.getElementById("tech").innerText=tech[ex]||"";
+document.getElementById("nextEx").innerText="Seguinte: "+(plans[p][state.ex+1]||"Novo plano");
 
-let next = plans[currentPlan()][state.ex+1] || "Novo plano";
-document.getElementById("nextEx").innerText="Seguinte: "+next;
+let progress=(state.ex+1)/plans[p].length*100;
+document.getElementById("fill").style.width=progress+"%";
 }
 
 function start(){
@@ -142,73 +129,73 @@ render();
 function next(){
 clearInterval(state.int);
 state.int=null;
-
 state.ex++;
-if(state.ex>=plans[currentPlan()].length){
-state.ex=0;
-state.i++;
+if(state.ex>=plans[keys[state.i%keys.length]].length){
+state.ex=0;state.i++;
 }
-
-state.time=progression();
+state.time=prog();
 render();
 }
 
-function switchTab(tab,el){
-document.getElementById("treino").classList.add("hidden");
-document.getElementById("progresso").classList.add("hidden");
-document.getElementById("corpo").classList.add("hidden");
-
-document.getElementById(tab).classList.remove("hidden");
-
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-el.classList.add("active");
+function tab(t,e){
+["treino","progresso","corpo"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+document.getElementById(t).classList.remove("hidden");
+document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+e.classList.add("active");
 }
 
-let viewDate=new Date();
+let view=new Date();
 
-function renderCalendar(){
+function renderCal(){
 let c="";
-let d=new Date(viewDate.getFullYear(),viewDate.getMonth(),1);
-while(d.getMonth()==viewDate.getMonth()){
-let key=d.toISOString().slice(0,10);
-let done=localStorage.getItem(key)?"✓":"";
-c+=`<div onclick="toggleDay('${key}')">${d.getDate()} ${done}</div>`;
+let d=new Date(view.getFullYear(),view.getMonth(),1);
+while(d.getMonth()==view.getMonth()){
+let k=d.toISOString().slice(0,10);
+let done=localStorage.getItem(k)?"✓":"";
+c+=`<div onclick="toggle('${k}')">${d.getDate()} ${done}</div>`;
 d.setDate(d.getDate()+1);
 }
 document.getElementById("calendar").innerHTML=c;
 }
 
-function toggleDay(key){
-if(localStorage.getItem(key)) localStorage.removeItem(key);
-else localStorage.setItem(key,1);
-renderCalendar();
+function toggle(k){
+if(localStorage.getItem(k))localStorage.removeItem(k);
+else localStorage.setItem(k,1);
+renderCal();
 }
 
-function prevMonth(){
-viewDate.setMonth(viewDate.getMonth()-1);
-renderCalendar();
-}
-
-function nextMonth(){
-viewDate.setMonth(viewDate.getMonth()+1);
-renderCalendar();
-}
+function prevMonth(){view.setMonth(view.getMonth()-1);renderCal();}
+function nextMonth(){view.setMonth(view.getMonth()+1);renderCal();}
 
 function saveBody(){
-let data={
+let d={
 peso:document.getElementById("peso").value,
 braco:document.getElementById("braco").value,
 cintura:document.getElementById("cintura").value,
 date:new Date().toISOString()
 };
-let hist=JSON.parse(localStorage.getItem("body")||"[]");
-hist.push(data);
-localStorage.setItem("body",JSON.stringify(hist));
+let h=JSON.parse(localStorage.getItem("body")||"[]");
+h.push(d);
+localStorage.setItem("body",JSON.stringify(h));
 alert("guardado");
+updateSummary();
+}
+
+function updateSummary(){
+let h=JSON.parse(localStorage.getItem("body")||"[]");
+if(h.length<2){document.getElementById("summary").innerText="Sem dados suficientes";return;}
+let last=h[h.length-1],prev=h[h.length-2];
+let dp=last.peso-prev.peso;
+let db=last.braco-prev.braco;
+let dc=last.cintura-prev.cintura;
+
+document.getElementById("summary").innerText=
+"Peso:"+dp+" Braço:"+db+" Cintura:"+dc;
 }
 
 render();
-renderCalendar();
+renderCal();
+updateSummary();
 
 </script>
 
