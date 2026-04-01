@@ -1,181 +1,1459 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MuscleBoost V15</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MuscleBoost</title>
+<meta name="theme-color" content="#F5F5F7">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
-body{font-family:-apple-system;background:#F5F5F7;margin:0;padding:10px}
-.card{background:#fff;border-radius:16px;padding:14px;margin-bottom:10px}
-.big{font-size:32px;text-align:center;font-weight:700}
-button{padding:14px;border:none;border-radius:12px;margin:4px;font-weight:600}
-input{padding:10px;border-radius:10px;border:1px solid #ccc;margin:4px;width:30%}
+:root{
+  --bg:#F5F5F7;
+  --panel:#FFFFFF;
+  --panel-soft:#FAFAFC;
+  --line:#E6E7EB;
+  --text:#1D1D1F;
+  --muted:#6E6E73;
+  --accent:#0A84FF;
+  --accent-2:#53C4FF;
+  --accent-soft:#EAF3FF;
+  --good:#E8F7EE;
+  --bad:#FCEBEC;
+  --warn:#FFF4E5;
+  --shadow:0 14px 34px rgba(15,23,42,.07);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:linear-gradient(180deg,#F7F7F9 0%,#F2F2F5 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Arial,sans-serif}
+body{min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:480px;margin:0 auto;padding:18px 16px calc(100px + env(safe-area-inset-bottom))}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
+.brand-wrap{display:flex;align-items:center;gap:12px;min-width:0}
+.appicon{width:42px;height:42px;border-radius:12px;display:block;box-shadow:0 6px 16px rgba(10,132,255,.12)}
+.brand h1{margin:0;font-size:1.46rem;letter-spacing:-.03em}
+.badge{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);box-shadow:var(--shadow);font-size:.78rem;font-weight:650;white-space:nowrap}
+.card{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 16px;margin-bottom:14px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.row-top{align-items:flex-start}
+.label{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.h2{font-size:1rem;font-weight:720;letter-spacing:-.02em}
+.small{font-size:.78rem;color:var(--muted);line-height:1.45}
+.segment{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;background:#F0F1F5;border:1px solid var(--line);border-radius:16px;margin-top:12px}
+.segment button{border:none;background:transparent;border-radius:12px;padding:11px 8px;font-size:.86rem;font-weight:700;color:var(--muted)}
+.segment button.active{background:#fff;color:var(--text);box-shadow:0 2px 10px rgba(15,23,42,.08)}
+.insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.kpi{background:var(--panel-soft);border:1px solid var(--line);border-radius:18px;padding:12px}
+.kpi .v{font-size:1.08rem;font-weight:760;letter-spacing:-.03em}
+.kpi .l{margin-top:5px;font-size:.72rem;color:var(--muted)}
+.focus{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.pill{padding:7px 10px;border-radius:999px;background:var(--panel-soft);border:1px solid var(--line);font-size:.76rem;color:var(--muted)}
+.exercise{font-size:1.92rem;font-weight:800;line-height:1.05;letter-spacing:-.04em;text-align:center;margin:10px 0 8px}
+.instruction{text-align:center;color:var(--muted);font-size:.95rem;line-height:1.45;min-height:48px;max-width:360px;margin:0 auto 10px}
+.timer{font-size:4.4rem;font-weight:820;text-align:center;letter-spacing:-.08em;font-variant-numeric:tabular-nums;margin:0}
+.phase{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:.18em;margin-top:4px}
+.countdown{text-align:center;min-height:22px;color:#0A84FF;font-size:.86rem;margin-top:6px}
+.progress{margin-top:14px}
+.bar{height:12px;border-radius:999px;background:#EBECF1;overflow:hidden;border:1px solid var(--line)}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#8EC5FF,#0A84FF);transition:width .25s ease}
+.progress-text{text-align:center;color:var(--muted);font-size:.76rem;margin-top:7px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stat{background:var(--panel-soft);border:1px solid var(--line);border-radius:18px;padding:10px 8px;text-align:center}
+.stat .v{font-size:1rem;font-weight:760}
+.stat .l{font-size:.67rem;color:var(--muted);margin-top:4px}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.btn{border:none;border-radius:16px;padding:14px 12px;font-size:.94rem;font-weight:760}
+.btn-primary{background:var(--text);color:#fff}
+.btn-soft{background:#EEF0F4;color:var(--text);border:1px solid var(--line)}
+.btn-accent{background:var(--accent-soft);color:#0757A6;border:1px solid #CFE4FF}
+.btn-wide{grid-column:1/-1}
+.switch-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--panel-soft);border:1px solid var(--line);border-radius:18px;padding:12px}
+.toggle .meta{font-size:.86rem}
+.toggle .meta small{display:block;color:var(--muted);margin-top:2px}
+.switch{width:46px;height:28px;border-radius:999px;background:#D9DCE4;position:relative;border:1px solid #CDD1DB;flex:0 0 auto}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.15);transition:left .18s ease}
+.switch.on{background:#B9D9FF}
+.switch.on::after{left:21px}
+.plan-list{display:grid;gap:8px;margin-top:12px}
+.plan-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--panel-soft)}
+.plan-item.active{border-color:#B9D9FF;background:#F4F9FF}
+.plan-item .left{display:flex;flex-direction:column;gap:2px}
+.plan-item .left .name{font-weight:700;font-size:.92rem}
+.plan-item .left .sub{font-size:.76rem;color:var(--muted)}
+.plan-item .right{font-size:.73rem;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.76rem;color:var(--muted)}
+.field input,.field select{padding:12px 13px;border-radius:16px;border:1px solid var(--line);background:var(--panel-soft);color:var(--text)}
+.readout-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.readout{background:var(--panel-soft);border:1px solid var(--line);border-radius:18px;padding:12px}
+.readout .big{font-size:1.1rem;font-weight:760;letter-spacing:-.03em}
+.readout .tiny{font-size:.73rem;color:var(--muted);margin-top:4px}
+.note-box{margin-top:10px;padding:14px;border-radius:18px;background:#F7F9FC;border:1px solid var(--line);font-size:.84rem;line-height:1.5;color:var(--muted)}
+.chart-wrap{height:230px;margin-top:12px}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.nav{border:none;background:#EEF0F4;border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-weight:800}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.weekday{text-align:center;font-size:.68rem;color:var(--muted)}
+.day{aspect-ratio:1/1;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--panel-soft);border:1px solid var(--line);font-size:.78rem;user-select:none}
+.day.done{background:var(--good)}
+.day.missed{background:var(--bad)}
+.day.future{opacity:.35}
+.day.today{outline:2px solid #7AB8FF;outline-offset:-2px}
+.recent{display:grid;gap:8px;margin-top:10px}
+.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 12px;border-radius:16px;background:var(--panel-soft);border:1px solid var(--line);font-size:.84rem}
+.hidden{display:none}
+.rotation-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.rotation-card{padding:14px 12px;border-radius:18px;border:1px solid var(--line);background:var(--panel-soft)}
+.rotation-card strong{display:block;font-size:.95rem;letter-spacing:-.02em}
+.rotation-card span{display:block;margin-top:4px;color:var(--muted);font-size:.77rem;line-height:1.35}
+.rotation-card.active{background:#F4F9FF;border-color:#B9D9FF;box-shadow:0 6px 18px rgba(10,132,255,.10)}
+.rotation-card.full{grid-column:1/-1}
+.footer{padding:4px 6px 10px;text-align:center;font-size:.73rem;color:var(--muted)}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:linear-gradient(180deg,rgba(245,245,247,0) 0%, rgba(245,245,247,.86) 28%, rgba(245,245,247,.97) 100%);backdrop-filter:blur(10px)}
+.tabbar-inner{max-width:480px;margin:0 auto;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tabbtn{border:1px solid var(--line);background:rgba(255,255,255,.92);color:var(--muted);border-radius:18px;padding:12px 8px;font-size:.82rem;font-weight:700;box-shadow:var(--shadow)}
+.tabbtn.active{background:var(--text);color:#fff;border-color:var(--text)}
+@media (max-width:360px){
+  .exercise{font-size:1.7rem}
+  .timer{font-size:3.8rem}
+  .tabbtn{font-size:.76rem;padding:11px 6px}
+}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="appicon" src="icon-192.png" alt="MuscleBoost">
+      <div class="brand"><h1>MuscleBoost</h1></div>
+    </div>
+    <div class="badge" id="dayBadge">Plano A</div>
+  </div>
 
-<div class="card">
-<div id="exercise" class="big"></div>
-<div id="timer" class="big"></div>
-<button onclick="start()">START</button>
-<button onclick="pause()">PAUSE</button>
-<div>
-<button onclick="feedback('easy')">Fácil</button>
-<button onclick="feedback('normal')">Normal</button>
-<button onclick="feedback('hard')">Difícil</button>
-</div>
-<div id="next"></div>
+  <section class="tab-panel active" data-panel="today">
+    <div class="card">
+      <div class="row row-top">
+        <div>
+          <div class="label">Estratégia</div>
+          <div class="h2">6 meses · mais músculo visível com micro-sessões diárias</div>
+        </div>
+        <div class="pill" id="weeklyTarget">Alvo: 6–7 sessões/sem</div>
+      </div>
+      <div class="insight-row">
+        <div class="kpi"><div class="v" id="proteinTargetTop">100–138 g</div><div class="l">Proteína alvo/dia</div></div>
+        <div class="kpi"><div class="v" id="leanGainTop">+1.5 a 2.6 kg</div><div class="l">Massa magra plausível/6m</div></div>
+      </div>
+      <div class="focus">
+        <span class="pill">Corpo todo</span>
+        <span class="pill">3 rondas por sessão</span>
+        <span class="pill">Só peso corporal</span>
+        <span class="pill">Foco peito + braços</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row row-top">
+        <div>
+          <div class="label">Treino de hoje</div>
+          <div class="h2" id="planTitle">A · Push hipertrofia</div>
+          <div class="small" id="planFocus">Peito, ombros e tríceps com tensão suficiente para crescer.</div>
+        </div>
+        <div class="pill" id="nextPlan">Próximo: B</div>
+      </div>
+      <div class="segment" id="difficultySegment">
+        <button data-difficulty="easy">Fácil</button>
+        <button data-difficulty="normal" class="active">Normal</button>
+        <button data-difficulty="hard">Difícil</button>
+      </div>
+      <div class="exercise" id="exerciseName">Flexão</div>
+      <div class="instruction" id="exerciseInstruction">Mãos sob os ombros, tronco rígido, descida controlada.</div>
+      <div class="timer" id="timer">00:45</div>
+      <div class="phase" id="phase">WORK</div>
+      <div class="countdown" id="countdown"></div>
+      <div class="progress">
+        <div class="bar"><div class="fill" id="progressFill"></div></div>
+        <div class="progress-text" id="progressText">0% da sessão</div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="v" id="roundValue">1/3</div><div class="l">Ronda</div></div>
+        <div class="stat"><div class="v" id="moveValue">1/4</div><div class="l">Exercício</div></div>
+        <div class="stat"><div class="v" id="streakValue">0</div><div class="l">Streak</div></div>
+        <div class="stat"><div class="v" id="doseValue">45/15</div><div class="l">Work/Rest</div></div>
+      </div>
+      <div class="btn-grid">
+        <button class="btn btn-primary" id="startBtn">Start</button>
+        <button class="btn btn-soft" id="pauseBtn">Pause</button>
+        <button class="btn btn-soft" id="resetBtn">Reset</button>
+        <button class="btn btn-accent" id="skipBtn">Saltar</button>
+        <button class="btn btn-soft" id="techBtn">Ver plano</button>
+        <button class="btn btn-soft" id="markTodayBtn">Marcar hoje</button>
+      </div>
+      <div class="switch-row">
+        <div class="toggle" id="soundToggle"><div class="meta">Som<small>beeps + vibração</small></div><div class="switch on" id="soundSwitch"></div></div>
+        <div class="toggle" id="voiceToggle"><div class="meta">Voz<small>PT-PT nos 5 segundos finais</small></div><div class="switch" id="voiceSwitch"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel" data-panel="plan">
+    <div class="card">
+      <div class="label">Rotação</div>
+      <div class="h2">Estrutura da semana</div>
+      <div class="rotation-grid">
+        <div class="rotation-card" data-plan-key="A"><strong>A · Push</strong><span>Peito, ombros e tríceps com prioridade máxima.</span></div>
+        <div class="rotation-card" data-plan-key="B"><strong>B · Pernas</strong><span>Base de quadríceps, glúteos e posteriores.</span></div>
+        <div class="rotation-card" data-plan-key="C"><strong>C · Pull + braços</strong><span>Costas e bíceps só com peso corporal.</span></div>
+        <div class="rotation-card" data-plan-key="D"><strong>D · Core + braços</strong><span>Estabilidade do tronco e braço complementar.</span></div>
+        <div class="rotation-card full" data-plan-key="E"><strong>E · Full body density</strong><span>Fecho global curto, denso e com novo reforço de peito e braços.</span></div>
+      </div>
+      <div class="note-box">A rotação continua a privilegiar peito e braços, mas sem apagar pernas e costas. Isso é o mínimo racional para ganhar forma global sem criar um plano desequilibrado.</div>
+    </div>
+
+    <div class="card">
+      <div class="label">Exercícios do plano atual</div>
+      <div class="plan-list" id="exerciseList"></div>
+    </div>
+
+    <div class="card">
+      <div class="label">Técnica do exercício atual</div>
+      <div class="note-box" id="techCard">
+        <strong id="techTitle">Técnica</strong><br>
+        <span id="techDesc">—</span><br><br>
+        <strong>Foco:</strong> <span id="techFocus">—</span><br>
+        <strong>Cues:</strong> <span id="techCues">—</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel" data-panel="body">
+    <div class="card">
+      <div class="row row-top">
+        <div>
+          <div class="label">Corpo e recuperação</div>
+          <div class="h2">Inputs mínimos que importam</div>
+        </div>
+        <div class="pill" id="consistencyBadge">Consistência —</div>
+      </div>
+      <div class="form-grid" style="margin-top:12px">
+        <div class="field"><label for="entryDate">Data</label><input id="entryDate" type="date"></div>
+        <div class="field"><label for="ageInput">Idade</label><input id="ageInput" type="number" min="16" max="100" placeholder="opcional"></div>
+        <div class="field"><label for="heightInput">Altura (cm)</label><input id="heightInput" type="number" min="120" max="230"></div>
+        <div class="field"><label for="weightInput">Peso (kg)</label><input id="weightInput" type="number" min="30" max="200" step="0.1"></div>
+        <div class="field"><label for="waistInput">Cintura (cm)</label><input id="waistInput" type="number" min="40" max="180" step="0.1" placeholder="opcional"></div>
+        <div class="field"><label for="armInput">Braço (cm)</label><input id="armInput" type="number" min="15" max="70" step="0.1" placeholder="opcional"></div>
+        <div class="field"><label for="proteinInput">Proteína/dia (g)</label><input id="proteinInput" type="number" min="0" max="300" step="1" placeholder="opcional"></div>
+        <div class="field"><label for="sleepInput">Sono médio (h)</label><input id="sleepInput" type="number" min="0" max="24" step="0.5" placeholder="7.5"></div>
+      </div>
+      <div class="btn-grid"><button class="btn btn-soft btn-wide" id="saveBodyBtn">Guardar registo corporal</button></div>
+      <div class="readout-grid">
+        <div class="readout"><div class="big" id="bmiValue">—</div><div class="tiny">IMC</div></div>
+        <div class="readout"><div class="big" id="proteinTargetBody">—</div><div class="tiny">Proteína alvo/dia</div></div>
+        <div class="readout"><div class="big" id="leanGainBody">—</div><div class="tiny">Massa magra plausível/6m</div></div>
+        <div class="readout"><div class="big" id="weightGoalBody">—</div><div class="tiny">Peso plausível/6m</div></div>
+      </div>
+      <div class="note-box">
+        <div class="label">Projeção visual</div>
+        <div class="bar" style="margin-top:10px"><div class="fill" id="projectionFill"></div></div>
+        <div class="small" id="projectionText" style="margin-top:8px">Ainda sem leitura.</div>
+      </div>
+      <div class="insight-row" style="margin-top:12px">
+        <div class="kpi"><div class="v" id="visualGainValue">—</div><div class="l">Mudança visual tronco/braços</div></div>
+        <div class="kpi"><div class="v" id="monthlyGainValue">—</div><div class="l">Cadência plausível/mês</div></div>
+      </div>
+      <div class="note-box" id="projectionDetail">Modelo ainda sem dados suficientes.</div>
+      <div class="note-box" id="bodyInsight">Com o teu perfil, a app vai privilegiar ganho magro, não “cut”. O objetivo é criar estímulo suficiente só com peso corporal, manter proteína alta e sustentar consistência diária.</div>
+    </div>
+  </section>
+
+  <section class="tab-panel" data-panel="progress">
+    <div class="card">
+      <div class="row row-top">
+        <div>
+          <div class="label">Análise</div>
+          <div class="h2">Tendência corporal</div>
+        </div>
+        <div class="pill" id="analysisPill">2+ registos = melhor leitura</div>
+      </div>
+      <div class="chart-wrap"><canvas id="progressChart"></canvas></div>
+      <div class="note-box" id="analysisText">Adiciona pelo menos dois registos para ver tendência de peso, cintura e braço.</div>
+    </div>
+
+    <div class="card">
+      <div class="calendar-head">
+        <button class="nav" id="prevMonthBtn">‹</button>
+        <div class="h2" id="monthLabel">—</div>
+        <button class="nav" id="nextMonthBtn">›</button>
+      </div>
+      <div class="calendar" id="calendar"></div>
+    </div>
+
+    <div class="card">
+      <div class="label">Sessões recentes</div>
+      <div class="recent" id="recentList"></div>
+    </div>
+  </section>
+
+  <div class="footer">Foco: consistência diária, quase falha técnica, recuperação suficiente.</div>
 </div>
 
-<div class="card">
-<input id="w" placeholder="Peso">
-<input id="arm" placeholder="Braço">
-<input id="waist" placeholder="Cintura">
-<button onclick="save()">Guardar</button>
-<div id="analysis"></div>
-</div>
+<nav class="tabbar" aria-label="Navegação principal">
+  <div class="tabbar-inner">
+    <button class="tabbtn active" data-tab="today">Hoje</button>
+    <button class="tabbtn" data-tab="plan">Plano</button>
+    <button class="tabbtn" data-tab="body">Corpo</button>
+    <button class="tabbtn" data-tab="progress">Progresso</button>
+  </div>
+</nav>
 
 <script>
+(() => {
+  const STORAGE = {
+    sessions: 'mb8_sessions',
+    body: 'mb8_body',
+    bodyHistory: 'mb8_body_history',
+    sound: 'mb8_sound',
+    voice: 'mb8_voice',
+    difficulty: 'mb8_difficulty'
+  };
 
-let S={
- level:2,
- t:30,
- running:false,
- data:JSON.parse(localStorage.getItem("mb_body")||"[]"),
- sessions:JSON.parse(localStorage.getItem("mb_sessions")||"{}"),
- feedback:[]
-}
+  const state = {
+    intervalId: null,
+    phase: 'work',
+    exerciseIndex: 0,
+    roundIndex: 0,
+    remainingTime: 40,
+    difficulty: localStorage.getItem(STORAGE.difficulty) || 'normal',
+    soundOn: JSON.parse(localStorage.getItem(STORAGE.sound) ?? 'true'),
+    voiceOn: JSON.parse(localStorage.getItem(STORAGE.voice) ?? 'false'),
+    lastSpoken: null,
+    chart: null,
+    viewDate: new Date(),
+    activeTab: localStorage.getItem('mb11_tab') || 'today'
+  };
 
-const ex=[
-"Push-ups","Decline push-ups","Explosive push-ups",
-"Curl garrafão","Hammer curl","Slow curl",
-"Plank","Side plank","Leg raises"
-];
+  const difficultyConfig = {
+    easy:   { label:'Fácil', work:40, rest:20, rir:'2–3 RIR' },
+    normal: { label:'Normal', work:45, rest:15, rir:'1–2 RIR' },
+    hard:   { label:'Difícil', work:50, rest:10, rir:'0–1 RIR' }
+  };
 
-function baseTime(){return 30+S.level*5;}
-function getEx(){return ex[S.level-1];}
+  const plans = [
+    {
+      key:'A',
+      title:'A · Push hipertrofia',
+      focus:'Peito, deltoide anterior e tríceps. Dia dominante para o teu objetivo.',
+      exercises:[
+        {
+          variants:{easy:'Flexão de joelhos', normal:'Flexão', hard:'Flexão diamante'},
+          instructions:{
+            easy:'Joelhos no chão, corpo alinhado, desce até quase tocar no chão.',
+            normal:'Mãos sob os ombros, tronco rígido, descida controlada.',
+            hard:'Mãos mais juntas para aumentar a carga relativa em tríceps e peito interno.'
+          },
+          desc:'Pressão horizontal base para hipertrofia do peito.',
+          focus:'Peitoral, deltoide anterior, tríceps.',
+          cues:'2–3 segundos a descer, sobe com intenção, sem colapsar a lombar.'
+        },
+        {
+          variants:{easy:'Flexão isométrica alta', normal:'Flexão lenta', hard:'Flexão 1.5 reps'},
+          instructions:{
+            easy:'Mantém a meio do movimento com tensão contínua.',
+            normal:'Desce em 4 segundos e sobe firme.',
+            hard:'Desce, sobe só até meio, desce outra vez e só depois sobe.'
+          },
+          desc:'Aumenta tempo sob tensão sem carga externa.',
+          focus:'Peito e tríceps sob fadiga.',
+          cues:'Amplitude limpa e sem descanso no topo.'
+        },
+        {
+          variants:{easy:'Pike hold', normal:'Pike push-up', hard:'Pike press pulses'},
+          instructions:{
+            easy:'Ancas altas e peso nos ombros; mantém a posição.',
+            normal:'Cabeça desce entre as mãos, foco no ombro.',
+            hard:'Pequenas pulsações no fundo da pike para prolongar tensão.'
+          },
+          desc:'Bloco vertical para ombros e tríceps.',
+          focus:'Deltoides, tríceps.',
+          cues:'Empurra o chão, pescoço neutro, ancas altas.'
+        },
+        {
+          variants:{easy:'Scapular push-up', normal:'Close-grip push-up', hard:'Pseudo-planche lean push-up'},
+          instructions:{
+            easy:'Só move as escápulas, sem dobrar muito os cotovelos.',
+            normal:'Mãos mais próximas, cotovelos junto ao corpo.',
+            hard:'Ombros ligeiramente à frente das mãos para subir a exigência.'
+          },
+          desc:'Fecho técnico para tríceps, serrátil e peito.',
+          focus:'Tríceps, serrátil, peito.',
+          cues:'Tronco rígido e controlo total da escápula.'
+        }
+      ]
+    },
+    {
+      key:'B',
+      title:'B · Lower body',
+      focus:'Pernas e glúteos. Necessário para corpo inteiro e para manter anabolismo global.',
+      exercises:[
+        {
+          variants:{easy:'Air squat', normal:'Tempo squat', hard:'Squat 1.5 reps'},
+          instructions:{
+            easy:'Agacha até amplitude confortável e sobe sem perder alinhamento.',
+            normal:'Desce em 3 segundos, pequena pausa em baixo, sobe forte.',
+            hard:'Desce, sobe até meio, desce outra vez e sobe por completo.'
+          },
+          desc:'Base de quadríceps e glúteos sem material.',
+          focus:'Quadríceps, glúteos.',
+          cues:'Pés firmes, joelhos acompanham a linha do pé.'
+        },
+        {
+          variants:{easy:'Split squat assistido leve', normal:'Split squat', hard:'Split squat 1.5 reps'},
+          instructions:{
+            easy:'Base mais curta e apoio leve na parede se precisares.',
+            normal:'Desce vertical, joelho de trás aponta ao chão.',
+            hard:'Usa a sequência de repetição e meia para aumentar tensão.'
+          },
+          desc:'Unilateral suficiente para criar carga local real.',
+          focus:'Quadríceps, glúteos.',
+          cues:'Peso no pé da frente, tronco estável.'
+        },
+        {
+          variants:{easy:'Glute bridge', normal:'Single-leg glute bridge', hard:'Long-lever bridge'},
+          instructions:{
+            easy:'Eleva a anca e aperta no topo.',
+            normal:'Uma perna trabalha de cada vez.',
+            hard:'Afasta mais os calcanhares para aumentar a exigência posterior.'
+          },
+          desc:'Extensão da anca para glúteos e posteriores.',
+          focus:'Glúteos, isquiotibiais.',
+          cues:'Pausa de 1 segundo no topo, sem hiperextensão lombar.'
+        },
+        {
+          variants:{easy:'Reverse lunge', normal:'Reverse lunge lenta', hard:'Hamstring walkout'},
+          instructions:{
+            easy:'Passo atrás e regressa com controlo.',
+            normal:'Desce lento, sobe firme, alternando lados.',
+            hard:'Parte da ponte de glúteos e vai caminhando os calcanhares para a frente e para trás.'
+          },
+          desc:'Fecha o dia com mais trabalho unilateral ou cadeia posterior.',
+          focus:'Quadríceps, glúteos e posteriores.',
+          cues:'Anca estável e respiração controlada.'
+        }
+      ]
+    },
+    {
+      key:'C',
+      title:'C · Pull + braços',
+      focus:'Costas e bíceps com peso corporal puro. Menos ideal do que carga externa, mas ainda útil.',
+      exercises:[
+        {
+          variants:{easy:'Back widow curta', normal:'Back widow', hard:'Back widow com pausa'},
+          instructions:{
+            easy:'No chão, empurra os cotovelos contra o solo e levanta ligeiramente o tronco.',
+            normal:'Eleva o peito do chão através dos cotovelos.',
+            hard:'Mantém 1–2 segundos no topo de cada repetição.'
+          },
+          desc:'Uma das poucas formas úteis de “remo” sem equipamento.',
+          focus:'Costas altas, dorsais, braços.',
+          cues:'Peito aberto, queixo neutro, aperta as escápulas.'
+        },
+        {
+          variants:{easy:'Reverse snow angels', normal:'Prone W raises', hard:'Prone Y-T-W combo'},
+          instructions:{
+            easy:'No chão, desenha um arco lento com os braços.',
+            normal:'Levanta os braços em W com pausa curta.',
+            hard:'Alterna Y, T e W sem perder controlo.'
+          },
+          desc:'Costas altas e deltoide posterior.',
+          focus:'Trapézio médio, romboides, deltoide posterior.',
+          cues:'Sem impulso e com pescoço solto.'
+        },
+        {
+          variants:{easy:'Superman pull', normal:'Superman pull com pausa', hard:'Swimmer pulls lentos'},
+          instructions:{
+            easy:'Eleva ligeiramente o tronco e puxa os cotovelos para trás.',
+            normal:'Pausa um segundo quando os cotovelos chegam atrás.',
+            hard:'Alterna padrões de braçada lenta com tensão contínua.'
+          },
+          desc:'Complemento para dorsais e controlo escapular.',
+          focus:'Costas altas, dorsais, lombar isométrica.',
+          cues:'Movimento limpo, sem hiperextender a lombar.'
+        },
+        {
+          variants:{easy:'Curl auto-resistido', normal:'Curl auto-resistido lento', hard:'Hammer curl auto-resistido'},
+          instructions:{
+            easy:'Uma mão resiste à outra durante a flexão do cotovelo.',
+            normal:'Sobe em 2 segundos, desce em 4 mantendo resistência manual.',
+            hard:'Pegada neutra e resistência máxima controlada.'
+          },
+          desc:'Bíceps sem pesos externos usando auto-resistência.',
+          focus:'Bíceps e braquiorradial.',
+          cues:'Resistência contínua durante toda a amplitude.'
+        }
+      ]
+    },
+    {
+      key:'D',
+      title:'D · Core + braços',
+      focus:'Core rígido e braço complementar para melhorar aparência e suporte aos dias de push.',
+      exercises:[
+        {
+          variants:{easy:'Prancha', normal:'Hollow hold', hard:'Body-saw plank'},
+          instructions:{
+            easy:'Corpo em linha reta, glúteos contraídos.',
+            normal:'Lombar colada ao chão e costelas baixas.',
+            hard:'Na prancha, desloca ligeiramente o corpo para a frente e para trás.'
+          },
+          desc:'Anti-extensão para transferir força.',
+          focus:'Core anterior.',
+          cues:'Respiração curta e tensão total.'
+        },
+        {
+          variants:{easy:'Side plank', normal:'Side plank dip', hard:'Long-lever side plank'},
+          instructions:{
+            easy:'Corpo alinhado e anca alta.',
+            normal:'Desce e sobe a anca sob controlo.',
+            hard:'Aumenta a alavanca estendendo mais o corpo.'
+          },
+          desc:'Anti-flexão lateral e oblíquos.',
+          focus:'Oblíquos, glúteo médio.',
+          cues:'Não rodar a bacia.'
+        },
+        {
+          variants:{easy:'Shoulder taps', normal:'Shoulder taps lentos', hard:'Plank to pike'},
+          instructions:{
+            easy:'Alterna toques sem rodar o tronco.',
+            normal:'Executa mais lento e mais limpo.',
+            hard:'Da prancha sobe a anca em pike e regressa.'
+          },
+          desc:'Core anti-rotação com carga nos ombros.',
+          focus:'Core, serrátil, ombro.',
+          cues:'Bacia estável e mãos sob os ombros.'
+        },
+        {
+          variants:{easy:'Tríceps extension no chão curta', normal:'Bodyweight triceps extension no chão', hard:'Diamond push-up pulses'},
+          instructions:{
+            easy:'A partir de uma posição de joelhos, leva a testa ao chão e estende os cotovelos.',
+            normal:'Aumenta a alavanca do corpo para carregar mais os tríceps.',
+            hard:'Pequenas pulsações em flexão diamante perto da falha técnica.'
+          },
+          desc:'Braço complementar sem acessórios.',
+          focus:'Tríceps.',
+          cues:'Cotovelos fechados e controlo absoluto.'
+        }
+      ]
+    },
+    {
+      key:'E',
+      title:'E · Full body density',
+      focus:'Sessão global curta e densa, com novo reforço de peito e braços.',
+      exercises:[
+        {
+          variants:{easy:'Air squat', normal:'Squat tempo contínuo', hard:'Jump squat controlado'},
+          instructions:{
+            easy:'Amplitude confortável e ritmo contínuo.',
+            normal:'Desce controlado e sobe com intenção.',
+            hard:'Salto pequeno e aterragem suave.'
+          },
+          desc:'Ativa pernas e acelera densidade global.',
+          focus:'Quadríceps, glúteos.',
+          cues:'Mantém o alinhamento e pousa suave.'
+        },
+        {
+          variants:{easy:'Flexão de joelhos', normal:'Flexão', hard:'Flexão lenta perto da falha'},
+          instructions:{
+            easy:'Carga reduzida, mas técnica impecável.',
+            normal:'Clássica e limpa.',
+            hard:'4 segundos a descer, sobe firme.'
+          },
+          desc:'Reforço final de peito e tríceps.',
+          focus:'Peito e tríceps.',
+          cues:'Empurra o chão com intenção.'
+        },
+        {
+          variants:{easy:'Back widow curta', normal:'Back widow', hard:'Swimmer pulls lentos'},
+          instructions:{
+            easy:'Eleva ligeiramente o peito do chão via cotovelos.',
+            normal:'Amplitude maior e aperto escapular.',
+            hard:'Braçadas lentas sob tensão contínua.'
+          },
+          desc:'Tração sem equipamento para equilibrar a semana.',
+          focus:'Costas altas, dorsais, braços.',
+          cues:'Escápulas firmes, sem roubo.'
+        },
+        {
+          variants:{easy:'Curl auto-resistido', normal:'Close-grip push-up', hard:'Pseudo-planche lean push-up'},
+          instructions:{
+            easy:'Uma mão resiste à outra durante toda a flexão.',
+            normal:'Mãos mais juntas para dar ênfase a tríceps.',
+            hard:'Inclina os ombros à frente das mãos e mantém controlo total.'
+          },
+          desc:'Fecho com braço e empurrar.',
+          focus:'Bíceps/tríceps e peito.',
+          cues:'Último bloco perto da falha técnica limpa.'
+        }
+      ]
+    }
+  ];
 
-function update(){
- exercise.innerText=getEx();
- next.innerText="Próximo: "+ex[Math.min(S.level,ex.length-1)];
- timer.innerText=S.t;
-}
+  const $ = id => document.getElementById(id);
+  const el = {
+    dayBadge: $('dayBadge'),
+    weeklyTarget: $('weeklyTarget'),
+    proteinTargetTop: $('proteinTargetTop'),
+    leanGainTop: $('leanGainTop'),
+    planTitle: $('planTitle'),
+    planFocus: $('planFocus'),
+    nextPlan: $('nextPlan'),
+    exerciseName: $('exerciseName'),
+    exerciseInstruction: $('exerciseInstruction'),
+    timer: $('timer'),
+    phase: $('phase'),
+    countdown: $('countdown'),
+    progressFill: $('progressFill'),
+    progressText: $('progressText'),
+    roundValue: $('roundValue'),
+    moveValue: $('moveValue'),
+    streakValue: $('streakValue'),
+    doseValue: $('doseValue'),
+    startBtn: $('startBtn'),
+    pauseBtn: $('pauseBtn'),
+    resetBtn: $('resetBtn'),
+    skipBtn: $('skipBtn'),
+    techBtn: $('techBtn'),
+    techCard: $('techCard'),
+    techTitle: $('techTitle'),
+    techDesc: $('techDesc'),
+    techFocus: $('techFocus'),
+    techCues: $('techCues'),
+    markTodayBtn: $('markTodayBtn'),
+    soundToggle: $('soundToggle'),
+    voiceToggle: $('voiceToggle'),
+    soundSwitch: $('soundSwitch'),
+    voiceSwitch: $('voiceSwitch'),
+    exerciseList: $('exerciseList'),
+    entryDate: $('entryDate'),
+    ageInput: $('ageInput'),
+    heightInput: $('heightInput'),
+    weightInput: $('weightInput'),
+    waistInput: $('waistInput'),
+    armInput: $('armInput'),
+    proteinInput: $('proteinInput'),
+    sleepInput: $('sleepInput'),
+    saveBodyBtn: $('saveBodyBtn'),
+    bmiValue: $('bmiValue'),
+    proteinTargetBody: $('proteinTargetBody'),
+    leanGainBody: $('leanGainBody'),
+    weightGoalBody: $('weightGoalBody'),
+    projectionFill: $('projectionFill'),
+    projectionText: $('projectionText'),
+    visualGainValue: $('visualGainValue'),
+    monthlyGainValue: $('monthlyGainValue'),
+    projectionDetail: $('projectionDetail'),
+    bodyInsight: $('bodyInsight'),
+    consistencyBadge: $('consistencyBadge'),
+    analysisPill: $('analysisPill'),
+    analysisText: $('analysisText'),
+    monthLabel: $('monthLabel'),
+    calendar: $('calendar'),
+    recentList: $('recentList'),
+    prevMonthBtn: $('prevMonthBtn'),
+    nextMonthBtn: $('nextMonthBtn')
+  };
 
-let interval;
-function start(){
- if(!S.running){
-  S.running=true;
-  interval=setInterval(tick,1000);
- }
-}
+  let audioCtx = null;
+  let wakeLock = null;
 
-function pause(){
- S.running=false;
- clearInterval(interval);
-}
+  function formatSeconds(total){
+    const m = Math.floor(total/60);
+    const s = total % 60;
+    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
 
-function tick(){
- S.t--;
- if(S.t<=5 && S.t>0){beep(); if(navigator.vibrate) navigator.vibrate(100);}
- if(S.t<=0){
-  markSession();
-  pause();
-  S.t=baseTime();
- }
- update();
-}
+  function todayKey(){ return new Date().toISOString().slice(0,10); }
 
-let audioCtx;
-function beep(){
- if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
- let o=audioCtx.createOscillator();
- let g=audioCtx.createGain();
- o.connect(g); g.connect(audioCtx.destination);
- g.gain.value=0.1;
- o.start(); setTimeout(()=>o.stop(),120);
-}
+  function getSessions(){
+    try { return JSON.parse(localStorage.getItem(STORAGE.sessions) || '[]').sort((a,b)=>a.date.localeCompare(b.date)); }
+    catch { return []; }
+  }
 
-function feedback(f){
- S.feedback.push(f);
- if(S.feedback.length>2) S.feedback.shift();
+  function saveSessions(list){
+    localStorage.setItem(STORAGE.sessions, JSON.stringify(list.sort((a,b)=>a.date.localeCompare(b.date))));
+  }
 
- if(S.feedback.length==2){
-  if(S.feedback[0]=='easy'&&S.feedback[1]=='easy') S.level++;
-  if(S.feedback[0]=='hard'&&S.feedback[1]=='hard') S.level--;
- }
+  function getBody(){
+    try { return JSON.parse(localStorage.getItem(STORAGE.body) || '{}'); }
+    catch { return {}; }
+  }
 
- S.level=Math.max(1,Math.min(9,S.level));
- S.t=baseTime();
- update();
-}
+  function saveBody(entry){
+    localStorage.setItem(STORAGE.body, JSON.stringify(entry));
+  }
 
-function markSession(){
- let d=new Date().toISOString().slice(0,10);
- S.sessions[d]=(S.sessions[d]||0)+1;
- localStorage.setItem("mb_sessions",JSON.stringify(S.sessions));
-}
+  function getBodyHistory(){
+    try { return JSON.parse(localStorage.getItem(STORAGE.bodyHistory) || '[]').sort((a,b)=>a.date.localeCompare(b.date)); }
+    catch { return []; }
+  }
 
-function consistency(){
- let last7=0;
- let today=new Date();
- for(let i=0;i<7;i++){
-  let d=new Date(); d.setDate(today.getDate()-i);
-  let k=d.toISOString().slice(0,10);
-  if(S.sessions[k]) last7++;
- }
- return last7/7;
-}
+  function saveBodyHistory(history){
+    localStorage.setItem(STORAGE.bodyHistory, JSON.stringify(history.sort((a,b)=>a.date.localeCompare(b.date))));
+  }
 
-function save(){
- let rec={
-  w:parseFloat(w.value),
-  arm:parseFloat(arm.value),
-  waist:parseFloat(waist.value),
-  d:Date.now()
- };
- S.data.push(rec);
- localStorage.setItem("mb_body",JSON.stringify(S.data));
- analyze();
-}
+  function bodyDefaults(){
+    const body = getBody();
+    if (!body.height && !body.weight){
+      const seeded = {
+        date: todayKey(),
+        age: '',
+        height: '173',
+        weight: '62.6',
+        waist: '',
+        arm: '',
+        protein: '',
+        sleep: '7.5'
+      };
+      saveBody(seeded);
+      saveBodyHistory([seeded]);
+    }
+  }
 
-function analyze(){
- if(S.data.length<2){
-  analysis.innerText="Sem dados suficientes";
-  return;
- }
+  function completedDatesSet(){
+    return new Set(getSessions().map(s => s.date));
+  }
 
- let a=S.data[S.data.length-2];
- let b=S.data[S.data.length-1];
+  function calcStreak(){
+    const done = completedDatesSet();
+    let streak = 0;
+    const d = new Date();
+    while (true){
+      const key = d.toISOString().slice(0,10);
+      if (done.has(key)){
+        streak += 1;
+        d.setDate(d.getDate()-1);
+      } else {
+        break;
+      }
+    }
+    return streak;
+  }
 
- let dw=b.w-a.w;
- let da=b.arm-a.arm;
- let cons=consistency();
+  function calcAdherence(days = 28){
+    const done = completedDatesSet();
+    let count = 0;
+    for (let i = 0; i < days; i++){
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      if (done.has(d.toISOString().slice(0,10))) count += 1;
+    }
+    return Math.round((count / days) * 100);
+  }
 
- // weighted projection
- let rateW=dw*(1+cons);
- let rateA=da*(1+cons);
+  function lastCompletedPlanIndex(){
+    const sessions = getSessions();
+    if (!sessions.length) return -1;
+    const last = sessions[sessions.length-1].plan;
+    return plans.findIndex(p => p.key === last);
+  }
 
- let projW=(rateW*6).toFixed(2);
- let projA=(rateA*6).toFixed(2);
+  function currentPlanIndex(){
+    const idx = lastCompletedPlanIndex();
+    return idx < 0 ? 0 : (idx + 1) % plans.length;
+  }
 
- let interp="";
- if(dw>0 && da>0 && cons>0.6) interp="Hipertrofia consistente";
- else if(dw>0 && da>0) interp="Ganho provável";
- else if(dw>0) interp="Ganho gordura provável";
- else interp="Sem progresso";
+  function currentPlan(){
+    return plans[currentPlanIndex()];
+  }
 
- analysis.innerText=
- interp+
- "\nConsistência: "+Math.round(cons*100)+"%"+
- "\nΔPeso "+dw.toFixed(2)+"kg | ΔBraço "+da.toFixed(2)+"cm"+
- "\nProjeção 6 semanas: +"+projW+"kg | +"+projA+"cm braço";
-}
+  function nextPlanObj(){
+    return plans[(currentPlanIndex() + 1) % plans.length];
+  }
 
-S.t=baseTime();
-update();
-analyze();
+  function currentCfg(){
+    return difficultyConfig[state.difficulty];
+  }
 
+  function roundsPerSession(){ return 3; }
+
+  function currentExercise(){
+    return currentPlan().exercises[state.exerciseIndex];
+  }
+
+  function currentVariantName(exercise){
+    return exercise.variants[state.difficulty];
+  }
+
+  function currentVariantInstruction(exercise){
+    return exercise.instructions[state.difficulty];
+  }
+
+  function totalWorkBlocks(){
+    return currentPlan().exercises.length * roundsPerSession();
+  }
+
+  function completedWorkBlocks(){
+    return state.roundIndex * currentPlan().exercises.length + state.exerciseIndex;
+  }
+
+  function progressPct(){
+    const raw = (completedWorkBlocks() / totalWorkBlocks()) * 100;
+    return Math.max(0, Math.min(100, Math.round(raw)));
+  }
+
+  function beep(freq=900, duration=0.10, volume=0.04){
+    if (!state.soundOn) return;
+    try{
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.value = volume;
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      osc.stop(audioCtx.currentTime + duration);
+    } catch(e){}
+  }
+
+  function vibrate(ms=40){
+    try{ if (state.soundOn && 'vibrate' in navigator) navigator.vibrate(ms); } catch(e){}
+  }
+
+  function speak(text){
+    if (!state.voiceOn || !('speechSynthesis' in window)) return;
+    try{
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'pt-PT';
+      utter.rate = 1.0;
+      utter.pitch = 1.0;
+      window.speechSynthesis.speak(utter);
+    } catch(e){}
+  }
+
+  async function requestWakeLock(){
+    try{
+      if ('wakeLock' in navigator && !wakeLock){
+        wakeLock = await navigator.wakeLock.request('screen');
+        wakeLock.addEventListener('release', ()=>{ wakeLock = null; });
+      }
+    } catch(e){}
+  }
+
+  async function releaseWakeLock(){
+    try{
+      if (wakeLock){ await wakeLock.release(); wakeLock = null; }
+    } catch(e){}
+  }
+
+  document.addEventListener('visibilitychange', async () => {
+    if (document.visibilityState === 'visible' && state.intervalId) await requestWakeLock();
+  });
+
+  function saveTodaySession(marked=false){
+    const sessions = getSessions();
+    const key = todayKey();
+    if (sessions.some(s => s.date === key)) return;
+    sessions.push({
+      date: key,
+      plan: currentPlan().key,
+      difficulty: state.difficulty,
+      marked: marked
+    });
+    saveSessions(sessions);
+  }
+
+  function toggleSessionForDate(key){
+    if (key > todayKey()) return;
+    const sessions = getSessions();
+    const ix = sessions.findIndex(s => s.date === key);
+    if (ix >= 0){
+      sessions.splice(ix,1);
+    } else {
+      sessions.push({ date:key, plan:currentPlan().key, difficulty:state.difficulty, marked:true });
+    }
+    saveSessions(sessions);
+    renderCalendar();
+    renderRecent();
+    updateBodyPanel();
+    renderAnalysis();
+    renderToday();
+  }
+
+  function resetCycle(){
+    clearInterval(state.intervalId);
+    state.intervalId = null;
+    state.phase = 'work';
+    state.exerciseIndex = 0;
+    state.roundIndex = 0;
+    state.remainingTime = currentCfg().work;
+    state.lastSpoken = null;
+    releaseWakeLock();
+    renderToday();
+  }
+
+  function advanceFromRest(){
+    state.exerciseIndex += 1;
+    if (state.exerciseIndex >= currentPlan().exercises.length){
+      state.exerciseIndex = 0;
+      state.roundIndex += 1;
+    }
+    if (state.roundIndex >= roundsPerSession()){
+      clearInterval(state.intervalId);
+      state.intervalId = null;
+      saveTodaySession(false);
+      renderCalendar();
+      renderRecent();
+      updateBodyPanel();
+      renderAnalysis();
+      resetCycle();
+      alert('Sessão concluída. Próximo plano desbloqueado.');
+      return;
+    }
+    state.phase = 'work';
+    state.remainingTime = currentCfg().work;
+    state.lastSpoken = null;
+    speak(currentVariantName(currentExercise()));
+  }
+
+  async function startSession(){
+    if (state.intervalId) return;
+    await requestWakeLock();
+    speak(currentVariantName(currentExercise()));
+    state.intervalId = setInterval(() => {
+      state.remainingTime -= 1;
+
+      if (state.remainingTime <= 5 && state.remainingTime > 0){
+        if (state.lastSpoken !== state.remainingTime){
+          beep(780 + (5-state.remainingTime)*90, 0.12, 0.05);
+          vibrate(30);
+          speak(String(state.remainingTime));
+          state.lastSpoken = state.remainingTime;
+        }
+      }
+
+      if (state.remainingTime <= 0){
+        beep(state.phase === 'work' ? 620 : 880, 0.18, 0.07);
+        vibrate(60);
+        if (state.phase === 'work'){
+          state.phase = 'rest';
+          state.remainingTime = currentCfg().rest;
+          state.lastSpoken = null;
+          speak('descanso');
+        } else {
+          advanceFromRest();
+        }
+      }
+
+      renderToday();
+    }, 1000);
+
+    renderToday();
+  }
+
+  function pauseSession(){
+    clearInterval(state.intervalId);
+    state.intervalId = null;
+    releaseWakeLock();
+  }
+
+  function skipCurrent(){
+    pauseSession();
+    if (state.phase === 'work'){
+      state.phase = 'rest';
+      state.remainingTime = currentCfg().rest;
+    } else {
+      advanceFromRest();
+    }
+    renderToday();
+  }
+
+  function setActiveTab(tab){
+    state.activeTab = ['today','plan','body','progress'].includes(tab) ? tab : 'today';
+    localStorage.setItem('mb11_tab', state.activeTab);
+    document.querySelectorAll('.tabbtn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === state.activeTab);
+    });
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.panel === state.activeTab);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function initTabs(){
+    document.querySelectorAll('.tabbtn').forEach(btn => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+    });
+    setActiveTab(state.activeTab);
+  }
+
+  function toggleTech(){
+    setActiveTab('plan');
+  }
+
+  function renderRotation(){
+    document.querySelectorAll('.rotation-card').forEach(card => {
+      card.classList.toggle('active', card.dataset.planKey === currentPlan().key);
+    });
+  }
+
+  function renderExerciseList(){
+    const list = currentPlan().exercises.map((ex, idx) => {
+      const active = idx === state.exerciseIndex && state.phase === 'work';
+      return `
+        <div class="plan-item ${active ? 'active' : ''}">
+          <div class="left">
+            <div class="name">${currentVariantName(ex)}</div>
+            <div class="sub">${ex.focus}</div>
+          </div>
+          <div class="right">${idx+1}/4</div>
+        </div>
+      `;
+    }).join('');
+    el.exerciseList.innerHTML = list;
+  }
+
+  function renderToday(){
+    const plan = currentPlan();
+    const ex = currentExercise();
+    const next = nextPlanObj();
+    const cfg = currentCfg();
+    const workoutLabel = `${cfg.work}/${cfg.rest}`;
+
+    el.dayBadge.textContent = `Plano ${plan.key}`;
+    el.planTitle.textContent = plan.title;
+    el.planFocus.textContent = plan.focus;
+    el.nextPlan.textContent = `Próximo: ${next.key}`;
+    el.weeklyTarget.textContent = `Alvo: 6–7 sessões/sem`;
+    el.exerciseName.textContent = state.phase === 'work' ? currentVariantName(ex) : 'Descanso';
+    el.exerciseInstruction.textContent = state.phase === 'work'
+      ? currentVariantInstruction(ex)
+      : `Segue-se: ${currentVariantName(ex)}`;
+    el.timer.textContent = formatSeconds(state.remainingTime);
+    el.phase.textContent = state.phase.toUpperCase();
+    el.countdown.textContent = state.phase === 'work' && state.remainingTime <= 5 && state.remainingTime > 0 ? `Últimos ${state.remainingTime}s` : '';
+    el.progressFill.style.width = `${progressPct()}%`;
+    el.progressText.textContent = `${progressPct()}% da sessão`;
+    el.roundValue.textContent = `${Math.min(state.roundIndex + 1, roundsPerSession())}/${roundsPerSession()}`;
+    el.moveValue.textContent = `${state.exerciseIndex + 1}/${currentPlan().exercises.length}`;
+    el.streakValue.textContent = String(calcStreak());
+    el.doseValue.textContent = workoutLabel;
+
+    el.soundSwitch.classList.toggle('on', state.soundOn);
+    el.voiceSwitch.classList.toggle('on', state.voiceOn);
+
+    el.techTitle.textContent = `Técnica · ${currentVariantName(ex)}`;
+    el.techDesc.textContent = ex.desc;
+    el.techFocus.textContent = ex.focus;
+    el.techCues.textContent = ex.cues;
+
+    document.querySelectorAll('#difficultySegment button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.difficulty === state.difficulty);
+    });
+
+    renderExerciseList();
+    renderRotation();
+  }
+
+  function fillBodyInputs(){
+    const body = getBody();
+    el.entryDate.value = todayKey();
+    el.ageInput.value = body.age || '';
+    el.heightInput.value = body.height || '';
+    el.weightInput.value = body.weight || '';
+    el.waistInput.value = body.waist || '';
+    el.armInput.value = body.arm || '';
+    el.proteinInput.value = body.protein || '';
+    el.sleepInput.value = body.sleep || '';
+  }
+
+  function saveBodyFromInputs(){
+    const entry = {
+      date: el.entryDate.value || todayKey(),
+      age: el.ageInput.value || '',
+      height: el.heightInput.value || '',
+      weight: el.weightInput.value || '',
+      waist: el.waistInput.value || '',
+      arm: el.armInput.value || '',
+      protein: el.proteinInput.value || '',
+      sleep: el.sleepInput.value || ''
+    };
+    saveBody(entry);
+    const history = getBodyHistory().filter(x => x.date !== entry.date);
+    history.push(entry);
+    saveBodyHistory(history);
+    updateBodyPanel();
+    renderAnalysis();
+  }
+
+  function clamp(n, min, max){
+    return Math.max(min, Math.min(max, n));
+  }
+
+  function proteinRange(weight){
+    if (!weight) return '—';
+    const low = Math.round(weight * 1.6);
+    const high = Math.round(weight * 2.2);
+    return `${low}–${high} g`;
+  }
+
+  function proteinStatus(weight, protein){
+    const low = weight ? weight * 1.6 : 0;
+    const high = weight ? weight * 2.2 : 0;
+    if (!weight) return { low, high, pct: 0, met: false, assumed: true, band: 'desconhecida' };
+    if (!protein) return { low, high, pct: 68, met: false, assumed: true, band: 'não registada' };
+    const gkg = protein / weight;
+    let band = 'baixa';
+    if (gkg >= 1.6 && gkg <= 2.2) band = 'ótima';
+    else if (gkg >= 1.3) band = 'aceitável';
+    else if (gkg > 2.2) band = 'alta';
+    return {
+      low,
+      high,
+      pct: clamp(Math.round((protein / low) * 100), 0, 130),
+      met: protein >= low,
+      assumed: false,
+      band
+    };
+  }
+
+  function sleepFactor(hours){
+    if (!hours) return 0.98;
+    if (hours < 6) return 0.78;
+    if (hours < 6.5) return 0.86;
+    if (hours < 7) return 0.93;
+    if (hours <= 8.5) return 1.0;
+    if (hours <= 9.5) return 0.98;
+    return 0.95;
+  }
+
+  function profileFactor(height, weight, waist, age){
+    if (!height || !weight) return 1.0;
+    const bmi = weight / ((height/100)**2);
+    let factor = 1.0;
+    if (bmi >= 20 && bmi <= 22.5) factor += 0.08;
+    else if (bmi < 18.5) factor -= 0.06;
+    else if (bmi > 26) factor -= 0.07;
+    if (waist){
+      const whtr = waist / height;
+      if (whtr <= 0.50) factor += 0.05;
+      else if (whtr >= 0.55) factor -= 0.06;
+    }
+    if (age){
+      if (age >= 50) factor -= 0.10;
+      else if (age >= 40) factor -= 0.05;
+    }
+    return clamp(factor, 0.82, 1.16);
+  }
+
+  function difficultyFactor(){
+    if (state.difficulty === 'hard') return 1.03;
+    if (state.difficulty === 'easy') return 0.94;
+    return 1.0;
+  }
+
+  function sessionCount(){
+    return getSessions().length;
+  }
+
+  function projectionLabel(score){
+    if (score >= 86) return 'Alta';
+    if (score >= 72) return 'Boa';
+    if (score >= 58) return 'Moderada';
+    return 'Baixa';
+  }
+
+  function visibilityLabel(score){
+    if (score >= 82) return 'Alta';
+    if (score >= 68) return 'Boa';
+    if (score >= 54) return 'Moderada';
+    return 'Lenta';
+  }
+
+  function buildProjectionModel({height, weight, waist, age, protein, sleep, adherence}){
+    const profile = profileFactor(height, weight, waist, age);
+    const p = proteinStatus(weight, protein);
+    const sleepF = sleepFactor(sleep);
+    const diffF = difficultyFactor();
+    const pureBodyweightF = 0.91;
+    const sessions = sessionCount();
+    const planningMode = sessions < 4 && adherence < 15;
+    const effectiveAdherence = planningMode ? 85 : adherence;
+    const adherenceF = 0.58 + (effectiveAdherence / 100) * 0.47;
+    let proteinF = 0.93;
+    if (!p.assumed){
+      if (p.band === 'ótima') proteinF = 1.0;
+      else if (p.band === 'aceitável') proteinF = 0.95;
+      else if (p.band === 'alta') proteinF = 1.01;
+      else proteinF = 0.86;
+    }
+
+    const basePotential = weight && weight <= 66 ? 2.25 : 2.05;
+    let mid = basePotential * profile * sleepF * proteinF * adherenceF * diffF * pureBodyweightF;
+    mid = clamp(mid, 0.7, 3.0);
+    const low = clamp(Math.round(mid * 0.78 * 10) / 10, 0.6, 2.8);
+    const high = clamp(Math.round(mid * 1.22 * 10) / 10, low + 0.4, 3.3);
+    const monthlyLow = Math.round((low / 6) * 100) / 100;
+    const monthlyHigh = Math.round((high / 6) * 100) / 100;
+
+    const sleepScore = clamp(Math.round(sleepF * 100), 0, 100);
+    const proteinScore = p.assumed ? 68 : clamp(Math.round(proteinF * 100), 0, 100);
+    const bodyScore = clamp(Math.round(profile * 100), 0, 100);
+    const visibilityScore = clamp(Math.round(effectiveAdherence * 0.42 + sleepScore * 0.18 + proteinScore * 0.18 + bodyScore * 0.12 + 10), 0, 100);
+    const successScore = clamp(Math.round(effectiveAdherence * 0.46 + sleepScore * 0.18 + proteinScore * 0.20 + bodyScore * 0.10 + (diffF * 100) * 0.06), 0, 100);
+
+    return {
+      low,
+      high,
+      monthlyLow,
+      monthlyHigh,
+      successScore,
+      visibilityScore,
+      planningMode,
+      effectiveAdherence,
+      protein: p,
+      targetWeightLow: weight ? Math.round((weight + low + 0.4) * 10) / 10 : 0,
+      targetWeightHigh: weight ? Math.round((weight + high + 1.0) * 10) / 10 : 0
+    };
+  }
+
+  function latestBody(){
+    const hist = getBodyHistory();
+    return hist.length ? hist[hist.length-1] : getBody();
+  }
+
+  function updateBodyPanel(){
+    const b = latestBody();
+    const height = Number(b.height || 0);
+    const weight = Number(b.weight || 0);
+    const waist = Number(b.waist || 0);
+    const age = Number(b.age || 0);
+    const protein = Number(b.protein || 0);
+    const sleep = Number(b.sleep || 0);
+    const adherence = calcAdherence();
+
+    el.consistencyBadge.textContent = `Consistência ${adherence}%`;
+    el.proteinTargetTop.textContent = proteinRange(weight || 62.6);
+
+    if (!height || !weight){
+      el.leanGainTop.textContent = '+1.4 a 2.4 kg';
+      el.projectionFill.style.width = '0%';
+      el.projectionText.textContent = 'Introduz peso e altura para personalizar a projeção.';
+      el.bmiValue.textContent = '—';
+      el.proteinTargetBody.textContent = '—';
+      el.leanGainBody.textContent = '—';
+      el.weightGoalBody.textContent = '—';
+      el.visualGainValue.textContent = '—';
+      el.monthlyGainValue.textContent = '—';
+      el.projectionDetail.textContent = 'Modelo sem antropometria suficiente.';
+      el.bodyInsight.textContent = 'Introduce peso e altura. A partir daí a app ajusta proteína-alvo, leitura de ganho plausível e nota de estratégia.';
+      return;
+    }
+
+    const model = buildProjectionModel({ height, weight, waist, age, protein, sleep, adherence });
+    const bmi = weight / ((height/100)**2);
+
+    el.leanGainTop.textContent = `+${model.low} a ${model.high} kg`;
+    el.projectionFill.style.width = `${model.visibilityScore}%`;
+    el.projectionText.textContent = model.planningMode
+      ? `Cenário-alvo: ${projectionLabel(model.successScore)} probabilidade de mudança visível se mantiveres ~${model.effectiveAdherence}% de consistência.`
+      : `Estado atual: ${projectionLabel(model.successScore)} probabilidade de mudança visível com ${adherence}% de consistência nas últimas 4 semanas.`;
+
+    el.bmiValue.textContent = bmi.toFixed(1);
+    el.proteinTargetBody.textContent = proteinRange(weight);
+    el.leanGainBody.textContent = `+${model.low} a ${model.high} kg`;
+    el.weightGoalBody.textContent = `${model.targetWeightLow}–${model.targetWeightHigh} kg`;
+    el.visualGainValue.textContent = visibilityLabel(model.visibilityScore);
+    el.monthlyGainValue.textContent = `+${model.monthlyLow}–${model.monthlyHigh} kg`;
+
+    const whtr = waist ? waist / height : null;
+    const proteinLine = model.protein.assumed
+      ? 'Sem proteína registada, o modelo assume cenário neutro.'
+      : model.protein.met
+        ? `Proteína em zona útil para hipertrofia (${protein} g/dia).`
+        : `Proteína abaixo do alvo útil (${protein} g/dia; alvo ${Math.round(model.protein.low)}–${Math.round(model.protein.high)} g/dia).`;
+    const waistLine = whtr
+      ? (whtr <= 0.5 ? 'A relação cintura/altura favorece lean gain.' : 'A relação cintura/altura favorece mais recomposição do que bulk limpo.')
+      : 'Sem cintura registada, o modelo usa IMC e peso atual.';
+    const modeLine = model.planningMode
+      ? 'Como ainda tens poucos treinos registados, a projeção está em modo de planeamento e assume adesão-alvo de 85%.'
+      : 'A projeção já está ancorada na tua consistência real das últimas 4 semanas.';
+
+    el.projectionDetail.textContent = `${modeLine} Cadência plausível: +${model.monthlyLow} a +${model.monthlyHigh} kg de massa magra por mês. O score visual privilegia peito, ombros e braços, porque a rotação foi desenhada para mostrar mudança primeiro no tronco superior.`;
+
+    let note = `IMC atual ${bmi.toFixed(1)}. Para o teu perfil (${height} cm, ${weight} kg), o modelo favorece lean gain e não “cut”. ${proteinLine}`;
+    note += sleep ? (sleep >= 7 ? ` Sono ${sleep} h: recuperação compatível com progresso.` : ` Sono ${sleep} h: este ponto está a travar recuperação e síntese muscular.`) : ' Sem sono registado, o modelo assume recuperação neutra.';
+    note += ` ${waistLine}`;
+    note += ' Como o plano é só com peso corporal, o crescimento de peito e tríceps tende a responder melhor do que costas e bíceps; por isso a leitura visual é mais forte no tronco superior do que na massa total.';
+    note += ' Para maximizar resultado dentro do jejum intermitente, distribui 3 tomas proteicas eficazes na janela alimentar e aproxima as séries da quase-falha técnica.';
+
+    el.bodyInsight.textContent = note;
+  }
+
+  function renderAnalysis(){
+
+    const hist = getBodyHistory().slice(-8);
+    const labels = hist.map(x => x.date);
+    const weightData = hist.map(x => x.weight ? Number(x.weight) : null);
+    const waistData = hist.map(x => x.waist ? Number(x.waist) : null);
+    const armData = hist.map(x => x.arm ? Number(x.arm) : null);
+
+    el.analysisPill.textContent = hist.length >= 2 ? `${hist.length} registos` : '2+ registos = melhor leitura';
+
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    if (state.chart) state.chart.destroy();
+    state.chart = new Chart(ctx, {
+      type:'line',
+      data:{
+        labels,
+        datasets:[
+          { label:'Peso', data:weightData, borderColor:'#0A84FF', backgroundColor:'transparent', spanGaps:true, tension:0.25 },
+          { label:'Cintura', data:waistData, borderColor:'#7B7F89', backgroundColor:'transparent', spanGaps:true, tension:0.25 },
+          { label:'Braço', data:armData, borderColor:'#36A269', backgroundColor:'transparent', spanGaps:true, tension:0.25 }
+        ]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        animation:false,
+        plugins:{ legend:{ display:true } },
+        scales:{ x:{ ticks:{ maxRotation:0, minRotation:0 } }, y:{ beginAtZero:false } }
+      }
+    });
+
+    if (hist.length >= 2){
+      const first = hist[0];
+      const last = hist[hist.length-1];
+      const dW = (Number(last.weight || 0) - Number(first.weight || 0)).toFixed(1);
+      const dWa = (Number(last.waist || 0 || 0) - Number(first.waist || 0 || 0)).toFixed(1);
+      const dA = (Number(last.arm || 0 || 0) - Number(first.arm || 0 || 0)).toFixed(1);
+      el.analysisText.textContent = `Desde o primeiro destes registos: peso ${dW >= 0 ? '+' : ''}${dW} kg · cintura ${dWa >= 0 ? '+' : ''}${dWa} cm · braço ${dA >= 0 ? '+' : ''}${dA} cm.`;
+    } else {
+      el.analysisText.textContent = 'Adiciona pelo menos dois registos para ver tendência de peso, cintura e braço.';
+    }
+  }
+
+  function renderCalendar(){
+    const view = new Date(state.viewDate.getFullYear(), state.viewDate.getMonth(), 1);
+    const year = view.getFullYear();
+    const month = view.getMonth();
+    const today = todayKey();
+    const completed = completedDatesSet();
+    const first = new Date(year, month, 1);
+    const startWeekday = (first.getDay() + 6) % 7;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const monthName = view.toLocaleDateString('pt-PT', { month:'long', year:'numeric' });
+    el.monthLabel.textContent = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+    el.calendar.innerHTML = '';
+
+    ['S','T','Q','Q','S','S','D'].forEach(day => {
+      const w = document.createElement('div');
+      w.className = 'weekday';
+      w.textContent = day;
+      el.calendar.appendChild(w);
+    });
+
+    for (let i = 0; i < startWeekday; i++){
+      const blank = document.createElement('div');
+      blank.className = 'day future';
+      blank.style.visibility = 'hidden';
+      el.calendar.appendChild(blank);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++){
+      const date = new Date(year, month, d);
+      const key = date.toISOString().slice(0,10);
+      const cell = document.createElement('div');
+      cell.className = 'day';
+      if (key === today) cell.classList.add('today');
+      if (key > today) cell.classList.add('future');
+      else if (completed.has(key)) cell.classList.add('done');
+      else cell.classList.add('missed');
+      cell.textContent = String(d);
+      if (key <= today){
+        cell.style.cursor = 'pointer';
+        cell.addEventListener('click', () => toggleSessionForDate(key));
+      }
+      el.calendar.appendChild(cell);
+    }
+  }
+
+  function renderRecent(){
+    const recent = getSessions().slice(-6).reverse();
+    if (!recent.length){
+      el.recentList.innerHTML = '<div class="recent-item"><span>Nenhuma sessão ainda.</span><span>—</span></div>';
+      return;
+    }
+    el.recentList.innerHTML = recent.map(item =>
+      `<div class="recent-item">
+        <span>${item.date} · Plano ${item.plan}</span>
+        <span>${difficultyConfig[item.difficulty]?.label || '—'}</span>
+      </div>`
+    ).join('');
+  }
+
+  function applyDifficulty(diff){
+    state.difficulty = diff;
+    localStorage.setItem(STORAGE.difficulty, diff);
+    resetCycle();
+  }
+
+  document.querySelectorAll('#difficultySegment button').forEach(btn => {
+    btn.addEventListener('click', () => applyDifficulty(btn.dataset.difficulty));
+  });
+
+  el.startBtn.addEventListener('click', startSession);
+  el.pauseBtn.addEventListener('click', pauseSession);
+  el.resetBtn.addEventListener('click', resetCycle);
+  el.skipBtn.addEventListener('click', skipCurrent);
+  el.techBtn.addEventListener('click', toggleTech);
+  el.markTodayBtn.addEventListener('click', () => {
+    saveTodaySession(true);
+    renderCalendar();
+    renderRecent();
+    updateBodyPanel();
+    renderAnalysis();
+    renderToday();
+  });
+
+  el.soundToggle.addEventListener('click', () => {
+    state.soundOn = !state.soundOn;
+    localStorage.setItem(STORAGE.sound, JSON.stringify(state.soundOn));
+    renderToday();
+  });
+
+  el.voiceToggle.addEventListener('click', () => {
+    state.voiceOn = !state.voiceOn;
+    localStorage.setItem(STORAGE.voice, JSON.stringify(state.voiceOn));
+    renderToday();
+  });
+
+  el.saveBodyBtn.addEventListener('click', saveBodyFromInputs);
+  el.prevMonthBtn.addEventListener('click', () => { state.viewDate.setMonth(state.viewDate.getMonth() - 1); renderCalendar(); });
+  el.nextMonthBtn.addEventListener('click', () => { state.viewDate.setMonth(state.viewDate.getMonth() + 1); renderCalendar(); });
+
+  bodyDefaults();
+  initTabs();
+  fillBodyInputs();
+  resetCycle();
+  renderCalendar();
+  renderRecent();
+  updateBodyPanel();
+  renderAnalysis();
+
+  if ('serviceWorker' in navigator){
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
+})();
 </script>
-
 </body>
 </html>
