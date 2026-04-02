@@ -117,7 +117,14 @@
     return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   }
 
-  function todayKey() { return new Date().toISOString().slice(0,10); }
+  function dateKeyLocal(date = new Date()) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2,'0');
+    const d = String(date.getDate()).padStart(2,'0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function todayKey() { return dateKeyLocal(new Date()); }
 
   function getJSON(key, fallback) {
     try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); }
@@ -149,7 +156,7 @@
     let streak = 0;
     const d = new Date();
     while (true) {
-      const key = d.toISOString().slice(0,10);
+      const key = dateKeyLocal(d);
       if (!done.has(key)) break;
       streak += 1;
       d.setDate(d.getDate()-1);
@@ -162,7 +169,7 @@
     for (let i=0;i<days;i++) {
       const d = new Date();
       d.setDate(d.getDate()-i);
-      if (done.has(d.toISOString().slice(0,10))) count += 1;
+      if (done.has(dateKeyLocal(d))) count += 1;
     }
     return Math.round((count / days) * 100);
   }
@@ -558,7 +565,7 @@
     }
     for (let d=1; d<=daysInMonth; d++) {
       const date = new Date(year, month, d);
-      const key = date.toISOString().slice(0,10);
+      const key = dateKeyLocal(date);
       const cell = document.createElement('div');
       cell.className = 'day';
       if (key === today) cell.classList.add('today');
