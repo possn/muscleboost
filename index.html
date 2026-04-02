@@ -1218,7 +1218,7 @@ button{cursor:pointer}
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./sw.js');
+        const reg = await navigator.serviceWorker.register('./sw.js?v=16');
         reg.update();
       } catch (e) {}
     });
