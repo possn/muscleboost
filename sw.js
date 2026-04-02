@@ -1,49 +1,14 @@
-const CACHE='muscleboost-v16';
-const APP_SHELL=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
-
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
-    await self.clients.claim();
-  })());
-});
-
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  const isNavigation = event.request.mode === 'navigate';
-  const isAppShell = url.pathname.endsWith('/index.html') || url.pathname.endsWith('/');
-
-  if (isNavigation || isAppShell) {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(event.request, { cache: 'no-store' });
-        const cache = await caches.open(CACHE);
-        cache.put('./index.html', fresh.clone()).catch(() => {});
-        return fresh;
-      } catch (err) {
-        const cached = await caches.match('./index.html');
-        return cached || caches.match('./');
-      }
-    })());
+const CACHE='muscleboost-v17';
+const CORE=['./','./index.html','./index.html?v=17','./manifest.json','./icon-192.png','./icon-512.png'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',e=>{
+  if(e.request.method!=='GET') return;
+  const url=new URL(e.request.url);
+  const isHTML = e.request.mode==='navigate' || url.pathname.endsWith('/index.html') || url.pathname==='/' || url.search.includes('v=17');
+  if(isHTML){
+    e.respondWith(fetch(e.request).then(res=>{const copy=res.clone(); caches.open(CACHE).then(c=>c.put('./index.html',copy)).catch(()=>{}); return res;}).catch(()=>caches.match('./index.html')));
     return;
   }
-
-  event.respondWith((async () => {
-    const cached = await caches.match(event.request);
-    if (cached) return cached;
-    try {
-      const fresh = await fetch(event.request);
-      const cache = await caches.open(CACHE);
-      cache.put(event.request, fresh.clone()).catch(() => {});
-      return fresh;
-    } catch (err) {
-      return caches.match('./index.html');
-    }
-  })());
+  e.respondWith(caches.match(e.request).then(hit=>hit || fetch(e.request).then(res=>{const copy=res.clone(); caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{}); return res;})));
 });
