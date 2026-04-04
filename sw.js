@@ -1,4 +1,4 @@
-const CACHE='muscleboost-v19';
+const CACHE='muscleboost-v20';
 const CORE=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));

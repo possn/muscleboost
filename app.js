@@ -1,4 +1,3 @@
-
 (() => {
   const STORAGE = {
     sessions:'mb8_sessions',
@@ -9,7 +8,10 @@
     voice:'mb17_voice',
     selectedPlan:'mb17_selected_plan',
     autoPlan:'mb17_auto_plan',
-    activeTab:'mb17_tab'
+    autoPlanPos:'mb20_auto_plan_pos',
+    activeTab:'mb17_tab',
+    profileMode:'mb20_profile_mode',
+    photos:'mb20_photos'
   };
 
   const plans = [
@@ -55,7 +57,9 @@
     soundOn:JSON.parse(localStorage.getItem(STORAGE.sound) ?? localStorage.getItem('mb8_sound') ?? 'true'),
     voiceOn:JSON.parse(localStorage.getItem(STORAGE.voice) ?? 'true'),
     selectedPlanMode:localStorage.getItem(STORAGE.selectedPlan) || 'auto',
+    profileMode:localStorage.getItem(STORAGE.profileMode) || 'chest_arms',
     autoPlanKey:localStorage.getItem(STORAGE.autoPlan) || '',
+    autoPlanPos:Number(localStorage.getItem(STORAGE.autoPlanPos) || 0),
     activeTab:localStorage.getItem(STORAGE.activeTab) || localStorage.getItem('mb11_tab') || 'today',
     viewDate:new Date(),
     lastSpoken:null
@@ -72,10 +76,10 @@
     dayBadge:$('dayBadge'), planTitle:$('planTitle'), planFocus:$('planFocus'), planStatus:$('planStatus'), nextPlan:$('nextPlan'),
     exerciseName:$('exerciseName'), exerciseInstruction:$('exerciseInstruction'), nextExerciseLine:$('nextExerciseLine'), timer:$('timer'), phase:$('phase'), countdown:$('countdown'), progressFill:$('progressFill'), progressText:$('progressText'),
     roundValue:$('roundValue'), moveValue:$('moveValue'), streakValue:$('streakValue'), doseValue:$('doseValue'), startBtn:$('startBtn'), pauseBtn:$('pauseBtn'), resetBtn:$('resetBtn'), skipBtn:$('skipBtn'), techBtn:$('techBtn'), markTodayBtn:$('markTodayBtn'),
-    soundToggle:$('soundToggle'), voiceToggle:$('voiceToggle'), soundSwitch:$('soundSwitch'), voiceSwitch:$('voiceSwitch'), exerciseList:$('exerciseList'), techTitle:$('techTitle'), techDesc:$('techDesc'), techSetup:$('techSetup'), techExecution:$('techExecution'), techBreathing:$('techBreathing'), techMistake:$('techMistake'), techRegression:$('techRegression'), techFocus:$('techFocus'), techCues:$('techCues'),
-    rotationGrid:$('rotationGrid'), entryDate:$('entryDate'), ageInput:$('ageInput'), heightInput:$('heightInput'), weightInput:$('weightInput'), waistInput:$('waistInput'), armInput:$('armInput'), proteinInput:$('proteinInput'), sleepInput:$('sleepInput'), saveBodyBtn:$('saveBodyBtn'),
+    soundToggle:$('soundToggle'), voiceToggle:$('voiceToggle'), soundSwitch:$('soundSwitch'), voiceSwitch:$('voiceSwitch'), exerciseList:$('exerciseList'), techTitle:$('techTitle'), techDesc:$('techDesc'), techSetup:$('techSetup'), techExecution:$('techExecution'), techBreathing:$('techBreathing'), techMistake:$('techMistake'), techRegression:$('techRegression'), techFocus:$('techFocus'), techCues:$('techCues'), profileSummary:$('profileSummary'),
+    rotationGrid:$('rotationGrid'), entryDate:$('entryDate'), ageInput:$('ageInput'), heightInput:$('heightInput'), weightInput:$('weightInput'), waistInput:$('waistInput'), armInput:$('armInput'), proteinInput:$('proteinInput'), sleepInput:$('sleepInput'), saveBodyBtn:$('saveBodyBtn'), photoInput:$('photoInput'), addPhotoBtn:$('addPhotoBtn'), removePhotoBtn:$('removePhotoBtn'), photoCompareGrid:$('photoCompareGrid'), photoCompareText:$('photoCompareText'),
     bmiValue:$('bmiValue'), proteinTargetBody:$('proteinTargetBody'), leanGainBody:$('leanGainBody'), weightGoalBody:$('weightGoalBody'), consistencyBadge:$('consistencyBadge'), projectionFill:$('projectionFill'), projectionText:$('projectionText'), visualGainValue:$('visualGainValue'), monthlyGainValue:$('monthlyGainValue'), projectionChart:$('projectionChart'), projectionChecks:$('projectionChecks'), projectionDetail:$('projectionDetail'), bodyInsight:$('bodyInsight'),
-    analysisPill:$('analysisPill'), analysisText:$('analysisText'), progressChart:$('progressChart'), weekSummaryPill:$('weekSummaryPill'), monthLabel:$('monthLabel'), calendar:$('calendar'), recentList:$('recentList'), prevMonthBtn:$('prevMonthBtn'), nextMonthBtn:$('nextMonthBtn'), jumpTodayBtn:$('jumpTodayBtn')
+    analysisPill:$('analysisPill'), analysisText:$('analysisText'), progressChart:$('progressChart'), weekSummaryPill:$('weekSummaryPill'), monthLabel:$('monthLabel'), calendar:$('calendar'), recentList:$('recentList'), prevMonthBtn:$('prevMonthBtn'), nextMonthBtn:$('nextMonthBtn'), jumpTodayBtn:$('jumpTodayBtn'), weeklyRecommendationPill:$('weeklyRecommendationPill'), weeklySummaryGrid:$('weeklySummaryGrid'), weeklyRecommendationText:$('weeklyRecommendationText')
   };
 
   let audioCtx = null;
@@ -99,6 +103,12 @@
   function getBodyHistory(){ try{ return JSON.parse(localStorage.getItem(STORAGE.bodyHistory) || '[]').sort((a,b)=>a.date.localeCompare(b.date)); } catch { return []; } }
   function saveBodyHistory(list){ localStorage.setItem(STORAGE.bodyHistory, JSON.stringify(list.sort((a,b)=>a.date.localeCompare(b.date)))); }
 
+  function getPhotos(){ try{ return JSON.parse(localStorage.getItem(STORAGE.photos) || '[]').sort((a,b)=>a.date.localeCompare(b.date)); } catch { return []; } }
+  function savePhotos(list){ localStorage.setItem(STORAGE.photos, JSON.stringify(list.sort((a,b)=>a.date.localeCompare(b.date)).slice(-18))); }
+  function monthKey(key){ return String(key || '').slice(0,7); }
+  function latestMonthlyPhotos(){ const list=getPhotos(); const seen=new Set(); const picks=[]; for(let i=list.length-1;i>=0;i--){ const mk=monthKey(list[i].date); if(!seen.has(mk)){ picks.push(list[i]); seen.add(mk); if(picks.length===2) break; } } return picks; }
+  function compressImageFile(file, maxSide=1200, quality=0.78){ return new Promise((resolve,reject)=>{ const reader=new FileReader(); reader.onload=()=>{ const img=new Image(); img.onload=()=>{ let w=img.width, h=img.height; const scale=Math.min(1, maxSide / Math.max(w,h)); w=Math.max(1, Math.round(w*scale)); h=Math.max(1, Math.round(h*scale)); const canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h; const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,w,h); resolve(canvas.toDataURL('image/jpeg', quality)); }; img.onerror=reject; img.src=reader.result; }; reader.onerror=reject; reader.readAsDataURL(file); }); }
+
   function bodyDefaults(){
     const body = getBody();
     if (!body.height && !body.weight){
@@ -112,20 +122,29 @@
   function calcStreak(){ let streak=0, key=todayKey(); const done=completedDatesSet(); while(done.has(key)){ streak+=1; key=addDaysToKey(key,-1); } return streak; }
   function calcAdherence(days=28){ let count=0, key=todayKey(); const done=completedDatesSet(); for(let i=0;i<days;i++){ if(done.has(key)) count += 1; key=addDaysToKey(key,-1); } return Math.round((count/days)*100); }
 
-  function inferAutoPlanFromHistory(){ const sessions=getSessions(); if(!sessions.length) return 'A'; const last=sessions[sessions.length-1].plan; const idx=plans.findIndex(p=>p.key===last); return idx<0 ? 'A' : plans[(idx+1)%plans.length].key; }
-  function ensureAutoPlan(){ if(!plans.some(p=>p.key===state.autoPlanKey)){ state.autoPlanKey = inferAutoPlanFromHistory(); localStorage.setItem(STORAGE.autoPlan, state.autoPlanKey); } }
-  function currentPlanAutoIndex(){ ensureAutoPlan(); const idx=plans.findIndex(p=>p.key===state.autoPlanKey); return idx>=0?idx:0; }
+  function sessionsInLastDays(days=7){ let count=0, key=todayKey(); const done=completedDatesSet(); for(let i=0;i<days;i++){ if(done.has(key)) count += 1; key=addDaysToKey(key,-1); } return count; }
+  function weeklyTargetSessions(){ return state.profileMode==='definition' ? 5 : 6; }
+  function rotationSequence(){ if(state.profileMode==='balanced') return ['A','B','C','D','E']; if(state.profileMode==='definition') return ['E','A','B','C','D']; return ['A','B','C','D','A','E']; }
+  function profileMeta(){ if(state.profileMode==='balanced') return { title:'Equilibrado', text:'Sequência A-B-C-D-E com distribuição estável entre empurrar, puxar, pernas e core.' }; if(state.profileMode==='definition') return { title:'Definição geral', text:'Começa em densidade global e mantém frequência ligeiramente menor para facilitar aderência e controlo da fadiga.' }; return { title:'Peito + braços', text:'Usa A-B-C-D-A-E para dar mais frequência útil a peito, tríceps e braço sem apagar pernas e costas.' }; }
+  function volumeTierForPlan(planKey=currentPlan().key){ const a7=calcAdherence(7), a28=calcAdherence(28); const blended=Math.round(a7*0.65 + a28*0.35); let rounds=3, label='Base'; if(blended<46){ rounds=2; label='Alívio'; } else if(blended>=82){ rounds=4; label='Alto'; } if(state.profileMode==='chest_arms' && ['A','D'].includes(planKey) && blended>=65) { rounds=Math.max(rounds,4); label='Alto'; } if(state.profileMode==='definition' && blended>=82 && planKey!=='E'){ rounds=Math.min(rounds,3); label=rounds===2 ? 'Alívio' : 'Base'; } return { rounds, label, blended, a7, a28 }; }
+  function weeklySummary(){ const s7=sessionsInLastDays(7); const s28=sessionsInLastDays(28); const adherence=calcAdherence(28); const target=weeklyTargetSessions(); const volume=volumeTierForPlan(); const gap=Math.max(target-s7,0); let status='Em linha'; let action='Mantém a rotina. O ganho visual depende agora de repetires semanas sólidas.'; if(s7>=target && adherence>=75){ status='Forte'; action = volume.rounds>=4 ? 'A semana está forte. Mantém o volume alto nos blocos chave e tenta repetir esta consistência.' : 'A semana já aguenta mais trabalho. A app sobe o volume automático nos blocos chave.'; } else if(gap>0){ status=gap>=2 ? 'Atrasado' : 'A recuperar'; action = `Faltam ${gap} sessão(ões) para o alvo semanal. Prioriza primeiro os dias A e D se queres maximizar peito e braços.`; } else if(adherence<55){ status='Irregular'; action='Aderência baixa. Reduz a ambição de intensidade máxima e volta a fechar 5–6 sessões antes de tentar subir volume.'; } return { s7, s28, adherence, target, volume, status, action }; }
+
+  function syncAutoPlanState(){ const seq=rotationSequence(); state.autoPlanPos=((Number(state.autoPlanPos)||0)%seq.length + seq.length) % seq.length; state.autoPlanKey = seq[state.autoPlanPos]; localStorage.setItem(STORAGE.autoPlanPos, String(state.autoPlanPos)); localStorage.setItem(STORAGE.autoPlan, state.autoPlanKey); }
+  function inferAutoPlanPosFromHistory(){ const seq=rotationSequence(); const sessions=getSessions(); if(!sessions.length) return 0; const savedKey = state.autoPlanKey || localStorage.getItem(STORAGE.autoPlan) || ''; const savedIdx = seq.indexOf(savedKey); if(savedIdx>=0) return savedIdx; const last=sessions[sessions.length-1].plan; const firstMatch=seq.indexOf(last); return firstMatch>=0 ? (firstMatch+1)%seq.length : 0; }
+  function ensureAutoPlan(){ const seq=rotationSequence(); const savedPos=Number(localStorage.getItem(STORAGE.autoPlanPos)); if(Number.isInteger(savedPos) && savedPos>=0) state.autoPlanPos = savedPos % seq.length; else state.autoPlanPos = inferAutoPlanPosFromHistory(); syncAutoPlanState(); }
+  function currentPlanAutoIndex(){ ensureAutoPlan(); const idx=plans.findIndex(p=>p.key===rotationSequence()[state.autoPlanPos]); return idx>=0?idx:0; }
   function selectedPlanIndex(){ if(state.selectedPlanMode!=='auto'){ const idx=plans.findIndex(p=>p.key===state.selectedPlanMode); if(idx>=0) return idx; } return currentPlanAutoIndex(); }
   function currentPlan(){ return plans[selectedPlanIndex()]; }
-  function nextPlanObj(){ const idx = state.selectedPlanMode==='auto' ? currentPlanAutoIndex() : selectedPlanIndex(); return plans[(idx+1)%plans.length]; }
-  function advanceAutoPlan(){ const idx=currentPlanAutoIndex(); state.autoPlanKey = plans[(idx+1)%plans.length].key; localStorage.setItem(STORAGE.autoPlan, state.autoPlanKey); }
+  function nextPlanObj(){ if(state.selectedPlanMode!=='auto') return plans[(selectedPlanIndex()+1)%plans.length]; const seq=rotationSequence(); const nextKey=seq[(state.autoPlanPos+1)%seq.length]; return plans.find(p=>p.key===nextKey) || plans[0]; }
+  function advanceAutoPlan(){ const seq=rotationSequence(); state.autoPlanPos = (state.autoPlanPos+1)%seq.length; syncAutoPlanState(); }
   function setPlanMode(mode){ state.selectedPlanMode = ['auto','A','B','C','D','E'].includes(mode) ? mode : 'auto'; localStorage.setItem(STORAGE.selectedPlan, state.selectedPlanMode); resetCycle(); renderAll(); }
+  function setProfileMode(mode){ state.profileMode = ['balanced','chest_arms','definition'].includes(mode) ? mode : 'chest_arms'; localStorage.setItem(STORAGE.profileMode, state.profileMode); state.autoPlanPos=0; syncAutoPlanState(); resetCycle(); renderAll(); }
   function currentCfg(){ return difficultyConfig[state.difficulty]; }
-  function roundsPerSession(){ return 3; }
+  function roundsPerSession(planKey=currentPlan().key){ return volumeTierForPlan(planKey).rounds; }
   function currentExercise(){ return currentPlan().exercises[state.exerciseIndex]; }
   function currentVariantName(ex){ return ex.variants[state.difficulty]; }
   function currentVariantInstruction(ex){ return ex.instructions[state.difficulty]; }
-  function totalWorkBlocks(){ return currentPlan().exercises.length * roundsPerSession(); }
+  function totalWorkBlocks(){ return currentPlan().exercises.length * roundsPerSession(currentPlan().key); }
   function completedWorkBlocks(){ return state.roundIndex * currentPlan().exercises.length + state.exerciseIndex; }
   function progressPct(){ return clamp(Math.round((completedWorkBlocks()/totalWorkBlocks())*100),0,100); }
   function nextExerciseAfterCurrentBlock(){ let exIndex=state.exerciseIndex+1, round=state.roundIndex; if(exIndex>=currentPlan().exercises.length){ exIndex=0; round+=1; } if(round>=roundsPerSession()) return null; return { exercise:currentPlan().exercises[exIndex], index:exIndex, round:round+1 }; }
@@ -154,7 +173,7 @@
   async function releaseWakeLock(){ try{ if(wakeLock){ await wakeLock.release(); wakeLock=null; } }catch{} }
   document.addEventListener('visibilitychange', async ()=>{ if(document.visibilityState==='visible' && state.intervalId) await requestWakeLock(); });
 
-  function saveTodaySession(marked=false){ const sessions=getSessions(); const key=todayKey(); if(sessions.some(s=>s.date===key)) return false; sessions.push({ date:key, plan:currentPlan().key, difficulty:state.difficulty, marked }); saveSessions(sessions); if(state.selectedPlanMode==='auto') advanceAutoPlan(); return true; }
+  function saveTodaySession(marked=false){ const sessions=getSessions(); const key=todayKey(); if(sessions.some(s=>s.date===key)) return false; sessions.push({ date:key, plan:currentPlan().key, difficulty:state.difficulty, marked, profile:state.profileMode, rounds:roundsPerSession(currentPlan().key) }); saveSessions(sessions); if(state.selectedPlanMode==='auto') advanceAutoPlan(); return true; }
   function toggleSessionForDate(key){ if(key>todayKey()) return; const sessions=getSessions(); const ix=sessions.findIndex(s=>s.date===key); if(ix>=0) sessions.splice(ix,1); else sessions.push({ date:key, plan:currentPlan().key, difficulty:state.difficulty, marked:true }); saveSessions(sessions); renderAll(); }
 
   function resetCycle(){ clearInterval(state.intervalId); state.intervalId=null; state.phase='work'; state.exerciseIndex=0; state.roundIndex=0; state.remainingTime=currentCfg().work; state.lastSpoken=null; releaseWakeLock(); }
@@ -226,7 +245,11 @@
     el.techCues.textContent=g.cues;
   }
 
-  function renderPlanModes(){ document.querySelectorAll('[data-plan-mode]').forEach(btn=>btn.classList.toggle('active', btn.dataset.planMode===state.selectedPlanMode)); el.planStatus.textContent = state.selectedPlanMode==='auto' ? `Auto · próxima sessão ${state.autoPlanKey}` : `Manual · plano ${state.selectedPlanMode}`; }
+  function renderProfileModeSummary(){ const meta=profileMeta(); document.querySelectorAll('[data-profile-mode]').forEach(btn=>btn.classList.toggle('active', btn.dataset.profileMode===state.profileMode)); if(el.profileSummary) el.profileSummary.innerHTML=`<div class="label">Lógica atual</div><div style="margin-top:6px;color:var(--text);font-weight:760">${meta.title}</div><div class="micro-copy">${meta.text}</div>`; }
+  function renderWeeklySummary(){ if(!el.weeklySummaryGrid) return; const w=weeklySummary(); el.weeklyRecommendationPill.textContent=w.status; el.weeklySummaryGrid.innerHTML=`<div class="weekly-card"><div class="v">${w.s7}/${w.target}</div><div class="l">Sessões / alvo 7d</div></div><div class="weekly-card"><div class="v">${w.adherence}%</div><div class="l">Consistência 28d</div></div><div class="weekly-card"><div class="v">${w.volume.label}</div><div class="l">Volume automático</div></div>`; el.weeklyRecommendationText.innerHTML=`<div class="label">Recomendação objetiva</div><div style="margin-top:6px;color:var(--text);font-weight:760">${w.action}</div><div class="micro-copy">Nesta versão, o plano de hoje corre com <strong>${w.volume.rounds} rondas</strong> quando a aderência justifica. Isso evita volume alto em semanas fracas e sobe carga total quando estás consistente.</div>`; }
+  function renderPhotoCompare(){ if(!el.photoCompareGrid) return; const picks=latestMonthlyPhotos(); if(!picks.length){ el.photoCompareGrid.innerHTML=''; el.photoCompareText.textContent='Sem fotos locais ainda. Guarda uma foto frontal ou 3/4 e repete no mês seguinte.'; return; } const labels=['Mais recente','Anterior']; el.photoCompareGrid.innerHTML=picks.map((p,i)=>`<div class="photo-frame"><img src="${p.dataUrl}" alt="Foto de progresso ${p.date}"><div class="meta"><strong>${labels[i] || 'Foto'}</strong>${p.date}</div></div>`).join(''); if(picks.length===1){ el.photoCompareText.innerHTML='Existe 1 foto local. O uso certo é repetir com ângulo e luz parecidos dentro de 3–5 semanas para comparar braço, peito e cintura.'; return; } const days=Math.max(1, Math.round((dateFromKey(picks[0].date)-dateFromKey(picks[1].date))/86400000)); el.photoCompareText.innerHTML=`Comparação local entre <strong>${picks[1].date}</strong> e <strong>${picks[0].date}</strong> (${days} dias). Lê primeiro peito, braço e cintura visual; só depois olha para o peso.`; }
+
+  function renderPlanModes(){ document.querySelectorAll('[data-plan-mode]').forEach(btn=>btn.classList.toggle('active', btn.dataset.planMode===state.selectedPlanMode)); const meta=profileMeta(); el.planStatus.textContent = state.selectedPlanMode==='auto' ? `Auto · próxima sessão ${state.autoPlanKey} · ${meta.title}` : `Manual · plano ${state.selectedPlanMode}`; }
   function renderRotation(){ el.rotationGrid.innerHTML = plans.map(p => `<div class="rotation-card ${p.key===currentPlan().key ? 'active' : ''}" data-plan-key="${p.key}"><strong>${p.title}</strong><span>${p.focus}</span></div>`).join(''); document.querySelectorAll('.rotation-card').forEach(card=>card.addEventListener('click', ()=>setPlanMode(card.dataset.planKey))); }
   function renderExerciseList(){ const upcoming=nextExerciseAfterCurrentBlock(); el.exerciseList.innerHTML = currentPlan().exercises.map((ex,idx)=>{ const active = state.phase==='work' ? idx===state.exerciseIndex : (upcoming && idx===upcoming.index); const g=exerciseGuide(currentVariantName(ex)); return `<div class="plan-item ${active ? 'active' : ''}"><div class="left"><div class="name">${currentVariantName(ex)}</div><div class="sub">${g.intro}</div><div class="hint">${g.cues}</div></div><div class="right">${idx+1}/4</div></div>`; }).join(''); }
   function renderToday(){ const plan=currentPlan(); const ex=currentExercise(); const upcoming=nextExerciseAfterCurrentBlock(); const nextPlan=nextPlanObj(); const cfg=currentCfg(); el.dayBadge.textContent = state.selectedPlanMode==='auto' ? `Auto ${plan.key}` : `Plano ${plan.key}`; el.planTitle.textContent = plan.title; el.planFocus.textContent = plan.focus; el.nextPlan.textContent = state.selectedPlanMode==='auto' ? `Auto · seguinte ${nextPlan.key}` : 'Modo manual'; el.exerciseName.textContent = state.phase==='work' ? currentVariantName(ex) : 'Descanso'; el.exerciseInstruction.textContent = state.phase==='work' ? currentVariantInstruction(ex) : 'Respira fundo, recupera e prepara a próxima série.'; el.nextExerciseLine.textContent = upcoming ? `Seguinte: ${currentVariantName(upcoming.exercise)} · ronda ${upcoming.round}` : 'Seguinte: fim da sessão'; el.timer.textContent = formatSeconds(state.remainingTime); el.phase.textContent = state.phase.toUpperCase(); el.countdown.textContent = state.phase==='work' && state.remainingTime<=5 && state.remainingTime>0 ? `Últimos ${state.remainingTime}s` : ''; el.progressFill.style.width = `${progressPct()}%`; el.progressText.textContent = `${progressPct()}% da sessão`; el.roundValue.textContent = `${Math.min(state.roundIndex+1, roundsPerSession())}/${roundsPerSession()}`; el.moveValue.textContent = `${Math.min(state.exerciseIndex+1, currentPlan().exercises.length)}/${currentPlan().exercises.length}`; el.streakValue.textContent = String(calcStreak()); el.doseValue.textContent = `${cfg.work}/${cfg.rest}`; el.soundSwitch.classList.toggle('on', state.soundOn); el.voiceSwitch.classList.toggle('on', state.voiceOn); updateTechniqueCard(ex); document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.classList.toggle('active', btn.dataset.difficulty===state.difficulty)); renderPlanModes(); renderExerciseList(); renderRotation(); }
@@ -242,11 +265,13 @@
 
   function updateBodyPanel(){ const b=latestBody(); const height=Number(b.height||0), weight=Number(b.weight||0), waist=Number(b.waist||0), age=Number(b.age||0), protein=Number(b.protein||0), sleep=Number(b.sleep||0), adherence=calcAdherence(); el.consistencyBadge.textContent=`Consistência ${adherence}%`; if(!height || !weight){ el.bmiValue.textContent='—'; el.proteinTargetBody.textContent='—'; el.leanGainBody.textContent='—'; el.weightGoalBody.textContent='—'; el.projectionFill.style.width='0%'; el.projectionText.textContent='Introduz peso e altura para personalizar a projeção.'; el.visualGainValue.textContent='—'; el.monthlyGainValue.textContent='—'; el.projectionChart.innerHTML=''; el.projectionChecks.innerHTML=''; el.projectionDetail.innerHTML=''; el.bodyInsight.innerHTML=''; return; } const bmi=weight/((height/100)**2); const model=buildProjectionModel({height,weight,waist,age,protein,sleep,adherence}); const story=projectionNarrative(model); el.bmiValue.textContent=bmi.toFixed(1); el.proteinTargetBody.textContent=proteinRange(weight); el.leanGainBody.textContent=`+${model.low} a ${model.high} kg`; el.weightGoalBody.textContent=`${model.targetWeightLow}–${model.targetWeightHigh} kg`; el.projectionFill.style.width=`${model.visibilityScore}%`; el.projectionText.textContent=`Linha azul escura = cenário provável. Aos 180 dias, o cenário provável para ti é +${model.likely.toFixed(2)} kg de massa magra acumulada.`; el.visualGainValue.textContent=visibilityLabel(model.visibilityScore); el.monthlyGainValue.textContent=`~${model.monthlyLikely.toFixed(2)} kg/mês`; renderProjectionChart(model); el.projectionDetail.innerHTML=`<div class="note-box"><div class="label">Como interpretar</div><div style="margin-top:6px;color:var(--text);font-weight:700">${story.headline}</div><div class="legend-grid"><div class="legend-item"><span class="dot low"></span><div><strong>Conservador</strong><span>O mínimo plausível se a execução ficar irregular ou se a fadiga técnica não for suficiente.</span></div></div><div class="legend-item"><span class="dot likely"></span><div><strong>Provável</strong><span>A leitura principal. É a melhor estimativa com os teus dados atuais.</span></div></div><div class="legend-item"><span class="dot high"></span><div><strong>Ótimo</strong><span>O teto plausível se a consistência e a recuperação forem muito boas.</span></div></div></div><div class="micro-copy">${story.line}</div><div class="micro-copy">Em média matemática, a tua linha provável equivale a cerca de <strong>${story.avgDaily} g/dia</strong>, mas o corpo não cresce de forma linear: alguns dias não mudam nada e o valor vai-se acumulando ao longo das semanas.</div></div>`; el.bodyInsight.innerHTML=`<div class="note-box"><div class="label">Leitura rápida</div><div style="margin-top:6px;color:var(--text);font-weight:700">Hoje, o número mais útil para seguires é <strong>+${model.likely.toFixed(2)} kg em 180 dias</strong>.</div><div class="micro-copy">Tradução prática: se o peso subir devagar, a cintura não disparar e o braço subir ligeiramente, estás a andar na direção certa. ${story.action}</div></div>`; }
 
-  function renderAnalysis(){ const hist=getBodyHistory().slice(-8); el.analysisPill.textContent = hist.length>=2 ? `${hist.length} registos` : '2+ registos'; if(hist.length>=2){ const first=hist[0], last=hist[hist.length-1]; const dW=(Number(last.weight||0)-Number(first.weight||0)).toFixed(1); const dWa=(Number(last.waist||0)-Number(first.waist||0)).toFixed(1); const dA=(Number(last.arm||0)-Number(first.arm||0)).toFixed(1); el.analysisText.textContent=`Desde o primeiro destes registos: peso ${dW>=0?'+':''}${dW} kg · cintura ${dWa>=0?'+':''}${dWa} cm · braço ${dA>=0?'+':''}${dA} cm.`; } else el.analysisText.textContent='Adiciona pelo menos dois registos para ver tendência de peso, cintura e braço.'; renderTrendChart(); const done=completedDatesSet(); let week=0, key=todayKey(); for(let i=0;i<7;i++){ if(done.has(key)) week+=1; key=addDaysToKey(key,-1); } el.weekSummaryPill.textContent=`${week}/7`; }
+  function renderAnalysis(){ const hist=getBodyHistory().slice(-8); el.analysisPill.textContent = hist.length>=2 ? `${hist.length} registos` : '2+ registos'; if(hist.length>=2){ const first=hist[0], last=hist[hist.length-1]; const dW=(Number(last.weight||0)-Number(first.weight||0)).toFixed(1); const dWa=(Number(last.waist||0)-Number(first.waist||0)).toFixed(1); const dA=(Number(last.arm||0)-Number(first.arm||0)).toFixed(1); el.analysisText.textContent=`Desde o primeiro destes registos: peso ${dW>=0?'+':''}${dW} kg · cintura ${dWa>=0?'+':''}${dWa} cm · braço ${dA>=0?'+':''}${dA} cm.`; } else el.analysisText.textContent='Adiciona pelo menos dois registos para ver tendência de peso, cintura e braço.'; renderTrendChart(); const week=sessionsInLastDays(7); el.weekSummaryPill.textContent=`${week}/${weeklyTargetSessions()}`; }
 
   function renderCalendar(){ const view=new Date(state.viewDate.getFullYear(), state.viewDate.getMonth(), 1, 12,0,0,0); const year=view.getFullYear(), month=view.getMonth(); const today=todayKey(); const completed=completedDatesSet(); const first=new Date(year,month,1,12,0,0,0); const startWeekday=(first.getDay()+6)%7; const daysInMonth=new Date(year,month+1,0,12,0,0,0).getDate(); const monthName=view.toLocaleDateString('pt-PT',{month:'long',year:'numeric'}); el.monthLabel.textContent=monthName.charAt(0).toUpperCase()+monthName.slice(1); el.calendar.innerHTML=''; ['S','T','Q','Q','S','S','D'].forEach(day=>{ const w=document.createElement('div'); w.className='weekday'; w.textContent=day; el.calendar.appendChild(w); }); for(let i=0;i<startWeekday;i++){ const blank=document.createElement('div'); blank.className='day future'; blank.style.visibility='hidden'; el.calendar.appendChild(blank); } for(let d=1; d<=daysInMonth; d++){ const key=localDateKey(new Date(year,month,d,12,0,0,0)); const cell=document.createElement('div'); cell.className='day'; if(key===today) cell.classList.add('today'); if(key>today) cell.classList.add('future'); else if(completed.has(key)) cell.classList.add('done'); else cell.classList.add('missed'); cell.textContent=String(d); if(key<=today){ cell.style.cursor='pointer'; cell.addEventListener('click', ()=>toggleSessionForDate(key)); } el.calendar.appendChild(cell); } }
   function renderRecent(){ const recent=getSessions().slice(-6).reverse(); if(!recent.length){ el.recentList.innerHTML='<div class="recent-item"><span>Nenhuma sessão ainda.</span><span>—</span></div>'; return; } el.recentList.innerHTML = recent.map(item=>`<div class="recent-item"><span>${item.date} · Plano ${item.plan}</span><span>${difficultyConfig[item.difficulty]?.label || '—'}</span></div>`).join(''); }
-  function renderAll(){ renderToday(); updateBodyPanel(); renderAnalysis(); renderCalendar(); renderRecent(); }
+  async function handlePhotoSelection(file){ if(!file) return; try{ const dataUrl=await compressImageFile(file); const key=todayKey(); let photos=getPhotos().filter(p=>p.date!==key); photos.push({ date:key, dataUrl }); savePhotos(photos); renderPhotoCompare(); } catch {} finally { if(el.photoInput) el.photoInput.value=''; } }
+  function removeLatestPhoto(){ const photos=getPhotos(); if(!photos.length) return; photos.pop(); savePhotos(photos); renderPhotoCompare(); }
+  function renderAll(){ renderToday(); updateBodyPanel(); renderAnalysis(); renderWeeklySummary(); renderPhotoCompare(); renderCalendar(); renderRecent(); }
 
   function applyDifficulty(diff){ state.difficulty=diff; localStorage.setItem(STORAGE.difficulty, diff); resetCycle(); renderToday(); }
 
@@ -439,11 +464,11 @@
     }).join('');
   }
   function renderToday(){
-    const plan=currentPlan(); const ex=currentExercise(); const upcoming=nextExerciseAfterCurrentBlock(); const nextPlan=nextPlanObj(); const cfg=currentCfg();
+    const plan=currentPlan(); const ex=currentExercise(); const upcoming=nextExerciseAfterCurrentBlock(); const nextPlan=nextPlanObj(); const cfg=currentCfg(); const volume=volumeTierForPlan(plan.key); const meta=profileMeta();
     el.dayBadge.textContent = state.selectedPlanMode==='auto' ? `Auto ${plan.key}` : `Plano ${plan.key}`;
     el.planTitle.textContent = plan.title;
     el.planFocus.textContent = plan.focus;
-    el.nextPlan.textContent = state.selectedPlanMode==='auto' ? `Auto · seguinte ${nextPlan.key}` : 'Modo manual';
+    el.nextPlan.textContent = state.selectedPlanMode==='auto' ? `Auto · seguinte ${nextPlan.key} · ${meta.title}` : 'Modo manual';
     el.exerciseName.textContent = state.phase==='work' ? currentVariantName(ex, state.exerciseIndex, plan.key) : 'Descanso';
     el.exerciseInstruction.textContent = state.phase==='work' ? currentVariantInstruction(ex, state.exerciseIndex, plan.key) : 'Respira fundo, recupera e prepara a próxima série.';
     el.nextExerciseLine.textContent = upcoming ? `Seguinte: ${currentVariantName(upcoming.exercise, upcoming.index, plan.key)} · ronda ${upcoming.round}` : 'Seguinte: fim da sessão';
@@ -452,15 +477,16 @@
     el.countdown.textContent = state.phase==='work' && state.remainingTime<=5 && state.remainingTime>0 ? `Últimos ${state.remainingTime}s` : '';
     el.progressFill.style.width = `${progressPct()}%`;
     el.progressText.textContent = `${progressPct()}% da sessão`;
-    el.roundValue.textContent = `${Math.min(state.roundIndex+1, roundsPerSession())}/${roundsPerSession()}`;
+    el.roundValue.textContent = `${Math.min(state.roundIndex+1, roundsPerSession(plan.key))}/${roundsPerSession(plan.key)}`;
     el.moveValue.textContent = `${Math.min(state.exerciseIndex+1, plan.exercises.length)}/${plan.exercises.length}`;
     el.streakValue.textContent = String(calcStreak());
-    el.doseValue.textContent = `${cfg.work}/${cfg.rest}`;
+    el.doseValue.textContent = `${cfg.work}/${cfg.rest} · ${volume.rounds}R`;
     el.soundSwitch.classList.toggle('on', state.soundOn);
     el.voiceSwitch.classList.toggle('on', state.voiceOn);
     updateTechniqueCard(ex);
     renderGuideVisual();
     renderFeedbackBox();
+    renderProfileModeSummary();
     document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.classList.toggle('active', btn.dataset.difficulty===state.difficulty));
     renderPlanModes(); renderExerciseList(); renderRotation();
   }
@@ -509,19 +535,23 @@
     }
     state.phase='work'; state.remainingTime=currentCfg().work; state.lastSpoken=null; speak(currentVariantName(currentExercise(), state.exerciseIndex, currentPlan().key));
   }
-  function renderAll(){ renderToday(); updateBodyPanel(); renderAnalysis(); renderCalendar(); renderRecent(); }
+  function renderAll(){ renderToday(); updateBodyPanel(); renderAnalysis(); renderWeeklySummary(); renderPhotoCompare(); renderCalendar(); renderRecent(); }
   document.querySelectorAll('[data-session-feedback]').forEach(btn=>btn.addEventListener('click', ()=>applySessionFeedback(btn.dataset.sessionFeedback, (getPendingFeedback()?.planKey) || currentPlan().key)));
 
   document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.addEventListener('click', ()=>applyDifficulty(btn.dataset.difficulty)));
   document.querySelectorAll('[data-plan-mode]').forEach(btn=>btn.addEventListener('click', ()=>setPlanMode(btn.dataset.planMode)));
+  document.querySelectorAll('[data-profile-mode]').forEach(btn=>btn.addEventListener('click', ()=>setProfileMode(btn.dataset.profileMode)));
   el.startBtn.addEventListener('click', startSession); el.pauseBtn.addEventListener('click', pauseSession); el.resetBtn.addEventListener('click', ()=>{ resetCycle(); renderToday(); }); el.skipBtn.addEventListener('click', skipCurrent); el.techBtn.addEventListener('click', ()=>setActiveTab('plan')); el.markTodayBtn.addEventListener('click', ()=>{ saveTodaySession(true); renderAll(); });
   el.soundToggle.addEventListener('click', async ()=>{ state.soundOn=!state.soundOn; localStorage.setItem(STORAGE.sound, JSON.stringify(state.soundOn)); if(state.soundOn) await primeMedia(); renderToday(); });
   el.voiceToggle.addEventListener('click', async ()=>{ state.voiceOn=!state.voiceOn; localStorage.setItem(STORAGE.voice, JSON.stringify(state.voiceOn)); if(state.voiceOn){ await primeMedia(); speak('voz ativa'); } renderToday(); });
   el.saveBodyBtn.addEventListener('click', saveBodyFromInputs);
+  if(el.addPhotoBtn) el.addPhotoBtn.addEventListener('click', ()=>el.photoInput?.click());
+  if(el.photoInput) el.photoInput.addEventListener('change', e=>handlePhotoSelection(e.target.files?.[0]));
+  if(el.removePhotoBtn) el.removePhotoBtn.addEventListener('click', removeLatestPhoto);
   el.prevMonthBtn.addEventListener('click', ()=>{ state.viewDate.setMonth(state.viewDate.getMonth()-1); renderCalendar(); });
   el.nextMonthBtn.addEventListener('click', ()=>{ state.viewDate.setMonth(state.viewDate.getMonth()+1); renderCalendar(); });
   el.jumpTodayBtn.addEventListener('click', ()=>{ state.viewDate = dateFromKey(todayKey()); renderCalendar(); });
 
   bodyDefaults(); ensureAutoPlan(); fillBodyInputs(); resetCycle(); initTabs(); renderAll();
-  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=19').then(reg=>reg.update()).catch(()=>{})); }
+  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=20').then(reg=>reg.update()).catch(()=>{})); }
 })();
