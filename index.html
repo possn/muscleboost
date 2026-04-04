@@ -69,7 +69,7 @@ button{cursor:pointer}
 .legend-grid{display:grid;gap:8px;margin-top:8px}.legend-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line)}.dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex:0 0 auto}.dot.low{background:#B8BCC6}.dot.likely{background:#0A84FF}.dot.high{background:#53C4FF}.legend-item strong{display:block;color:var(--text);font-size:.84rem;margin-bottom:2px}.legend-item span{font-size:.79rem;color:var(--muted);line-height:1.4}.micro-copy{margin-top:8px;font-size:.78rem;color:var(--muted);line-height:1.45}
 .chart-wrap{height:220px;margin-top:12px}.chart-wrap.compact{height:180px}.svg-host{width:100%;height:100%;display:block;border-radius:18px;background:var(--soft);border:1px solid var(--line)}
 .checkpoint-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.checkpoint{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:10px 8px;text-align:center}.checkpoint .v{font-size:.94rem;font-weight:760}.checkpoint .l{font-size:.68rem;color:var(--muted);margin-top:4px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.nav{border:none;background:#EEF0F4;border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-weight:800}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.weekday{text-align:center;font-size:.68rem;color:var(--muted)}.day{aspect-ratio:1/1;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-size:.78rem;user-select:none}.day.done{background:var(--good)}.day.missed{background:var(--bad)}.day.future{opacity:.35}.day.today{outline:2px solid #7AB8FF;outline-offset:-2px}
+.feedback-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.feedback-btn{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px 8px;font-size:.8rem;font-weight:760;color:var(--text)}.feedback-btn.active{background:var(--text);color:#fff;border-color:var(--text)}.feedback-btn small{display:block;color:inherit;opacity:.72;font-size:.66rem;font-weight:600;margin-top:4px}.progression-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.progression-pill{padding:8px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.75rem;color:var(--muted)}.progression-pill.active{background:#EAF3FF;border-color:#B9D9FF;color:#0757A6;font-weight:760}.guide-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.guide-step{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:10px}.guide-step strong{display:block;font-size:.76rem;letter-spacing:.02em;text-transform:uppercase;color:var(--text);margin-bottom:4px}.guide-step span{font-size:.76rem;color:var(--muted);line-height:1.45}.trajectory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.trajectory-card{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:10px 8px;text-align:center}.trajectory-card .v{font-size:.94rem;font-weight:760}.trajectory-card .l{font-size:.68rem;color:var(--muted);margin-top:4px}.mini-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.mini-legend span{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.74rem;color:var(--muted)}.mini-legend b{display:inline-block;width:8px;height:8px;border-radius:50%}.mini-legend .c1{background:#B8BCC6}.mini-legend .c2{background:#0A84FF}.mini-legend .c3{background:#53C4FF}.calendar-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.nav{border:none;background:#EEF0F4;border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-weight:800}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.weekday{text-align:center;font-size:.68rem;color:var(--muted)}.day{aspect-ratio:1/1;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-size:.78rem;user-select:none}.day.done{background:var(--good)}.day.missed{background:var(--bad)}.day.future{opacity:.35}.day.today{outline:2px solid #7AB8FF;outline-offset:-2px}
 .recent{display:grid;gap:8px;margin-top:10px}.recent-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 12px;border-radius:16px;background:var(--soft);border:1px solid var(--line);font-size:.84rem}
 .hidden{display:none !important}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:linear-gradient(180deg,rgba(245,245,247,0) 0%, rgba(245,245,247,.86) 28%, rgba(245,245,247,.97) 100%);backdrop-filter:blur(10px)}.tabbar-inner{max-width:500px;margin:0 auto;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tabbtn{border:1px solid var(--line);background:rgba(255,255,255,.94);color:var(--muted);border-radius:18px;padding:12px 8px;font-size:.82rem;font-weight:700;box-shadow:var(--shadow)}.tabbtn.active{background:var(--text);color:#fff;border-color:var(--text)}
@@ -138,6 +138,16 @@ button{cursor:pointer}
         <div class="toggle" id="soundToggle"><div class="meta">Som<small>beeps + vibração</small></div><div class="switch on" id="soundSwitch"></div></div>
         <div class="toggle" id="voiceToggle"><div class="meta">Voz<small>PT-PT + contagem final</small></div><div class="switch on" id="voiceSwitch"></div></div>
       </div>
+      <div class="note-box" id="feedbackBox">
+        <div class="label">Progressão automática</div>
+        <div style="margin-top:6px;color:var(--text);font-weight:760" id="progressionSummary">A app ajusta as variantes deste plano com base no teu feedback real.</div>
+        <div class="micro-copy" id="feedbackPrompt">Quando terminares a sessão, indica se o plano ficou fácil demais, adequado ou no limite. Isso faz subir, manter ou descer os movimentos deste plano.</div>
+        <div class="feedback-actions" id="sessionFeedbackRow">
+          <button class="feedback-btn" data-session-feedback="easy">Fácil demais<small>pronto para subir</small></button>
+          <button class="feedback-btn" data-session-feedback="good">Adequado<small>mantém</small></button>
+          <button class="feedback-btn" data-session-feedback="hard">No limite<small>talvez baixar</small></button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -172,6 +182,23 @@ button{cursor:pointer}
           <div class="detail-row"><strong>Foco muscular</strong><span id="techFocus">—</span></div>
           <div class="detail-row"><strong>Pistas rápidas</strong><span id="techCues">—</span></div>
         </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row row-top">
+        <div>
+          <div class="label">Guia visual</div>
+          <div class="h2" id="guideTitle">Exercício atual</div>
+        </div>
+        <div class="pill" id="guideLevelPill">Nível base</div>
+      </div>
+      <div class="chart-wrap compact"><div id="guideVisual" class="svg-host"></div></div>
+      <div class="guide-step-grid" id="guideSteps"></div>
+      <div class="note-box">
+        <div class="label">Escada de progressão deste movimento</div>
+        <div class="progression-strip" id="progressionStrip"></div>
+        <div class="micro-copy" id="progressionHint">Cada plano sobe ou desce por exercício. A app não mexe em todos os movimentos ao mesmo tempo sem motivo.</div>
       </div>
     </div>
   </section>
@@ -211,6 +238,7 @@ button{cursor:pointer}
         <div class="kpi"><div class="v" id="visualGainValue">—</div><div class="l">Mudança visual tronco/braços</div></div>
         <div class="kpi"><div class="v" id="monthlyGainValue">—</div><div class="l">Cadência plausível/mês</div></div>
       </div>
+      <div class="trajectory-grid" id="trajectoryGrid"></div>
       <div class="chart-wrap compact"><div id="projectionChart" class="svg-host"></div></div>
       <div class="checkpoint-grid" id="projectionChecks"></div>
       <div id="projectionDetail"></div>
@@ -512,6 +540,268 @@ button{cursor:pointer}
 
   function applyDifficulty(diff){ state.difficulty=diff; localStorage.setItem(STORAGE.difficulty, diff); resetCycle(); renderToday(); }
 
+
+  STORAGE.progress='mb19_progress';
+  STORAGE.feedbackLog='mb19_feedback_log';
+  STORAGE.pendingFeedback='mb19_pending_feedback';
+  Object.assign(el, {
+    feedbackBox:$('feedbackBox'), progressionSummary:$('progressionSummary'), feedbackPrompt:$('feedbackPrompt'),
+    guideTitle:$('guideTitle'), guideLevelPill:$('guideLevelPill'), guideVisual:$('guideVisual'), guideSteps:$('guideSteps'), progressionStrip:$('progressionStrip'), progressionHint:$('progressionHint'),
+    trajectoryGrid:$('trajectoryGrid')
+  });
+
+  function getProgressStore(){ try{ return JSON.parse(localStorage.getItem(STORAGE.progress) || '{}'); }catch{ return {}; } }
+  function saveProgressStore(obj){ localStorage.setItem(STORAGE.progress, JSON.stringify(obj)); }
+  function progressKey(planKey, idx){ return `${planKey}_${idx}`; }
+  function getExerciseProgress(planKey, idx){ const store=getProgressStore(); const key=progressKey(planKey, idx); if(!store[key]){ store[key]={ level:1, easy:0, hard:0, last:'good' }; saveProgressStore(store); } return store[key]; }
+  function setExerciseProgress(planKey, idx, next){ const store=getProgressStore(); store[progressKey(planKey, idx)] = next; saveProgressStore(store); }
+  function variantTier(planKey, idx){ const entry=getExerciseProgress(planKey, idx); return ['easy','normal','hard'][Math.max(0,Math.min(2,Number(entry.level)||1))]; }
+  function levelLabel(level){ return ['Base','Intermédio','Avançado'][Math.max(0,Math.min(2,level||0))]; }
+  function currentVariantName(ex, idx=state.exerciseIndex, planKey=currentPlan().key){ return ex.variants[variantTier(planKey, idx)]; }
+  function currentVariantInstruction(ex, idx=state.exerciseIndex, planKey=currentPlan().key){ return ex.instructions[variantTier(planKey, idx)]; }
+  function getPendingFeedback(){ try{ return JSON.parse(localStorage.getItem(STORAGE.pendingFeedback) || 'null'); }catch{ return null; } }
+  function setPendingFeedback(obj){ if(!obj) localStorage.removeItem(STORAGE.pendingFeedback); else localStorage.setItem(STORAGE.pendingFeedback, JSON.stringify(obj)); }
+  function getFeedbackLog(){ try{ return JSON.parse(localStorage.getItem(STORAGE.feedbackLog) || '{}'); }catch{ return {}; } }
+  function saveFeedbackLog(obj){ localStorage.setItem(STORAGE.feedbackLog, JSON.stringify(obj)); }
+  function feedbackLogKey(date, planKey){ return `${date}_${planKey}`; }
+  function planProgressSummary(planKey=currentPlan().key){ const plan=plans.find(p=>p.key===planKey); const levels=plan.exercises.map((_,idx)=>getExerciseProgress(planKey, idx).level); const avg=levels.reduce((a,b)=>a+b,0)/levels.length; const ready=levels.filter(v=>v===2).length; const base=levels.filter(v=>v===0).length; return { avg, ready, base, text: avg>=1.7 ? 'plano bastante avançado' : avg>=1 ? 'plano em subida' : 'plano ainda em base' }; }
+  function applySessionFeedback(kind, planKey=currentPlan().key){
+    const plan=plans.find(p=>p.key===planKey); let promoted=0, demoted=0;
+    plan.exercises.forEach((_,idx)=>{
+      const entry={...getExerciseProgress(planKey, idx)};
+      if(kind==='easy'){
+        entry.easy=(entry.easy||0)+1; entry.hard=0;
+        if(entry.easy>=2 && entry.level<2){ entry.level+=1; entry.easy=0; promoted+=1; }
+      }else if(kind==='hard'){
+        entry.hard=(entry.hard||0)+1; entry.easy=0;
+        if(entry.hard>=2 && entry.level>0){ entry.level-=1; entry.hard=0; demoted+=1; }
+      }else{
+        entry.easy=0; entry.hard=0;
+      }
+      entry.last=kind;
+      setExerciseProgress(planKey, idx, entry);
+    });
+    const pending=getPendingFeedback();
+    if(pending && pending.planKey===planKey) setPendingFeedback(null);
+    const log=getFeedbackLog();
+    log[feedbackLogKey(todayKey(), planKey)] = { kind, promoted, demoted, date:todayKey(), planKey };
+    saveFeedbackLog(log);
+    renderAll();
+  }
+  function progressionFeedbackText(planKey=currentPlan().key){
+    const pending=getPendingFeedback();
+    const summary=planProgressSummary(planKey);
+    if(pending && pending.planKey===planKey){
+      return {
+        headline:`Sessão ${planKey} concluída. Falta só calibrar a progressão.`,
+        prompt:'Como sentiste o bloco de hoje no conjunto? A app vai ajustar as variantes deste plano para a próxima vez.'
+      };
+    }
+    const log=getFeedbackLog()[feedbackLogKey(todayKey(), planKey)];
+    if(log){
+      const change = log.promoted ? `${log.promoted} movimento(s) subiram.` : log.demoted ? `${log.demoted} movimento(s) desceram.` : 'Hoje a app manteve as variantes.';
+      return { headline:`Plano ${planKey}: ${summary.text}.`, prompt:change };
+    }
+    return { headline:`Plano ${planKey}: ${summary.text}.`, prompt:'Depois de cada sessão real, usa este feedback para a app saber se deve subir, manter ou aliviar este plano.' };
+  }
+  function feedbackButtonState(kind, planKey=currentPlan().key){
+    const pending=getPendingFeedback();
+    const log=getFeedbackLog()[feedbackLogKey(todayKey(), planKey)];
+    if(pending && pending.planKey===planKey) return false;
+    return log?.kind===kind;
+  }
+  function renderFeedbackBox(){
+    const planKey=(getPendingFeedback()?.planKey) || currentPlan().key;
+    const copy=progressionFeedbackText(planKey);
+    el.progressionSummary.textContent = copy.headline;
+    el.feedbackPrompt.textContent = copy.prompt;
+    document.querySelectorAll('[data-session-feedback]').forEach(btn=>btn.classList.toggle('active', feedbackButtonState(btn.dataset.sessionFeedback, planKey)));
+  }
+  function exerciseFamily(name){
+    const n=normalizeName(name);
+    if(n.includes('pike')) return 'pike';
+    if(n.includes('squat') && !n.includes('split')) return 'squat';
+    if(n.includes('split') || n.includes('lunge')) return 'split';
+    if(n.includes('bridge') || n.includes('walkout')) return 'bridge';
+    if(n.includes('back widow') || n.includes('superman') || n.includes('prone') || n.includes('snow angel') || n.includes('swimmer')) return 'pullfloor';
+    if(n.includes('curl')) return 'curl';
+    if(n.includes('side plank')) return 'sideplank';
+    if(n.includes('plank') || n.includes('hollow') || n.includes('shoulder taps') || n.includes('body-saw')) return 'plank';
+    if(n.includes('triceps extension') || n.includes('diamond')) return 'tricepsfloor';
+    if(n.includes('push')) return 'push';
+    if(n.includes('flexao')) return 'push';
+    return 'push';
+  }
+  function shortText(text, max=82){ const t=String(text||'').trim(); return t.length>max ? `${t.slice(0,max-1)}…` : t; }
+  function guideStepsFor(name){ const g=exerciseGuide(name); const family=exerciseFamily(name); const base=[{title:'Coloca-te',text:shortText(g.setup)},{title:'Executa',text:shortText(g.execution)},{title:'Fecha limpo',text:shortText(g.cues)}]; if(family==='pullfloor') base[2]={title:'Aperta atrás',text:shortText(g.focus)}; if(family==='bridge') base[2]={title:'Pausa no topo',text:shortText(g.breathing)}; if(family==='curl') base[2]={title:'Resiste sempre',text:shortText(g.execution)}; return base; }
+  function svgPanel(x, title, body){ return `<rect x="${x}" y="16" width="94" height="136" rx="18" fill="#F7F8FB" stroke="#E6E7EB"/><text x="${x+47}" y="34" text-anchor="middle" fill="#6E6E73" font-size="10" font-weight="700">${title}</text>${body}<line x1="${x+12}" y1="126" x2="${x+82}" y2="126" stroke="#D9DCE4" stroke-width="2" stroke-linecap="round"/>`; }
+  function guideSVG(name){
+    const family=exerciseFamily(name);
+    const stroke='#1D1D1F', accent='#0A84FF';
+    const push = [
+      svgPanel(10,'Início',`<circle cx="30" cy="72" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="35" y1="76" x2="62" y2="88" stroke="${stroke}" stroke-width="2"/><line x1="62" y1="88" x2="84" y2="98" stroke="${stroke}" stroke-width="2"/><line x1="47" y1="82" x2="42" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="56" y1="86" x2="52" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Fundo',`<circle cx="138" cy="88" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="143" y1="92" x2="170" y2="98" stroke="${stroke}" stroke-width="2"/><line x1="170" y1="98" x2="192" y2="103" stroke="${stroke}" stroke-width="2"/><line x1="156" y1="95" x2="150" y2="116" stroke="${stroke}" stroke-width="2"/><line x1="165" y1="97" x2="160" y2="116" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Sobe',`<circle cx="246" cy="72" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="251" y1="76" x2="278" y2="88" stroke="${stroke}" stroke-width="2"/><line x1="278" y1="88" x2="300" y2="98" stroke="${stroke}" stroke-width="2"/><line x1="263" y1="82" x2="258" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="86" x2="268" y2="112" stroke="${stroke}" stroke-width="2"/><path d="M286 52 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const pike = [
+      svgPanel(10,'Anca alta',`<circle cx="38" cy="92" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="43" y1="96" x2="56" y2="64" stroke="${stroke}" stroke-width="2"/><line x1="56" y1="64" x2="76" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="44" y1="98" x2="38" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="72" y1="98" x2="80" y2="118" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Desce',`<circle cx="148" cy="104" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="153" y1="108" x2="166" y2="74" stroke="${stroke}" stroke-width="2"/><line x1="166" y1="74" x2="186" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="154" y1="110" x2="150" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="181" y1="103" x2="188" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Empurra',`<circle cx="254" cy="92" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="259" y1="96" x2="272" y2="64" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="64" x2="292" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="260" y1="98" x2="254" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="288" y1="98" x2="296" y2="118" stroke="${stroke}" stroke-width="2"/><path d="M296 54 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const squat = [
+      svgPanel(10,'Alto',`<circle cx="49" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="60" x2="49" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="70" x2="34" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="70" x2="64" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="92" x2="38" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="92" x2="60" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Fundo',`<circle cx="157" cy="62" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="157" y1="68" x2="160" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="76" x2="143" y2="90" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="76" x2="178" y2="89" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="92" x2="146" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="92" x2="180" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Sobe',`<circle cx="265" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="60" x2="265" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="70" x2="250" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="70" x2="280" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="92" x2="254" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="92" x2="276" y2="120" stroke="${stroke}" stroke-width="2"/><path d="M280 44 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const split = [
+      svgPanel(10,'Base',`<circle cx="50" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="50" y1="60" x2="52" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="52" y1="72" x2="36" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="52" y1="72" x2="66" y2="80" stroke="${stroke}" stroke-width="2"/><line x1="52" y1="92" x2="38" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="52" y1="92" x2="72" y2="118" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Desce',`<circle cx="160" cy="60" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="66" x2="162" y2="96" stroke="${stroke}" stroke-width="2"/><line x1="162" y1="78" x2="146" y2="90" stroke="${stroke}" stroke-width="2"/><line x1="162" y1="78" x2="176" y2="86" stroke="${stroke}" stroke-width="2"/><line x1="162" y1="96" x2="148" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="162" y1="96" x2="182" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Sobe',`<circle cx="270" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="270" y1="60" x2="272" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="72" x2="256" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="72" x2="286" y2="80" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="92" x2="258" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="272" y1="92" x2="292" y2="118" stroke="${stroke}" stroke-width="2"/><path d="M288 44 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const bridge = [
+      svgPanel(10,'Chão',`<circle cx="30" cy="101" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="35" y1="104" x2="62" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="62" y1="104" x2="80" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="64" y1="104" x2="76" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="54" y1="104" x2="44" y2="118" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Eleva',`<circle cx="138" cy="104" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="143" y1="107" x2="166" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="166" y1="84" x2="188" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="188" y1="104" x2="198" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="154" y1="96" x2="146" y2="118" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Pausa',`<circle cx="246" cy="104" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="251" y1="107" x2="274" y2="84" stroke="${stroke}" stroke-width="2"/><line x1="274" y1="84" x2="296" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="296" y1="104" x2="306" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="262" y1="96" x2="254" y2="118" stroke="${stroke}" stroke-width="2"/><path d="M282 62 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const pullfloor = [
+      svgPanel(10,'Coloca',`<circle cx="32" cy="98" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="37" y1="101" x2="58" y2="101" stroke="${stroke}" stroke-width="2"/><line x1="48" y1="101" x2="42" y2="114" stroke="${stroke}" stroke-width="2"/><line x1="48" y1="101" x2="62" y2="114" stroke="${stroke}" stroke-width="2"/><line x1="58" y1="101" x2="78" y2="104" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Puxa',`<circle cx="140" cy="94" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="145" y1="97" x2="166" y2="89" stroke="${stroke}" stroke-width="2"/><line x1="155" y1="94" x2="148" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="160" y1="92" x2="176" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="166" y1="89" x2="188" y2="95" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Aperta',`<circle cx="248" cy="94" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="253" y1="97" x2="274" y2="89" stroke="${stroke}" stroke-width="2"/><line x1="263" y1="94" x2="256" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="268" y1="92" x2="284" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="274" y1="89" x2="296" y2="95" stroke="${stroke}" stroke-width="2"/><path d="M286 72 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const curl = [
+      svgPanel(10,'Base',`<circle cx="49" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="60" x2="49" y2="94" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="72" x2="36" y2="85" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="72" x2="64" y2="82" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="94" x2="39" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="49" y1="94" x2="60" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Resiste',`<circle cx="157" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="157" y1="60" x2="157" y2="94" stroke="${stroke}" stroke-width="2"/><line x1="157" y1="72" x2="144" y2="85" stroke="${stroke}" stroke-width="2"/><line x1="157" y1="72" x2="171" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="171" y1="92" x2="166" y2="74" stroke="${accent}" stroke-width="2"/><line x1="157" y1="94" x2="147" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="157" y1="94" x2="168" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Desce lento',`<circle cx="265" cy="54" r="6" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="60" x2="265" y2="94" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="72" x2="252" y2="85" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="72" x2="280" y2="88" stroke="${stroke}" stroke-width="2"/><line x1="280" y1="88" x2="275" y2="72" stroke="${accent}" stroke-width="2"/><line x1="265" y1="94" x2="255" y2="120" stroke="${stroke}" stroke-width="2"/><line x1="265" y1="94" x2="276" y2="120" stroke="${stroke}" stroke-width="2"/>`)
+    ].join('');
+    const plank = [
+      svgPanel(10,'Linha reta',`<circle cx="32" cy="78" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="37" y1="82" x2="64" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="64" y1="92" x2="84" y2="102" stroke="${stroke}" stroke-width="2"/><line x1="48" y1="86" x2="44" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="64" y1="92" x2="62" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Mantém',`<circle cx="140" cy="78" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="145" y1="82" x2="172" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="172" y1="92" x2="192" y2="102" stroke="${stroke}" stroke-width="2"/><line x1="156" y1="86" x2="152" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="172" y1="92" x2="170" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Sem rodar',`<circle cx="248" cy="78" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="253" y1="82" x2="280" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="280" y1="92" x2="300" y2="102" stroke="${stroke}" stroke-width="2"/><line x1="264" y1="86" x2="260" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="280" y1="92" x2="278" y2="112" stroke="${stroke}" stroke-width="2"/><path d="M294 64 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const side = [
+      svgPanel(10,'Empilha',`<circle cx="40" cy="74" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="45" y1="78" x2="70" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="70" y1="92" x2="82" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="54" y1="82" x2="42" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="70" y1="92" x2="64" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Anca alta',`<circle cx="148" cy="74" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="153" y1="78" x2="178" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="178" y1="92" x2="190" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="162" y1="82" x2="150" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="178" y1="92" x2="172" y2="120" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Controla',`<circle cx="256" cy="74" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="261" y1="78" x2="286" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="286" y1="92" x2="298" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="270" y1="82" x2="258" y2="104" stroke="${stroke}" stroke-width="2"/><line x1="286" y1="92" x2="280" y2="120" stroke="${stroke}" stroke-width="2"/><path d="M292 58 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const tricepsfloor = [
+      svgPanel(10,'Joelhos',`<circle cx="42" cy="74" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="47" y1="78" x2="64" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="64" y1="92" x2="74" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="50" y1="84" x2="44" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="57" y1="88" x2="52" y2="112" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(118,'Testa perto',`<circle cx="150" cy="96" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="155" y1="100" x2="172" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="172" y1="92" x2="182" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="158" y1="100" x2="152" y2="118" stroke="${stroke}" stroke-width="2"/><line x1="165" y1="98" x2="160" y2="118" stroke="${stroke}" stroke-width="2"/>`),
+      svgPanel(226,'Estende',`<circle cx="258" cy="74" r="5" fill="none" stroke="${stroke}" stroke-width="2"/><line x1="263" y1="78" x2="280" y2="92" stroke="${stroke}" stroke-width="2"/><line x1="280" y1="92" x2="290" y2="108" stroke="${stroke}" stroke-width="2"/><line x1="266" y1="84" x2="260" y2="112" stroke="${stroke}" stroke-width="2"/><line x1="273" y1="88" x2="268" y2="112" stroke="${stroke}" stroke-width="2"/><path d="M286 58 l10 0 l-5 -8 z" fill="${accent}"/>`)
+    ].join('');
+    const markup = ({push,pike,squat,split,bridge,pullfloor,curl,plank,sideplank:side,tricepsfloor}[family] || push);
+    return `<svg viewBox="0 0 330 170" class="svg-host" aria-label="Guia visual">${markup}</svg>`;
+  }
+  function updateTechniqueCard(ex){
+    const name=currentVariantName(ex, state.exerciseIndex, currentPlan().key);
+    const g=exerciseGuide(name);
+    el.techTitle.textContent=`Técnica · ${name}`;
+    el.techDesc.textContent=g.intro;
+    el.techSetup.textContent=g.setup;
+    el.techExecution.textContent=g.execution;
+    el.techBreathing.textContent=g.breathing;
+    el.techMistake.textContent=g.mistake;
+    el.techRegression.textContent=g.regression;
+    el.techFocus.textContent=g.focus;
+    el.techCues.textContent=g.cues;
+  }
+  function renderGuideVisual(){
+    const plan=currentPlan(); const idx=Math.min(state.exerciseIndex, plan.exercises.length-1); const ex=plan.exercises[idx]; const name=currentVariantName(ex, idx, plan.key);
+    el.guideTitle.textContent=`${name} · início → meio → fim`;
+    el.guideLevelPill.textContent=`Nível ${levelLabel(getExerciseProgress(plan.key, idx).level)}`;
+    el.guideVisual.innerHTML=guideSVG(name);
+    const steps=guideStepsFor(name);
+    el.guideSteps.innerHTML=steps.map(step=>`<div class="guide-step"><strong>${step.title}</strong><span>${step.text}</span></div>`).join('');
+    const levels=['easy','normal','hard'];
+    el.progressionStrip.innerHTML=levels.map((tier,i)=>`<span class="progression-pill ${variantTier(plan.key, idx)===tier?'active':''}">${ex.variants[tier]}</span>`).join('');
+    const summary=planProgressSummary(plan.key);
+    el.progressionHint.textContent=`Este plano está em ${summary.text}. O nível atual deste exercício muda quando repetes o plano e sinalizas “fácil demais” ou “no limite”.`;
+  }
+  function nextExerciseAfterCurrentBlock(){ let exIndex=state.exerciseIndex+1, round=state.roundIndex; if(exIndex>=currentPlan().exercises.length){ exIndex=0; round+=1; } if(round>=roundsPerSession()) return null; return { exercise:currentPlan().exercises[exIndex], index:exIndex, round:round+1 }; }
+  function renderExerciseList(){
+    const plan=currentPlan();
+    const upcoming=nextExerciseAfterCurrentBlock();
+    el.exerciseList.innerHTML = plan.exercises.map((ex,idx)=>{
+      const active = state.phase==='work' ? idx===state.exerciseIndex : (upcoming && idx===upcoming.index);
+      const name=currentVariantName(ex, idx, plan.key);
+      const g=exerciseGuide(name);
+      const level=levelLabel(getExerciseProgress(plan.key, idx).level);
+      return `<div class="plan-item ${active ? 'active' : ''}"><div class="left"><div class="name">${name}</div><div class="sub">${g.intro}</div><div class="hint">${g.cues}</div></div><div class="right">${level}</div></div>`;
+    }).join('');
+  }
+  function renderToday(){
+    const plan=currentPlan(); const ex=currentExercise(); const upcoming=nextExerciseAfterCurrentBlock(); const nextPlan=nextPlanObj(); const cfg=currentCfg();
+    el.dayBadge.textContent = state.selectedPlanMode==='auto' ? `Auto ${plan.key}` : `Plano ${plan.key}`;
+    el.planTitle.textContent = plan.title;
+    el.planFocus.textContent = plan.focus;
+    el.nextPlan.textContent = state.selectedPlanMode==='auto' ? `Auto · seguinte ${nextPlan.key}` : 'Modo manual';
+    el.exerciseName.textContent = state.phase==='work' ? currentVariantName(ex, state.exerciseIndex, plan.key) : 'Descanso';
+    el.exerciseInstruction.textContent = state.phase==='work' ? currentVariantInstruction(ex, state.exerciseIndex, plan.key) : 'Respira fundo, recupera e prepara a próxima série.';
+    el.nextExerciseLine.textContent = upcoming ? `Seguinte: ${currentVariantName(upcoming.exercise, upcoming.index, plan.key)} · ronda ${upcoming.round}` : 'Seguinte: fim da sessão';
+    el.timer.textContent = formatSeconds(state.remainingTime);
+    el.phase.textContent = state.phase.toUpperCase();
+    el.countdown.textContent = state.phase==='work' && state.remainingTime<=5 && state.remainingTime>0 ? `Últimos ${state.remainingTime}s` : '';
+    el.progressFill.style.width = `${progressPct()}%`;
+    el.progressText.textContent = `${progressPct()}% da sessão`;
+    el.roundValue.textContent = `${Math.min(state.roundIndex+1, roundsPerSession())}/${roundsPerSession()}`;
+    el.moveValue.textContent = `${Math.min(state.exerciseIndex+1, plan.exercises.length)}/${plan.exercises.length}`;
+    el.streakValue.textContent = String(calcStreak());
+    el.doseValue.textContent = `${cfg.work}/${cfg.rest}`;
+    el.soundSwitch.classList.toggle('on', state.soundOn);
+    el.voiceSwitch.classList.toggle('on', state.voiceOn);
+    updateTechniqueCard(ex);
+    renderGuideVisual();
+    renderFeedbackBox();
+    document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.classList.toggle('active', btn.dataset.difficulty===state.difficulty));
+    renderPlanModes(); renderExerciseList(); renderRotation();
+  }
+  function renderProjectionChart(model){
+    const points=buildProjectionSeries(model); const width=320, height=170, pad=16, maxY=Math.max(...points.map(p=>p.high),0.1);
+    const lowPath=svgLine(points,'low',width,height,pad,maxY); const likelyPath=svgLine(points,'likely',width,height,pad,maxY); const highPath=svgLine(points,'high',width,height,pad,maxY);
+    const d7=points.find(p=>p.day===7), d30=points.find(p=>p.day===30), d90=points.find(p=>p.day===90), d180=points.find(p=>p.day===180);
+    el.projectionChart.innerHTML = `<svg viewBox="0 0 ${width} ${height}" class="svg-host" aria-label="Projeção diária"><line x1="16" y1="150" x2="304" y2="150" stroke="#D9DCE4" stroke-width="1"/><line x1="16" y1="95" x2="304" y2="95" stroke="#ECEEF3" stroke-width="1"/><line x1="16" y1="40" x2="304" y2="40" stroke="#ECEEF3" stroke-width="1"/><path d="${lowPath}" fill="none" stroke="#B8BCC6" stroke-width="2" stroke-linecap="round"/><path d="${highPath}" fill="none" stroke="#53C4FF" stroke-width="2" stroke-linecap="round"/><path d="${likelyPath}" fill="none" stroke="#0A84FF" stroke-width="3" stroke-linecap="round"/><circle cx="${(16+(7/180)*(width-pad*2)).toFixed(1)}" cy="${(height-pad-((d7.likely||0)/maxY)*(height-pad*2)).toFixed(1)}" r="3.5" fill="#0A84FF"/><text x="16" y="164" fill="#6E6E73" font-size="10">Hoje</text><text x="101" y="164" fill="#6E6E73" font-size="10">30d</text><text x="189" y="164" fill="#6E6E73" font-size="10">90d</text><text x="276" y="164" fill="#6E6E73" font-size="10">180d</text></svg>`;
+    el.projectionChecks.innerHTML = `<div class="checkpoint"><div class="v">+${d30.likely.toFixed(2)} kg</div><div class="l">Linha provável ao dia 30</div></div><div class="checkpoint"><div class="v">+${d90.likely.toFixed(2)} kg</div><div class="l">Linha provável ao dia 90</div></div><div class="checkpoint"><div class="v">+${d180.likely.toFixed(2)} kg</div><div class="l">Linha provável ao dia 180</div></div>`;
+  }
+  function trajectoryBand(score){ if(score>=80) return 'Forte'; if(score>=62) return 'Aceitável'; return 'Insuficiente'; }
+  function updateBodyPanel(){
+    const b=latestBody(); const height=Number(b.height||0), weight=Number(b.weight||0), waist=Number(b.waist||0), age=Number(b.age||0), protein=Number(b.protein||0), sleep=Number(b.sleep||0), adherence=calcAdherence();
+    el.consistencyBadge.textContent=`Consistência ${adherence}%`;
+    if(!height || !weight){
+      el.bmiValue.textContent='—'; el.proteinTargetBody.textContent='—'; el.leanGainBody.textContent='—'; el.weightGoalBody.textContent='—'; el.projectionFill.style.width='0%'; el.projectionText.textContent='Introduz peso e altura para personalizar a projeção.'; el.visualGainValue.textContent='—'; el.monthlyGainValue.textContent='—'; el.projectionChart.innerHTML=''; el.projectionChecks.innerHTML=''; el.trajectoryGrid.innerHTML=''; el.projectionDetail.innerHTML=''; el.bodyInsight.innerHTML=''; return;
+    }
+    const bmi=weight/((height/100)**2); const model=buildProjectionModel({height,weight,waist,age,protein,sleep,adherence}); const story=projectionNarrative(model); const adherenceTarget = model.effectiveAdherence>=80 ? 'mantém ≥80%' : 'sobe para 80%';
+    el.bmiValue.textContent=bmi.toFixed(1);
+    el.proteinTargetBody.textContent=proteinRange(weight);
+    el.leanGainBody.textContent=`+${model.low} a ${model.high} kg`;
+    el.weightGoalBody.textContent=`${model.targetWeightLow}–${model.targetWeightHigh} kg`;
+    el.projectionFill.style.width=`${model.visibilityScore}%`;
+    el.projectionText.textContent=`A leitura principal é a linha azul escura. Mantendo o ritmo de hoje, ela aponta para +${model.likely.toFixed(2)} kg em 180 dias.`;
+    el.visualGainValue.textContent=visibilityLabel(model.visibilityScore);
+    el.monthlyGainValue.textContent=`~${model.monthlyLikely.toFixed(2)} kg/mês`;
+    el.trajectoryGrid.innerHTML = `<div class="trajectory-card"><div class="v">${trajectoryBand(model.visibilityScore)}</div><div class="l">Trajetória atual</div></div><div class="trajectory-card"><div class="v">${model.avgDailyLikely} g</div><div class="l">Média provável por dia</div></div><div class="trajectory-card"><div class="v">${adherenceTarget}</div><div class="l">Ação para puxar a curva</div></div>`;
+    renderProjectionChart(model);
+    el.projectionDetail.innerHTML=`<div class="note-box"><div class="label">Como ler agora</div><div style="margin-top:6px;color:var(--text);font-weight:700">${story.headline}</div><div class="mini-legend"><span><b class="c1"></b> conservador</span><span><b class="c2"></b> provável</span><span><b class="c3"></b> ótimo</span></div><div class="micro-copy">${story.line}</div><div class="micro-copy">Lê primeiro o valor do dia 180. Depois usa os checkpoints dos 30 e 90 dias para perceber se a evolução real do peso, braço e cintura está a acompanhar o cenário provável.</div><div class="micro-copy">Em média matemática, a tua linha provável equivale a cerca de <strong>${story.avgDaily} g/dia</strong>. Isto não significa crescimento diário visível; significa acumulação progressiva ao longo das semanas.</div></div>`;
+    el.bodyInsight.innerHTML=`<div class="note-box"><div class="label">Leitura operacional</div><div style="margin-top:6px;color:var(--text);font-weight:700">Se o braço sobe ligeiramente, a cintura não dispara e a consistência se mantém, a linha provável continua válida.</div><div class="micro-copy">${story.action}</div></div>`;
+  }
+  function advanceFromRest(){
+    state.exerciseIndex += 1;
+    if(state.exerciseIndex>=currentPlan().exercises.length){ state.exerciseIndex=0; state.roundIndex+=1; }
+    if(state.roundIndex>=roundsPerSession()){
+      const finishedPlan=currentPlan().key;
+      clearInterval(state.intervalId); state.intervalId=null;
+      saveTodaySession(false);
+      setPendingFeedback({ date:todayKey(), planKey:finishedPlan });
+      releaseWakeLock();
+      state.phase='work'; state.exerciseIndex=0; state.roundIndex=0; state.remainingTime=currentCfg().work; state.lastSpoken=null;
+      speak('sessão concluída');
+      setActiveTab('today');
+      renderAll();
+      return;
+    }
+    state.phase='work'; state.remainingTime=currentCfg().work; state.lastSpoken=null; speak(currentVariantName(currentExercise(), state.exerciseIndex, currentPlan().key));
+  }
+  function renderAll(){ renderToday(); updateBodyPanel(); renderAnalysis(); renderCalendar(); renderRecent(); }
+  document.querySelectorAll('[data-session-feedback]').forEach(btn=>btn.addEventListener('click', ()=>applySessionFeedback(btn.dataset.sessionFeedback, (getPendingFeedback()?.planKey) || currentPlan().key)));
+
   document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.addEventListener('click', ()=>applyDifficulty(btn.dataset.difficulty)));
   document.querySelectorAll('[data-plan-mode]').forEach(btn=>btn.addEventListener('click', ()=>setPlanMode(btn.dataset.planMode)));
   el.startBtn.addEventListener('click', startSession); el.pauseBtn.addEventListener('click', pauseSession); el.resetBtn.addEventListener('click', ()=>{ resetCycle(); renderToday(); }); el.skipBtn.addEventListener('click', skipCurrent); el.techBtn.addEventListener('click', ()=>setActiveTab('plan')); el.markTodayBtn.addEventListener('click', ()=>{ saveTodaySession(true); renderAll(); });
@@ -523,7 +813,7 @@ button{cursor:pointer}
   el.jumpTodayBtn.addEventListener('click', ()=>{ state.viewDate = dateFromKey(todayKey()); renderCalendar(); });
 
   bodyDefaults(); ensureAutoPlan(); fillBodyInputs(); resetCycle(); initTabs(); renderAll();
-  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=18').then(reg=>reg.update()).catch(()=>{})); }
+  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=19').then(reg=>reg.update()).catch(()=>{})); }
 })();
 </script>
 </body>
