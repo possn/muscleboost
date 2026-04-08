@@ -60,7 +60,7 @@ button{cursor:pointer}
 .btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.btn{border:none;border-radius:16px;padding:14px 12px;font-size:.94rem;font-weight:760}.btn-primary{background:var(--text);color:#fff}.btn-soft{background:#EEF0F4;color:var(--text);border:1px solid var(--line)}.btn-accent{background:#EAF3FF;color:#0757A6;border:1px solid #CFE4FF}.btn-wide{grid-column:1/-1}
 .switch-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:12px}.toggle .meta{font-size:.86rem}.toggle .meta small{display:block;color:var(--muted);margin-top:2px}.switch{width:46px;height:28px;border-radius:999px;background:#D9DCE4;position:relative;border:1px solid #CDD1DB;flex:0 0 auto}.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.15);transition:left .18s ease}.switch.on{background:#B9D9FF}.switch.on::after{left:21px}
 .rotation-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.rotation-card{padding:14px 12px;border-radius:18px;border:1px solid var(--line);background:var(--soft);cursor:pointer}.rotation-card strong{display:block;font-size:.95rem;letter-spacing:-.02em}.rotation-card span{display:block;margin-top:4px;color:var(--muted);font-size:.77rem;line-height:1.35}.rotation-card.active{background:#F4F9FF;border-color:#B9D9FF;box-shadow:0 6px 18px rgba(10,132,255,.10)}.rotation-card.full{grid-column:1/-1}
-.plan-list{display:grid;gap:8px;margin-top:12px}.plan-item{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--soft)}.plan-item.active{border-color:#B9D9FF;background:#F4F9FF}.plan-item .name{font-weight:700;font-size:.92rem}.plan-item .sub{margin-top:4px;font-size:.75rem;color:var(--muted);line-height:1.42}.plan-item .hint{margin-top:4px;font-size:.73rem;color:var(--muted);line-height:1.42}.plan-item .right{font-size:.73rem;color:var(--muted);padding-top:2px}
+.plan-list{display:grid;gap:8px;margin-top:12px}.plan-item{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--soft);cursor:pointer;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease}.plan-item:active{transform:scale(.992)}.plan-item.active{border-color:#B9D9FF;background:#F4F9FF}.plan-item.selected{border-color:#0A84FF;background:#EEF6FF;box-shadow:0 6px 18px rgba(10,132,255,.10)}.plan-item .name{font-weight:700;font-size:.92rem}.plan-item .sub{margin-top:4px;font-size:.75rem;color:var(--muted);line-height:1.42}.plan-item .hint{margin-top:4px;font-size:.73rem;color:var(--muted);line-height:1.42}.plan-item .right{font-size:.73rem;color:var(--muted);padding-top:2px;text-align:right}.tap-hint{margin-top:8px;font-size:.74rem;color:var(--muted)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:.76rem;color:var(--muted)}.field input,.field select{padding:12px 13px;border-radius:16px;border:1px solid var(--line);background:var(--soft);color:var(--text)}
 .readout-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.readout{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:12px}.readout .big{font-size:1.1rem;font-weight:760;letter-spacing:-.03em}.readout .tiny{font-size:.73rem;color:var(--muted);margin-top:4px}
 .insight-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.kpi{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:12px}.kpi .v{font-size:1.08rem;font-weight:760;letter-spacing:-.03em}.kpi .l{margin-top:5px;font-size:.72rem;color:var(--muted)}
@@ -180,8 +180,9 @@ button{cursor:pointer}
 
     <div class="card">
       <div class="label">Exercícios do plano atual</div>
+      <div class="tap-hint">Toca num exercício para abrir a técnica detalhada antes de começares.</div>
       <div class="plan-list" id="exerciseList"></div>
-      <div class="label" style="margin-top:14px">Técnica do exercício atual</div>
+      <div class="label" style="margin-top:14px">Técnica do exercício selecionado</div>
       <div class="note-box" id="techCard">
         <strong id="techTitle">Técnica</strong>
         <div class="micro-copy" id="techDesc">—</div>
@@ -201,7 +202,7 @@ button{cursor:pointer}
       <div class="row row-top">
         <div>
           <div class="label">Guia visual</div>
-          <div class="h2" id="guideTitle">Exercício atual</div>
+          <div class="h2" id="guideTitle">Exercício selecionado</div>
         </div>
         <div class="pill" id="guideLevelPill">Nível base</div>
       </div>
@@ -348,7 +349,8 @@ button{cursor:pointer}
     autoPlanPos:'mb20_auto_plan_pos',
     activeTab:'mb17_tab',
     profileMode:'mb20_profile_mode',
-    photos:'mb20_photos'
+    photos:'mb20_photos',
+    planPreview:'mb22_plan_preview'
   };
 
   const plans = [
@@ -399,7 +401,8 @@ button{cursor:pointer}
     autoPlanPos:Number(localStorage.getItem(STORAGE.autoPlanPos) || 0),
     activeTab:localStorage.getItem(STORAGE.activeTab) || localStorage.getItem('mb11_tab') || 'today',
     viewDate:new Date(),
-    lastSpoken:null
+    lastSpoken:null,
+    planPreview:JSON.parse(localStorage.getItem(STORAGE.planPreview) || '{}')
   };
 
   const difficultyConfig = {
@@ -578,6 +581,29 @@ button{cursor:pointer}
       line,
       action:'Para puxar a linha azul escura para cima, o que mais pesa é subir consistência, aproximar as séries da fadiga técnica e manter proteína diária perto do alvo.'
     };
+  }
+  function getPreviewIndex(plan=currentPlan()){ 
+    const raw = state.planPreview?.[plan.key];
+    const idx = Number(raw);
+    if(Number.isInteger(idx) && idx>=0 && idx<plan.exercises.length) return idx;
+    return Math.min(state.exerciseIndex, plan.exercises.length-1);
+  }
+  function setPreviewIndex(idx, planKey=currentPlan().key){
+    const plan = plans.find(p=>p.key===planKey) || currentPlan();
+    const safe = Math.max(0, Math.min(Number(idx)||0, plan.exercises.length-1));
+    state.planPreview = { ...(state.planPreview || {}), [planKey]: safe };
+    localStorage.setItem(STORAGE.planPreview, JSON.stringify(state.planPreview));
+    updatePlanPreviewPanels();
+    renderExerciseList();
+  }
+  function previewExerciseData(plan=currentPlan()){
+    const index = getPreviewIndex(plan);
+    return { plan, index, exercise: plan.exercises[index] };
+  }
+  function updatePlanPreviewPanels(){
+    const {plan, index, exercise} = previewExerciseData();
+    updateTechniqueCard(exercise, index, plan);
+    renderGuideVisual(plan, index);
   }
   function updateTechniqueCard(ex){
     const name=currentVariantName(ex);
@@ -775,8 +801,8 @@ button{cursor:pointer}
     const markup = ({push,pike,squat,split,bridge,pullfloor,curl,plank,sideplank:side,tricepsfloor}[family] || push);
     return `<svg viewBox="0 0 330 170" class="svg-host" aria-label="Guia visual">${markup}</svg>`;
   }
-  function updateTechniqueCard(ex){
-    const name=currentVariantName(ex, state.exerciseIndex, currentPlan().key);
+  function updateTechniqueCard(ex, idx=getPreviewIndex(), plan=currentPlan()){
+    const name=currentVariantName(ex, idx, plan.key);
     const g=exerciseGuide(name);
     el.techTitle.textContent=`Técnica · ${name}`;
     el.techDesc.textContent=g.intro;
@@ -788,8 +814,9 @@ button{cursor:pointer}
     el.techFocus.textContent=g.focus;
     el.techCues.textContent=g.cues;
   }
-  function renderGuideVisual(){
-    const plan=currentPlan(); const idx=Math.min(state.exerciseIndex, plan.exercises.length-1); const ex=plan.exercises[idx]; const name=currentVariantName(ex, idx, plan.key);
+  function renderGuideVisual(plan=currentPlan(), idx=getPreviewIndex(plan)){
+    const ex=plan.exercises[idx];
+    const name=currentVariantName(ex, idx, plan.key);
     el.guideTitle.textContent=`${name} · início → meio → fim`;
     el.guideLevelPill.textContent=`Nível ${levelLabel(getExerciseProgress(plan.key, idx).level)}`;
     el.guideVisual.innerHTML=guideSVG(name);
@@ -804,12 +831,14 @@ button{cursor:pointer}
   function renderExerciseList(){
     const plan=currentPlan();
     const upcoming=nextExerciseAfterCurrentBlock();
+    const selected=getPreviewIndex(plan);
     el.exerciseList.innerHTML = plan.exercises.map((ex,idx)=>{
       const active = state.phase==='work' ? idx===state.exerciseIndex : (upcoming && idx===upcoming.index);
+      const isSelected = idx===selected;
       const name=currentVariantName(ex, idx, plan.key);
       const g=exerciseGuide(name);
       const level=levelLabel(getExerciseProgress(plan.key, idx).level);
-      return `<div class="plan-item ${active ? 'active' : ''}"><div class="left"><div class="name">${name}</div><div class="sub">${g.intro}</div><div class="hint">${g.cues}</div></div><div class="right">${level}</div></div>`;
+      return `<div class="plan-item ${active ? 'active' : ''} ${isSelected ? 'selected' : ''}" data-preview-index="${idx}" role="button" aria-label="Ver técnica de ${name}"><div class="left"><div class="name">${name}</div><div class="sub">${g.intro}</div><div class="hint">${g.cues}</div></div><div class="right">${level}<div style="margin-top:4px">ver técnica</div></div></div>`;
     }).join('');
   }
   function renderToday(){
@@ -832,8 +861,7 @@ button{cursor:pointer}
     el.doseValue.textContent = `${cfg.work}/${cfg.rest} · ${volume.rounds}R`;
     el.soundSwitch.classList.toggle('on', state.soundOn);
     el.voiceSwitch.classList.toggle('on', state.voiceOn);
-    updateTechniqueCard(ex);
-    renderGuideVisual();
+    updatePlanPreviewPanels();
     renderFeedbackBox();
     renderProfileModeSummary();
     document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.classList.toggle('active', btn.dataset.difficulty===state.difficulty));
@@ -890,6 +918,7 @@ button{cursor:pointer}
   document.querySelectorAll('#difficultySegment button').forEach(btn=>btn.addEventListener('click', ()=>applyDifficulty(btn.dataset.difficulty)));
   document.querySelectorAll('[data-plan-mode]').forEach(btn=>btn.addEventListener('click', ()=>setPlanMode(btn.dataset.planMode)));
   document.querySelectorAll('[data-profile-mode]').forEach(btn=>btn.addEventListener('click', ()=>setProfileMode(btn.dataset.profileMode)));
+  el.exerciseList.addEventListener('click', e=>{ const item=e.target.closest('[data-preview-index]'); if(!item) return; setPreviewIndex(Number(item.dataset.previewIndex)); });
   el.startBtn.addEventListener('click', startSession); el.pauseBtn.addEventListener('click', pauseSession); el.resetBtn.addEventListener('click', ()=>{ resetCycle(); renderToday(); }); el.skipBtn.addEventListener('click', skipCurrent); el.techBtn.addEventListener('click', ()=>setActiveTab('plan')); el.markTodayBtn.addEventListener('click', ()=>{ saveTodaySession(true); renderAll(); });
   el.soundToggle.addEventListener('click', async ()=>{ state.soundOn=!state.soundOn; localStorage.setItem(STORAGE.sound, JSON.stringify(state.soundOn)); if(state.soundOn) await primeMedia(); renderToday(); });
   el.voiceToggle.addEventListener('click', async ()=>{ state.voiceOn=!state.voiceOn; localStorage.setItem(STORAGE.voice, JSON.stringify(state.voiceOn)); if(state.voiceOn){ await primeMedia(); speak('voz ativa'); } renderToday(); });
@@ -902,7 +931,7 @@ button{cursor:pointer}
   el.jumpTodayBtn.addEventListener('click', ()=>{ state.viewDate = dateFromKey(todayKey()); renderCalendar(); });
 
   bodyDefaults(); ensureAutoPlan(); fillBodyInputs(); fillPhotoInputs(); resetCycle(); initTabs(); renderAll();
-  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=21').then(reg=>reg.update()).catch(()=>{})); }
+  if('serviceWorker' in navigator){ window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js?v=22').then(reg=>reg.update()).catch(()=>{})); }
 })();
 </script>
 </body>
