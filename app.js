@@ -29,37 +29,37 @@
   };
 
   const BASE_PLANS = [
-    { key:'A', title:'A · Push hipertrofia', focus:'Peito, ombros e tríceps. Dia dominante para o teu objetivo.', exercises:[
-      ex('Flexão de joelhos','Flexão','Flexão diamante'),
-      ex('Flexão isométrica alta','Flexão lenta','Flexão 1.5 reps'),
-      ex('Pike hold','Pike push-up','Pike press pulses'),
-      ex('Scapular push-up','Close-grip push-up','Pseudo-planche lean push-up')
+    { key:'A', title:'A · Peito + ombros + tríceps', focus:'Dia dominante de empurrar. Prioridade máxima: peito, ombros e tríceps.', exercises:[
+      ex('Flexão clássica','Flexão lenta 3 segundos','Flexão explosiva'),
+      ex('Flexão diamante','Close-grip push-up','Diamond push-up pulses'),
+      ex('Pike push-up','Pike push-up lento','Pike press pulses'),
+      ex('Mergulho em cadeira','Mergulho lento','Mergulho com pausa')
     ]},
-    { key:'B', title:'B · Pernas + glúteos', focus:'Quadríceps, glúteos e cadeia posterior. Dia dominante inferior para estética e longevidade.', exercises:[
-      ex('Air squat','Tempo squat','Squat 1.5 reps'),
-      ex('Split squat assistido','Split squat','Split squat 1.5 reps'),
+    { key:'B', title:'B · Core + pernas + glúteos', focus:'Inferior funcional e abdómen. Mantém proporção sem roubar recuperação ao tronco superior.', exercises:[
+      ex('Air squat','Tempo squat','Jump squat controlado'),
+      ex('Bulgarian split squat','Bulgarian split squat lento','Bulgarian split squat 1.5 reps'),
       ex('Glute bridge','Single-leg bridge','Long-lever bridge'),
-      ex('Frog pump','Frog pump com pausa','Hamstring walkout')
+      ex('Prancha','Hollow hold','Leg raises')
     ]},
-    { key:'C', title:'C · Pull + braços', focus:'Costas e bíceps em peso corporal puro.', exercises:[
-      ex('Retração escapular deitado','Back widow','Row de cotovelos no chão com pausa'),
-      ex('Prone W raise curta','Prone W raise','Prone Y-T-W combo'),
-      ex('Prone lat pull curto','Prone lat pull','Prone lat pull com pausa'),
+    { key:'C', title:'C · Costas + bíceps + ombro posterior', focus:'Dia de tração sem equipamento. Equilibra a postura e protege os ombros.', exercises:[
+      ex('Back widow','Row de cotovelos no chão com pausa','Back widow lento'),
+      ex('Prone lat pull','Prone lat pull com pausa','Swimmer pulls lentos'),
+      ex('Prone Y-T-W combo','Prone W raise','Reverse snow angel'),
       ex('Curl auto-resistido','Curl auto-resistido lento','Hammer curl auto-resistido')
     ]},
-    { key:'D', title:'D · Core + braços', focus:'Core rígido e braço complementar.', exercises:[
-      ex('Prancha','Hollow hold','Body-saw plank'),
-      ex('Side plank','Side plank dip','Long-lever side plank'),
-      ex('Shoulder taps','Shoulder taps lentos','Plank to pike'),
-      ex('Extensão curta de tríceps','Bodyweight triceps extension','Diamond push-up pulses')
+    { key:'D', title:'D · Peito + abdómen', focus:'Segundo estímulo de peito com core rígido e trabalho anti-rotação.', exercises:[
+      ex('Flexão mãos largas','Flexão com pausa baixa','Flexão 1.5 reps'),
+      ex('Flexão inclinada pés elevados','Flexão declinada lenta','Pseudo-planche push-up'),
+      ex('Prancha com toque no ombro','Shoulder taps lentos','Plank to pike'),
+      ex('Abdominais bicicleta','Leg raises','Mountain climbers')
     ]},
-    { key:'E', title:'E · Full body density', focus:'Sessão global curta e densa com novo reforço de peito e braços.', exercises:[
-      ex('Air squat','Squat tempo contínuo','Jump squat controlado'),
-      ex('Flexão clássica','Flexão lenta','Flexão explosiva'),
-      ex('Back widow','Prone lat pull','Swimmer pulls lentos'),
-      ex('Curl auto-resistido','Close-grip push-up','Pseudo-planche lean push-up')
+    { key:'E', title:'E · Pernas + core + condicionamento', focus:'Densidade metabólica curta. Pernas, glúteos e abdómen com ritmo militar.', exercises:[
+      ex('Squat tempo contínuo','Jump squat controlado','Jump squat'),
+      ex('Reverse lunge','Reverse lunge lenta','Reverse lunge com pausa'),
+      ex('Frog pump','Frog pump com pausa','Hamstring walkout'),
+      ex('Mountain climbers','Body-saw plank','Burpee técnico sem salto alto')
     ]},
-    { key:'F', title:'F · Upper body completo', focus:'Peito, ombros, braços e abdómen em sessão completa.', exercises:[
+    { key:'F', title:'F · Upper body completo', focus:'Sexto dia: peito, ombros, braços e abdómen em circuito completo.', exercises:[
       ex('Flexão clássica','Flexão diamante','Pseudo-planche push-up'),
       ex('Pike push-up','Pike push-up lento','Pike press pulses'),
       ex('Mergulho em cadeira','Mergulho lento','Mergulho com pausa'),
@@ -68,11 +68,12 @@
   ];
 
   const SLOT_FAMILIES = {
-    'A_0':'push_horizontal','A_1':'push_tension','A_2':'shoulder_press','A_3':'triceps_push',
-    'B_0':'squat','B_1':'split','B_2':'bridge','B_3':'hinge_glutes',
-    'C_0':'back_row','C_1':'back_scap','C_2':'back_lat','C_3':'biceps',
-    'D_0':'core_front','D_1':'core_side','D_2':'core_rotation','D_3':'triceps_iso',
-    'E_0':'density_lower','E_1':'density_push','E_2':'density_pull','E_3':'finisher'
+    'A_0':'push_horizontal','A_1':'triceps_push','A_2':'shoulder_press','A_3':'triceps_push',
+    'B_0':'squat','B_1':'split','B_2':'bridge','B_3':'core_front',
+    'C_0':'back_row','C_1':'back_lat','C_2':'back_scap','C_3':'biceps',
+    'D_0':'push_horizontal','D_1':'push_tension','D_2':'core_rotation','D_3':'core_front',
+    'E_0':'density_lower','E_1':'split','E_2':'hinge_glutes','E_3':'finisher',
+    'F_0':'push_horizontal','F_1':'shoulder_press','F_2':'triceps_push','F_3':'core_front'
   };
 
   const SWAP_LIBRARIES = {
@@ -319,17 +320,17 @@
   function weeklyTargetSessions(){ return state.profileMode === 'definition' ? 5 : 6; }
 
   function rotationSequence(){
-    if(state.profileMode === 'balanced') return ['A','B','C','D','E'];
-    if(state.profileMode === 'definition') return ['E','A','B','C','D'];
-    if(state.profileMode === 'lower_glutes') return ['B','A','C','B','E','D'];
-    return ['A','B','C','D','A','E'];
+    if(state.profileMode === 'balanced') return ['A','B','C','D','E','F'];
+    if(state.profileMode === 'definition') return ['E','A','D','C','F','B'];
+    if(state.profileMode === 'lower_glutes') return ['B','A','C','E','F','D'];
+    return ['A','B','C','D','E','F'];
   }
 
   function profileMeta(){
-    if(state.profileMode === 'balanced') return { title:'Equilibrado', text:'Sequência A-B-C-D-E com distribuição estável entre empurrar, puxar, pernas e core.' };
+    if(state.profileMode === 'balanced') return { title:'Equilibrado', text:'Sequência A-B-C-D-E-F com distribuição estável entre empurrar, puxar, pernas e core.' };
     if(state.profileMode === 'definition') return { title:'Definição geral', text:'Começa em densidade global e mantém frequência ligeiramente menor para facilitar aderência e controlo da fadiga.' };
-    if(state.profileMode === 'lower_glutes') return { title:'Pernas + glúteos', text:'Usa B-A-C-B-E-D para repetir mais cedo o dia inferior e reforçar glúteos, quadríceps e cadeia posterior.' };
-    return { title:'Peito + braços', text:'Usa A-B-C-D-A-E para dar mais frequência útil a peito, tríceps e braço sem apagar pernas e costas.' };
+    if(state.profileMode === 'lower_glutes') return { title:'Pernas + glúteos', text:'Usa B-A-C-E-F-D para repetir mais cedo o dia inferior e reforçar glúteos, quadríceps e cadeia posterior.' };
+    return { title:'Peito + braços', text:'Usa A-B-C-D-E-F para dar mais frequência útil a peito, tríceps e braço sem apagar pernas e costas.' };
   }
 
   function volumeTierForPlan(planKey){
@@ -338,7 +339,7 @@
     let rounds=3, label='Base';
     if(blended < 46){ rounds = 2; label = 'Alívio'; }
     else if(blended >= 82){ rounds = 4; label='Alto'; }
-    if(state.profileMode === 'chest_arms' && ['A','D'].includes(planKey) && blended >= 65){ rounds = Math.max(rounds,4); label='Alto'; }
+    if(state.profileMode === 'chest_arms' && ['A','D','F'].includes(planKey) && blended >= 65){ rounds = Math.max(rounds,4); label='Alto'; }
     if(state.profileMode === 'lower_glutes' && ['B','E'].includes(planKey) && blended >= 65){ rounds = Math.max(rounds,4); label='Alto'; }
     if(state.profileMode === 'definition' && blended >= 82 && planKey !== 'E'){ rounds = Math.min(rounds,3); label = rounds === 2 ? 'Alívio' : 'Base'; }
     return { rounds, label, blended };
@@ -546,7 +547,7 @@
   }
 
   function setPlanMode(mode){
-    if(!['auto','A','B','C','D','E'].includes(mode)) return;
+    if(!['auto','A','B','C','D','E','F'].includes(mode)) return;
     state.selectedPlanMode = mode;
     localStorage.setItem(STORAGE.selectedPlan, mode);
     resetCycle();
@@ -863,15 +864,15 @@
     const n = normalizeName(name);
     if(n.includes('pike') || n.includes('dolphin')) return 'pike';
     if(n.includes('squat') && !n.includes('split') && !n.includes('lunge')) return 'squat';
-    if(n.includes('split') || n.includes('lunge')) return 'split';
+    if(n.includes('bulgarian') || n.includes('split') || n.includes('lunge')) return 'split';
     if(n.includes('bridge') || n.includes('walkout') || n.includes('frog pump')) return 'bridge';
     if(n.includes('retracao escapular') || n.includes('back widow') || n.includes('row de cotovelos')) return 'backrow';
     if(n.includes('prone w') || n.includes('prone t') || n.includes('snow angel') || n.includes('y-t-w')) return 'backscap';
     if(n.includes('lat pull') || n.includes('swimmer') || n.includes('superman pull') || n.includes('lat prayer')) return 'backlat';
     if(n.includes('curl')) return 'curl';
     if(n.includes('side plank') || n.includes('clamshell')) return 'sideplank';
-    if(n.includes('plank') || n.includes('hollow') || n.includes('dead-bug') || n.includes('bear')) return 'plank';
-    if(n.includes('triceps') || n.includes('diamond')) return 'tricepsfloor';
+    if(n.includes('mountain climber') || n.includes('abdominais bicicleta') || n.includes('leg raises') || n.includes('plank') || n.includes('prancha') || n.includes('hollow') || n.includes('dead-bug') || n.includes('bear')) return 'plank';
+    if(n.includes('mergulho') || n.includes('triceps') || n.includes('diamond') || n.includes('diamante')) return 'tricepsfloor';
     if(n.includes('flexao') || n.includes('push-up') || n.includes('close-grip')) return 'push';
     return 'push';
   }
