@@ -29,121 +29,120 @@
   };
 
   const BASE_PLANS = [
-    { key:'A', title:'A · Peito + ombros + tríceps', focus:'Dia dominante superior. Flexões, ombros e tríceps em estilo calisténico militar.', exercises:[
-      ex('Flexão clássica','Flexão lenta 3 s','Flexão diamante'),
-      ex('Flexão com pausa baixa','Flexão 1.5 reps','Pseudo-planche push-up'),
-      ex('Pike push-up parcial','Pike push-up','Pike push-up lenta'),
-      ex('Mergulho em cadeira','Mergulho em cadeira lento','Mergulho em cadeira com pausa')
+    { key:'A', title:'A · Push hipertrofia', focus:'Peito, ombros e tríceps. Dia dominante para o teu objetivo.', exercises:[
+      ex('Flexão de joelhos','Flexão','Flexão diamante'),
+      ex('Flexão isométrica alta','Flexão lenta','Flexão 1.5 reps'),
+      ex('Pike hold','Pike push-up','Pike press pulses'),
+      ex('Scapular push-up','Close-grip push-up','Pseudo-planche lean push-up')
     ]},
-    { key:'B', title:'B · Core + pernas + glúteos', focus:'Inferior funcional sem roubar prioridade ao tronco. Core rígido e pernas atléticas.', exercises:[
-      ex('Agachamento livre','Agachamento lento 3 s','Agachamento 1.5 reps'),
-      ex('Bulgarian split squat assistido','Bulgarian split squat','Bulgarian split squat lento'),
-      ex('Glute bridge','Glute bridge uma perna','Long-lever bridge'),
-      ex('Prancha','Hollow hold','Body-saw plank')
+    { key:'B', title:'B · Pernas + glúteos', focus:'Quadríceps, glúteos e cadeia posterior. Dia dominante inferior para estética e longevidade.', exercises:[
+      ex('Air squat','Tempo squat','Squat 1.5 reps'),
+      ex('Split squat assistido','Split squat','Split squat 1.5 reps'),
+      ex('Glute bridge','Single-leg bridge','Long-lever bridge'),
+      ex('Frog pump','Frog pump com pausa','Hamstring walkout')
     ]},
-    { key:'C', title:'C · Costas + bíceps + ombro posterior', focus:'Compensa o excesso de flexões. Remadas improvisadas, dorsais e braço.', exercises:[
-      ex('Remada com garrafão','Remada com garrafão lenta','Remada unilateral com garrafão'),
-      ex('Back widow','Row de cotovelos no chão','Row de cotovelos com pausa'),
-      ex('Prone Y-T-W','Prone Y-T-W lento','Reverse snow angel lento'),
+    { key:'C', title:'C · Pull + braços', focus:'Costas e bíceps em peso corporal puro.', exercises:[
+      ex('Retração escapular deitado','Back widow','Row de cotovelos no chão com pausa'),
+      ex('Prone W raise curta','Prone W raise','Prone Y-T-W combo'),
+      ex('Prone lat pull curto','Prone lat pull','Prone lat pull com pausa'),
       ex('Curl auto-resistido','Curl auto-resistido lento','Hammer curl auto-resistido')
     ]},
-    { key:'D', title:'D · Peito + abdómen', focus:'Segundo estímulo forte de peito com core anti-extensão e anti-rotação.', exercises:[
-      ex('Flexão mãos largas','Flexão mãos largas lenta','Flexão com pés elevados'),
-      ex('Close-grip push-up','Flexão diamante','Diamond push-up pulses'),
+    { key:'D', title:'D · Core + braços', focus:'Core rígido e braço complementar.', exercises:[
+      ex('Prancha','Hollow hold','Body-saw plank'),
+      ex('Side plank','Side plank dip','Long-lever side plank'),
       ex('Shoulder taps','Shoulder taps lentos','Plank to pike'),
-      ex('Elevação de pernas','Elevação de pernas lenta','Hollow rocks curtas')
+      ex('Extensão curta de tríceps','Bodyweight triceps extension','Diamond push-up pulses')
     ]},
-    { key:'E', title:'E · Pernas + core + condicionamento', focus:'Densidade, glúteos e capacidade metabólica para definição sem máquinas.', exercises:[
-      ex('Reverse lunge','Reverse lunge lento','Reverse lunge com pausa'),
-      ex('Jump squat controlado','Squat pulses','Squat hold + reps'),
-      ex('Mountain climbers','Mountain climbers cruzados','Mountain climbers rápidos'),
-      ex('Prancha lateral','Side plank dip','Long-lever side plank')
+    { key:'E', title:'E · Full body density', focus:'Sessão global curta e densa com novo reforço de peito e braços.', exercises:[
+      ex('Air squat','Squat tempo contínuo','Jump squat controlado'),
+      ex('Flexão clássica','Flexão lenta','Flexão explosiva'),
+      ex('Back widow','Prone lat pull','Swimmer pulls lentos'),
+      ex('Curl auto-resistido','Close-grip push-up','Pseudo-planche lean push-up')
     ]},
-    { key:'F', title:'F · Upper body militar completo', focus:'Sessão densa de tronco superior: peito, ombros, braços, costas e abdómen.', exercises:[
-      ex('Flexão clássica','Flexão explosiva controlada','Flexão perto da falha'),
-      ex('Pike push-up','Pike press pulses','Pseudo-handstand lean'),
-      ex('Mergulho em cadeira','Close-grip push-up','Pseudo-planche lean push-up'),
-      ex('Remada com garrafão','Back widow lento','Curl auto-resistido + flexão')
+    { key:'F', title:'F · Upper body completo', focus:'Peito, ombros, braços e abdómen em sessão completa.', exercises:[
+      ex('Flexão clássica','Flexão diamante','Pseudo-planche push-up'),
+      ex('Pike push-up','Pike push-up lento','Pike press pulses'),
+      ex('Mergulho em cadeira','Mergulho lento','Mergulho com pausa'),
+      ex('Prancha','Leg raises','Mountain climbers')
     ]}
   ];
 
   const SLOT_FAMILIES = {
-    'A_0':'push_horizontal','A_1':'push_tension','A_2':'shoulder_press','A_3':'chair_dip',
-    'B_0':'squat','B_1':'split','B_2':'bridge','B_3':'core_front',
-    'C_0':'weighted_row','C_1':'back_row','C_2':'back_scap','C_3':'biceps',
-    'D_0':'push_horizontal','D_1':'triceps_push','D_2':'core_rotation','D_3':'abs_legs',
-    'E_0':'split','E_1':'density_lower','E_2':'conditioning_core','E_3':'core_side',
-    'F_0':'density_push','F_1':'shoulder_press','F_2':'triceps_push','F_3':'density_pull'
+    'A_0':'push_horizontal','A_1':'push_tension','A_2':'shoulder_press','A_3':'triceps_push',
+    'B_0':'squat','B_1':'split','B_2':'bridge','B_3':'hinge_glutes',
+    'C_0':'back_row','C_1':'back_scap','C_2':'back_lat','C_3':'biceps',
+    'D_0':'core_front','D_1':'core_side','D_2':'core_rotation','D_3':'triceps_iso',
+    'E_0':'density_lower','E_1':'density_push','E_2':'density_pull','E_3':'finisher'
   };
 
   const SWAP_LIBRARIES = {
     push_horizontal:[
-      ex('Flexão clássica','Flexão lenta 3 s','Flexão diamante'),
-      ex('Flexão mãos largas','Flexão mãos largas lenta','Flexão com pés elevados'),
-      ex('Flexão com pausa baixa','Flexão 1.5 reps','Flexão arqueiro assistida')
+      ex('Flexão de joelhos','Flexão','Flexão diamante'),
+      ex('Flexão mãos largas','Flexão mãos largas lenta','Flexão com pausa baixa'),
+      ex('Flexão inclinada no chão alta','Flexão 1.5 reps','Flexão arqueiro assistida')
     ],
     push_tension:[
-      ex('Flexão com pausa baixa','Flexão 1.5 reps','Pseudo-planche push-up'),
-      ex('Flexão excêntrica longa','Push-up pulses','Push-up mechanical drop set'),
-      ex('Flexão inclinada pés elevados','Flexão lenta perto da falha','Flexão explosiva controlada')
+      ex('Flexão isométrica alta','Flexão lenta','Flexão 1.5 reps'),
+      ex('Flexão com pausa curta','Flexão com pausa baixa','Flexão excêntrica longa'),
+      ex('Push-up hold baixo','Push-up pulses','Push-up mechanical drop set')
     ],
     shoulder_press:[
-      ex('Pike push-up parcial','Pike push-up','Pike push-up lenta'),
+      ex('Pike hold','Pike push-up','Pike press pulses'),
       ex('Dolphin hold','Dolphin push-up','Pike negativa lenta'),
-      ex('Pike press pulses','Pseudo-handstand lean','Pseudo-handstand lean lento')
-    ],
-    chair_dip:[
-      ex('Mergulho em cadeira','Mergulho em cadeira lento','Mergulho em cadeira com pausa'),
-      ex('Mergulho em cadeira joelhos fletidos','Mergulho em cadeira amplitude curta','Mergulho em cadeira lento 1.5'),
-      ex('Extensão curta de tríceps','Bodyweight triceps extension','Diamond push-up pulses')
+      ex('Pike parcial','Pike com pausa baixa','Pseudo-handstand lean')
     ],
     triceps_push:[
-      ex('Close-grip push-up','Flexão diamante','Diamond push-up pulses'),
-      ex('Extensão curta de tríceps','Bodyweight triceps extension','Extensão 1.5 reps'),
-      ex('Tríceps isométrico ajoelhado','Close-grip com pausa','Pseudo-planche lean push-up')
+      ex('Scapular push-up','Close-grip push-up','Pseudo-planche lean push-up'),
+      ex('Extensão curta de tríceps','Bodyweight triceps extension','Diamond push-up pulses'),
+      ex('Tríceps isométrico ajoelhado','Close-grip com pausa','Close-grip 1.5 reps')
     ],
     squat:[
-      ex('Agachamento livre','Agachamento lento 3 s','Agachamento 1.5 reps'),
+      ex('Air squat','Tempo squat','Squat 1.5 reps'),
       ex('Sit-to-squat controlado','Squat com pausa baixa','Wall sit + squats'),
       ex('Squat isométrico curto','Tempo squat contínuo','Jump squat controlado')
     ],
     split:[
-      ex('Bulgarian split squat assistido','Bulgarian split squat','Bulgarian split squat lento'),
-      ex('Reverse lunge','Reverse lunge lento','Reverse lunge com pausa'),
-      ex('Split squat assistido','Split squat glute bias','Split squat pulsos baixos')
+      ex('Split squat assistido','Split squat','Split squat 1.5 reps'),
+      ex('Reverse lunge','Reverse lunge lenta','Reverse lunge com pausa'),
+      ex('Split squat curto','Split squat glute bias','Split squat pulsos baixos')
     ],
     bridge:[
-      ex('Glute bridge','Glute bridge uma perna','Long-lever bridge'),
+      ex('Glute bridge','Single-leg bridge','Long-lever bridge'),
       ex('Frog pump','Frog pump com pausa','Frog pump alto-rep'),
-      ex('Bridge march','Single-leg bridge com pausa','Hamstring walkout')
+      ex('Bridge march','Single-leg bridge com pausa','Long-lever bridge com pausa')
     ],
-    weighted_row:[
-      ex('Remada com garrafão','Remada com garrafão lenta','Remada unilateral com garrafão'),
-      ex('Remada com mochila','Remada com mochila lenta','Remada unilateral com mochila'),
-      ex('Remada isométrica com toalha','Remada com toalha lenta','Remada com toalha + pausa')
+    hinge_glutes:[
+      ex('Frog pump','Frog pump com pausa','Hamstring walkout'),
+      ex('Reverse lunge','Reverse lunge lenta','Split squat glute bias'),
+      ex('Bridge march','Hamstring bridge hold','Walkout parcial')
     ],
     back_row:[
-      ex('Back widow','Row de cotovelos no chão','Row de cotovelos com pausa'),
-      ex('Row de cotovelos curto','Back widow lento','Back widow isométrico'),
-      ex('Retração escapular deitado','Row de cotovelos no chão lento','Back widow com pausa')
+      ex('Retração escapular deitado','Back widow','Row de cotovelos no chão com pausa'),
+      ex('Row de cotovelos no chão curto','Row de cotovelos no chão','Row de cotovelos no chão com pausa'),
+      ex('Back widow curta','Back widow lenta','Back widow isométrica')
     ],
     back_scap:[
-      ex('Prone Y-T-W','Prone Y-T-W lento','Reverse snow angel lento'),
-      ex('Prone W raise','Prone T raise','Prone Y-T-W combo'),
-      ex('Reverse snow angel curta','Reverse snow angel','Reverse snow angel com pausa')
+      ex('Prone W raise curta','Prone W raise','Prone W raise com pausa'),
+      ex('Prone T raise curta','Prone T raise','Prone Y-T-W combo'),
+      ex('Reverse snow angel curta','Reverse snow angel','Reverse snow angel lenta')
+    ],
+    back_lat:[
+      ex('Prone lat pull curto','Prone lat pull','Prone lat pull com pausa'),
+      ex('Swimmer pull curta','Swimmer pulls lentos','Swimmer pulls com pausa'),
+      ex('Superman pull curta','Superman pull com pausa','Lat prayer pull no chão')
     ],
     biceps:[
       ex('Curl auto-resistido','Curl auto-resistido lento','Hammer curl auto-resistido'),
       ex('Curl isométrico 90°','Curl auto-resistido com pausa','Hammer isométrico + repetições'),
-      ex('Curl com garrafão','Curl com garrafão lento','Curl unilateral com garrafão')
+      ex('Curl curto contínuo','Curl auto-resistido alternado','Curl auto-resistido 1.5 reps')
     ],
     core_front:[
       ex('Prancha','Hollow hold','Body-saw plank'),
       ex('Dead-bug hold','Dead-bug alternado','Hollow rocks curtas'),
-      ex('Bear hold','Bear shoulder taps','Bear hold longo')
+      ex('Bear hold','Bear hover taps','Bear hold longo')
     ],
     core_side:[
-      ex('Prancha lateral','Side plank dip','Long-lever side plank'),
+      ex('Side plank','Side plank dip','Long-lever side plank'),
       ex('Side plank joelho dobrado','Side plank reach-through','Side plank pulses'),
       ex('Clamshell hold lateral','Side plank com abdução curta','Side plank longa com abdução')
     ],
@@ -152,30 +151,30 @@
       ex('Bear shoulder taps','Bear hold reach','Plank drag imaginário'),
       ex('Plank knee taps','Plank to pike lenta','Plank toe taps')
     ],
-    abs_legs:[
-      ex('Elevação de pernas','Elevação de pernas lenta','Hollow rocks curtas'),
-      ex('Reverse crunch','Reverse crunch lento','Reverse crunch + elevação de anca'),
-      ex('Abdominal bicicleta','Abdominal bicicleta lento','Hollow hold + bicicleta')
+    triceps_iso:[
+      ex('Extensão curta de tríceps','Bodyweight triceps extension','Diamond push-up pulses'),
+      ex('Tríceps ajoelhado isométrico','Extensão de tríceps com pausa','Extensão 1.5 reps'),
+      ex('Close-grip de joelhos','Close-grip push-up','Close-grip com pausa')
     ],
     density_lower:[
-      ex('Jump squat controlado','Squat pulses','Squat hold + reps'),
+      ex('Air squat','Squat tempo contínuo','Jump squat controlado'),
       ex('Lunge alternada','Lunge alternada lenta','Split switch controlado'),
-      ex('Wall sit imaginário','Squat hold + reps','Squat pulses rápidos')
-    ],
-    conditioning_core:[
-      ex('Mountain climbers','Mountain climbers cruzados','Mountain climbers rápidos'),
-      ex('Plank jacks controlados','Bear crawl estático','Mountain climbers lentos com pausa'),
-      ex('High knees baixo impacto','High knees','High knees rápido')
+      ex('Wall sit imaginário','Squat hold + reps','Squat pulses')
     ],
     density_push:[
-      ex('Flexão clássica','Flexão explosiva controlada','Flexão perto da falha'),
+      ex('Flexão de joelhos','Flexão','Flexão lenta perto da falha'),
       ex('Flexão com pausa','Close-grip push-up','Diamond push-up pulses'),
       ex('Scapular push-up','Flexão 1.5 reps','Pseudo-planche lean push-up')
     ],
     density_pull:[
-      ex('Remada com garrafão','Back widow lento','Curl auto-resistido + flexão'),
-      ex('Prone W raise','Prone lat pull com pausa','Reverse snow angel lenta'),
-      ex('Back widow curta','Back widow','Row de cotovelos com pausa')
+      ex('Prone W raise curta','Prone W raise','Prone lat pull com pausa'),
+      ex('Back widow curta','Back widow','Row de cotovelos no chão com pausa'),
+      ex('Swimmer pull curta','Swimmer pulls lentos','Reverse snow angel lenta')
+    ],
+    finisher:[
+      ex('Curl auto-resistido','Close-grip push-up','Pseudo-planche lean push-up'),
+      ex('Hammer curl auto-resistido','Bodyweight triceps extension','Diamond push-up pulses'),
+      ex('Curl isométrico 90°','Close-grip com pausa','Close-grip 1.5 reps')
     ]
   };
 
@@ -237,20 +236,16 @@
   function defaultInstruction(name){
     const f = exerciseFamily(name);
     if(f === 'push') return 'Mantém tronco rígido, desce controlado e sobe empurrando o chão sem quebrar a lombar.';
-    if(f === 'chairdip') return 'Cadeira firme, ombros para baixo, cotovelos para trás e descida controlada sem afundar o pescoço.';
     if(f === 'pike') return 'Anca alta, peso nas mãos e cabeça a descer entre as mãos antes de empurrar.';
     if(f === 'squat') return 'Pé inteiro no chão, joelhos a seguir a ponta do pé e subida firme.';
     if(f === 'split') return 'Base estável, desce na vertical e sobe a partir do pé da frente.';
     if(f === 'bridge') return 'Empurra pelos calcanhares, eleva a anca e aperta glúteos no topo.';
-    if(f === 'weightedrow') return 'Inclina ligeiramente o tronco, puxa o garrafão/mochila até ao tronco e aperta as omoplatas.';
     if(f === 'backrow') return 'Empurra os cotovelos contra o chão e procura sentir entre as omoplatas.';
     if(f === 'backscap') return 'Levanta os braços do chão sem encolher os ombros nem forçar o pescoço.';
     if(f === 'backlat') return 'Peito só ligeiramente elevado e cotovelos a puxar para baixo e para trás.';
     if(f === 'curl') return 'Uma mão resiste à outra durante toda a amplitude, sem aliviar no topo.';
     if(f === 'plank') return 'Costelas baixas, glúteos ativos e lombar sob controlo.';
     if(f === 'sideplank') return 'Anca alta, ombro estável e corpo comprido.';
-    if(f === 'abslegs') return 'Mantém a lombar controlada; sobe e desce as pernas sem balançar nem arquear a coluna.';
-    if(f === 'conditioning') return 'Mantém ritmo vivo, core firme e técnica limpa; velocidade só conta se a postura se mantiver.';
     if(f === 'tricepsfloor') return 'O movimento nasce nos cotovelos; não transformes isto numa flexão normal.';
     return 'Executa com controlo, tensão e técnica limpa.';
   }
@@ -324,17 +319,17 @@
   function weeklyTargetSessions(){ return state.profileMode === 'definition' ? 5 : 6; }
 
   function rotationSequence(){
-    if(state.profileMode === 'balanced') return ['A','B','C','D','E','F'];
-    if(state.profileMode === 'definition') return ['F','A','E','C','D','B'];
-    if(state.profileMode === 'lower_glutes') return ['B','A','C','E','D','F'];
-    return ['A','B','C','D','E','F'];
+    if(state.profileMode === 'balanced') return ['A','B','C','D','E'];
+    if(state.profileMode === 'definition') return ['E','A','B','C','D'];
+    if(state.profileMode === 'lower_glutes') return ['B','A','C','B','E','D'];
+    return ['A','B','C','D','A','E'];
   }
 
   function profileMeta(){
-    if(state.profileMode === 'balanced') return { title:'Equilibrado militar', text:'Sequência A-B-C-D-E-F: tronco superior dominante, pernas suficientes e core diário.' };
-    if(state.profileMode === 'definition') return { title:'Definição agressiva', text:'Sequência F-A-E-C-D-B: maior densidade metabólica, mantendo estímulo forte em peito, ombros, braços e abdómen.' };
-    if(state.profileMode === 'lower_glutes') return { title:'Pernas + glúteos', text:'Sequência B-A-C-E-D-F: reforça inferior sem perder a prioridade de tronco superior.' };
-    return { title:'Peito + ombros + braços', text:'Sequência A-B-C-D-E-F: dois estímulos fortes de push, um upper completo e correção com costas/core.' };
+    if(state.profileMode === 'balanced') return { title:'Equilibrado', text:'Sequência A-B-C-D-E com distribuição estável entre empurrar, puxar, pernas e core.' };
+    if(state.profileMode === 'definition') return { title:'Definição geral', text:'Começa em densidade global e mantém frequência ligeiramente menor para facilitar aderência e controlo da fadiga.' };
+    if(state.profileMode === 'lower_glutes') return { title:'Pernas + glúteos', text:'Usa B-A-C-B-E-D para repetir mais cedo o dia inferior e reforçar glúteos, quadríceps e cadeia posterior.' };
+    return { title:'Peito + braços', text:'Usa A-B-C-D-A-E para dar mais frequência útil a peito, tríceps e braço sem apagar pernas e costas.' };
   }
 
   function volumeTierForPlan(planKey){
@@ -866,20 +861,16 @@
 
   function exerciseFamily(name){
     const n = normalizeName(name);
-    if(n.includes('mergulho')) return 'chairdip';
-    if(n.includes('pike') || n.includes('dolphin') || n.includes('handstand')) return 'pike';
-    if(n.includes('mountain') || n.includes('high knees') || n.includes('plank jacks')) return 'conditioning';
-    if(n.includes('elevacao de pernas') || n.includes('reverse crunch') || n.includes('bicicleta') || n.includes('hollow rocks')) return 'abslegs';
-    if(n.includes('remada com garrafao') || n.includes('remada com mochila') || n.includes('remada isometrica com toalha')) return 'weightedrow';
-    if(n.includes('squat') && !n.includes('split') && !n.includes('lunge') || n.includes('agachamento')) return 'squat';
-    if(n.includes('split') || n.includes('lunge') || n.includes('bulgarian')) return 'split';
+    if(n.includes('pike') || n.includes('dolphin')) return 'pike';
+    if(n.includes('squat') && !n.includes('split') && !n.includes('lunge')) return 'squat';
+    if(n.includes('split') || n.includes('lunge')) return 'split';
     if(n.includes('bridge') || n.includes('walkout') || n.includes('frog pump')) return 'bridge';
     if(n.includes('retracao escapular') || n.includes('back widow') || n.includes('row de cotovelos')) return 'backrow';
-    if(n.includes('prone w') || n.includes('prone t') || n.includes('prone y') || n.includes('snow angel') || n.includes('y-t-w')) return 'backscap';
+    if(n.includes('prone w') || n.includes('prone t') || n.includes('snow angel') || n.includes('y-t-w')) return 'backscap';
     if(n.includes('lat pull') || n.includes('swimmer') || n.includes('superman pull') || n.includes('lat prayer')) return 'backlat';
     if(n.includes('curl')) return 'curl';
-    if(n.includes('side plank') || n.includes('prancha lateral') || n.includes('clamshell')) return 'sideplank';
-    if(n.includes('plank') || n.includes('prancha') || n.includes('hollow') || n.includes('dead-bug') || n.includes('bear')) return 'plank';
+    if(n.includes('side plank') || n.includes('clamshell')) return 'sideplank';
+    if(n.includes('plank') || n.includes('hollow') || n.includes('dead-bug') || n.includes('bear')) return 'plank';
     if(n.includes('triceps') || n.includes('diamond')) return 'tricepsfloor';
     if(n.includes('flexao') || n.includes('push-up') || n.includes('close-grip')) return 'push';
     return 'push';
@@ -888,46 +879,6 @@
   function exerciseGuide(name){
     const f = exerciseFamily(name);
     const generic = (intro, setup, execution, breathing, mistake, regression, focus, cues) => ({ intro, setup, execution, breathing, mistake, regression, focus, cues });
-    if(f === 'chairdip') return generic(
-      'Mergulho em cadeira para tríceps, peito inferior e ombro anterior.',
-      'Usa uma cadeira pesada/estável encostada à parede. Mãos na borda, dedos para a frente, peito aberto.',
-      'Desce dobrando os cotovelos para trás até amplitude confortável e sobe estendendo os braços sem bloquear agressivamente.',
-      'Inspira a descer. Expira a subir.',
-      'Ombros a subir para as orelhas, cadeira instável ou descer abaixo do controlo do ombro.',
-      'Aproxima os pés da cadeira e reduz amplitude.',
-      'Tríceps, peito inferior e deltoide anterior.',
-      'Cadeira firme, cotovelos para trás e ombros longe das orelhas.'
-    );
-    if(f === 'weightedrow') return generic(
-      'Remada improvisada com garrafão/mochila para costas e bíceps.',
-      'Pés firmes, tronco ligeiramente inclinado, abdómen contraído e carga segura nas mãos.',
-      'Puxa a carga para a zona baixa das costelas, aperta as omoplatas e desce devagar.',
-      'Expira a puxar. Inspira a descer.',
-      'Puxar com balanço lombar ou encolher os ombros.',
-      'Usa menos água/carga ou apoia uma mão numa cadeira.',
-      'Dorsais, romboides, trapézio médio, bíceps.',
-      'Cotovelos para trás, peito aberto e descida controlada.'
-    );
-    if(f === 'abslegs') return generic(
-      'Abdominais inferiores e controlo da bacia.',
-      'Deita-te de costas, mãos ao lado do corpo ou debaixo da bacia se precisares de regressão.',
-      'Eleva/desce as pernas ou enrola a bacia sem deixar a lombar arquear.',
-      'Expira no esforço. Inspira no retorno.',
-      'Balanço, pescoço tenso ou lombar a levantar do chão.',
-      'Dobra os joelhos ou reduz amplitude.',
-      'Reto abdominal, transverso e flexores da anca.',
-      'Lombar controlada; movimento lento vence velocidade.'
-    );
-    if(f === 'conditioning') return generic(
-      'Condicionamento calisténico para definição e capacidade anaeróbia.',
-      'Mãos ou pés firmes conforme a variante, tronco sólido e respiração ativa.',
-      'Alterna as pernas ou movimentos com ritmo alto, mantendo alinhamento do tronco.',
-      'Respira de forma curta e regular; não bloqueies a respiração.',
-      'Perder prancha, saltar sem controlo ou deixar a anca cair.',
-      'Abranda o ritmo e troca salto por passo.',
-      'Core, ombros, flexores da anca e sistema cardiovascular.',
-      'Rápido, mas limpo; se a postura falha, baixa a velocidade.'
-    );
     if(f === 'push') return generic(
       'Flexão / variação de flexão para peito e tríceps.',
       'Posição de prancha alta, mãos firmes no chão, glúteos e abdómen contraídos.',
@@ -1079,10 +1030,6 @@
   function guideSVG(name){
     const f = exerciseFamily(name);
     const title = {
-      chairdip:'Mergulho',
-      weightedrow:'Remada',
-      abslegs:'Abdómen inferior',
-      conditioning:'Condicionamento',
       push:'Empurra',
       pike:'Pressão vertical',
       squat:'Agacha',
@@ -1097,10 +1044,6 @@
       tricepsfloor:'Extensão de tríceps'
     }[f] || 'Guia';
     const note = {
-      chairdip:'Cadeira firme, cotovelos para trás.',
-      weightedrow:'Puxa cotovelos para trás e aperta omoplatas.',
-      abslegs:'Lombar controlada e movimento lento.',
-      conditioning:'Ritmo alto sem perder postura.',
       push:'Tronco inteiro, peito desce primeiro.',
       pike:'Anca alta e cabeça entre as mãos.',
       squat:'Pé inteiro no chão e subida firme.',

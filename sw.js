@@ -1,4 +1,4 @@
-const CACHE='muscleboost-v25-military';
+const CACHE='muscleboost-v24';
 const CORE=['./','./index.html','./app.js','./manifest.json','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(
