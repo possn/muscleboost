@@ -1,0 +1,5842 @@
+[
+  {
+    "day": 1,
+    "key": "A",
+    "title": "Missão 001 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 2,
+    "key": "B",
+    "title": "Missão 002 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 3,
+    "key": "C",
+    "title": "Missão 003 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 4,
+    "key": "D",
+    "title": "Missão 004 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 5,
+    "key": "E",
+    "title": "Missão 005 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 6,
+    "key": "F",
+    "title": "Missão 006 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 7,
+    "key": "R",
+    "title": "Missão 007 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 1. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 8,
+    "key": "B",
+    "title": "Missão 008 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 9,
+    "key": "C",
+    "title": "Missão 009 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 10,
+    "key": "D",
+    "title": "Missão 010 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 11,
+    "key": "E",
+    "title": "Missão 011 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 12,
+    "key": "F",
+    "title": "Missão 012 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 13,
+    "key": "A",
+    "title": "Missão 013 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 14,
+    "key": "R",
+    "title": "Missão 014 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 2. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 15,
+    "key": "C",
+    "title": "Missão 015 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 16,
+    "key": "D",
+    "title": "Missão 016 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 17,
+    "key": "E",
+    "title": "Missão 017 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 18,
+    "key": "F",
+    "title": "Missão 018 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 19,
+    "key": "A",
+    "title": "Missão 019 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 20,
+    "key": "B",
+    "title": "Missão 020 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 21,
+    "key": "R",
+    "title": "Missão 021 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 3. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 22,
+    "key": "D",
+    "title": "Missão 022 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 23,
+    "key": "E",
+    "title": "Missão 023 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 24,
+    "key": "F",
+    "title": "Missão 024 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 25,
+    "key": "A",
+    "title": "Missão 025 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 26,
+    "key": "B",
+    "title": "Missão 026 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 27,
+    "key": "C",
+    "title": "Missão 027 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 28,
+    "key": "R",
+    "title": "Missão 028 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 4. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 29,
+    "key": "E",
+    "title": "Missão 029 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 30,
+    "key": "F",
+    "title": "Missão 030 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 31,
+    "key": "A",
+    "title": "Missão 031 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 32,
+    "key": "B",
+    "title": "Missão 032 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 33,
+    "key": "C",
+    "title": "Missão 033 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 34,
+    "key": "D",
+    "title": "Missão 034 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 35,
+    "key": "R",
+    "title": "Missão 035 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 5. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 36,
+    "key": "F",
+    "title": "Missão 036 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 37,
+    "key": "A",
+    "title": "Missão 037 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 38,
+    "key": "B",
+    "title": "Missão 038 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 39,
+    "key": "C",
+    "title": "Missão 039 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 40,
+    "key": "D",
+    "title": "Missão 040 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 41,
+    "key": "E",
+    "title": "Missão 041 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 42,
+    "key": "R",
+    "title": "Missão 042 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 6. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 43,
+    "key": "A",
+    "title": "Missão 043 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 44,
+    "key": "B",
+    "title": "Missão 044 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 45,
+    "key": "C",
+    "title": "Missão 045 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 46,
+    "key": "D",
+    "title": "Missão 046 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 47,
+    "key": "E",
+    "title": "Missão 047 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 48,
+    "key": "F",
+    "title": "Missão 048 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 49,
+    "key": "R",
+    "title": "Missão 049 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 7. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 50,
+    "key": "B",
+    "title": "Missão 050 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 51,
+    "key": "C",
+    "title": "Missão 051 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 52,
+    "key": "D",
+    "title": "Missão 052 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 53,
+    "key": "E",
+    "title": "Missão 053 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 54,
+    "key": "F",
+    "title": "Missão 054 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 55,
+    "key": "A",
+    "title": "Missão 055 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 56,
+    "key": "R",
+    "title": "Missão 056 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 8. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 57,
+    "key": "C",
+    "title": "Missão 057 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 58,
+    "key": "D",
+    "title": "Missão 058 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 59,
+    "key": "E",
+    "title": "Missão 059 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 60,
+    "key": "F",
+    "title": "Missão 060 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 61,
+    "key": "A",
+    "title": "Missão 061 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 62,
+    "key": "B",
+    "title": "Missão 062 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 63,
+    "key": "R",
+    "title": "Missão 063 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 9. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 64,
+    "key": "D",
+    "title": "Missão 064 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 65,
+    "key": "E",
+    "title": "Missão 065 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 66,
+    "key": "F",
+    "title": "Missão 066 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 67,
+    "key": "A",
+    "title": "Missão 067 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 68,
+    "key": "B",
+    "title": "Missão 068 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 69,
+    "key": "C",
+    "title": "Missão 069 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 70,
+    "key": "R",
+    "title": "Missão 070 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 10. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 71,
+    "key": "E",
+    "title": "Missão 071 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 72,
+    "key": "F",
+    "title": "Missão 072 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 73,
+    "key": "A",
+    "title": "Missão 073 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 74,
+    "key": "B",
+    "title": "Missão 074 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 75,
+    "key": "C",
+    "title": "Missão 075 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 76,
+    "key": "D",
+    "title": "Missão 076 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 77,
+    "key": "R",
+    "title": "Missão 077 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 11. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 78,
+    "key": "F",
+    "title": "Missão 078 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 79,
+    "key": "A",
+    "title": "Missão 079 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 80,
+    "key": "B",
+    "title": "Missão 080 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 81,
+    "key": "C",
+    "title": "Missão 081 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 82,
+    "key": "D",
+    "title": "Missão 082 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 83,
+    "key": "E",
+    "title": "Missão 083 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 84,
+    "key": "R",
+    "title": "Missão 084 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 12. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 85,
+    "key": "A",
+    "title": "Missão 085 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 86,
+    "key": "B",
+    "title": "Missão 086 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 87,
+    "key": "C",
+    "title": "Missão 087 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 88,
+    "key": "D",
+    "title": "Missão 088 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 89,
+    "key": "E",
+    "title": "Missão 089 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 90,
+    "key": "F",
+    "title": "Missão 090 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 91,
+    "key": "R",
+    "title": "Missão 091 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 13. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 92,
+    "key": "B",
+    "title": "Missão 092 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 93,
+    "key": "C",
+    "title": "Missão 093 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 94,
+    "key": "D",
+    "title": "Missão 094 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 95,
+    "key": "E",
+    "title": "Missão 095 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 96,
+    "key": "F",
+    "title": "Missão 096 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 97,
+    "key": "A",
+    "title": "Missão 097 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 98,
+    "key": "R",
+    "title": "Missão 098 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 14. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 99,
+    "key": "C",
+    "title": "Missão 099 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 100,
+    "key": "D",
+    "title": "Missão 100 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 101,
+    "key": "E",
+    "title": "Missão 101 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 102,
+    "key": "F",
+    "title": "Missão 102 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 103,
+    "key": "A",
+    "title": "Missão 103 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 104,
+    "key": "B",
+    "title": "Missão 104 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 105,
+    "key": "R",
+    "title": "Missão 105 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 15. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 106,
+    "key": "D",
+    "title": "Missão 106 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 107,
+    "key": "E",
+    "title": "Missão 107 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 108,
+    "key": "F",
+    "title": "Missão 108 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 109,
+    "key": "A",
+    "title": "Missão 109 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 110,
+    "key": "B",
+    "title": "Missão 110 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 111,
+    "key": "C",
+    "title": "Missão 111 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 112,
+    "key": "R",
+    "title": "Missão 112 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 16. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 113,
+    "key": "E",
+    "title": "Missão 113 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 114,
+    "key": "F",
+    "title": "Missão 114 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 115,
+    "key": "A",
+    "title": "Missão 115 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 116,
+    "key": "B",
+    "title": "Missão 116 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 117,
+    "key": "C",
+    "title": "Missão 117 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 118,
+    "key": "D",
+    "title": "Missão 118 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 119,
+    "key": "R",
+    "title": "Missão 119 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 17. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 120,
+    "key": "F",
+    "title": "Missão 120 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 121,
+    "key": "A",
+    "title": "Missão 121 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 122,
+    "key": "B",
+    "title": "Missão 122 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 123,
+    "key": "C",
+    "title": "Missão 123 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 124,
+    "key": "D",
+    "title": "Missão 124 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 125,
+    "key": "E",
+    "title": "Missão 125 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 126,
+    "key": "R",
+    "title": "Missão 126 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 18. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 127,
+    "key": "A",
+    "title": "Missão 127 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 128,
+    "key": "B",
+    "title": "Missão 128 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 129,
+    "key": "C",
+    "title": "Missão 129 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 130,
+    "key": "D",
+    "title": "Missão 130 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 131,
+    "key": "E",
+    "title": "Missão 131 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 132,
+    "key": "F",
+    "title": "Missão 132 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 133,
+    "key": "R",
+    "title": "Missão 133 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 19. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 134,
+    "key": "B",
+    "title": "Missão 134 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 135,
+    "key": "C",
+    "title": "Missão 135 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 136,
+    "key": "D",
+    "title": "Missão 136 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 137,
+    "key": "E",
+    "title": "Missão 137 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 138,
+    "key": "F",
+    "title": "Missão 138 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 139,
+    "key": "A",
+    "title": "Missão 139 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 140,
+    "key": "R",
+    "title": "Missão 140 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 20. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 141,
+    "key": "C",
+    "title": "Missão 141 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 142,
+    "key": "D",
+    "title": "Missão 142 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 143,
+    "key": "E",
+    "title": "Missão 143 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 144,
+    "key": "F",
+    "title": "Missão 144 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 145,
+    "key": "A",
+    "title": "Missão 145 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 146,
+    "key": "B",
+    "title": "Missão 146 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 147,
+    "key": "R",
+    "title": "Missão 147 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 21. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 148,
+    "key": "D",
+    "title": "Missão 148 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 149,
+    "key": "E",
+    "title": "Missão 149 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 150,
+    "key": "F",
+    "title": "Missão 150 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 151,
+    "key": "A",
+    "title": "Missão 151 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 152,
+    "key": "B",
+    "title": "Missão 152 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 153,
+    "key": "C",
+    "title": "Missão 153 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 154,
+    "key": "R",
+    "title": "Missão 154 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 22. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 155,
+    "key": "E",
+    "title": "Missão 155 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 156,
+    "key": "F",
+    "title": "Missão 156 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 157,
+    "key": "A",
+    "title": "Missão 157 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 158,
+    "key": "B",
+    "title": "Missão 158 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 159,
+    "key": "C",
+    "title": "Missão 159 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 160,
+    "key": "D",
+    "title": "Missão 160 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 161,
+    "key": "R",
+    "title": "Missão 161 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 23. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 162,
+    "key": "F",
+    "title": "Missão 162 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 163,
+    "key": "A",
+    "title": "Missão 163 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 164,
+    "key": "B",
+    "title": "Missão 164 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 165,
+    "key": "C",
+    "title": "Missão 165 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 166,
+    "key": "D",
+    "title": "Missão 166 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 167,
+    "key": "E",
+    "title": "Missão 167 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 168,
+    "key": "R",
+    "title": "Missão 168 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 24. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 169,
+    "key": "A",
+    "title": "Missão 169 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 170,
+    "key": "B",
+    "title": "Missão 170 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 171,
+    "key": "C",
+    "title": "Missão 171 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 172,
+    "key": "D",
+    "title": "Missão 172 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 173,
+    "key": "E",
+    "title": "Missão 173 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 174,
+    "key": "F",
+    "title": "Missão 174 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 175,
+    "key": "R",
+    "title": "Missão 175 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 25. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 176,
+    "key": "B",
+    "title": "Missão 176 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 177,
+    "key": "C",
+    "title": "Missão 177 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 178,
+    "key": "D",
+    "title": "Missão 178 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 179,
+    "key": "E",
+    "title": "Missão 179 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 180,
+    "key": "F",
+    "title": "Missão 180 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 181,
+    "key": "A",
+    "title": "Missão 181 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 182,
+    "key": "R",
+    "title": "Missão 182 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 26. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 183,
+    "key": "C",
+    "title": "Missão 183 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 184,
+    "key": "D",
+    "title": "Missão 184 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 185,
+    "key": "E",
+    "title": "Missão 185 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 186,
+    "key": "F",
+    "title": "Missão 186 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 187,
+    "key": "A",
+    "title": "Missão 187 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 188,
+    "key": "B",
+    "title": "Missão 188 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 189,
+    "key": "R",
+    "title": "Missão 189 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 27. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 190,
+    "key": "D",
+    "title": "Missão 190 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 191,
+    "key": "E",
+    "title": "Missão 191 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 192,
+    "key": "F",
+    "title": "Missão 192 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 193,
+    "key": "A",
+    "title": "Missão 193 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 194,
+    "key": "B",
+    "title": "Missão 194 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 195,
+    "key": "C",
+    "title": "Missão 195 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 196,
+    "key": "R",
+    "title": "Missão 196 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 28. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 197,
+    "key": "E",
+    "title": "Missão 197 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 198,
+    "key": "F",
+    "title": "Missão 198 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 199,
+    "key": "A",
+    "title": "Missão 199 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 200,
+    "key": "B",
+    "title": "Missão 200 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 201,
+    "key": "C",
+    "title": "Missão 201 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 202,
+    "key": "D",
+    "title": "Missão 202 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 203,
+    "key": "R",
+    "title": "Missão 203 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 29. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 204,
+    "key": "F",
+    "title": "Missão 204 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 205,
+    "key": "A",
+    "title": "Missão 205 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 206,
+    "key": "B",
+    "title": "Missão 206 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 207,
+    "key": "C",
+    "title": "Missão 207 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 208,
+    "key": "D",
+    "title": "Missão 208 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 209,
+    "key": "E",
+    "title": "Missão 209 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 210,
+    "key": "R",
+    "title": "Missão 210 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 30. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 211,
+    "key": "A",
+    "title": "Missão 211 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 212,
+    "key": "B",
+    "title": "Missão 212 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 213,
+    "key": "C",
+    "title": "Missão 213 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 214,
+    "key": "D",
+    "title": "Missão 214 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 215,
+    "key": "E",
+    "title": "Missão 215 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 216,
+    "key": "F",
+    "title": "Missão 216 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 217,
+    "key": "R",
+    "title": "Missão 217 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 31. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 218,
+    "key": "B",
+    "title": "Missão 218 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 219,
+    "key": "C",
+    "title": "Missão 219 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 220,
+    "key": "D",
+    "title": "Missão 220 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 221,
+    "key": "E",
+    "title": "Missão 221 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 222,
+    "key": "F",
+    "title": "Missão 222 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 223,
+    "key": "A",
+    "title": "Missão 223 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 224,
+    "key": "R",
+    "title": "Missão 224 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 32. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 225,
+    "key": "C",
+    "title": "Missão 225 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 226,
+    "key": "D",
+    "title": "Missão 226 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 227,
+    "key": "E",
+    "title": "Missão 227 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 228,
+    "key": "F",
+    "title": "Missão 228 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 229,
+    "key": "A",
+    "title": "Missão 229 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 230,
+    "key": "B",
+    "title": "Missão 230 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 231,
+    "key": "R",
+    "title": "Missão 231 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 33. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 232,
+    "key": "D",
+    "title": "Missão 232 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 233,
+    "key": "E",
+    "title": "Missão 233 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 234,
+    "key": "F",
+    "title": "Missão 234 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 235,
+    "key": "A",
+    "title": "Missão 235 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 236,
+    "key": "B",
+    "title": "Missão 236 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 237,
+    "key": "C",
+    "title": "Missão 237 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 238,
+    "key": "R",
+    "title": "Missão 238 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 34. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 239,
+    "key": "E",
+    "title": "Missão 239 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 240,
+    "key": "F",
+    "title": "Missão 240 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 241,
+    "key": "A",
+    "title": "Missão 241 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 242,
+    "key": "B",
+    "title": "Missão 242 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 243,
+    "key": "C",
+    "title": "Missão 243 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 244,
+    "key": "D",
+    "title": "Missão 244 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 245,
+    "key": "R",
+    "title": "Missão 245 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 35. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 246,
+    "key": "F",
+    "title": "Missão 246 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 247,
+    "key": "A",
+    "title": "Missão 247 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 248,
+    "key": "B",
+    "title": "Missão 248 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 249,
+    "key": "C",
+    "title": "Missão 249 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 250,
+    "key": "D",
+    "title": "Missão 250 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 251,
+    "key": "E",
+    "title": "Missão 251 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 252,
+    "key": "R",
+    "title": "Missão 252 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 36. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 253,
+    "key": "A",
+    "title": "Missão 253 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 254,
+    "key": "B",
+    "title": "Missão 254 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 255,
+    "key": "C",
+    "title": "Missão 255 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 256,
+    "key": "D",
+    "title": "Missão 256 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 257,
+    "key": "E",
+    "title": "Missão 257 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 258,
+    "key": "F",
+    "title": "Missão 258 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 259,
+    "key": "R",
+    "title": "Missão 259 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 37. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 260,
+    "key": "B",
+    "title": "Missão 260 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 261,
+    "key": "C",
+    "title": "Missão 261 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 262,
+    "key": "D",
+    "title": "Missão 262 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 263,
+    "key": "E",
+    "title": "Missão 263 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 264,
+    "key": "F",
+    "title": "Missão 264 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 265,
+    "key": "A",
+    "title": "Missão 265 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 266,
+    "key": "R",
+    "title": "Missão 266 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 38. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 267,
+    "key": "C",
+    "title": "Missão 267 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 268,
+    "key": "D",
+    "title": "Missão 268 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 269,
+    "key": "E",
+    "title": "Missão 269 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 270,
+    "key": "F",
+    "title": "Missão 270 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 271,
+    "key": "A",
+    "title": "Missão 271 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 272,
+    "key": "B",
+    "title": "Missão 272 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 273,
+    "key": "R",
+    "title": "Missão 273 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 39. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 274,
+    "key": "D",
+    "title": "Missão 274 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 275,
+    "key": "E",
+    "title": "Missão 275 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 276,
+    "key": "F",
+    "title": "Missão 276 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 277,
+    "key": "A",
+    "title": "Missão 277 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 278,
+    "key": "B",
+    "title": "Missão 278 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 279,
+    "key": "C",
+    "title": "Missão 279 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 280,
+    "key": "R",
+    "title": "Missão 280 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 40. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 281,
+    "key": "E",
+    "title": "Missão 281 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 282,
+    "key": "F",
+    "title": "Missão 282 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 283,
+    "key": "A",
+    "title": "Missão 283 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 284,
+    "key": "B",
+    "title": "Missão 284 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 285,
+    "key": "C",
+    "title": "Missão 285 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 286,
+    "key": "D",
+    "title": "Missão 286 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 287,
+    "key": "R",
+    "title": "Missão 287 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 41. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 288,
+    "key": "F",
+    "title": "Missão 288 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 289,
+    "key": "A",
+    "title": "Missão 289 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 290,
+    "key": "B",
+    "title": "Missão 290 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 291,
+    "key": "C",
+    "title": "Missão 291 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 292,
+    "key": "D",
+    "title": "Missão 292 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 293,
+    "key": "E",
+    "title": "Missão 293 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 294,
+    "key": "R",
+    "title": "Missão 294 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 42. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 295,
+    "key": "A",
+    "title": "Missão 295 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 296,
+    "key": "B",
+    "title": "Missão 296 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 297,
+    "key": "C",
+    "title": "Missão 297 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 298,
+    "key": "D",
+    "title": "Missão 298 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 299,
+    "key": "E",
+    "title": "Missão 299 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 300,
+    "key": "F",
+    "title": "Missão 300 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 301,
+    "key": "R",
+    "title": "Missão 301 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 43. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 302,
+    "key": "B",
+    "title": "Missão 302 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 303,
+    "key": "C",
+    "title": "Missão 303 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 304,
+    "key": "D",
+    "title": "Missão 304 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 305,
+    "key": "E",
+    "title": "Missão 305 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 306,
+    "key": "F",
+    "title": "Missão 306 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 307,
+    "key": "A",
+    "title": "Missão 307 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 308,
+    "key": "R",
+    "title": "Missão 308 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 44. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 309,
+    "key": "C",
+    "title": "Missão 309 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 310,
+    "key": "D",
+    "title": "Missão 310 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 311,
+    "key": "E",
+    "title": "Missão 311 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 312,
+    "key": "F",
+    "title": "Missão 312 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 313,
+    "key": "A",
+    "title": "Missão 313 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 314,
+    "key": "B",
+    "title": "Missão 314 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 315,
+    "key": "R",
+    "title": "Missão 315 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 45. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 316,
+    "key": "D",
+    "title": "Missão 316 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 317,
+    "key": "E",
+    "title": "Missão 317 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 318,
+    "key": "F",
+    "title": "Missão 318 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 319,
+    "key": "A",
+    "title": "Missão 319 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 320,
+    "key": "B",
+    "title": "Missão 320 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 321,
+    "key": "C",
+    "title": "Missão 321 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 322,
+    "key": "R",
+    "title": "Missão 322 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 46. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 323,
+    "key": "E",
+    "title": "Missão 323 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 324,
+    "key": "F",
+    "title": "Missão 324 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 325,
+    "key": "A",
+    "title": "Missão 325 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 326,
+    "key": "B",
+    "title": "Missão 326 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 327,
+    "key": "C",
+    "title": "Missão 327 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 328,
+    "key": "D",
+    "title": "Missão 328 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 329,
+    "key": "R",
+    "title": "Missão 329 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 47. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 330,
+    "key": "F",
+    "title": "Missão 330 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 331,
+    "key": "A",
+    "title": "Missão 331 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 332,
+    "key": "B",
+    "title": "Missão 332 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 333,
+    "key": "C",
+    "title": "Missão 333 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 334,
+    "key": "D",
+    "title": "Missão 334 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 335,
+    "key": "E",
+    "title": "Missão 335 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 336,
+    "key": "R",
+    "title": "Missão 336 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 48. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 337,
+    "key": "A",
+    "title": "Missão 337 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 338,
+    "key": "B",
+    "title": "Missão 338 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 339,
+    "key": "C",
+    "title": "Missão 339 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 340,
+    "key": "D",
+    "title": "Missão 340 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 341,
+    "key": "E",
+    "title": "Missão 341 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 342,
+    "key": "F",
+    "title": "Missão 342 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 343,
+    "key": "R",
+    "title": "Missão 343 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 49. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 344,
+    "key": "B",
+    "title": "Missão 344 · Ombros em V",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "moderada",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 345,
+    "key": "C",
+    "title": "Missão 345 · Costas + bíceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 346,
+    "key": "D",
+    "title": "Missão 346 · Core blindado",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "moderada",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 347,
+    "key": "E",
+    "title": "Missão 347 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 348,
+    "key": "F",
+    "title": "Missão 348 · Circuito militar",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 349,
+    "key": "A",
+    "title": "Missão 349 · Peito + tríceps",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 350,
+    "key": "R",
+    "title": "Missão 350 · Recuperação tática",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "moderada",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 50. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 351,
+    "key": "C",
+    "title": "Missão 351 · Costas + bíceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 352,
+    "key": "D",
+    "title": "Missão 352 · Core blindado",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "alta",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 353,
+    "key": "E",
+    "title": "Missão 353 · Braços densos",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 354,
+    "key": "F",
+    "title": "Missão 354 · Circuito militar",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 355,
+    "key": "A",
+    "title": "Missão 355 · Peito + tríceps",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "alta",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 356,
+    "key": "B",
+    "title": "Missão 356 · Ombros em V",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "alta",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 357,
+    "key": "R",
+    "title": "Missão 357 · Recuperação tática",
+    "phase": "Intensificação",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "alta",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 51. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 358,
+    "key": "D",
+    "title": "Missão 358 · Core blindado",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Core blindado",
+    "intensity": "baixa",
+    "exercises": [
+      "Hollow Hold",
+      "Leg Raises",
+      "Mountain Climbers",
+      "Plank RKC"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 359,
+    "key": "E",
+    "title": "Missão 359 · Braços densos",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 360,
+    "key": "F",
+    "title": "Missão 360 · Circuito militar",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Circuito militar",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Pike Push-up",
+      "Power Twister Remada Isométrica",
+      "Mountain Climbers"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 361,
+    "key": "A",
+    "title": "Missão 361 · Peito + tríceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Peito + tríceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Press Horizontal",
+      "Flexão Declinada",
+      "Power Twister Press Alto",
+      "Flexão Diamante"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 362,
+    "key": "B",
+    "title": "Missão 362 · Ombros em V",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Ombros em V",
+    "intensity": "baixa",
+    "exercises": [
+      "Pike Push-up",
+      "Power Twister Overhead Press",
+      "Pseudo-planche Lean",
+      "Shoulder Taps"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 363,
+    "key": "C",
+    "title": "Missão 363 · Costas + bíceps",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Costas + bíceps",
+    "intensity": "baixa",
+    "exercises": [
+      "Power Twister Remada Isométrica",
+      "Back Widow",
+      "Prone Lat Pull",
+      "Power Twister Curl Isométrico"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 364,
+    "key": "R",
+    "title": "Missão 364 · Recuperação tática",
+    "phase": "Deload",
+    "duration": 15,
+    "focus": "Recuperação tática",
+    "intensity": "baixa",
+    "exercises": [
+      "Reverse Snow Angel",
+      "Prone Lat Pull",
+      "Scapular Push-up",
+      "Dead Bug"
+    ],
+    "coachNote": "Semana 52. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  },
+  {
+    "day": 365,
+    "key": "E",
+    "title": "Missão 365 · Braços densos",
+    "phase": "Hipertrofia",
+    "duration": 15,
+    "focus": "Braços densos",
+    "intensity": "moderada",
+    "exercises": [
+      "Power Twister Curl Isométrico",
+      "Bodyweight Triceps Extension",
+      "Power Twister Reverse Press",
+      "Close-grip Push-up"
+    ],
+    "coachNote": "Semana 53. Objetivo: progressão limpa, tempo sob tensão e recuperação suficiente."
+  }
+]

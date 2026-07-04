@@ -1,0 +1,32 @@
+[
+  {
+    "id": "first",
+    "name": "Primeira missão",
+    "desc": "Concluir o primeiro treino.",
+    "rule": "log>=1"
+  },
+  {
+    "id": "m30",
+    "name": "30 missões",
+    "desc": "Consistência inicial consolidada.",
+    "rule": "log>=30"
+  },
+  {
+    "id": "m100",
+    "name": "100 missões",
+    "desc": "Hábito instalado.",
+    "rule": "log>=100"
+  },
+  {
+    "id": "kg1",
+    "name": "+1 kg",
+    "desc": "Primeiro aumento de peso corporal.",
+    "rule": "weight>=62"
+  },
+  {
+    "id": "op66",
+    "name": "Operação 66",
+    "desc": "Chegar aos 66 kg.",
+    "rule": "weight>=66"
+  }
+]
