@@ -1,0 +1,6 @@
+import {clamp} from './storage.js';
+export function recoveryScore(coach){let s=70+(coach.sleep-7)*8+(coach.energy-3)*8-(coach.soreness||0)*10;if(coach.sport&&coach.sport!=='none')s-=12;if((coach.notes||'').toLowerCase().includes('dor'))s-=8;return clamp(Math.round(s),20,100)}
+export function workTime(score){return score>80?50:score>55?45:35}
+export function restTime(score){return score>80?10:score>55?15:25}
+export function fatigueMap(log){const f={peito:0,ombros:0,triceps:0,costas:0,biceps:0,core:0}; log.slice(-4).forEach((l,i)=>{const w=[.25,.4,.65,1][i]||.5;(l.muscles||[]).forEach(m=>f[m]=(f[m]||0)+w*25)});return f}
+export function coachRules(coach,score){const a=[];if(coach.sleep<6)a.push(['Sono baixo','Reduzir volume e aumentar descanso.']);if(coach.soreness>=3)a.push(['Dor muscular alta','Evitar padrões intensos repetidos.']);if(coach.sport&&coach.sport!=='none')a.push(['Outro treino registado','Diminuir carga sistémica hoje.']);if(score>80)a.push(['Recuperação alta','Permitir excêntricas lentas e isometria final.']);if(!coach.bar)a.push(['Sem Power Twister','Usar alternativas de peso corporal.']);if(!a.length)a.push(['Estado padrão','Treino normal com 1–2 repetições em reserva.']);return a}
